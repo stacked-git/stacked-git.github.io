@@ -3,3 +3,6 @@ __pycache__
 .py*
 cache/
 output/
+pages/man
+asciidoc.conf
+command-list.txt
