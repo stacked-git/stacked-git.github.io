@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>tutorial | Stacked Git</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://stacked-git.github.io/man/tutorial.html">
+<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Stacked Git Authors">
+<meta property="og:site_name" content="Stacked Git">
+<meta property="og:title" content="tutorial">
+<meta property="og:url" content="https://stacked-git.github.io/man/tutorial.html">
+<meta property="og:description" content="StGit is a command-line application that provides functionality
+similar to Quilt
+(i.e. pushing/popping patches to/from a stack), but using Git instead
+of diff and patch. StGit stores its patches in a ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-11T18:40:52Z">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://stacked-git.github.io/">
+
+            <span id="blog-title">Stacked Git</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+            <div class="dropdown-menu">
+                    <a href="../usage-example.html" class="dropdown-item">Usage Example</a>
+                    <a href="#" class="dropdown-item active">Tutorial <span class="sr-only">(active)</span></a>
+                    <a href="stg.html" class="dropdown-item">Man Pages</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Development</a>
+            <div class="dropdown-menu">
+                    <a href="https://github.com/stacked-git/stgit" class="dropdown-item">Source Code</a>
+                    <a href="https://github.com/stacked-git/stgit/releases" class="dropdown-item">Releases</a>
+                    <a href="https://github.com/stacked-git/stgit/issues" class="dropdown-item">Issue Tracker</a>
+                    <a href="https://groups.google.com/d/forum/stgit" class="dropdown-item">Forum</a>
+            </div>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">tutorial</a></h1>
+
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>StGit is a command-line application that provides functionality
+similar to <a href="http://savannah.nongnu.org/projects/quilt/">Quilt</a>
+(i.e. pushing/popping patches to/from a stack), but using Git instead
+of <span class="monospaced">diff</span> and <span class="monospaced">patch</span>. StGit stores its patches in a Git repository as
+normal Git commits, and provides a number of commands to manipulate
+them in various ways.</p></div>
+<div class="paragraph"><p>This tutorial assumes you are already familiar with the basics of Git
+(for example, branches, commits, and conflicts). For more information
+on Git, see <a href="https://git-scm.com/docs/git">git(1)</a> or <a href="https://git-scm.com/">the Git home
+page</a>.</p></div>
+</div>
+</div>
+<h3 id="_help">Help</h3>
+<div class="paragraph"><p>For a full list of StGit commands:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg help</pre>
+</div>
+</div>
+<div class="paragraph"><p>For quick help on individual subcommands:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg help &lt;cmd&gt;</pre>
+</div>
+</div>
+<div class="paragraph"><p>For more extensive help on a subcommand:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ man stg-&lt;cmd&gt;</pre>
+</div>
+</div>
+<div class="paragraph"><p>(The documentation is also available in <a href="stg.html">HTML
+format</a>.)</p></div>
+<h3 id="_getting_started">Getting started</h3>
+<div class="paragraph"><p>StGit is not a stand-alone program — it operates on a Git repository
+that you have already created, using <span class="monospaced">git init</span> or <span class="monospaced">git clone</span>. So get
+one of those; if you don’t have one at hand, try for example</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ git clone https://github.com/ctmarinas/stgit.git
+$ cd stgit</pre>
+</div>
+</div>
+<div class="paragraph"><p>Before you can create StGit patches, you have to run <a href="stg-init.html">stg init</a>:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg init</pre>
+</div>
+</div>
+<div class="paragraph"><p>This initializes the StGit metadata for the current branch. (So if you
+want to have StGit patches in another branch too, you need to run <span class="monospaced">stg
+init</span> again in that branch.)</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">As a shortcut, <a href="stg-clone.html">stg clone</a> will run <span class="monospaced">git clone</span> followed by
+<span class="monospaced">stg init</span> for you.</td>
+</tr></table>
+</div>
+<div class="sect1">
+<h4 id="_creating_a_patch">Creating a patch</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>Now we’re ready to create our first patch:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg new my-first-patch</pre>
+</div>
+</div>
+<div class="paragraph"><p>This will create a patch called <span class="monospaced">my-first-patch</span>, and open an editor
+to let you edit the patch’s commit message. (If you don’t give a name
+on the command line, StGit will make one up based on the first line of
+the commit message.) This patch is empty, as <a href="stg-show.html">stg show</a> will tell
+you:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg show</pre>
+</div>
+</div>
+<div class="paragraph"><p>But it won’t stay that way for long! Open one of the files in your
+favorite text editor, change something, and save. You now have some
+local changes in your tree:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg status
+M stgit/main.py</pre>
+</div>
+</div>
+<div class="paragraph"><p>Then <a href="stg-refresh.html">refresh</a> the patch:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg refresh</pre>
+</div>
+</div>
+<div class="paragraph"><p>And voilà — the patch is no longer empty:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg show
+commit 3de32068c600d40d8af2a9cf1f1c762570ae9610
+Author: Audrey U. Thor &lt;author@example.com&gt;
+Date:   Sat Oct 4 16:10:54 2008 +0200</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>Tell the world that I've made a patch</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>diff --git a/stgit/main.py b/stgit/main.py
+index e324179..6398958 100644
+--- a/stgit/main.py
++++ b/stgit/main.py
+@@ -171,6 +171,7 @@ def _main():
+     sys.exit(ret or utils.STGIT_SUCCESS)</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre> def main():
++    print 'My first patch!'
+     try:
+         _main()
+     finally:</pre>
+</div>
+</div>
+<div class="paragraph"><p>(I’m assuming you’re already familiar with
+<a href="http://en.wikipedia.org/wiki/Diff#Unified_format">unified
+diff</a> patches like this from Git, but it’s really quite simple; in
+this example, I’ve added the <span class="monospaced">print 'My first patch!'</span> line to the
+file <span class="monospaced">stgit/main.py</span>, at around line 171.)</p></div>
+<div class="paragraph"><p>Since the patch is also a regular Git commit, you can also look at it
+with regular Git tools such as <a href="https://git-scm.com/docs/gitk">gitk</a>.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_creating_another_patch">Creating another patch</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>We want to make another improvement, so let’s create a new patch for
+it:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ echo 'Audrey U. Thor' &gt; AUTHORS
+$ stg new credit --message 'Give me some credit'
+$ stg refresh</pre>
+</div>
+</div>
+<div class="paragraph"><p>Note that we can give the commit message on the command line, and that
+it doesn’t matter whether we run <a href="stg-new.html">stg new</a> before or after we edit
+the files.</p></div>
+<div class="paragraph"><p>So now we have two patches:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg series --description
++ my-first-patch # This is my first patch
+&gt; credit         # Give me some credit</pre>
+</div>
+</div>
+<div class="paragraph"><p><a href="stg-series.html">stg series</a> lists the patches from bottom to top; <span class="monospaced">+</span> means
+that a patch is <em>applied</em>, and <span class="monospaced">&gt;</span> that it is the <em>current</em>, or
+topmost, patch.</p></div>
+<div class="paragraph"><p>If we want to make further changes to the topmost patch, we just edit
+the files and run <span class="monospaced">stg refresh</span>. But what if we wanted to change
+<span class="monospaced">my-first-patch</span>? The simplest way is to <a href="stg-pop.html">pop</a> the <span class="monospaced">credit</span>
+patch, so that <span class="monospaced">my-first-patch</span> becomes topmost again:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg pop credit
+Checking for changes in the working directory ... done
+Popping patch "credit" ... done
+Now at patch "my-first-patch"
+$ stg series --description
+&gt; my-first-patch # This is my first patch
+- credit         # Give me some credit</pre>
+</div>
+</div>
+<div class="paragraph"><p><a href="stg-series.html">stg series</a> now shows that <span class="monospaced">my-first-patch</span> is topmost again,
+which means that <a href="stg-refresh.html">stg refresh</a> will update it with any changes we
+make.</p></div>
+<div class="paragraph"><p>The minus sign says that <span class="monospaced">credit</span> is <em>unapplied</em> — this means that
+it’s been temporarily put aside. If you look at the <span class="monospaced">AUTHORS</span> file,
+you’ll see that our change to it is gone; and tools such as
+<a href="https://git-scm.com/docs/gitk">gitk</a> will not show it, because it’s been edited out of the
+Git history. But it’s just one <a href="stg-push.html">stg push</a> command away from being
+restored:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg push credit
+Checking for changes in the working directory ... done
+Fast-forwarded patch "credit"
+Now at patch "credit"</pre>
+</div>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">You can omit the patch name argument to <a href="stg-push.html">stg push</a> and
+<a href="stg-pop.html">stg pop</a>. If you do, you will push the next unapplied patch, and
+pop the topmost patch, respectively.</td>
+</tr></table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">There are at least two more ways to update a non-topmost patch.
+One is to use <a href="stg-refresh.html">stg refresh</a> with the <span class="monospaced">--patch</span> flag, the other
+to create a new patch for the update and then merge it into the other
+patch with <a href="stg-squash.html">stg squash</a>.</td>
+</tr></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_keeping_commit_messages_up_to_date">Keeping commit messages up to date</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>Since StGit is all about creating readable Git history (or a readable
+patch series, which is essentially the same thing), one thing you’ll
+want to pay attention to is the commit messages of your patches.
+<a href="stg-new.html">stg new</a> asks you for a commit message when you create a new
+patch, but as time goes by and you refresh the patch again and again,
+chances are that the original commit message isn’t quite correct
+anymore. Fortunately, editing the commit message is very easy:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg edit &lt;patch-name&gt;</pre>
+</div>
+</div>
+<div class="paragraph"><p>In addition to <a href="stg-edit.html">stg edit</a>, you can also give the <span class="monospaced">--edit</span> flag
+to <a href="stg-refresh.html">stg refresh</a> — that way, you get to change the commit message
+and update the patch at the same time. Use whichever feels most
+natural to you.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<a href="stg-edit.html">stg edit</a> has a <span class="monospaced">--diff</span> flag, which gives you the diff
+text and not just the commit message in your editor. Be aware, though,
+that if you change the diff so that it no longer applies, the edit
+will be saved to a file instead of being carried out. If you’re not
+comfortable editing diffs, just treat <span class="monospaced">--diff</span> as a way to get to
+<em>see</em> the diff while you edit the commit message.</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>If the patch changes considerably, it might even deserve a new name.
+<a href="stg-rename.html">stg rename</a> is your friend there.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_conflicts">Conflicts</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>Normally, when you pop a patch, change something, and then later push
+it again, StGit sorts out everything for you automatically. For
+example, let’s create two patches that modify different files:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg clone https://github.com/ctmarinas/stgit.git stgit
+$ cd stgit
+$ stg new first --message 'First patch'
+$ echo '- Do something' &gt;&gt; TODO
+$ stg refresh
+$ stg new second --message 'Second patch'
+$ echo '- Install something' &gt;&gt; INSTALL
+$ stg refresh</pre>
+</div>
+</div>
+<div class="paragraph"><p>then pop them both:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg pop --all</pre>
+</div>
+</div>
+<div class="paragraph"><p>and then push them in the opposite order:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg push second first
+$ stg series
++ second
+&gt; first</pre>
+</div>
+</div>
+<div class="paragraph"><p>StGit had no problems reordering these patches for us, since they
+didn’t touch the same file. But it would have worked just fine even if
+they had touched the same file, as long as they didn’t change the same
+part of the file. But what if they did? Let’s find out.</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg pop
+Checking for changes in the working directory ... done
+Popping patch "first" ... done
+Now at patch "second"
+$ echo '- Do something else' &gt;&gt; TODO
+$ stg refresh</pre>
+</div>
+</div>
+<div class="paragraph"><p>Now, both patches add a new line at the end of <span class="monospaced">TODO</span>. So what happens
+when we try to have them both applied?</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg push
+Pushing patch "first" ...
+  CONFLICT (content): Merge conflict in TODO
+  Error: The merge failed during "push".
+         Revert the operation with "stg undo".
+  stg push: 1 conflict(s)</pre>
+</div>
+</div>
+<div class="paragraph"><p>StGit is telling us that it couldn’t figure out how to push <span class="monospaced">first</span> on
+top of <span class="monospaced">second</span>, now that they both modify <span class="monospaced">TODO</span>. We can take a look
+at the situation with <a href="stg-status.html">stg status</a>:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg status
+C TODO</pre>
+</div>
+</div>
+<div class="paragraph"><p>As we were told by <a href="stg-push.html">stg push</a>, the conflict is in the file <span class="monospaced">TODO</span>.
+(If the patch was bigger and touched multiple files, they would all be
+listed here; prefixed with <span class="monospaced">C</span> if they had conflicts, and <span class="monospaced">M</span> if StGit
+managed to automatically resolve everything in the file.)</p></div>
+<div class="paragraph"><p>At this point, we have two options:</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Undo the failed merge with <a href="stg-undo.html">stg undo</a>. (Remember to use the
+     <span class="monospaced">--hard</span> flag, since the unresolved conflict means the
+     worktree is not clean.)
+</p>
+</li>
+<li>
+<p>
+Manually resolve the conflict (editing the file directly followed
+     by <span class="monospaced">stg add</span> or using <span class="monospaced">git mergetool</span>.)
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p>To resolve the conflict, open <span class="monospaced">TODO</span> in your favorite editor. It ends
+like this:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>- numeric shortcuts for naming patches near top (eg. +1, -2)
+- (config?) parameter for number of patches included by "series -s"
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; current:TODO
+- Do something else
+=======
+- Do something
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; patched:TODO</pre>
+</div>
+</div>
+<div class="paragraph"><p>The <em>conflict markers</em> <span class="monospaced">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>, <span class="monospaced">=======</span>, and <span class="monospaced">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> indicate
+which lines were already there (<span class="monospaced">current</span>) and which were added by the
+patch (<span class="monospaced">patched</span>). Edit the file so that it looks like it should; in
+this case, we want something like this:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>- numeric shortcuts for naming patches near top (eg. +1, -2)
+- (config?) parameter for number of patches included by "series -s"
+- Do something
+- Do something else</pre>
+</div>
+</div>
+<div class="paragraph"><p>Note that “looks like it should” includes removing the conflict
+markers.</p></div>
+<div class="paragraph"><p>Now that we’ve resolved the conflict, we just need to tell StGit about
+it:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg add TODO
+$ stg status
+M TODO</pre>
+</div>
+</div>
+<div class="paragraph"><p><span class="monospaced">TODO</span> is listed as being modified, not in conflict. And we know from
+before how to deal with modified files:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg refresh</pre>
+</div>
+</div>
+<div class="paragraph"><p>The conflict is now resolved. We can see that <span class="monospaced">first</span> now looks a
+little different; it no longer adds a line at the end of the file:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg show
+commit 8e3ae5f6fa6e9a5f831353524da5e0b91727338e
+Author: Audrey U. Thor &lt;author@example.com&gt;
+Date:   Sun Oct 5 14:43:42 2008 +0200</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>First patch</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>diff --git a/TODO b/TODO
+index 812d236..4ef3841 100644
+--- a/TODO
++++ b/TODO
+@@ -24,4 +24,5 @@ The future, when time allows or if someone else does them:
+   they have scripts for moving the changes in one to the others)
+ - numeric shortcuts for naming patches near top (eg. +1, -2)
+ - (config?) parameter for number of patches included by "series -s"
++- Do something
+ - Do something else</pre>
+</div>
+</div>
+</div>
+</div>
+<h3 id="_workflow_development_branch">Workflow: Development branch</h3>
+<div class="paragraph"><p>One common use of StGit is to “polish” a Git branch before you
+publish it for others to see. Such history falsification can often be
+a <em>good</em> thing — when you (or someone else) needs to look at what you
+did six months later, you are not really interested in all the false
+starts and the steps needed to correct them. What you want is the final
+solution, presented in a way that makes it easy to read and understand.</p></div>
+<div class="paragraph"><p>Of course, there are limits. Editing the last few days' worth of
+history is probably a good idea; editing the last few months' probably
+isn’t. A rule of thumb might be to not mess with history old enough
+that you don’t remember the details anymore. And rewriting history
+that you have published for others to see (and base their own work on)
+usually just makes everyone more confused, not less.</p></div>
+<div class="paragraph"><p>So, let’s take a concrete example. Say that you’re hacking on StGit,
+and have made several Git commits as your work progressed, with commit
+messages such as “Improve the snarfle cache”, “Remove debug
+printout”, “New snarfle cache test”, “Oops, spell function name
+correctly”, “Fix documentation error”, and “More snarfle cache”.</p></div>
+<div class="paragraph"><p>Now, this is the actual history, but for obvious reasons, this isn’t
+the kind of history you’d ideally want to find when six months from
+now, you try to figure out exactly where that elusive snarfle cache
+bug was introduced. So let’s turn this into the history we can be
+proud of. The first step is to make StGit patches out of all those Git
+commits:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg uncommit --number 6
+Uncommitting 6 patches ...
+  Now at patch "more-snarfle-cache"
+done
+$ stg series --description
++ improve-the-snarfle-cache      # Improve the snarfle cache
++ remove-debug-printout          # Remove debug printout
++ new-snarfle-cache-test         # New snarfle cache test
++ oops-spell-function-name-corre # Oops, spell function name correctly
++ fix-documentation-error        # Fix documentation error
+&gt; more-snarfle-cache             # More snarfle cache</pre>
+</div>
+</div>
+<div class="paragraph"><p>As you can see, <a href="stg-uncommit.html">stg uncommit</a> adds StGit metadata to the last few
+Git commits, turning them into StGit patches so that we can do stuff
+with them.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">With the <span class="monospaced">--number</span> flag, <a href="stg-uncommit.html">stg uncommit</a> uncommits that
+many commits and generates names for them based on their commit
+messages. If you like, you can instead list the patch names you want
+on the command line.</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>At this point, there are a number of things we could do:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Continue developing, and take advantage of e.g. <a href="stg-goto.html">stg goto</a> or
+    <span class="monospaced">stg refresh --patch</span> to stick updates in the right patch to
+    begin with.
+</p>
+</li>
+<li>
+<p>
+Use e.g. <a href="stg-float.html">stg float</a>, <a href="stg-sink.html">stg sink</a>, <a href="stg-push.html">stg push</a>, and
+    <a href="stg-pop.html">stg pop</a> to reorder patches.
+</p>
+</li>
+<li>
+<p>
+Use <a href="stg-squash.html">stg squash</a> to merge two or more patches into one.
+    <a href="stg-squash.html">squash</a> pushes and pops so that the patches to be
+    merged are consecutive and unrelated patches aren’t in the way,
+    then makes one big patch out of the patches to be merged, and
+    finally pushes the other patches back.
+</p>
+<div class="paragraph"><p>Of course, as always when there is pushing involved, there is the
+possibility of conflicts. If a push results in a conflict, the
+operation will be halted, and we’ll be given the option of either
+resolving the conflict or undoing.</p></div>
+</li>
+</ul></div>
+<div class="paragraph"><p>Once we feel that the history is as good as it’s going to get, we can
+remove the StGit metadata, turning the patches back into regular Git
+commits again:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg commit --all</pre>
+</div>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<a href="stg-commit.html">stg commit</a> can also commit specific patches (named on the
+command line), leaving the rest alone. This can be used to retire
+patches as they mature, while keeping the newer and more volatile
+patches as patches.</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>When we are completely done using StGit with the branch and it is
+fully committed, we can use cleanup to remove all StGit metadata
+from the branch or delete it completely with either:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg branch --cleanup branchname
+$ stg branch --delete branchname</pre>
+</div>
+</div>
+<h3 id="_workflow_tracking_branch">Workflow: Tracking branch</h3>
+<div class="paragraph"><p>In the <em>Development branch</em> workflow described above, we didn’t have
+to worry about other people; we’re working on our own branch, they are
+presumably working on theirs, and when the time comes and we’re ready
+to publish our branch, we’ll probably end up merging our branch with
+those other peoples'. That’s how Git is designed to work.</p></div>
+<div class="paragraph"><p>Or rather, one of the ways Git is designed to work. An alternative,
+popular in e.g. the Linux kernel community (for which Git was
+originally created), is that contributors send their patches by e-mail
+to a mailing list. Others read the patches, try them out, and provide
+feedback; often, the patch author is asked to send a new and improved
+version of the patches. Once the project maintainer is satisfied that
+the patches are good, she’ll <em>apply</em> them to a branch and publish it.</p></div>
+<div class="paragraph"><p>StGit is ideally suited for the process of creating patches, mailing
+them out for review, revising them, mailing them off again, and
+eventually getting them accepted.</p></div>
+<div class="sect1">
+<h4 id="_getting_patches_upstream">Getting patches upstream</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>We’ve already covered how to clone a Git repository and start writing
+patches. As for the next step, there are two commands you might use to
+get patches out of StGit: <a href="stg-mail.html">stg mail</a> and <a href="stg-export.html">stg export</a>.
+<a href="stg-export.html">stg export</a> will export your patches to a filesystem directory as
+one text file per patch, which can be useful if you are going to send
+the patches by something other than e-mail. Most of the time, though,
+<a href="stg-mail.html">stg mail</a> is what you want.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">Git comes with tools for sending commits via e-mail. Since StGit
+patches are Git commits, you can use the Git tools if you like them
+better for some reason.</td>
+</tr></table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">For exporting single patches — as opposed to a whole bunch of
+them — you could also use <a href="stg-show.html">stg show</a> or <a href="stg-diff.html">stg diff</a>.</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Mailing a patch is as easy as this:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg mail --to recipient@example.com &lt;patches&gt;</pre>
+</div>
+</div>
+<div class="paragraph"><p>You can list one or more patches, or ranges of patches. Each patch
+will be sent as a separate mail, with the first line of the commit
+message as subject line. Try mailing patches to yourself to see what
+the result looks like.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<a href="stg-mail.html">stg mail</a> uses <span class="monospaced">sendmail</span> on your computer to send the
+mails. If you don’t have <span class="monospaced">sendmail</span> properly set up, you can instruct
+it to use any SMTP server with the <span class="monospaced">--smtp-server</span> flag.</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>There are many command-line options to control exactly how mails are
+sent, as well as a message template you can modify if you want. The
+man page has all the details; I’ll just mention two more here.</p></div>
+<div class="paragraph"><p><span class="monospaced">--edit-cover</span> will open an editor and let you write an
+introductory message; all the patch mails will then be sent as replies
+to this <em>cover message</em>. This is usually a good idea if you send more
+than one patch, so that reviewers can get a quick overview of the
+patches you sent.</p></div>
+<div class="paragraph"><p><span class="monospaced">--edit-patches</span> will let you edit each patch before it is sent.
+You can change anything, but note that you are only editing the
+outgoing mail, not the patch itself; if you want to make changes to
+the patch, you probably want to use the regular StGit commands to do
+so. What this <em>is</em> useful for, though, is to add notes for the patch
+recipients:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>From: Audrey U. Thor &lt;author@example.com&gt;
+Subject: [PATCH] First line of the commit message
+
+The rest of the commit message
+
+---
+
+Everything after the line with the three dashes and before the diff is
+just a comment, and not part of the commit message. If there's
+anything you want the patch recipients to see, but that shouldn't be
+recorded in the history if the patch is accepted, write it here.
+
+ stgit/main.py |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+
+diff --git a/stgit/main.py b/stgit/main.py
+index e324179..6398958 100644
+--- a/stgit/main.py
++++ b/stgit/main.py
+@@ -171,6 +171,7 @@ def _main():
+     sys.exit(ret or utils.STGIT_SUCCESS)
+
+ def main():
++    print 'My first patch!'
+     try:
+         _main()
+     finally:</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_rebasing_a_patch_series">Rebasing a patch series</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>While you are busy writing, submitting, and revising your patch
+series, other people will be doing the same thing. As a result, even
+though you started writing your patches on top of what was the latest
+history at the time, your stack base will grow ever more out of date.</p></div>
+<div class="paragraph"><p>When you clone a repository,</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg clone https://github.com/ctmarinas/stgit.git stgit</pre>
+</div>
+</div>
+<div class="paragraph"><p>you initially get one local branch, <span class="monospaced">master</span>. You also get a number of
+<em>remote</em> branches, one for each branch in the repository you cloned.
+In the case of the StGit repository, these are
+<span class="monospaced">remotes/origin/stable</span>, <span class="monospaced">remotes/origin/master</span>, and
+<span class="monospaced">remotes/origin/proposed</span>. <span class="monospaced">remotes</span> means that it’s not a local
+branch, just a snapshot of a branch in another repository; and
+<span class="monospaced">origin</span> is the default name for the first remote repository (you can
+set up more; see the man page for <span class="monospaced">git remote</span>).</p></div>
+<div class="paragraph"><p>Right after cloning, <span class="monospaced">master</span> and <span class="monospaced">remotes/origin/master</span> point at the
+same commit. When you start writing patches, <span class="monospaced">master</span> will advance,
+and always point at the current topmost patch, but
+<span class="monospaced">remotes/origin/master</span> will stay the same because it represents the
+master branch in the repository you cloned from — your <em>upstream</em>
+repository.</p></div>
+<div class="paragraph"><p>Unless you are the only one working on the project, however, the
+upstream repository will not stay the same forever. New commits will
+be added to its branches; to update your clone, run</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ git remote update</pre>
+</div>
+</div>
+<div class="paragraph"><p>This will update all your remote branches, but won’t touch your local
+branches. To get the latest changes into your local <span class="monospaced">master</span> branch,
+use <a href="stg-rebase.html">stg rebase</a>:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg rebase remotes/origin/master</pre>
+</div>
+</div>
+<div class="paragraph"><p>This command will do three things:</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Pop all patches, so that your local branch (<span class="monospaced">master</span>, in this
+     example) points at the stack base. This is the same commit that
+     <span class="monospaced">remotes/origin/master</span> pointed at at the time you started
+     writing your patches.
+</p>
+</li>
+<li>
+<p>
+Set the stack base to the given commit (the current, updated
+     value of <span class="monospaced">remotes/origin/master</span>).
+</p>
+</li>
+<li>
+<p>
+Push the patches that were popped in the first step.
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p>The end result is that your patches are now applied on top of the
+latest version of <span class="monospaced">remotes/origin/master</span>.</p></div>
+<div class="paragraph"><p>The primary reason for rebasing is to reduce the amount of conflicts
+between your work and others'. If one of your patches changes the same
+part of the same file as a patch someone else has written, you will
+get a conflict when you run <a href="stg-rebase.html">stg rebase</a> the next time after the
+other person’s patch has been accepted upstream. It is almost always
+less work to rebase often and resolve these one at a time, rather than
+a whole lot at once. After all, you have to rebase eventually; if you
+mail out patches that are based on an outdated branch, everyone who
+tries to apply them has to resolve the conflicts instead. There are
+more effective ways to get popular.</p></div>
+<div class="sect2">
+<h5 id="_when_your_patches_are_accepted">When your patches are accepted</h5>
+<div class="paragraph"><p>If and when some or all of your patches are accepted upstream, you
+update and rebase just like usual — but be sure to use the
+<span class="monospaced">--merged</span> flag to <a href="stg-rebase.html">stg rebase</a>:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ git remote update
+$ stg rebase --merged remotes/origin/master</pre>
+</div>
+</div>
+<div class="paragraph"><p>This flag makes the rebase operation better at detecting that your
+patches have been merged, at some cost in performance.</p></div>
+<div class="paragraph"><p>The patches that had been merged will still be present in your patch
+stack after the rebase, but they will be empty, since the change they
+added is now already present in the stack base. Run <a href="stg-clean.html">stg clean</a> to
+get rid of such empty patches if you don’t want them hanging around:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg clean</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_importing_patches">Importing patches</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>While you are busy producing patches, there’s hopefully someone — the
+<em>maintainer</em> — at the other end who recieves them and <em>applies</em> them
+to her Git tree, which is then published for all (or parts of) the
+world to see.</p></div>
+<div class="paragraph"><p>It’s perfectly fine for this person to not have the foggiest idea what
+StGit is. In that case, she’ll probably apply your patches with
+something like <span class="monospaced">git am</span>, and everything will just work, exactly as if
+you’d used Git to send those patches. But she might be an StGit user
+too, in which case she might use <a href="stg-import.html">stg import</a>.</p></div>
+<div class="paragraph"><p>There are basically four kinds if stuff you can import with
+<a href="stg-import.html">stg import</a>:</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+A patch in a file.
+</p>
+</li>
+<li>
+<p>
+Several files containing one patch each, and a <em>series</em> file
+     listing those other files in the correct order.
+</p>
+</li>
+<li>
+<p>
+An e-mail containing a single patch.
+</p>
+</li>
+<li>
+<p>
+A mailbox file (in standard Unix <span class="monospaced">mbox</span> format) containing
+     multiple e-mails with one patch in each.
+</p>
+</li>
+</ol></div>
+<div class="sect2">
+<h5 id="_importing_a_plain_patch">Importing a plain patch</h5>
+<div class="paragraph"><p>Importing a plain patch, such as produced by e.g. GNU <span class="monospaced">diff</span>, <span class="monospaced">git
+diff</span>, <span class="monospaced">git show</span>, <a href="stg-diff.html">stg diff</a>, or <a href="stg-show.html">stg show</a>, is very easy.
+Just say:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg import my-patch</pre>
+</div>
+</div>
+<div class="paragraph"><p>and you’ll have a new patch at the top of your stack.</p></div>
+<div class="paragraph"><p>If you don’t give a file name on the command line, <a href="stg-import.html">stg import</a>
+will read the patch from its standard input — in other words, you can
+pipe a patch to it directly from the command that produces it.</p></div>
+<div class="paragraph"><p>By default, the new patch’s name will be taken from the file name, and
+its commit message and author info will be taken from the beginning of
+the patch, if they are there. However, there are command line switches
+to override all of these things; see the man page for details.</p></div>
+<div class="sect3">
+<h6 id="_importing_several_patches_at_once">Importing several patches at once</h6>
+<div class="paragraph"><p>Some programs — among them <a href="stg-export.html">stg export</a> — will create a bunch of
+files with one patch in each, and a <em>series</em> file (often called
+<span class="monospaced">series</span>) listing the other files in the correct order. Give
+<span class="monospaced">--series</span> and the name of the series file to <a href="stg-import.html">stg import</a>,
+and it will import all the patches for you, in the correct order.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h5 id="_importing_a_patch_from_an_e_mail">Importing a patch from an e-mail</h5>
+<div class="paragraph"><p>Importing a patch from an e-mail is simple too:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg import --mail my-mail</pre>
+</div>
+</div>
+<div class="paragraph"><p>The e-mail should be in standard Git mail format (which is what e.g.
+<a href="stg-mail.html">stg mail</a> produces) — that is, with the patch in-line in the
+mail, not attached. The authorship info is taken from the mail
+headers, and the commit message is read from the <em>Subject:</em> line and
+the mail body.</p></div>
+<div class="paragraph"><p>If you don’t give a file name, the mail will be read from the standard
+input. This means that, if your mail reader supports it, you can pipe
+a mail directly to <span class="monospaced">stg import --mail</span> and the patch will be
+applied.</p></div>
+<div class="sect3">
+<h6 id="_importing_a_mailbox_full_of_patches">Importing a mailbox full of patches</h6>
+<div class="paragraph"><p>Finally, in case importing one patch at a time is too much work,
+<a href="stg-import.html">stg import</a> also accepts an entire Unix <span class="monospaced">mbox</span>-format mailbox,
+either on the command line or on its standard input; just use the
+<span class="monospaced">--mbox</span> flag. Each mail should contain one patch, and is imported
+just like with <span class="monospaced">--mail</span>.</p></div>
+<div class="paragraph"><p>Mailboxes full of patches are produced by e.g. <a href="stg-mail.html">stg mail</a> with the
+<span class="monospaced">--mbox</span> flag, but most mail readers can produce them too, meaning
+that you can copy all the patch mails you want to apply to a separate
+mailbox, and then import them all in one go.</p></div>
+</div>
+</div>
+</div>
+</div>
+<h3 id="_other_stuff_that_needs_to_be_placed_somewhere">Other stuff that needs to be placed somewhere</h3>
+<div class="sect1">
+<h4 id="_undo">Undo</h4>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+TODO
+</dt>
+<dd>
+<p>
+undo, redo, log, reset
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_interoperating_with_git">Interoperating with Git</h4>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+TODO
+</dt>
+<dd>
+<div class="ulist"><ul>
+<li>
+<p>
+git commit + repair
+</p>
+</li>
+<li>
+<p>
+git reset HEAD~n + repair
+</p>
+</li>
+<li>
+<p>
+don’t do git rebase or git merge, because it won’t work
+</p>
+</li>
+</ul></div>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_patch_stuff">Patch stuff</h4>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+TODO
+</dt>
+<dd>
+<p>
+This section needs revising. I’ve only fixed the formatting.
+Most of it should go under "Workflow: Tracking branch"
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>As mentioned in the introduction, StGit stores modifications to your
+working tree in the form of Git commits. This means if you want to
+apply your changes to a tree not managed by Git, or send your changes
+to someone else in e-mail, you need to convert your StGit patches into
+normal textual diffs that can be applied with the GNU patch command.
+<a href="stg-diff.html">stg diff</a> is a powerful way to generate and view textual diffs of
+patches managed by StGit.</p></div>
+<div class="paragraph"><p>To view a diff of the topmost patch:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg diff -r /</pre>
+</div>
+</div>
+<div class="paragraph"><p>Observe that this does not show any changes in the working directory
+that have not been saved by a <a href="stg-refresh.html">refresh</a>. To view just the
+changes you’ve made since the last refresh, use:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg diff -r /top</pre>
+</div>
+</div>
+<div class="paragraph"><p>If you want to see the changes made by the patch combined with any
+unsaved changes in the working directory, try:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg diff -r /bottom</pre>
+</div>
+</div>
+<div class="paragraph"><p>You can also show the changes to any patch in your stack with:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg diff -r &lt;patch&gt;/</pre>
+</div>
+</div>
+<div class="paragraph"><p>Use this command to view all the changes in your stack up through the
+current patch:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg diff -r base</pre>
+</div>
+</div>
+<div class="paragraph"><p><a href="stg-diff.html">stg diff</a> supports a number of other features that are very
+useful. Be sure to take a look at the help information for this
+command. To convert your StGit patches into patch files:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg export [--range=[&lt;patch1&gt;[:&lt;patch2&gt;]]] [&lt;dir-name&gt;]</pre>
+</div>
+</div>
+<div class="paragraph"><p><a href="stg-export.html">stg export</a> supports options to automatically number the patches
+(<span class="monospaced">-n</span>) or add the <span class="monospaced">.diff</span> extension (<span class="monospaced">-d</span>). If you don’t tell
+<a href="stg-export.html">export</a> where to put the patches, it will create directory
+named <span class="monospaced">patch-&lt;branchname&gt;</span> in your current directory, and store the
+patches there. To e-mail a patch or range of patches:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg mail [--to=...] (--all | --range=[&lt;patch1&gt;[:&lt;patch2&gt;]] | &lt;patch&gt;)</pre>
+</div>
+</div>
+<div class="paragraph"><p><a href="stg-mail.html">stg mail</a> has a lot of options, so read the output of <span class="monospaced">stg mail
+-h</span> for more information.</p></div>
+<div class="paragraph"><p>You can also import an existing GNU diff patch file as a new StGit
+patch with a single command. <a href="stg-import.html">stg import</a> will automatically parse
+through the patch file and extract a patch description. Use:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg import [&lt;file&gt;]</pre>
+</div>
+</div>
+<div class="paragraph"><p>This is the equivalent of</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg new
+$ patch -i &lt;file&gt;
+$ stg refresh -e</pre>
+</div>
+</div>
+<div class="paragraph"><p>Sometimes the patch file won’t apply cleanly. In that case,
+<a href="stg-import.html">stg import</a> will leave you with an empty StGit patch, to which
+you then apply the patch file by hand using "patch -i" and your
+favorite editor.</p></div>
+<div class="paragraph"><p>To merge a GNU diff file (defaulting to the standard input) into the
+topmost patch:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>$ stg fold [&lt;file&gt;]</pre>
+</div>
+</div>
+<div class="paragraph"><p>This command supports a <span class="monospaced">--threeway</span> option which applies the
+patch onto the bottom of the topmost one and performs a three-way
+merge.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_templates">Templates</h4>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+TODO
+</dt>
+<dd>
+<p>
+This section needs revising. I’ve only fixed the formatting.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p><a href="stg-export.html">stg export</a> and <a href="stg-mail.html">stg mail</a> use templates for generating the
+patch files or e-mails. The default templates are installed under
+<span class="monospaced">&lt;prefix&gt;/share/stgit/templates/</span> and, combined with the extra options
+available for these commands, should be enough for most users. The
+template format uses the standard Python string formatting rules. The
+variables available are listed in the the manual pages for each
+command. <a href="stg-mail.html">stg mail</a> can also send an initial <em>cover</em> e-mail for
+which there is no default template. The
+<span class="monospaced">&lt;prefix&gt;/share/stgit/examples/firstmail.tmpl</span> file can be used as an
+example. A default description for new patches can be defined in the
+<span class="monospaced">.git/ patchdescr.tmpl</span> file. This is useful for things like
+signed-off-by lines.</p></div>
+</div>
+</div>
+<h3 id="_emacs">Emacs</h3>
+<div class="paragraph"><p>StGit comes with an Emacs mode, <span class="monospaced">stgit-mode</span>, supporting Emacs
+versions 22 and later.</p></div>
+<div class="paragraph"><p>To start using it, add the <span class="monospaced">stgit/contrib</span> directory to your Emacs
+load-path and run <span class="monospaced">(require 'stgit)</span>. For example, you can add the
+following to your <span class="monospaced">.emacs</span> file:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>(add-to-list 'load-path "/path/to/stgit/contrib")
+(require 'stgit)</pre>
+</div>
+</div>
+<div class="paragraph"><p>Start <span class="monospaced">stgit-mode</span> using <span class="monospaced">M-x stgit</span> and select the directory where
+the source code you want to use StGit on can be found. If StGit has
+not been initialized in this directory yet, you will need to run <span class="monospaced">M-x
+stgit-init</span> before you continue.</p></div>
+<div class="paragraph"><p>The <span class="monospaced">stgit-mode</span> buffer (usually named <span class="monospaced">*stgit*</span>) has the
+following layout:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>Branch: name-of-branch
+
++ The first applied patch
++ Another applied patch
+&gt; The topmost patch
+  Index
+    &lt;no files&gt;
+  Work Tree
+    &lt;no files&gt;
+- An unapplied patch
+- Another unapplied patch
+--</pre>
+</div>
+</div>
+<div class="paragraph"><p>The above means that the active branch name is <span class="monospaced">name-of-branch</span> and it
+contains five patches, three of which are applied. The git index and
+working tree contain no (modified) files.</p></div>
+<div class="sect1">
+<h4 id="_basic_commands">Basic Commands</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>To get help, press <span class="monospaced">h</span>. This opens a new buffer which lists all
+commands supported in <span class="monospaced">stgit-mode</span>. Also, if you have the menu bar
+enabled (toggled using <span class="monospaced">M-x menu-bar-mode</span>), a new menu entry called
+<span class="monospaced">StGit</span> will appear, from which you can run several StGit commands. As
+the menu should be self-explanatory, the rest of this tutorial will
+focus on available keyboard commands.</p></div>
+<div class="paragraph"><p>Move the point (cursor) between lines using <span class="monospaced">C-p</span> and <span class="monospaced">C-n</span>, or
+between patches using <span class="monospaced">p</span> and <span class="monospaced">n</span>.</p></div>
+<div class="paragraph"><p>You can <a href="stg-undo.html">undo</a> and <a href="stg-redo.html">redo</a> StGit commands using
+<span class="monospaced">C-/</span> and <span class="monospaced">C-c C-/</span>, respectively.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_creating_new_patches">Creating New Patches</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>If you want to create a new patch, first make some changes that should
+go into it. As you save a file which is Git-controlled, it will appear
+as a modification in the <span class="monospaced">Work Tree</span> section:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>  Work Tree
+    Modified       foo.txt</pre>
+</div>
+</div>
+<div class="paragraph"><p>To create a new patch based on the changes in the index or, if it
+contains no changes, the working tree, press <span class="monospaced">c</span>. This opens a new
+buffer where you can enter the patch description. When you are done,
+press <span class="monospaced">C-c C-c</span>. Your new patch will now show up in the <span class="monospaced">*stgit*</span>
+buffer, and the working tree will no longer contain any modifications:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>+ The topmost patch
+&gt; First line of your new description
+  Index
+    &lt;no files&gt;
+  Work Tree
+    &lt;no files&gt;</pre>
+</div>
+</div>
+<div class="paragraph"><p>As you make additional changes in your files, and want to include them
+in the topmost patch, press <span class="monospaced">r</span>, which runs <a href="stg-refresh.html">stg refresh</a>. If you
+want to add the changes to a patch which is not topmost, move the
+point to the line of that patch and press <span class="monospaced">C-u r</span>.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_inspecting_patches">Inspecting Patches</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>To see what a particular patch contains, you can move the point
+(cursor) to the line of that patch, and press <span class="monospaced">RET</span> (Enter). This will
+"expand" the patch and show which files it changes:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>+ My patch
+    Modified       foo.txt
+    Deleted        bar.c</pre>
+</div>
+</div>
+<div class="paragraph"><p>You can press <span class="monospaced">=</span>, which will show the diff of that patch or file in a
+new buffer. With a prefix argument (<span class="monospaced">C-u =</span>), the diff will not show
+changes in whitespace.</p></div>
+<div class="paragraph"><p>To visit (open) a modified file in another Emacs window, press <span class="monospaced">o</span> on
+that line. <span class="monospaced">RET</span> will visit it in the current window.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_changing_the_patch_series">Changing the Patch Series</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>You can <a href="stg-push.html">push</a> and <a href="stg-pop.html">pop</a> patches using <span class="monospaced">&gt;</span>
+(pushes the topmost unapplied patch onto the stack) and <span class="monospaced">&lt;</span> (pops the
+topmost applied patch off the stack).</p></div>
+<div class="paragraph"><p>By moving the point to a particular patch and pressing <span class="monospaced">P</span> (<span class="monospaced">S-p</span>)
+you either (if it already was applied) pop that patch off the stack,
+or (if it was unapplied) push it onto the stack.</p></div>
+<div class="paragraph"><p>You can move patches by first marking one or more using <span class="monospaced">m</span>. Then,
+move the point to where in the series you want these patches to move,
+and press <span class="monospaced">M</span>. Use <span class="monospaced">DEL</span> or <span class="monospaced">u</span> to remove a mark.</p></div>
+<div class="paragraph"><p>You can also combine (<a href="stg-squash.html">squash</a>) two or more patches by
+marking them and pressing <span class="monospaced">S</span> (<span class="monospaced">S-s</span>). This will open a new buffer
+where you can edit the patch description of the new, combined, patch.
+When done, press <span class="monospaced">C-c C-c</span>, and the topmost of the marked patches will
+be replaced in the stack by one combined patch.</p></div>
+<div class="paragraph"><p>You can <a href="stg-delete.html">delete</a> a patch by moving to its line and pressing
+<span class="monospaced">D</span>. If you press <span class="monospaced">C-u D</span>, the contents of the patch will be spilled
+to the index.</p></div>
+<div class="paragraph"><p>To <a href="stg-edit.html">edit</a> the description of a patch, press <span class="monospaced">e</span>. This opens
+the patch description in a new buffer. Press <span class="monospaced">C-c C-c</span> when you are
+done editing the patch.</p></div>
+<div class="paragraph"><p>These operations may result in merge conflicts; more about that later.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_patch_names">Patch Names</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>By default, the patch description is shown but not the patch names.
+You can toggle showing the names using <span class="monospaced">t n</span>. To rename a patch, press
+<span class="monospaced">C-c C-r</span>.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_showing_committed_patches">Showing Committed Patches</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>Sometimes it is convenient to be able to investigate already committed
+patches. Toggle showing these using <span class="monospaced">t h</span>. With a prefix argument, you
+can set how many to show; e.g., <span class="monospaced">7 t h</span> will show seven already
+committed patches.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_using_the_index_and_working_tree">Using the Index and Working Tree</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>You can move a changed file between the index and the working tree
+using <span class="monospaced">i</span>. This is useful if your working tree contains a number of
+changes and you want to create or refresh a patch using only some of
+the changed files. Once you have the correct set of files in the
+index, use <span class="monospaced">c</span> to create or <span class="monospaced">r</span> to refresh patches using only the
+files in the index.</p></div>
+<div class="paragraph"><p>If you want to revert a change in either the index or the working
+tree, move the point to that line and press <span class="monospaced">U</span>. If you press <span class="monospaced">U</span> on
+the <span class="monospaced">Index</span> or <span class="monospaced">Work Tree</span> lines, all the changes in the index or
+working tree will be reverted.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_branches">Branches</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>You can switch to another <a href="stg-branch.html">branch</a> by pressing <span class="monospaced">B</span>. If you
+type the name of a branch that does not exist, you will be asked
+whether to create one. The new branch will be based off the current
+<span class="monospaced">HEAD</span>.</p></div>
+<div class="paragraph"><p>Use <span class="monospaced">C-c C-b</span> to <a href="stg-rebase.html">rebase</a> the current branch. It will
+default to rebasing to the <span class="monospaced">git config</span> setting for
+<span class="monospaced">branch.<em>branch</em>.stgit.parentbranch</span>.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_merge_conflicts">Merge Conflicts</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>If an operation resulted in a merge conflict, the files with conflicts
+will show as <span class="monospaced">Unmerged</span> in the <span class="monospaced">*stgit*</span> buffer.</p></div>
+<div class="paragraph"><p>To handle the conflicts, you can <a href="stg-undo.html">undo</a> the operation that
+caused the conflict using <span class="monospaced">C-u C-/</span>. Note the <span class="monospaced">C-u</span> prefix, which will
+tell the undo operation to continue despite the index or working tree
+containing changes.</p></div>
+<div class="paragraph"><p>If you instead want to resovle the changes, you must first edit the
+files with conflicts to make sure they are in the correct state. Once
+you have done this, press <span class="monospaced">R</span> on the line of that file, which will
+remove the <span class="monospaced">Unmerged</span> flag. Once all conflicts have been resolved, you
+can continue working as normal, for example by refreshing the patch
+that had the conflict.</p></div>
+<div class="paragraph"><p>To investigate the reason of conflicts, you can use the <span class="monospaced">d b</span>, <span class="monospaced">d o</span>,
+and <span class="monospaced">d t</span> commands to, respectively, show the diffs against the merge
+base, our branch, or their branch. <span class="monospaced">d c</span> shows a combined diff. See
+<a href="https://git-scm.com/docs/git-diff">git-diff(1)</a> for more information about these commands.</p></div>
+<div class="paragraph"><p>A more powerful tool to resolve conflicts is the Emacs <span class="monospaced">smerge-mode</span>.
+To start using it to resolve a conflict, press <span class="monospaced">d m</span>. It is outside
+the scope of this tutorial to explain how to use it, but press <span class="monospaced">q</span> to
+leave <span class="monospaced">smerge-mode</span>.</p></div>
+</div>
+</div>
+</div>
+    </div>
+    
+
+</article><!--End of body content--><footer id="footer">
+            © 2020 Stacked Git Authors 
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

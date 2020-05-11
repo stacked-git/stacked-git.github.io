@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="stg stgit stacked-git">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stacked Git Homepage | Stacked Git</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://stacked-git.github.io/">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><meta name="author" content="Stacked Git Authors">
+<meta property="og:site_name" content="Stacked Git">
+<meta property="og:title" content="Stacked Git Homepage">
+<meta property="og:url" content="https://stacked-git.github.io/">
+<meta property="og:description" content="stg stgit stacked-git">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-11T18:40:38Z">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://stacked-git.github.io/">
+
+            <span id="blog-title">Stacked Git</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+            <div class="dropdown-menu">
+                    <a href="usage-example.html" class="dropdown-item">Usage Example</a>
+                    <a href="man/tutorial.html" class="dropdown-item">Tutorial</a>
+                    <a href="man/stg.html" class="dropdown-item">Man Pages</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Development</a>
+            <div class="dropdown-menu">
+                    <a href="https://github.com/stacked-git/stgit" class="dropdown-item">Source Code</a>
+                    <a href="https://github.com/stacked-git/stgit/releases" class="dropdown-item">Releases</a>
+                    <a href="https://github.com/stacked-git/stgit/issues" class="dropdown-item">Issue Tracker</a>
+                    <a href="https://groups.google.com/d/forum/stgit" class="dropdown-item">Forum</a>
+            </div>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header></header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="sidebar">
+<p class="sidebar-title">Stacked Git Home</p>
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#about-stacked-git" id="id1">About Stacked Git</a></p></li>
+<li><p><a class="reference internal" href="#why-stacked-git" id="id2">Why Stacked Git?</a></p></li>
+<li>
+<p><a class="reference internal" href="#installation" id="id3">Installation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#dependencies" id="id4">Dependencies</a></p></li>
+<li><p><a class="reference internal" href="#package-repositories" id="id5">Package Repositories</a></p></li>
+<li><p><a class="reference internal" href="#source-installation" id="id6">Source Installation</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#getting-started" id="id7">Getting Started</a></p></li>
+<li>
+<p><a class="reference internal" href="#project-details" id="id8">Project Details</a></p>
+<ul>
+<li><p><a class="reference internal" href="#maintainers" id="id9">Maintainers</a></p></li>
+<li><p><a class="reference internal" href="#contributions" id="id10">Contributions</a></p></li>
+<li><p><a class="reference internal" href="#mailing-list" id="id11">Mailing List</a></p></li>
+<li><p><a class="reference internal" href="#historical" id="id12">Historical</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#other-patch-stack-tools" id="id13">Other Patch Stack Tools</a></p></li>
+<li><p><a class="reference internal" href="#acknowledgements" id="id14">Acknowledgements</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="about-stacked-git">
+<h3><a class="toc-backref" href="#id1">About Stacked Git</a></h3>
+<p>Stacked Git, <strong>StGit</strong> for short, is an application for managing Git
+commits as a stack of patches.</p>
+<p>The <a class="reference external" href="man/stg.html">stg</a> command line tool provides commands to quickly and safely
+manage a stack of patches.</p>
+<blockquote>
+<ul class="simple">
+<li><p><a class="reference external" href="man/stg-push.html">push</a> / <a class="reference external" href="man/stg-pop.html">pop</a> to apply and unapplied patches from the stack.</p></li>
+<li><p><a class="reference external" href="man/stg-refresh.html">refresh</a> / <a class="reference external" href="man/stg-edit.html">edit</a> to incorporate changes from the working tree
+into a patch and edit patch metadata.</p></li>
+<li><p><a class="reference external" href="man/stg-new.html">new</a> / <a class="reference external" href="man/stg-delete.html">delete</a> to create and delete patches on the stack.</p></li>
+<li><p><a class="reference external" href="man/stg-series.html">series</a> / <a class="reference external" href="man/stg-show.html">show</a> to see information about the stack or individual
+patches.</p></li>
+</ul>
+</blockquote>
+<p>Patch-stack management operations are performed using Git commands and
+the patches are stored as Git commit objects, allowing easy merging of
+the StGit patches into other repositories using standard Git
+functionality.</p>
+<p>StGit is licensed under the GNU General Public License, version 2.</p>
+</div>
+<div class="section" id="why-stacked-git">
+<h3><a class="toc-backref" href="#id2">Why Stacked Git?</a></h3>
+<p>The <em>stack of patches</em> model is a natural way to maintain a clean Git
+history while working on several changes concurrently. A stack-oriented
+workflow using StGit can compliment, or even replace, many Git workflows
+involving rebase, branches, ammended commits, and stashes.</p>
+<p>StGit, via the <code class="docutils literal">stg</code> command line tool, provides commands to quickly
+and safely create, push, pop, refresh, and reorder patches.</p>
+</div>
+<div class="section" id="installation">
+<h3><a class="toc-backref" href="#id3">Installation</a></h3>
+<div class="section" id="dependencies">
+<h4><a class="toc-backref" href="#id4">Dependencies</a></h4>
+<p>StGit is written in pure Python with no third-party Python dependencies.
+StGit currently supports Python version 2.6, 2.7, 3.4, 3.5, 3.6, 3.7,
+and 3.8, although support for Python 2 will be dropped in a future
+release.</p>
+<p>StGit interoperates closely with Git and does most of its work by
+running <code class="docutils literal">git</code> commands. Git 2.2.0 or newer is required.</p>
+</div>
+<div class="section" id="package-repositories">
+<h4><a class="toc-backref" href="#id5">Package Repositories</a></h4>
+<p>Recent versions of StGit are available via many package repositories
+such as <a class="reference external" href="https://formulae.brew.sh/formula/stgit">HomeBrew</a> and for many Linux distributions including:
+<a class="reference external" href="https://pkgs.alpinelinux.org/packages?name=stgit">Alpine</a>, <a class="reference external" href="https://aur.archlinux.org/packages/stgit">Arch</a>, <a class="reference external" href="https://src.fedoraproject.org/rpms/stgit">Fedora</a>, <a class="reference external" href="https://nixos.org/nixos/packages.html?attr=gitAndTools.stgit">Nix</a> and <a class="reference external" href="https://packages.ubuntu.com/source/focal/stgit">Ubuntu</a>.</p>
+<p>More details about StGit packages availability for various operating
+systems can be <a class="reference external" href="https://repology.org/project/stgit/versions">found on repology</a>.</p>
+</div>
+<div class="section" id="source-installation">
+<h4><a class="toc-backref" href="#id6">Source Installation</a></h4>
+<p>StGit may also be installed from source. Download the <a class="reference external" href="https://github.com/stacked-git/stgit/releases/latest">latest release</a>
+or clone from the <a class="reference external" href="https://github.com/stacked-git/stgit">StGit repository on GitHub</a>.</p>
+<pre class="code console"><a name="rest_code_08b920c7a3744b3a83c6baba39b6473e-1"></a><span class="gp">$</span> git clone https://github.com/stacked-git/stgit.git
+</pre>
+<p>To install from source, choose a <code class="docutils literal">prefix</code> and:</p>
+<pre class="code console"><a name="rest_code_985145d734bf421ab99c76d14bdfa549-1"></a><span class="gp">$</span> make <span class="nv">prefix</span><span class="o">=</span>/usr/local install install-doc
+</pre>
+<p>For more information about installation, see <a class="reference external" href="https://github.com/stacked-git/stgit/blob/master/INSTALL">the INSTALL file</a>.</p>
+</div>
+</div>
+<div class="section" id="getting-started">
+<h3><a class="toc-backref" href="#id7">Getting Started</a></h3>
+<p>This <a class="reference external" href="usage-example.html">quick example of using StGit</a> gives an idea
+of a basic StGit workflow using basic commands such as
+<a class="reference external" href="man/stg-push.html">stg push</a>, <a class="reference external" href="man/stg-pop.html">stg pop</a>, and <a class="reference external" href="man/stg-refresh.html">stg refresh</a>.</p>
+<p>For a more complete guide to using StGit, <a class="reference external" href="man/tutorial.html">see the tutorial</a>.</p>
+<p>StGit also comes with a complete set of man pages which are <a class="reference external" href="man/stg.html">also
+available online</a>.</p>
+</div>
+<div class="section" id="project-details">
+<h3><a class="toc-backref" href="#id8">Project Details</a></h3>
+<p>StGit source code is hosted on GitHub.</p>
+<div class="section" id="maintainers">
+<h4><a class="toc-backref" href="#id9">Maintainers</a></h4>
+<p>StGit is maintained by Pete Grayson and Catalin Marinas.</p>
+</div>
+<div class="section" id="contributions">
+<h4><a class="toc-backref" href="#id10">Contributions</a></h4>
+<p>Issues and feature requests may be reported on the <a class="reference external" href="https://github.com/stacked-git/stgit/issues">StGit issue
+tracker</a>.</p>
+<p>Pull requests are welcome and may be submitted to the <a class="reference external" href="https://github.com/stacked-git/stgit">repo on GitHub</a>.</p>
+</div>
+<div class="section" id="mailing-list">
+<h4><a class="toc-backref" href="#id11">Mailing List</a></h4>
+<p>For questions or discussion, please send email to <a class="reference external" href="mailto:stgit@googlegroups.com">the StGit mailing
+list</a>. Or use the <a class="reference external" href="https://groups.google.com/d/forum/stgit">Google Groups web interface</a>.</p>
+</div>
+<div class="section" id="historical">
+<h4><a class="toc-backref" href="#id12">Historical</a></h4>
+<p>The StGit project was originally hosted at gna.org. That site is no
+longer available, but a <a class="reference external" href="https://web.archive.org/web/20170305222727/http://gna.org/projects/stgit/">snapshot</a> remains available via the <a class="reference external" href="https://web.archive.org/">Wayback
+Machine</a>.</p>
+</div>
+</div>
+<div class="section" id="other-patch-stack-tools">
+<h3><a class="toc-backref" href="#id13">Other Patch Stack Tools</a></h3>
+<p>StGit is not the first or only patch stack tool. Both <a class="reference external" href="https://savannah.nongnu.org/projects/quilt/">Quilt</a> and
+Mercurial's <a class="reference external" href="https://www.mercurial-scm.org/wiki/MqExtension">mq extension</a> offer similar interfaces for managing a
+stack (or "queue" or "series") of patches. While Quilt operates on
+patches outside the context of any other version control system using
+GNU diff, the mq extension is part of the <a class="reference external" href="https://www.mercurial-scm.org/">Mercurial</a> version control
+system.</p>
+<p>Similar to mq's relationship to Mercurial, StGit is tightly coupled to
+Git. StGit</p>
+</div>
+<div class="section" id="acknowledgements">
+<h3><a class="toc-backref" href="#id14">Acknowledgements</a></h3>
+<p>Many thanks to Peter Grayson, Karl Wiberg, Yann Dirson, Chuck Lever and
+Paolo Blaisorblade Giarrusso for their great contribution to the
+development of StGit. Many thanks to all the people who contributed
+patches, ideas or reported bugs.</p>
+</div>
+</div>
+    </div>
+    
+
+</article><!--End of body content--><footer id="footer">
+            © 2020 Stacked Git Authors 
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

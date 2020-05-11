@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stg-redo | Stacked Git</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://stacked-git.github.io/man/stg-redo.html">
+<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Stacked Git Authors">
+<meta property="og:site_name" content="Stacked Git">
+<meta property="og:title" content="stg-redo">
+<meta property="og:url" content="https://stacked-git.github.io/man/stg-redo.html">
+<meta property="og:description" content="NAME
+
+stg-redo - Undo the last undo operation
+
+
+
+SYNOPSIS
+
+
+stg redo
+
+
+
+
+
+DESCRIPTION
+
+If the last command was an undo, reset the patch stack to the state it
+had before the undo. Consecutive invocatio">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-11T18:40:52Z">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://stacked-git.github.io/">
+
+            <span id="blog-title">Stacked Git</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+            <div class="dropdown-menu">
+                    <a href="../usage-example.html" class="dropdown-item">Usage Example</a>
+                    <a href="tutorial.html" class="dropdown-item">Tutorial</a>
+                    <a href="stg.html" class="dropdown-item">Man Pages</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Development</a>
+            <div class="dropdown-menu">
+                    <a href="https://github.com/stacked-git/stgit" class="dropdown-item">Source Code</a>
+                    <a href="https://github.com/stacked-git/stgit/releases" class="dropdown-item">Releases</a>
+                    <a href="https://github.com/stacked-git/stgit/issues" class="dropdown-item">Issue Tracker</a>
+                    <a href="https://groups.google.com/d/forum/stgit" class="dropdown-item">Forum</a>
+            </div>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">stg-redo</a></h1>
+
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="sect1">
+<h4 id="_name">NAME</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>stg-redo - Undo the last undo operation</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_synopsis">SYNOPSIS</h4>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg redo</em></pre>
+<div class="attribution">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_description">DESCRIPTION</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>If the last command was an undo, reset the patch stack to the state it
+had before the undo. Consecutive invocations of "stg redo" will undo
+the effects of consecutive invocations of "stg undo".</p></div>
+<div class="paragraph"><p>It is an error to run "stg redo" if the last command was not an
+undo.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_options">OPTIONS</h4>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+-n N
+</dt>
+<dt class="hdlist1">
+--number N
+</dt>
+<dd>
+<p>
+        Undo the last N undos.
+</p>
+</dd>
+<dt class="hdlist1">
+--hard
+</dt>
+<dd>
+<p>
+        Discard changes in your index/worktree.
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_stgit">StGit</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>Part of the StGit suite - see <a href="stg.html">stg(1)</a></p></div>
+</div>
+</div>
+</div>
+    </div>
+    
+
+</article><!--End of body content--><footer id="footer">
+            © 2020 Stacked Git Authors 
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

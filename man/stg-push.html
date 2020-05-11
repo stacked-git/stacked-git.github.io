@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stg-push | Stacked Git</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://stacked-git.github.io/man/stg-push.html">
+<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Stacked Git Authors">
+<meta property="og:site_name" content="Stacked Git">
+<meta property="og:title" content="stg-push">
+<meta property="og:url" content="https://stacked-git.github.io/man/stg-push.html">
+<meta property="og:description" content="NAME
+
+stg-push - Push one or more patches onto the stack
+
+
+
+SYNOPSIS
+
+
+stg push [options] [--] [&lt;patch1&gt;] [&lt;patch2&gt;] [&lt;patch3&gt;..&lt;patch4&gt;]
+
+
+
+
+
+DESCRIPTION
+
+Push one or more patches (defaulting to the ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-11T18:40:52Z">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://stacked-git.github.io/">
+
+            <span id="blog-title">Stacked Git</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+            <div class="dropdown-menu">
+                    <a href="../usage-example.html" class="dropdown-item">Usage Example</a>
+                    <a href="tutorial.html" class="dropdown-item">Tutorial</a>
+                    <a href="stg.html" class="dropdown-item">Man Pages</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Development</a>
+            <div class="dropdown-menu">
+                    <a href="https://github.com/stacked-git/stgit" class="dropdown-item">Source Code</a>
+                    <a href="https://github.com/stacked-git/stgit/releases" class="dropdown-item">Releases</a>
+                    <a href="https://github.com/stacked-git/stgit/issues" class="dropdown-item">Issue Tracker</a>
+                    <a href="https://groups.google.com/d/forum/stgit" class="dropdown-item">Forum</a>
+            </div>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">stg-push</a></h1>
+
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="sect1">
+<h4 id="_name">NAME</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>stg-push - Push one or more patches onto the stack</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_synopsis">SYNOPSIS</h4>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg push</em> [options] [--] [&lt;patch1&gt;] [&lt;patch2&gt;] [&lt;patch3&gt;..&lt;patch4&gt;]</pre>
+<div class="attribution">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_description">DESCRIPTION</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>Push one or more patches (defaulting to the first unapplied one) onto
+the stack. The <em>push</em> operation allows patch reordering by commuting
+them with the three-way merge algorithm. If there are conflicts while
+pushing a patch, those conflicts are written to the work tree, and the
+command halts. Conflicts raised during the push operation have to be
+fixed and the <em>git add --update</em> command run (alternatively, you may
+undo the conflicting push with <em>stg undo</em>).</p></div>
+<div class="paragraph"><p>The command also notifies when the patch becomes empty (fully merged
+upstream) or is modified (three-way merged) by the <em>push</em> operation.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_options">OPTIONS</h4>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+-a
+</dt>
+<dt class="hdlist1">
+--all
+</dt>
+<dd>
+<p>
+        Push all the unapplied patches.
+</p>
+</dd>
+<dt class="hdlist1">
+-n NUMBER
+</dt>
+<dt class="hdlist1">
+--number NUMBER
+</dt>
+<dd>
+<p>
+        Push the specified number of patches.
+</p>
+<div class="paragraph"><p>With a negative number, push all but that many patches.</p></div>
+</dd>
+<dt class="hdlist1">
+--reverse
+</dt>
+<dd>
+<p>
+        Push the patches in reverse order.
+</p>
+</dd>
+<dt class="hdlist1">
+--set-tree
+</dt>
+<dd>
+<p>
+        Push the patches, but don’t perform a merge. Instead, the
+        resulting tree will be identical to the tree that the patch
+        previously created.
+</p>
+<div class="paragraph"><p>This can be useful when splitting a patch by first popping the
+patch and creating a new patch with some of the
+changes. Pushing the original patch with <em>--set-tree</em> will
+avoid conflicts and only the remaining changes will be in the
+patch.</p></div>
+</dd>
+<dt class="hdlist1">
+-k
+</dt>
+<dt class="hdlist1">
+--keep
+</dt>
+<dd>
+<p>
+        Keep the local changes.
+</p>
+</dd>
+<dt class="hdlist1">
+-m
+</dt>
+<dt class="hdlist1">
+--merged
+</dt>
+<dd>
+<p>
+        Check for patches merged upstream.
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_stgit">StGit</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>Part of the StGit suite - see <a href="stg.html">stg(1)</a></p></div>
+</div>
+</div>
+</div>
+    </div>
+    
+
+</article><!--End of body content--><footer id="footer">
+            © 2020 Stacked Git Authors 
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

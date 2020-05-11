@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="stg usage example">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StGit Usage Example | Stacked Git</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://stacked-git.github.io/usage-example.html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><meta name="author" content="Stacked Git Authors">
+<meta property="og:site_name" content="Stacked Git">
+<meta property="og:title" content="StGit Usage Example">
+<meta property="og:url" content="https://stacked-git.github.io/usage-example.html">
+<meta property="og:description" content="stg usage example">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-11T18:40:38Z">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://stacked-git.github.io/">
+
+            <span id="blog-title">Stacked Git</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+            <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item active">Usage Example <span class="sr-only">(active)</span></a>
+                    <a href="man/tutorial.html" class="dropdown-item">Tutorial</a>
+                    <a href="man/stg.html" class="dropdown-item">Man Pages</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Development</a>
+            <div class="dropdown-menu">
+                    <a href="https://github.com/stacked-git/stgit" class="dropdown-item">Source Code</a>
+                    <a href="https://github.com/stacked-git/stgit/releases" class="dropdown-item">Releases</a>
+                    <a href="https://github.com/stacked-git/stgit/issues" class="dropdown-item">Issue Tracker</a>
+                    <a href="https://groups.google.com/d/forum/stgit" class="dropdown-item">Forum</a>
+            </div>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">StGit Usage Example</a></h1>
+
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="section" id="setup">
+<h3>Setup</h3>
+<p>StGit is used with regular Git repositories. Here we setup a simple Git
+repository with two files:</p>
+<pre class="code console"><a name="rest_code_8d33ba20e4bb4ff28bee26ed30b48c7a-1"></a><span class="gp">$</span> git init myrepo
+<a name="rest_code_8d33ba20e4bb4ff28bee26ed30b48c7a-2"></a><span class="gp">$</span> <span class="nb">cd</span> myrepo
+<a name="rest_code_8d33ba20e4bb4ff28bee26ed30b48c7a-3"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Hello"</span> &gt; hi.txt
+<a name="rest_code_8d33ba20e4bb4ff28bee26ed30b48c7a-4"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Goodbye"</span> &gt; bye.txt
+<a name="rest_code_8d33ba20e4bb4ff28bee26ed30b48c7a-5"></a><span class="gp">$</span> git add hi.txt bye.txt
+<a name="rest_code_8d33ba20e4bb4ff28bee26ed30b48c7a-6"></a><span class="gp">$</span> git commit -m <span class="s2">"Initial commit"</span>
+</pre>
+<p>The <code class="docutils literal">stg init</code> command is run once to enable use of StGit on a branch,
+in this case the <code class="docutils literal">master</code> branch.</p>
+<pre class="code console"><a name="rest_code_b7ac95c57bf84f54ab49da73ca2af8e3-1"></a><span class="gp">$</span> stg init
+</pre>
+<p>After initializing StGit, new patches may be created. But first, let's
+make an edit to one of the files.</p>
+<pre class="code console"><a name="rest_code_dbb00037c7d049558475d2c1ada0f197-1"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Hello world"</span> &gt; hi.txt
+<a name="rest_code_dbb00037c7d049558475d2c1ada0f197-2"></a><span class="gp">$</span> stg status
+<a name="rest_code_dbb00037c7d049558475d2c1ada0f197-3"></a><span class="go"> M hi.txt</span>
+</pre>
+<p>The <code class="docutils literal">stg status</code> command is just a built-in alias for <code class="docutils literal">git status
+<span class="pre">-s</span></code>.</p>
+</div>
+<div class="section" id="creating-a-patch">
+<h3>Creating a Patch</h3>
+<p>Now that we have modified <code class="docutils literal">hi.txt</code>, we can create a new <em>patch</em> to
+capture the change. We give the patch a name, in this case
+<code class="docutils literal"><span class="pre">hello-patch</span></code>.</p>
+<p>StGit patches <em>are</em> regular Git commits, so they have a commit message
+too. We use the <code class="docutils literal"><span class="pre">-m</span></code> option to provide a message for the patch. Like
+<code class="docutils literal">git commit</code>, if we do not provide a message on the command line, we
+will be prompted to enter a message interactively using our <code class="docutils literal">$EDITOR</code>.</p>
+<p>A nice thing about StGit patches is that we can easily revise the
+message later using <code class="docutils literal">stg edit</code>. So for now we use a short and simple
+message.</p>
+<pre class="code console"><a name="rest_code_0a1904b7e8944630b174e0b2d9f22cb8-1"></a><span class="gp">$</span> stg new -m <span class="s2">"Improve greeting"</span> hello-patch
+<a name="rest_code_0a1904b7e8944630b174e0b2d9f22cb8-2"></a><span class="go">Now at patch "hello-patch"</span>
+</pre>
+<p>Now that we have created our first patch, we can take a look at the
+patch stack using the <code class="docutils literal">stg series</code> command:</p>
+<pre class="code console"><a name="rest_code_d682ba35289f4c7881bf34d012a41030-1"></a><span class="gp">$</span> stg series
+<a name="rest_code_d682ba35289f4c7881bf34d012a41030-2"></a><span class="gp">&gt;</span> hello-patch
+</pre>
+<p>Creating a new patch with <code class="docutils literal">stg new</code> does not actually capture any of
+the modifications in our working tree to the patch. To incorporate
+modifications from the working tree into the current (topmost) patch, we
+use <code class="docutils literal">stg refresh</code>:</p>
+<pre class="code console"><a name="rest_code_cae926e2a97848369e4c2e11d604d1a3-1"></a><span class="gp">$</span> stg status
+<a name="rest_code_cae926e2a97848369e4c2e11d604d1a3-2"></a><span class="go"> M hi.txt</span>
+<a name="rest_code_cae926e2a97848369e4c2e11d604d1a3-3"></a><span class="gp">$</span> stg refresh
+<a name="rest_code_cae926e2a97848369e4c2e11d604d1a3-4"></a><span class="go">Now at patch "hello-patch"</span>
+<a name="rest_code_cae926e2a97848369e4c2e11d604d1a3-5"></a><span class="gp">$</span> stg status
+</pre>
+<p>We can see the contents of a patch using <code class="docutils literal">stg show</code>:</p>
+<pre class="code console"><a name="rest_code_be2a4ed84ae3469c9ecdbc503674747c-1"></a><span class="gp">$</span> stg show hello-patch
+</pre>
+<pre class="code diff"><a name="rest_code_290499a64d9242bd812ef768eb6065dc-1"></a>commit 4ce03d47953f19771ff4e1030a296c4628e43531
+<a name="rest_code_290499a64d9242bd812ef768eb6065dc-2"></a>Author: Au Thor &lt;author@example.com&gt;
+<a name="rest_code_290499a64d9242bd812ef768eb6065dc-3"></a>Date:   Wed Jan 1 23:59:00 2020 -0400
+<a name="rest_code_290499a64d9242bd812ef768eb6065dc-4"></a>
+<a name="rest_code_290499a64d9242bd812ef768eb6065dc-5"></a>    Improve greeting
+<a name="rest_code_290499a64d9242bd812ef768eb6065dc-6"></a>
+<a name="rest_code_290499a64d9242bd812ef768eb6065dc-7"></a><span class="gh">diff --git a/hi.txt b/hi.txt</span>
+<a name="rest_code_290499a64d9242bd812ef768eb6065dc-8"></a><span class="gh">index e965047..f75ba05 100644</span>
+<a name="rest_code_290499a64d9242bd812ef768eb6065dc-9"></a><span class="gd">--- a/hi.txt</span>
+<a name="rest_code_290499a64d9242bd812ef768eb6065dc-10"></a><span class="gi">+++ b/hi.txt</span>
+<a name="rest_code_290499a64d9242bd812ef768eb6065dc-11"></a><span class="gu">@@ -1 +1 @@</span>
+<a name="rest_code_290499a64d9242bd812ef768eb6065dc-12"></a><span class="gd">-Hello</span>
+<a name="rest_code_290499a64d9242bd812ef768eb6065dc-13"></a><span class="gi">+Hello world</span>
+</pre>
+</div>
+<div class="section" id="working-with-multiple-patches">
+<h3>Working with Multiple Patches</h3>
+<p>StGit is most useful when working on more than one patch concurrently.
+Let's add another patch to improve the goodbye.</p>
+<pre class="code console"><a name="rest_code_611179a9638e481492d443ec8c7c9c2d-1"></a><span class="gp">$</span> stg new -m <span class="s2">"goodbye"</span> goodbye-patch
+<a name="rest_code_611179a9638e481492d443ec8c7c9c2d-2"></a><span class="go">Now at patch "goodbye-patch"</span>
+<a name="rest_code_611179a9638e481492d443ec8c7c9c2d-3"></a><span class="gp">$</span> stg series
+<a name="rest_code_611179a9638e481492d443ec8c7c9c2d-4"></a><span class="go">+ hello-patch</span>
+<a name="rest_code_611179a9638e481492d443ec8c7c9c2d-5"></a><span class="gp">&gt;</span> goodbye-patch
+<a name="rest_code_611179a9638e481492d443ec8c7c9c2d-6"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Farewell, cruel world."</span> &gt; bye.txt
+<a name="rest_code_611179a9638e481492d443ec8c7c9c2d-7"></a><span class="gp">$</span> stg refresh
+<a name="rest_code_611179a9638e481492d443ec8c7c9c2d-8"></a><span class="go">Now at patch "goodbye-patch"</span>
+</pre>
+<p>These patches are looking good...except the greeting is missing
+punctuation! With StGit, we can easily revisit <code class="docutils literal"><span class="pre">hello-patch</span></code>, make our
+punctuation modifications, and return to <code class="docutils literal"><span class="pre">goodbye-patch</span></code> using <code class="docutils literal">stg
+pop</code> and <code class="docutils literal">stg push</code>:</p>
+<pre class="code console"><a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-1"></a><span class="gp">$</span> stg pop
+<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-2"></a><span class="go">Popped goodbye-patch</span>
+<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-3"></a><span class="go">Now at patch "hello-patch"</span>
+<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-4"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Hello, world."</span> &gt; hi.txt
+<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-5"></a><span class="gp">$</span> stg refresh
+<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-6"></a><span class="go">Now at patch "hello-patch"</span>
+<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-7"></a><span class="gp">$</span> stg push
+<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-8"></a><span class="go">Pushing patch "goodbye-patch" ... done</span>
+<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-9"></a><span class="go">Now at patch "goodbye-patch"</span>
+</pre>
+<p>These patches are looking good, but we want to make sure to have quality
+commit messages before we call these patches complete. Let's update the
+top patch (<code class="docutils literal"><span class="pre">goodbye-patch</span></code>) with an improved commit message. This can
+be done using <code class="docutils literal">stg edit</code>:</p>
+<pre class="code console"><a name="rest_code_13a2881c8f704c3d9d40c178e62889f5-1"></a><span class="gp">$</span> stg edit -m <span class="s2">"Use elaborate farewell"</span>
+</pre>
+<p>Perfect. Our last step is to commit these patches to the repository's
+history using <code class="docutils literal">stg commit</code>. We will use the <code class="docutils literal"><span class="pre">--all</span></code> option to
+indicate that we want all applied patches to be committed.</p>
+<pre class="code console"><a name="rest_code_29f2223f9f0e4f85bc2b3ba73309b835-1"></a><span class="gp">$</span> stg commit --all
+</pre>
+<p>StGit patches are regular, first-class Git commit objects. They are
+visible when running <code class="docutils literal">git log</code> and can be manipulated using regular
+Git commands. So <code class="docutils literal">stg commit</code> does not modify the patches (commits),
+instead it is updating the StGit stack state to note that those patches
+have graduated, and are no longer in the series.</p>
+</div>
+</div>
+    </div>
+    
+
+</article><!--End of body content--><footer id="footer">
+            © 2020 Stacked Git Authors 
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

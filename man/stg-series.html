@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stg-series | Stacked Git</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://stacked-git.github.io/man/stg-series.html">
+<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Stacked Git Authors">
+<meta property="og:site_name" content="Stacked Git">
+<meta property="og:title" content="stg-series">
+<meta property="og:url" content="https://stacked-git.github.io/man/stg-series.html">
+<meta property="og:description" content="NAME
+
+stg-series - Print the patch series
+
+
+
+SYNOPSIS
+
+
+stg series [options] [--] [&lt;patch-range&gt;]
+
+
+
+
+
+DESCRIPTION
+
+Show all the patches in the series, or just those in the given range,
+ordered from t">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-11T18:40:52Z">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://stacked-git.github.io/">
+
+            <span id="blog-title">Stacked Git</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+            <div class="dropdown-menu">
+                    <a href="../usage-example.html" class="dropdown-item">Usage Example</a>
+                    <a href="tutorial.html" class="dropdown-item">Tutorial</a>
+                    <a href="stg.html" class="dropdown-item">Man Pages</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Development</a>
+            <div class="dropdown-menu">
+                    <a href="https://github.com/stacked-git/stgit" class="dropdown-item">Source Code</a>
+                    <a href="https://github.com/stacked-git/stgit/releases" class="dropdown-item">Releases</a>
+                    <a href="https://github.com/stacked-git/stgit/issues" class="dropdown-item">Issue Tracker</a>
+                    <a href="https://groups.google.com/d/forum/stgit" class="dropdown-item">Forum</a>
+            </div>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">stg-series</a></h1>
+
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="sect1">
+<h4 id="_name">NAME</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>stg-series - Print the patch series</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_synopsis">SYNOPSIS</h4>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg series</em> [options] [--] [&lt;patch-range&gt;]</pre>
+<div class="attribution">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_description">DESCRIPTION</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>Show all the patches in the series, or just those in the given range,
+ordered from top to bottom.</p></div>
+<div class="paragraph"><p>The applied patches are prefixed with a <span class="monospaced">+</span> (except the current patch,
+which is prefixed with a <span class="monospaced">&gt;</span>), the unapplied patches with a <span class="monospaced">-</span>, and
+the hidden patches with a <span class="monospaced">!</span>.</p></div>
+<div class="paragraph"><p>Empty patches are prefixed with a <em>0</em>.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_options">OPTIONS</h4>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+-b BRANCH
+</dt>
+<dt class="hdlist1">
+--branch BRANCH
+</dt>
+<dd>
+<p>
+        Use BRANCH instead of the default branch.
+</p>
+</dd>
+<dt class="hdlist1">
+-a
+</dt>
+<dt class="hdlist1">
+--all
+</dt>
+<dd>
+<p>
+        Show all patches, including the hidden ones.
+</p>
+</dd>
+<dt class="hdlist1">
+-A
+</dt>
+<dt class="hdlist1">
+--applied
+</dt>
+<dd>
+<p>
+        Show the applied patches only.
+</p>
+</dd>
+<dt class="hdlist1">
+-U
+</dt>
+<dt class="hdlist1">
+--unapplied
+</dt>
+<dd>
+<p>
+        Show the unapplied patches only.
+</p>
+</dd>
+<dt class="hdlist1">
+-H
+</dt>
+<dt class="hdlist1">
+--hidden
+</dt>
+<dd>
+<p>
+        Show the hidden patches only.
+</p>
+</dd>
+<dt class="hdlist1">
+-m BRANCH
+</dt>
+<dt class="hdlist1">
+--missing BRANCH
+</dt>
+<dd>
+<p>
+        Show patches in BRANCH missing in current.
+</p>
+</dd>
+<dt class="hdlist1">
+-c
+</dt>
+<dt class="hdlist1">
+--count
+</dt>
+<dd>
+<p>
+        Print the number of patches in the series.
+</p>
+</dd>
+<dt class="hdlist1">
+-d
+</dt>
+<dt class="hdlist1">
+--description
+</dt>
+<dd>
+<p>
+        Show a short description for each patch.
+</p>
+</dd>
+<dt class="hdlist1">
+--author
+</dt>
+<dd>
+<p>
+        Show the author name for each patch.
+</p>
+</dd>
+<dt class="hdlist1">
+-e
+</dt>
+<dt class="hdlist1">
+--empty
+</dt>
+<dd>
+<p>
+        Before the <span class="monospaced">+</span>, <span class="monospaced">&gt;</span>, <span class="monospaced">-</span>, and <span class="monospaced">!</span> prefixes, print a column
+        that contains either <span class="monospaced">0</span> (for empty patches) or a space (for
+        non-empty patches).
+</p>
+</dd>
+<dt class="hdlist1">
+--showbranch
+</dt>
+<dd>
+<p>
+        Append the branch name to the listed patches.
+</p>
+</dd>
+<dt class="hdlist1">
+--noprefix
+</dt>
+<dd>
+<p>
+        Do not show the patch status prefix.
+</p>
+</dd>
+<dt class="hdlist1">
+-s
+</dt>
+<dt class="hdlist1">
+--short
+</dt>
+<dd>
+<p>
+        List just the patches around the topmost patch.
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_stgit">StGit</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>Part of the StGit suite - see <a href="stg.html">stg(1)</a></p></div>
+</div>
+</div>
+</div>
+    </div>
+    
+
+</article><!--End of body content--><footer id="footer">
+            © 2020 Stacked Git Authors 
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stg-mail | Stacked Git</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://stacked-git.github.io/man/stg-mail.html">
+<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Stacked Git Authors">
+<meta property="og:site_name" content="Stacked Git">
+<meta property="og:title" content="stg-mail">
+<meta property="og:url" content="https://stacked-git.github.io/man/stg-mail.html">
+<meta property="og:description" content="NAME
+
+stg-mail - Send a patch or series of patches by e-mail
+
+
+
+SYNOPSIS
+
+
+stg mail  [options] [--] [&lt;patch1&gt;] [&lt;patch2&gt;] [&lt;patch3&gt;..&lt;patch4&gt;]
+
+
+
+
+
+DESCRIPTION
+
+Send a patch or a range of patches by e">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-11T18:40:52Z">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://stacked-git.github.io/">
+
+            <span id="blog-title">Stacked Git</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+            <div class="dropdown-menu">
+                    <a href="../usage-example.html" class="dropdown-item">Usage Example</a>
+                    <a href="tutorial.html" class="dropdown-item">Tutorial</a>
+                    <a href="stg.html" class="dropdown-item">Man Pages</a>
+            </div>
+            </li>
+<li class="nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Development</a>
+            <div class="dropdown-menu">
+                    <a href="https://github.com/stacked-git/stgit" class="dropdown-item">Source Code</a>
+                    <a href="https://github.com/stacked-git/stgit/releases" class="dropdown-item">Releases</a>
+                    <a href="https://github.com/stacked-git/stgit/issues" class="dropdown-item">Issue Tracker</a>
+                    <a href="https://groups.google.com/d/forum/stgit" class="dropdown-item">Forum</a>
+            </div>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">stg-mail</a></h1>
+
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="sect1">
+<h4 id="_name">NAME</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>stg-mail - Send a patch or series of patches by e-mail</p></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_synopsis">SYNOPSIS</h4>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg mail</em>  [options] [--] [&lt;patch1&gt;] [&lt;patch2&gt;] [&lt;patch3&gt;..&lt;patch4&gt;]</pre>
+<div class="attribution">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_description">DESCRIPTION</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>Send a patch or a range of patches by e-mail using the SMTP server
+specified by the <em>stgit.smtpserver</em> configuration option, or the
+<em>--smtp-server</em> command line option. This option can also be an
+absolute path to <em>sendmail</em> followed by command line arguments.</p></div>
+<div class="paragraph"><p>The From address and the e-mail format are generated from the template
+file passed as argument to <em>--template</em> (defaulting to
+<em>.git/patchmail.tmpl</em> or <em>~/.stgit/templates/patchmail.tmpl</em> or
+<em>/usr/share/stgit/templates/patchmail.tmpl</em>). A patch can be sent as
+attachment using the --attach option in which case the
+<em>mailattch.tmpl</em> template will be used instead of <em>patchmail.tmpl</em>.</p></div>
+<div class="paragraph"><p>The To/Cc/Bcc addresses can either be added to the template file or
+passed via the corresponding command line options. They can be e-mail
+addresses or aliases which are automatically expanded to the values
+stored in the [mail "alias"] section of GIT configuration files.</p></div>
+<div class="paragraph"><p>A preamble e-mail can be sent using the <em>--cover</em> and/or
+<em>--edit-cover</em> options. The first allows the user to specify a file to
+be used as a template. The latter option will invoke the editor on the
+specified file (defaulting to <em>.git/covermail.tmpl</em> or
+<em>~/.stgit/templates/covermail.tmpl</em> or
+<em>/usr/share/stgit/templates/covermail.tmpl</em>).</p></div>
+<div class="paragraph"><p>All the subsequent e-mails appear as replies to the first e-mail sent
+(either the preamble or the first patch). E-mails can be seen as
+replies to a different e-mail by using the <em>--in-reply-to</em> option.</p></div>
+<div class="paragraph"><p>SMTP authentication is also possible with <em>--smtp-user</em> and
+<em>--smtp-password</em> options, also available as configuration settings:
+<em>smtpuser</em> and <em>smtppassword</em>. TLS encryption can be enabled by
+<em>--smtp-tls</em> option and <em>smtptls</em> setting.</p></div>
+<div class="paragraph"><p>The following variables are accepted by both the preamble and the
+patch e-mail templates:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>%(diffstat)s     - diff statistics
+%(number)s       - empty if only one patch is sent or 'patchnr/totalnr'
+%(snumber)s      - stripped version of '%(number)s'
+%(nspace)s       - ' ' if %(number)s is non-empty, otherwise empty string
+%(patchnr)s      - patch number
+%(sender)s       - 'sender'  or 'authname &lt;authemail&gt;' as per the config file
+%(totalnr)s      - total number of patches to be sent
+%(version)s      - 'version' string passed on the command line (or empty)
+%(vspace)s       - ' ' if %(version)s is non-empty, otherwise empty string</pre>
+</div>
+</div>
+<div class="paragraph"><p>In addition to the common variables, the preamble e-mail template
+accepts the following:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>%(shortlog)s     - first line of each patch description, listed by author</pre>
+</div>
+</div>
+<div class="paragraph"><p>In addition to the common variables, the patch e-mail template accepts
+the following:</p></div>
+<div class="literalblock">
+<div class="content monospaced">
+<pre>%(authdate)s     - patch creation date
+%(authemail)s    - author's email
+%(authname)s     - author's name
+%(commemail)s    - committer's e-mail
+%(commname)s     - committer's name
+%(diff)s         - unified diff of the patch
+%(fromauth)s     - 'From: author\n\n' if different from sender
+%(longdescr)s    - the rest of the patch description, after the first line
+%(patch)s        - patch name
+%(prefix)s       - 'prefix' string passed on the command line
+%(pspace)s       - ' ' if %(prefix)s is non-empty, otherwise empty string
+%(shortdescr)s   - the first line of the patch description</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_options">OPTIONS</h4>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+-a
+</dt>
+<dt class="hdlist1">
+--all
+</dt>
+<dd>
+<p>
+        E-mail all the applied patches.
+</p>
+</dd>
+<dt class="hdlist1">
+--to TO
+</dt>
+<dd>
+<p>
+        Add TO to the To: list.
+</p>
+</dd>
+<dt class="hdlist1">
+--cc CC
+</dt>
+<dd>
+<p>
+        Add CC to the Cc: list.
+</p>
+</dd>
+<dt class="hdlist1">
+--bcc BCC
+</dt>
+<dd>
+<p>
+        Add BCC to the Bcc: list.
+</p>
+</dd>
+<dt class="hdlist1">
+--auto
+</dt>
+<dd>
+<p>
+        Automatically cc the patch signers.
+</p>
+</dd>
+<dt class="hdlist1">
+--no-thread
+</dt>
+<dd>
+<p>
+        Do not send subsequent messages as replies.
+</p>
+</dd>
+<dt class="hdlist1">
+--unrelated
+</dt>
+<dd>
+<p>
+        Send patches without sequence numbering.
+</p>
+</dd>
+<dt class="hdlist1">
+--attach
+</dt>
+<dd>
+<p>
+        Send a patch as attachment.
+</p>
+</dd>
+<dt class="hdlist1">
+--attach-inline
+</dt>
+<dd>
+<p>
+        Send a patch inline and as an attachment.
+</p>
+</dd>
+<dt class="hdlist1">
+-v VERSION
+</dt>
+<dt class="hdlist1">
+--version VERSION
+</dt>
+<dd>
+<p>
+        Add VERSION to the [PATCH …] prefix.
+</p>
+</dd>
+<dt class="hdlist1">
+--prefix PREFIX
+</dt>
+<dd>
+<p>
+        Add PREFIX to the [… PATCH …] prefix.
+</p>
+</dd>
+<dt class="hdlist1">
+-t FILE
+</dt>
+<dt class="hdlist1">
+--template FILE
+</dt>
+<dd>
+<p>
+        Use FILE as the message template.
+</p>
+</dd>
+<dt class="hdlist1">
+-c FILE
+</dt>
+<dt class="hdlist1">
+--cover FILE
+</dt>
+<dd>
+<p>
+        Send FILE as the cover message.
+</p>
+</dd>
+<dt class="hdlist1">
+-e
+</dt>
+<dt class="hdlist1">
+--edit-cover
+</dt>
+<dd>
+<p>
+        Edit the cover message before sending.
+</p>
+</dd>
+<dt class="hdlist1">
+-E
+</dt>
+<dt class="hdlist1">
+--edit-patches
+</dt>
+<dd>
+<p>
+        Edit each patch before sending.
+</p>
+</dd>
+<dt class="hdlist1">
+-s SECONDS
+</dt>
+<dt class="hdlist1">
+--sleep SECONDS
+</dt>
+<dd>
+<p>
+        Sleep for SECONDS between e-mails sending.
+</p>
+</dd>
+<dt class="hdlist1">
+--in-reply-to REFID
+</dt>
+<dd>
+<p>
+        Use REFID as the reference id.
+</p>
+</dd>
+<dt class="hdlist1">
+--smtp-server HOST[:PORT] or "/path/to/sendmail -t -i"
+</dt>
+<dd>
+<p>
+        SMTP server or command to use for sending mail.
+</p>
+</dd>
+<dt class="hdlist1">
+-u USER
+</dt>
+<dt class="hdlist1">
+--smtp-user USER
+</dt>
+<dd>
+<p>
+        Username for SMTP authentication.
+</p>
+</dd>
+<dt class="hdlist1">
+-p PASSWORD
+</dt>
+<dt class="hdlist1">
+--smtp-password PASSWORD
+</dt>
+<dd>
+<p>
+        Password for SMTP authentication.
+</p>
+</dd>
+<dt class="hdlist1">
+-T
+</dt>
+<dt class="hdlist1">
+--smtp-tls
+</dt>
+<dd>
+<p>
+        Use SMTP with TLS encryption.
+</p>
+</dd>
+<dt class="hdlist1">
+-b BRANCH
+</dt>
+<dt class="hdlist1">
+--branch BRANCH
+</dt>
+<dd>
+<p>
+        Use BRANCH instead of the default branch.
+</p>
+</dd>
+<dt class="hdlist1">
+-m
+</dt>
+<dt class="hdlist1">
+--mbox
+</dt>
+<dd>
+<p>
+        Generate an mbox file instead of sending.
+</p>
+</dd>
+<dt class="hdlist1">
+--domain DOMAIN
+</dt>
+<dd>
+<p>
+        Use DOMAIN when generating message IDs (instead of the system hostname).
+</p>
+</dd>
+<dt class="hdlist1">
+--git
+</dt>
+<dd>
+<p>
+        Use git send-email (EXPERIMENTAL).
+</p>
+</dd>
+<dt class="hdlist1">
+-O OPTIONS
+</dt>
+<dt class="hdlist1">
+--diff-opts OPTIONS
+</dt>
+<dd>
+<p>
+        Extra options to pass to "git diff".
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect1">
+<h4 id="_stgit">StGit</h4>
+<div class="sectionbody">
+<div class="paragraph"><p>Part of the StGit suite - see <a href="stg.html">stg(1)</a></p></div>
+</div>
+</div>
+</div>
+    </div>
+    
+
+</article><!--End of body content--><footer id="footer">
+            © 2020 Stacked Git Authors 
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script>
+</body>
+</html>
