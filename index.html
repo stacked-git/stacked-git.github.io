@@ -16,7 +16,7 @@
 <meta property="og:url" content="https://stacked-git.github.io/">
 <meta property="og:description" content="stg stgit stacked-git">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2020-05-11T22:36:05Z">
+<meta property="article:published_time" content="2020-05-11T23:22:44Z">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -132,10 +132,10 @@ systems can be <a class="reference external" href="https://repology.org/project/
 <h4>Source Installation</h4>
 <p>StGit may also be installed from source. Download the <a class="reference external" href="https://github.com/stacked-git/stgit/releases/latest">latest release</a>
 or clone from the <a class="reference external" href="https://github.com/stacked-git/stgit">StGit repository on GitHub</a>.</p>
-<pre class="code console"><a name="rest_code_d9af260194fe40b782abeb9909f37fb0-1"></a><span class="gp">$</span> git clone https://github.com/stacked-git/stgit.git
+<pre class="code console"><a name="rest_code_b76873be09164f9c9009b790d8914623-1"></a><span class="gp">$</span> git clone https://github.com/stacked-git/stgit.git
 </pre>
 <p>To install from source, choose a <code class="docutils literal">prefix</code> and:</p>
-<pre class="code console"><a name="rest_code_8745a897ad9645b681f0374a4d960aee-1"></a><span class="gp">$</span> make <span class="nv">prefix</span><span class="o">=</span>/usr/local install install-doc
+<pre class="code console"><a name="rest_code_b62644c8bf68409fa7c75c8e216c8935-1"></a><span class="gp">$</span> make <span class="nv">prefix</span><span class="o">=</span>/usr/local install install-doc
 </pre>
 <p>For more information about installation, see <a class="reference external" href="https://github.com/stacked-git/stgit/blob/master/INSTALL">the INSTALL file</a>.</p>
 </div>
@@ -182,7 +182,8 @@ patches outside the context of any other version control system using
 GNU diff, the mq extension is part of the <a class="reference external" href="https://www.mercurial-scm.org/">Mercurial</a> version control
 system.</p>
 <p>Similar to mq's relationship to Mercurial, StGit is tightly coupled to
-Git. StGit</p>
+Git. StGit keeps its stack metadata as objects in the git repo and
+patches themselves are git commits.</p>
 </div>
 <div class="section" id="acknowledgements">
 <h4>Acknowledgements</h4>
