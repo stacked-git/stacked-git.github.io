@@ -17,22 +17,27 @@ commits as a stack of patches.
 The `stg`_ command line tool provides commands to quickly and safely
 manage a stack of patches.
 
- * `push`_ / `pop`_ to apply and unapplied patches from the stack.
- * `refresh`_ / `edit`_ to incorporate changes from the working tree
-   into a patch and edit patch metadata.
- * `new`_ / `delete`_ to create and delete patches on the stack.
- * `series`_ / `show`_ to see information about the stack or individual
-   patches.
+* `push`_ | `pop`_ | `goto`_ to apply and unapplied patches from the stack.
+* `refresh`_ | `edit`_ to incorporate changes from the working tree into a patch
+  and edit patch metadata.
+* `new`_ | `delete`_ | `clean`_ to create and delete patches on the stack.
+* `series`_ | `show`_ to see information about the stack or individual patches.
+* `commit`_ | `uncommit`_ to migrate patches to regular commits and *vice
+  versa*.
 
 .. _stg: man/stg.html
 .. _push: man/stg-push.html
+.. _goto: man/stg-goto.html
 .. _pop: man/stg-pop.html
 .. _refresh: man/stg-refresh.html
 .. _edit: man/stg-edit.html
 .. _new: man/stg-new.html
 .. _delete: man/stg-delete.html
+.. _clean: man/stg-clean.html
 .. _series: man/stg-series.html
 .. _show: man/stg-show.html
+.. _commit: man/stg-commit.html
+.. _uncommit: man/stg-uncommit.html
 
 Patch-stack management operations are performed using Git commands and
 the patches are stored as Git commit objects, allowing easy merging of
