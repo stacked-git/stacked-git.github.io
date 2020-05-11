@@ -5,9 +5,8 @@
 .. description: stg stgit stacked-git
 .. type: text
 
-.. sidebar:: Stacked Git Home
-
-   .. contents::
+.. contents::
+   :depth: 1
 
 About Stacked Git
 =================
@@ -43,7 +42,7 @@ functionality.
 StGit is licensed under the GNU General Public License, version 2.
 
 Why Stacked Git?
-================
+----------------
 
 The *stack of patches* model is a natural way to maintain a clean Git
 history while working on several changes concurrently. A stack-oriented
@@ -165,7 +164,7 @@ Machine`_.
 .. _Wayback Machine: https://web.archive.org/
 
 Other Patch Stack Tools
-=======================
+-----------------------
 
 StGit is not the first or only patch stack tool. Both `Quilt`_ and
 Mercurial's `mq extension`_ offer similar interfaces for managing a
@@ -182,7 +181,7 @@ Git. StGit
 .. _Mercurial: https://www.mercurial-scm.org/
 
 Acknowledgements
-================
+----------------
 
 Many thanks to Peter Grayson, Karl Wiberg, Yann Dirson, Chuck Lever and
 Paolo Blaisorblade Giarrusso for their great contribution to the
