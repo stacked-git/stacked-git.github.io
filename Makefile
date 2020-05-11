@@ -1,3 +1,4 @@
+PYTHON ?= python
 STGIT_WORKTREE ?= ../stgit
 STGIT_DOC = $(STGIT_WORKTREE)/Documentation
 MAN_DIR = $(PWD)/pages/man
@@ -14,7 +15,8 @@ local-asciidoc: stgit-html asciidoc.conf command-list.txt
 
 .PHONY: stgit-html
 stgit-html:
-	$(MAKE) -C $(STGIT_DOC) html
+	$(MAKE) -C $(STGIT_WORKTREE) PYTHON=$(PYTHON) build
+	$(MAKE) -C $(STGIT_DOC) PYTHON=$(PYTHON) html
 
 asciidoc.conf:
 	cp $(STGIT_DOC)/asciidoc.conf .
