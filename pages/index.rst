@@ -179,7 +179,8 @@ GNU diff, the mq extension is part of the `Mercurial`_ version control
 system.
 
 Similar to mq's relationship to Mercurial, StGit is tightly coupled to
-Git. StGit
+Git. StGit keeps its stack metadata as objects in the git repo and
+patches themselves are git commits.
 
 .. _Quilt: https://savannah.nongnu.org/projects/quilt/
 .. _mq extension: https://www.mercurial-scm.org/wiki/MqExtension
