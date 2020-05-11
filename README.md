@@ -2,6 +2,10 @@
 
 This is the code and content for the website https://stacked-git.github.io
 
+The source for the website is found in this `src` branch.
+
+The generated files for the website are deployed to the `master` branch.
+
 ## Prerequisites
 
 The site is generated using Nikola, https://getnikola.com. It is recommended
@@ -39,3 +43,17 @@ $ make build
 
 ## Deploy
 
+The generated site is deployed by updating the `master` branch with the
+generated site files found in the output directory, and pushing to the remote
+GitHub respository's `master` branch.
+
+The `Makefile`'s `deploy` target automates the process of building the site,
+updating and committing the local `master` branch, and pushing to the remote
+`master` branch on GitHub.
+
+``` shellsession
+$ make deploy
+```
+
+N.B. The `src` needs to be manually pushed to the upstream GitHub repo's `src`
+branch.

@@ -2,8 +2,8 @@ STGIT_WORKTREE ?= ../stgit
 STGIT_DOC = $(STGIT_WORKTREE)/Documentation
 MAN_DIR = $(PWD)/pages/man
 
-.PHONY: all
-all: local-asciidoc
+.PHONY: build
+build: local-asciidoc
 	nikola build
 
 .PHONY: local-asciidoc
@@ -28,6 +28,10 @@ clean:
 	$(RM) -r output/man/*
 	$(RM) asciidoc.conf
 	$(RM) command-list.txt
+
+.PHONY: deploy
+deploy: build
+	nikola github_deploy
 
 # ASCIIDOC_HTML = "html5 -afooter-style=none -anotitle=1"
 # ASCIIDOC_HTML = "html5 -s"
