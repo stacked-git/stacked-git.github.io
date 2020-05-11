@@ -7,198 +7,198 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://stacked-git.github.io/</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/archive.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/blog/</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/categories/</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-branch.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-clean.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-clone.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-commit.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-delete.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-diff.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-edit.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-export.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-files.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-float.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-fold.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-goto.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-hide.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-id.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-import.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-init.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-log.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-mail.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-new.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-next.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-patches.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-pick.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-pop.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-prev.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-publish.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-pull.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-push.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-rebase.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-redo.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-refresh.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-rename.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-repair.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-reset.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-series.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-show.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-sink.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-squash.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-sync.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-top.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-uncommit.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-undo.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg-unhide.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/stg.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/man/tutorial.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://stacked-git.github.io/usage-example.html</loc>
-  <lastmod>2020-05-11T18:41:00Z</lastmod>
+  <lastmod>2020-05-11T20:55:00Z</lastmod>
  </url>
 </urlset>

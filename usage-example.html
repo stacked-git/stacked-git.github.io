@@ -78,22 +78,22 @@ navbar-dark bg-dark
 <h3>Setup</h3>
 <p>StGit is used with regular Git repositories. Here we setup a simple Git
 repository with two files:</p>
-<pre class="code console"><a name="rest_code_8d33ba20e4bb4ff28bee26ed30b48c7a-1"></a><span class="gp">$</span> git init myrepo
-<a name="rest_code_8d33ba20e4bb4ff28bee26ed30b48c7a-2"></a><span class="gp">$</span> <span class="nb">cd</span> myrepo
-<a name="rest_code_8d33ba20e4bb4ff28bee26ed30b48c7a-3"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Hello"</span> &gt; hi.txt
-<a name="rest_code_8d33ba20e4bb4ff28bee26ed30b48c7a-4"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Goodbye"</span> &gt; bye.txt
-<a name="rest_code_8d33ba20e4bb4ff28bee26ed30b48c7a-5"></a><span class="gp">$</span> git add hi.txt bye.txt
-<a name="rest_code_8d33ba20e4bb4ff28bee26ed30b48c7a-6"></a><span class="gp">$</span> git commit -m <span class="s2">"Initial commit"</span>
+<pre class="code console"><a name="rest_code_a3618a1241294ded8ffca2bfecbedd71-1"></a><span class="gp">$</span> git init myrepo
+<a name="rest_code_a3618a1241294ded8ffca2bfecbedd71-2"></a><span class="gp">$</span> <span class="nb">cd</span> myrepo
+<a name="rest_code_a3618a1241294ded8ffca2bfecbedd71-3"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Hello"</span> &gt; hi.txt
+<a name="rest_code_a3618a1241294ded8ffca2bfecbedd71-4"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Goodbye"</span> &gt; bye.txt
+<a name="rest_code_a3618a1241294ded8ffca2bfecbedd71-5"></a><span class="gp">$</span> git add hi.txt bye.txt
+<a name="rest_code_a3618a1241294ded8ffca2bfecbedd71-6"></a><span class="gp">$</span> git commit -m <span class="s2">"Initial commit"</span>
 </pre>
 <p>The <code class="docutils literal">stg init</code> command is run once to enable use of StGit on a branch,
 in this case the <code class="docutils literal">master</code> branch.</p>
-<pre class="code console"><a name="rest_code_b7ac95c57bf84f54ab49da73ca2af8e3-1"></a><span class="gp">$</span> stg init
+<pre class="code console"><a name="rest_code_2751e30945c24396b07d863bd983aa1c-1"></a><span class="gp">$</span> stg init
 </pre>
 <p>After initializing StGit, new patches may be created. But first, let's
 make an edit to one of the files.</p>
-<pre class="code console"><a name="rest_code_dbb00037c7d049558475d2c1ada0f197-1"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Hello world"</span> &gt; hi.txt
-<a name="rest_code_dbb00037c7d049558475d2c1ada0f197-2"></a><span class="gp">$</span> stg status
-<a name="rest_code_dbb00037c7d049558475d2c1ada0f197-3"></a><span class="go"> M hi.txt</span>
+<pre class="code console"><a name="rest_code_79e79b4578c1408996331dc77bf98479-1"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Hello world"</span> &gt; hi.txt
+<a name="rest_code_79e79b4578c1408996331dc77bf98479-2"></a><span class="gp">$</span> stg status
+<a name="rest_code_79e79b4578c1408996331dc77bf98479-3"></a><span class="go"> M hi.txt</span>
 </pre>
 <p>The <code class="docutils literal">stg status</code> command is just a built-in alias for <code class="docutils literal">git status
 <span class="pre">-s</span></code>.</p>
@@ -110,79 +110,79 @@ will be prompted to enter a message interactively using our <code class="docutil
 <p>A nice thing about StGit patches is that we can easily revise the
 message later using <code class="docutils literal">stg edit</code>. So for now we use a short and simple
 message.</p>
-<pre class="code console"><a name="rest_code_0a1904b7e8944630b174e0b2d9f22cb8-1"></a><span class="gp">$</span> stg new -m <span class="s2">"Improve greeting"</span> hello-patch
-<a name="rest_code_0a1904b7e8944630b174e0b2d9f22cb8-2"></a><span class="go">Now at patch "hello-patch"</span>
+<pre class="code console"><a name="rest_code_2afcfb32ff4e40b689c4d5d29377c0e3-1"></a><span class="gp">$</span> stg new -m <span class="s2">"Improve greeting"</span> hello-patch
+<a name="rest_code_2afcfb32ff4e40b689c4d5d29377c0e3-2"></a><span class="go">Now at patch "hello-patch"</span>
 </pre>
 <p>Now that we have created our first patch, we can take a look at the
 patch stack using the <code class="docutils literal">stg series</code> command:</p>
-<pre class="code console"><a name="rest_code_d682ba35289f4c7881bf34d012a41030-1"></a><span class="gp">$</span> stg series
-<a name="rest_code_d682ba35289f4c7881bf34d012a41030-2"></a><span class="gp">&gt;</span> hello-patch
+<pre class="code console"><a name="rest_code_b255f19db7214ca4ae1fe8b614dfb69d-1"></a><span class="gp">$</span> stg series
+<a name="rest_code_b255f19db7214ca4ae1fe8b614dfb69d-2"></a><span class="gp">&gt;</span> hello-patch
 </pre>
 <p>Creating a new patch with <code class="docutils literal">stg new</code> does not actually capture any of
 the modifications in our working tree to the patch. To incorporate
 modifications from the working tree into the current (topmost) patch, we
 use <code class="docutils literal">stg refresh</code>:</p>
-<pre class="code console"><a name="rest_code_cae926e2a97848369e4c2e11d604d1a3-1"></a><span class="gp">$</span> stg status
-<a name="rest_code_cae926e2a97848369e4c2e11d604d1a3-2"></a><span class="go"> M hi.txt</span>
-<a name="rest_code_cae926e2a97848369e4c2e11d604d1a3-3"></a><span class="gp">$</span> stg refresh
-<a name="rest_code_cae926e2a97848369e4c2e11d604d1a3-4"></a><span class="go">Now at patch "hello-patch"</span>
-<a name="rest_code_cae926e2a97848369e4c2e11d604d1a3-5"></a><span class="gp">$</span> stg status
+<pre class="code console"><a name="rest_code_18dd4d4737554297a2fa13278634c128-1"></a><span class="gp">$</span> stg status
+<a name="rest_code_18dd4d4737554297a2fa13278634c128-2"></a><span class="go"> M hi.txt</span>
+<a name="rest_code_18dd4d4737554297a2fa13278634c128-3"></a><span class="gp">$</span> stg refresh
+<a name="rest_code_18dd4d4737554297a2fa13278634c128-4"></a><span class="go">Now at patch "hello-patch"</span>
+<a name="rest_code_18dd4d4737554297a2fa13278634c128-5"></a><span class="gp">$</span> stg status
 </pre>
 <p>We can see the contents of a patch using <code class="docutils literal">stg show</code>:</p>
-<pre class="code console"><a name="rest_code_be2a4ed84ae3469c9ecdbc503674747c-1"></a><span class="gp">$</span> stg show hello-patch
+<pre class="code console"><a name="rest_code_0ded1058f09849a1a199197fe79e0f1f-1"></a><span class="gp">$</span> stg show hello-patch
 </pre>
-<pre class="code diff"><a name="rest_code_290499a64d9242bd812ef768eb6065dc-1"></a>commit 4ce03d47953f19771ff4e1030a296c4628e43531
-<a name="rest_code_290499a64d9242bd812ef768eb6065dc-2"></a>Author: Au Thor &lt;author@example.com&gt;
-<a name="rest_code_290499a64d9242bd812ef768eb6065dc-3"></a>Date:   Wed Jan 1 23:59:00 2020 -0400
-<a name="rest_code_290499a64d9242bd812ef768eb6065dc-4"></a>
-<a name="rest_code_290499a64d9242bd812ef768eb6065dc-5"></a>    Improve greeting
-<a name="rest_code_290499a64d9242bd812ef768eb6065dc-6"></a>
-<a name="rest_code_290499a64d9242bd812ef768eb6065dc-7"></a><span class="gh">diff --git a/hi.txt b/hi.txt</span>
-<a name="rest_code_290499a64d9242bd812ef768eb6065dc-8"></a><span class="gh">index e965047..f75ba05 100644</span>
-<a name="rest_code_290499a64d9242bd812ef768eb6065dc-9"></a><span class="gd">--- a/hi.txt</span>
-<a name="rest_code_290499a64d9242bd812ef768eb6065dc-10"></a><span class="gi">+++ b/hi.txt</span>
-<a name="rest_code_290499a64d9242bd812ef768eb6065dc-11"></a><span class="gu">@@ -1 +1 @@</span>
-<a name="rest_code_290499a64d9242bd812ef768eb6065dc-12"></a><span class="gd">-Hello</span>
-<a name="rest_code_290499a64d9242bd812ef768eb6065dc-13"></a><span class="gi">+Hello world</span>
+<pre class="code diff"><a name="rest_code_58811729360b47ccbf6ead042b63284d-1"></a>commit 4ce03d47953f19771ff4e1030a296c4628e43531
+<a name="rest_code_58811729360b47ccbf6ead042b63284d-2"></a>Author: Au Thor &lt;author@example.com&gt;
+<a name="rest_code_58811729360b47ccbf6ead042b63284d-3"></a>Date:   Wed Jan 1 23:59:00 2020 -0400
+<a name="rest_code_58811729360b47ccbf6ead042b63284d-4"></a>
+<a name="rest_code_58811729360b47ccbf6ead042b63284d-5"></a>    Improve greeting
+<a name="rest_code_58811729360b47ccbf6ead042b63284d-6"></a>
+<a name="rest_code_58811729360b47ccbf6ead042b63284d-7"></a><span class="gh">diff --git a/hi.txt b/hi.txt</span>
+<a name="rest_code_58811729360b47ccbf6ead042b63284d-8"></a><span class="gh">index e965047..f75ba05 100644</span>
+<a name="rest_code_58811729360b47ccbf6ead042b63284d-9"></a><span class="gd">--- a/hi.txt</span>
+<a name="rest_code_58811729360b47ccbf6ead042b63284d-10"></a><span class="gi">+++ b/hi.txt</span>
+<a name="rest_code_58811729360b47ccbf6ead042b63284d-11"></a><span class="gu">@@ -1 +1 @@</span>
+<a name="rest_code_58811729360b47ccbf6ead042b63284d-12"></a><span class="gd">-Hello</span>
+<a name="rest_code_58811729360b47ccbf6ead042b63284d-13"></a><span class="gi">+Hello world</span>
 </pre>
 </div>
 <div class="section" id="working-with-multiple-patches">
 <h3>Working with Multiple Patches</h3>
 <p>StGit is most useful when working on more than one patch concurrently.
 Let's add another patch to improve the goodbye.</p>
-<pre class="code console"><a name="rest_code_611179a9638e481492d443ec8c7c9c2d-1"></a><span class="gp">$</span> stg new -m <span class="s2">"goodbye"</span> goodbye-patch
-<a name="rest_code_611179a9638e481492d443ec8c7c9c2d-2"></a><span class="go">Now at patch "goodbye-patch"</span>
-<a name="rest_code_611179a9638e481492d443ec8c7c9c2d-3"></a><span class="gp">$</span> stg series
-<a name="rest_code_611179a9638e481492d443ec8c7c9c2d-4"></a><span class="go">+ hello-patch</span>
-<a name="rest_code_611179a9638e481492d443ec8c7c9c2d-5"></a><span class="gp">&gt;</span> goodbye-patch
-<a name="rest_code_611179a9638e481492d443ec8c7c9c2d-6"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Farewell, cruel world."</span> &gt; bye.txt
-<a name="rest_code_611179a9638e481492d443ec8c7c9c2d-7"></a><span class="gp">$</span> stg refresh
-<a name="rest_code_611179a9638e481492d443ec8c7c9c2d-8"></a><span class="go">Now at patch "goodbye-patch"</span>
+<pre class="code console"><a name="rest_code_b08f404459f54b989846c835d5690d13-1"></a><span class="gp">$</span> stg new -m <span class="s2">"goodbye"</span> goodbye-patch
+<a name="rest_code_b08f404459f54b989846c835d5690d13-2"></a><span class="go">Now at patch "goodbye-patch"</span>
+<a name="rest_code_b08f404459f54b989846c835d5690d13-3"></a><span class="gp">$</span> stg series
+<a name="rest_code_b08f404459f54b989846c835d5690d13-4"></a><span class="go">+ hello-patch</span>
+<a name="rest_code_b08f404459f54b989846c835d5690d13-5"></a><span class="gp">&gt;</span> goodbye-patch
+<a name="rest_code_b08f404459f54b989846c835d5690d13-6"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Farewell, cruel world."</span> &gt; bye.txt
+<a name="rest_code_b08f404459f54b989846c835d5690d13-7"></a><span class="gp">$</span> stg refresh
+<a name="rest_code_b08f404459f54b989846c835d5690d13-8"></a><span class="go">Now at patch "goodbye-patch"</span>
 </pre>
 <p>These patches are looking good...except the greeting is missing
 punctuation! With StGit, we can easily revisit <code class="docutils literal"><span class="pre">hello-patch</span></code>, make our
 punctuation modifications, and return to <code class="docutils literal"><span class="pre">goodbye-patch</span></code> using <code class="docutils literal">stg
 pop</code> and <code class="docutils literal">stg push</code>:</p>
-<pre class="code console"><a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-1"></a><span class="gp">$</span> stg pop
-<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-2"></a><span class="go">Popped goodbye-patch</span>
-<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-3"></a><span class="go">Now at patch "hello-patch"</span>
-<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-4"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Hello, world."</span> &gt; hi.txt
-<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-5"></a><span class="gp">$</span> stg refresh
-<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-6"></a><span class="go">Now at patch "hello-patch"</span>
-<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-7"></a><span class="gp">$</span> stg push
-<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-8"></a><span class="go">Pushing patch "goodbye-patch" ... done</span>
-<a name="rest_code_a7c91c06c37548c2b85190d43a0b467a-9"></a><span class="go">Now at patch "goodbye-patch"</span>
+<pre class="code console"><a name="rest_code_02ecb6168b194c37a35cbba35efc50d3-1"></a><span class="gp">$</span> stg pop
+<a name="rest_code_02ecb6168b194c37a35cbba35efc50d3-2"></a><span class="go">Popped goodbye-patch</span>
+<a name="rest_code_02ecb6168b194c37a35cbba35efc50d3-3"></a><span class="go">Now at patch "hello-patch"</span>
+<a name="rest_code_02ecb6168b194c37a35cbba35efc50d3-4"></a><span class="gp">$</span> <span class="nb">echo</span> <span class="s2">"Hello, world."</span> &gt; hi.txt
+<a name="rest_code_02ecb6168b194c37a35cbba35efc50d3-5"></a><span class="gp">$</span> stg refresh
+<a name="rest_code_02ecb6168b194c37a35cbba35efc50d3-6"></a><span class="go">Now at patch "hello-patch"</span>
+<a name="rest_code_02ecb6168b194c37a35cbba35efc50d3-7"></a><span class="gp">$</span> stg push
+<a name="rest_code_02ecb6168b194c37a35cbba35efc50d3-8"></a><span class="go">Pushing patch "goodbye-patch" ... done</span>
+<a name="rest_code_02ecb6168b194c37a35cbba35efc50d3-9"></a><span class="go">Now at patch "goodbye-patch"</span>
 </pre>
 <p>These patches are looking good, but we want to make sure to have quality
 commit messages before we call these patches complete. Let's update the
 top patch (<code class="docutils literal"><span class="pre">goodbye-patch</span></code>) with an improved commit message. This can
 be done using <code class="docutils literal">stg edit</code>:</p>
-<pre class="code console"><a name="rest_code_13a2881c8f704c3d9d40c178e62889f5-1"></a><span class="gp">$</span> stg edit -m <span class="s2">"Use elaborate farewell"</span>
+<pre class="code console"><a name="rest_code_b4d5ee11e40b4fc984c97db37d4bddd3-1"></a><span class="gp">$</span> stg edit -m <span class="s2">"Use elaborate farewell"</span>
 </pre>
 <p>Perfect. Our last step is to commit these patches to the repository's
 history using <code class="docutils literal">stg commit</code>. We will use the <code class="docutils literal"><span class="pre">--all</span></code> option to
 indicate that we want all applied patches to be committed.</p>
-<pre class="code console"><a name="rest_code_29f2223f9f0e4f85bc2b3ba73309b835-1"></a><span class="gp">$</span> stg commit --all
+<pre class="code console"><a name="rest_code_9c0cd6be36de48b5a16e9c0d3e5cb6e0-1"></a><span class="gp">$</span> stg commit --all
 </pre>
 <p>StGit patches are regular, first-class Git commit objects. They are
 visible when running <code class="docutils literal">git log</code> and can be manipulated using regular
