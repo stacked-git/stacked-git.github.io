@@ -50,11 +50,23 @@ TRANSLATIONS_PATTERN = '{path}.{lang}.{ext}'
 
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-        ("https://github.com/stacked-git/stgit", "StGit Source"),
-        ("https://github.com/stacked-git/stgit/releases", "Releases"),
-        ("https://github.com/stacked-git/stgit/issues", "Issues"),
-        ("/doc/tutorial.html", "Tutorial"),
-        ("/doc/stg.html", "Manual"),
+        (
+            (
+                ("/usage-example.html", "Usage Example"),
+                ("/man/tutorial.html", "Tutorial"),
+                ("/man/stg.html", "Man Pages"),
+            ),
+            'Documentation',
+        ),
+        (
+            (
+                ("https://github.com/stacked-git/stgit", "Source Code"),
+                ("https://github.com/stacked-git/stgit/releases", "Releases"),
+                ("https://github.com/stacked-git/stgit/issues", "Issue Tracker"),
+                ("https://groups.google.com/d/forum/stgit", "Forum"),
+            ),
+            'Development',
+        ),
     ),
 }
 
@@ -1235,7 +1247,7 @@ DISABLE_INDEXES = False
 # past.  Useful especially if your post titles are in <h1> tags too, for
 # example.
 # (defaults to 1.)
-DEMOTE_HEADERS = 1
+DEMOTE_HEADERS = 2
 
 # If you don’t like slugified file names ([a-z0-9] and a literal dash),
 # and would prefer to use all the characters your file system allows.
