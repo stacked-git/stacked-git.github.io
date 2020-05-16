@@ -1,0 +1,61 @@
+baseURL = "http://stacked-git.github.io/"
+languageCode = "en-us"
+title = "Stacked Git"
+theme = ""
+
+[params]
+description = "Manage stack of Git commits"
+logoimage = "stgit.svg"
+
+[menu]
+  [[menu.main]]
+    name = "Changelog"
+    url = "/changelog/"
+    weight = -100
+  [[menu.main]]
+    name = "Man Pages"
+    url = "/man/"
+    weight = -99
+  [[menu.main]]
+    name = "Usage Example"
+    url = "/usage-example/"
+    weight = -98
+  [[menu.main]]
+    name = "Repository"
+    url = "https://github.com/stacked-git/stgit/"
+    post = '<img src="/github.svg" alt="GitHub logo">'
+    weight = -97
+  [[menu.main]]
+    name = "Issue Tracker"
+    url = "https://github.com/stacked-git/stgit/issues"
+    post = '<img src="/github.svg" alt="GitHub logo">'
+    weight = -96
+  [[menu.main]]
+    name = "Releases"
+    url = "https://github.com/stacked-git/stgit/releases"
+    post = '<img src="/github.svg" alt="GitHub logo">'
+    weight = -95
+  [[menu.main]]
+    name = "Forum"
+    url = "https://groups.google.com/d/forum/stgit"
+    post = '<img src="/ext-link.svg" alt="external link">'
+    weight = -90
+
+
+[markup]
+  [markup.highlight]
+    noclasses = false
+
+[privacy]
+  [privacy.disqus]
+    disable = true
+  [privacy.googleAnalytics]
+    disable = true
+  [privacy.instagram]
+    disable = true
+  [privacy.twitter]
+    disable = true
+  [privacy.vimeo]
+    disable = true
+  [privacy.youtube]
+    disable = true

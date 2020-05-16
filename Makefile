@@ -1,44 +1,42 @@
 PYTHON ?= python
 STGIT_WORKTREE ?= ../stgit
+BUILD_PY = $(STGIT_WORKTREE)/build.py
 STGIT_DOC = $(STGIT_WORKTREE)/Documentation
-MAN_DIR = $(PWD)/pages/man
+MAN_DIR = content/man
 
-.PHONY: build
-build: local-asciidoc
-	nikola build
+STG_COMMANDS = $(shell $(PYTHON) $(BUILD_PY) --commands)
+STG_COMMANDS_ADOC = $(patsubst %,$(MAN_DIR)/stg-%.adoc,$(STG_COMMANDS))
 
-.PHONY: local-asciidoc
-local-asciidoc: stgit-html asciidoc.conf command-list.txt
-	mkdir -p $(MAN_DIR)
-	cp $(STGIT_DOC)/tutorial.txt $(MAN_DIR)
-	cp $(STGIT_DOC)/stg*.txt $(MAN_DIR)
+.PHONY: sync
+sync: clean-man command-list.txt $(STG_COMMANDS_ADOC) $(MAN_DIR)/stg.adoc content/changelog/_index.md
 
-.PHONY: stgit-html
-stgit-html:
-	$(MAKE) -C $(STGIT_WORKTREE) PYTHON=$(PYTHON) build
-	$(MAKE) -C $(STGIT_DOC) PYTHON=$(PYTHON) html
+.PHONY: FORCE
+FORCE:
 
-asciidoc.conf:
-	cp $(STGIT_DOC)/asciidoc.conf .
+.PHONY: clean-man
+clean-man:
+	$(RM) $(MAN_DIR)/*.adoc
 
-command-list.txt: stgit-html
-	cp $(STGIT_DOC)/command-list.txt .
+$(MAN_DIR)/stg.adoc: $(STGIT_DOC)/stg.txt FORCE
+	@echo "+++" > $@
+	@echo "title = \"stg(1)\"" >> $@
+	@echo "+++" >> $@
+	@echo >> $@
+	cat $< >> $@
 
-.PHONY: clean
-clean:
-	$(RM) -r $(MAN_DIR)
-	$(RM) -r output/man/*
-	$(RM) asciidoc.conf
-	$(RM) command-list.txt
+$(MAN_DIR)/stg-%.adoc: FORCE
+	@echo "+++" > $@
+	@echo "title = \"$(subst .adoc,,$(subst $(MAN_DIR)/,,$@))(1)\"" >> $@
+	@echo "+++" >> $@
+	@echo >> $@
+	$(PYTHON) $(BUILD_PY) --asciidoc $(basename $(subst $(MAN_DIR)/stg-,,$@)) >> $@
 
-.PHONY: deploy
-deploy: build
-	nikola github_deploy
+command-list.txt: FORCE
+	$(PYTHON) $(BUILD_PY) --cmd-list > $@
 
-# ASCIIDOC_HTML = "html5 -afooter-style=none -anotitle=1"
-# ASCIIDOC_HTML = "html5 -s"
-# ASCIIDOC_HTML = "html5"
-#
-# .PHONY: stgit-doc
-# stgit-doc: stgit-html
-# 	$(MAKE) -C $(STGIT_DOC) ASCIIDOC_HTML=$(ASCIIDOC_HTML) htmldir=$(MAN_DIR) install-html
+content/changelog/_index.md: $(STGIT_WORKTREE)/CHANGELOG.md FORCE
+	@echo "+++" > $@
+	@echo "title = 'StGit Changelog'" >> $@
+	@echo "+++" >> $@
+	@echo >> $@
+	cat $< >> $@

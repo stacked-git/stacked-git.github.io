@@ -1,0 +1,11 @@
+{{ define "main" }}
+<main class="changelog-main">
+  <h1><a href="{{.RelPermalink}}">{{ .Title }}</a></h1>
+  {{ $c := .Content }}
+  {{ $c := $c | replaceRE "<h1 id=\"changelog\">Changelog</h1>" "" }}
+  {{ $c := $c | replaceRE "<h(\\d.*?)>\\[(\\d.*?)\\](.*?)</h(\\d)>" "<h$1><a href=\"GHR/v$2\">[$2]$3</a></h$4>" }}
+  {{ $c := $c | replaceRE "\"GHR/" "\"https://github.com/stacked-git/stgit/releases/tag/" }}
+  {{ $c := $c | replaceRE "\\(#(\\d+)\\)" "(<a href=\"https://github.com/stacked-git/stgit/issues/$1\">#$1</a>)"}}
+  {{ $c | safeHTML }}
+</main>
+{{ end }}

@@ -1,0 +1,100 @@
+Repository commands
+~~~~~~~~~~~~~~~~~~~
+
+linkstg:clone[]::
+    Make a local clone of a remote repository
+linkstg:id[]::
+    Print the git hash value of a StGit reference
+
+Stack (branch) commands
+~~~~~~~~~~~~~~~~~~~~~~~
+
+linkstg:branch[]::
+    Branch operations: switch, list, create, rename, delete, ...
+linkstg:clean[]::
+    Delete the empty patches in the series
+linkstg:commit[]::
+    Permanently store the applied patches into the stack base
+linkstg:float[]::
+    Push patches to the top, even if applied
+linkstg:goto[]::
+    Push or pop patches to the given one
+linkstg:hide[]::
+    Hide a patch in the series
+linkstg:init[]::
+    Initialise the current branch for use with StGIT
+linkstg:log[]::
+    Display or optionally clear the patch changelog
+linkstg:next[]::
+    Print the name of the next patch
+linkstg:patches[]::
+    Show the applied patches modifying a file
+linkstg:pop[]::
+    Pop one or more patches from the stack
+linkstg:prev[]::
+    Print the name of the previous patch
+linkstg:publish[]::
+    (DEPRECATED) Push the stack changes to a merge-friendly branch
+linkstg:pull[]::
+    Pull changes from a remote repository
+linkstg:push[]::
+    Push one or more patches onto the stack
+linkstg:rebase[]::
+    Move the stack base to another point in history
+linkstg:redo[]::
+    Undo the last undo operation
+linkstg:repair[]::
+    Fix StGit metadata if branch was modified with git commands
+linkstg:reset[]::
+    Reset the patch stack to an earlier state
+linkstg:series[]::
+    Print the patch series
+linkstg:sink[]::
+    Send patches deeper down the stack
+linkstg:squash[]::
+    Squash two or more patches into one
+linkstg:top[]::
+    Print the name of the top patch
+linkstg:uncommit[]::
+    Turn regular git commits into StGit patches
+linkstg:undo[]::
+    Undo the last operation
+linkstg:unhide[]::
+    Unhide a hidden patch
+
+Patch commands
+~~~~~~~~~~~~~~
+
+linkstg:delete[]::
+    Delete patches
+linkstg:edit[]::
+    Edit a patch description or diff
+linkstg:export[]::
+    Export patches to a directory
+linkstg:files[]::
+    Show the files modified by a patch (or the current patch)
+linkstg:fold[]::
+    Integrate a GNU diff patch into the current patch
+linkstg:import[]::
+    Import a GNU diff file as a new patch
+linkstg:mail[]::
+    Send a patch or series of patches by e-mail
+linkstg:new[]::
+    Create a new, empty patch
+linkstg:pick[]::
+    Import a patch from a different branch or a commit object
+linkstg:refresh[]::
+    Generate a new commit for the current patch
+linkstg:rename[]::
+    Rename a patch
+linkstg:show[]::
+    Show the commit corresponding to a patch
+linkstg:sync[]::
+    Synchronise patches with a branch or a series
+
+Index/worktree commands
+~~~~~~~~~~~~~~~~~~~~~~~
+
+linkstg:diff[]::
+    Show the tree diff
+

@@ -1,0 +1,22 @@
+{{ define "main" }}
+<center>
+<p>
+    {{ if isset .Site.Params "logoimage" }}
+    <a href="/">
+      <img src="/{{ .Site.Params.logoimage }}" alt="{{ .Site.Title }} logo">
+    </a>
+    {{ end }}
+</p>
+<p>
+  <big><big><big>
+    <strong>
+      404
+    </strong>
+  </big></big></big>
+</p>
+<p>
+  <big><big><big>
+    Page Not Found
+  </big></big></big>
+</p>
+{{ end }}

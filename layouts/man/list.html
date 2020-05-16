@@ -1,0 +1,23 @@
+{{ define "main" }}
+<main>
+  <header>
+    <h1>
+      <a href="{{.RelPermalink}}">
+        {{.Title}}
+      </a>
+    </h1>
+  </header>
+  <!-- "{{.Content}}" markdown content content/man/_index.md -->
+  {{.Content}}
+  <ul class="man-list">
+  <!-- Ranges through content/man/*.adoc -->
+  {{ range .Pages }}
+  <li>
+    <a href="{{.RelPermalink}}">
+      {{ replace .Title "(1)" "" }}
+    </a>
+  </li>
+  {{ end }}
+  </ul>
+</main>
+{{ end }}

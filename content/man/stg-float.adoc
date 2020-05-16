@@ -1,0 +1,39 @@
++++
+title = "stg-float(1)"
++++
+
+stg-float(1)
+============
+
+NAME
+----
+stg-float - Push patches to the top, even if applied
+
+SYNOPSIS
+--------
+[verse]
+'stg float' [--] <patches>
+'stg float' -s <series>
+
+DESCRIPTION
+-----------
+
+Float a patch or range of patches to be the top-most applied patches.
+The patches to be floated may currently be either applied or unapplied.
+The necessary pop and push operations will be performed to float the
+named patches.  Patches not specified will remain applied or unapplied
+as they were prior to the float operation.
+
+OPTIONS
+-------
+-s FILE::
+--series FILE::
+        Rearrange according to the series FILE.
+
+-k::
+--keep::
+        Keep the local changes.
+
+StGit
+-----
+Part of the StGit suite - see linkman:stg[1]

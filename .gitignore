@@ -1,8 +1,1 @@
-__pycache__
-.doit.db
-.py*
-cache/
-output/
-pages/man
-asciidoc.conf
-command-list.txt
+public/
