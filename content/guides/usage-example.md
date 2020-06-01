@@ -2,8 +2,7 @@
 title = "Usage Example"
 +++
 
-Setup
-=====
+## Setup
 
 StGit is used with regular Git repositories. Here we setup a simple Git
 repository with two files:
@@ -35,21 +34,19 @@ $ stg status
 
 The `stg status` command is just a built-in alias for `git status -s`.
 
-Creating a Patch
-================
+## Creating a Patch
 
 Now that we have modified `hi.txt`, we can create a new *patch* to
 capture the change. We give the patch a name, in this case
 `hello-patch`.
 
-StGit patches *are* regular Git commits, so they have a commit message
-too. We use the `-m` option with `stg new` to provide a message for the
-patch. Like `git commit`, if we do not provide a message on the command
-line, we will be prompted to enter a message interactively using our
-`$EDITOR`.
+StGit patches *are* regular Git commits, so they have a commit message.
+The `-m` option to `stg new` is used to provide a message for the patch.
+Like `git commit`, if we do not provide a message on the command line,
+we will be prompted to enter a message interactively using `$EDITOR`.
 
-A nice thing about StGit patches is that we can easily revise the
-message later using `stg edit`. So for now we use a short and simple
+A nice thing about StGit patches is that their commit message can easily
+be revised the using `stg edit`. So for now, we use a short and simple
 message.
 
 ```sh
@@ -57,18 +54,18 @@ $ stg new -m "Improve greeting" hello-patch
 Now at patch "hello-patch"
 ```
 
-Now that we have created our first patch, we can take a look at the
-patch stack using the `stg series` command:
+With the first patch created, we can take a look at the patch stack
+using the `stg series` command:
 
 ```sh
 $ stg series
 > hello-patch
 ```
 
-Creating a new patch with `stg new` does not actually capture any of the
-modifications in our working tree to the patch. To incorporate
-modifications from the working tree into the current (topmost) patch, we
-use `stg refresh`:
+Creating a new patch with `stg new` does not capture modifications in
+our working tree to the patch. Another step is required to incorporate
+modifications from the working tree into the current (topmost) patch.
+To do this, we use `stg refresh`:
 
 ```sh
 $ stg status
@@ -100,8 +97,7 @@ index e965047..f75ba05 100644
 +Hello world
 ```
 
-Working with Multiple Patches
-=============================
+## Working with Multiple Patches
 
 StGit is most useful when working on more than one patch concurrently.
 Let's add another patch to improve the goodbye.
@@ -118,9 +114,8 @@ Now at patch "goodbye-patch"
 ```
 
 These patches are looking good\...except the greeting is missing
-punctuation! With StGit, we can easily revisit `hello-patch`, make our
-punctuation modifications, and return to `goodbye-patch` using `stg pop`
-and `stg push`:
+punctuation! With StGit, we can easily revisit an earlier patch, make
+changes, and return to the prior patch using `stg pop` and `stg push`:
 
 ```sh
 $ stg pop
@@ -134,18 +129,17 @@ Pushing patch "goodbye-patch" ... done
 Now at patch "goodbye-patch"
 ```
 
-These patches are looking good, but we want to make sure to have quality
-commit messages before we call these patches complete. Let's update the
-top patch (`goodbye-patch`) with an improved commit message. This can be
-done using `stg edit`:
+We want to make sure to have quality commit messages before we call
+these patches complete. Let's update the top patch (`goodbye-patch`)
+with an improved commit message using `stg edit`:
 
 ```sh
 $ stg edit -m "Use elaborate farewell"
 ```
 
-Perfect. Our last step is to commit these patches to the repository's
-history using `stg commit`. We will use the `--all` option to indicate
-that we want all applied patches to be committed.
+Perfect. The last step is to commit these patches to the repository's
+history using `stg commit`. We use the `--all` option to indicate that
+we want all applied patches to be committed.
 
 ```sh
 $ stg commit --all
@@ -153,6 +147,6 @@ $ stg commit --all
 
 StGit patches are regular, first-class Git commit objects. They are
 visible when running `git log` and can be manipulated using regular Git
-commands. So `stg commit` does not modify the patches (commits), instead
-it is updating the StGit stack state to note that those patches have
-graduated, and are no longer in the series.
+commands. Thus `stg commit` does not modify the patches (commits),
+instead it is updating the StGit stack state to note that the committed
+patches have graduated, and are no longer in the stack.

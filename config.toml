@@ -17,29 +17,33 @@ logoimage = "stgit.svg"
     url = "/man/"
     weight = -99
   [[menu.main]]
-    name = "Usage Example"
-    url = "/usage-example/"
+    name = "Guides"
+    url = "/guides/"
     weight = -98
+  [[menu.main]]
+    name = "Tutorial"
+    url = "/guides/tutorial/"
+    weight = -97
   [[menu.main]]
     name = "Repository"
     url = "https://github.com/stacked-git/stgit/"
     post = '<img src="/github.svg" alt="GitHub logo">'
-    weight = -97
+    weight = -89
   [[menu.main]]
     name = "Issue Tracker"
     url = "https://github.com/stacked-git/stgit/issues"
     post = '<img src="/github.svg" alt="GitHub logo">'
-    weight = -96
+    weight = -87
   [[menu.main]]
     name = "Releases"
     url = "https://github.com/stacked-git/stgit/releases"
     post = '<img src="/github.svg" alt="GitHub logo">'
-    weight = -95
+    weight = -86
   [[menu.main]]
     name = "Forum"
     url = "https://groups.google.com/d/forum/stgit"
     post = '<img src="/ext-link.svg" alt="external link">'
-    weight = -90
+    weight = -79
 
 
 [markup]
