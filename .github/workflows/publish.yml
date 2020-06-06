@@ -18,8 +18,7 @@ jobs:
 
       - name: Install other dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install asciidoctor
+          gem install asciidoctor
 
       - name: Build Site
         run: |
