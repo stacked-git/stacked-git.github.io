@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
     <title>
-         Categories &ndash;  Stacked Git
+         stg-commit(1) &ndash;  Stacked Git
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,14 +94,87 @@
   </nav>
 </header>
 <div>
-  <main>
-    <h1>
-      <a href="/categories/">
-        Categories
-      </a>
-    </h1>
-  
-  </main>
+<main>
+  <h2>
+    <a href="/man/stg-commit/">
+      stg-commit(1)
+    </a>
+  </h2>
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>stg-commit - Permanently store the applied patches into the stack base</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg commit</em>
+<em>stg commit</em> [--] &lt;patchnames&gt;
+<em>stg commit</em> -n NUM
+<em>stg commit</em> --all</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Merge one or more patches into the base of the current stack and
+remove them from the series while advancing the base. This is the
+opposite of <em>stg uncommit</em>. Use this command if you no longer want to
+manage a patch with StGIT.</p>
+</div>
+<div class="paragraph">
+<p>By default, the bottommost patch is committed. If patch names are
+given, the stack is rearranged so that those patches are at the
+bottom, and then they are committed.</p>
+</div>
+<div class="paragraph">
+<p>The -n/--number option specifies the number of applied patches to
+commit (counting from the bottom of the stack). If -a/--all is given,
+all applied patches are committed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-n NUMBER</dt>
+<dt class="hdlist1">--number NUMBER</dt>
+<dd>
+<p>Commit the specified number of patches.</p>
+</dd>
+<dt class="hdlist1">-a</dt>
+<dt class="hdlist1">--all</dt>
+<dd>
+<p>Commit all applied patches.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stgit">StGit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the StGit suite - see <a href="/man/stg">stg(1)</a></p>
+</div>
+</div>
+</div>
+
+</main>
 <footer>
   <small>&copy; 2020 Stacked Git Authors</small>
 </footer>

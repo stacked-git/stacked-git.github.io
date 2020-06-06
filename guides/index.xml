@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>StGit Guides on Stacked Git</title>
+    <link>http://stacked-git.github.io/guides/</link>
+    <description>Recent content in StGit Guides on Stacked Git</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://stacked-git.github.io/guides/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Emacs stgit-mode Guide</title>
+      <link>http://stacked-git.github.io/guides/emacs-stgit-mode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://stacked-git.github.io/guides/emacs-stgit-mode/</guid>
+      <description>StGit comes with an Emacs mode, stgit-mode, supporting Emacs versions 22 and later.
+To start using it, add the stgit/contrib directory to your Emacs load-path and run (require &#39;stgit). For example, you can add the following to your .emacs file:
+(add-to-list &#39;load-path &amp;quot;/path/to/stgit/contrib&amp;quot;) (require &#39;stgit) Start stgit-mode using M-x stgit and select the directory where the source code you want to use StGit on can be found. If StGit has not been initialized in this directory yet, you will need to run +M-x stgit-init+ before you continue.</description>
+    </item>
+    
+    <item>
+      <title>StGit Tutorial</title>
+      <link>http://stacked-git.github.io/guides/tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://stacked-git.github.io/guides/tutorial/</guid>
+      <description>StGit is a command-line application that provides functionality similar to Quilt or the Mercurial Queues extension, i.e. pushing and popping patches to/from a stack, but using Git instead of diff and patch. StGit patches are stored in a Git repository as Git commits, but can be manipulated by StGit commands in a variety of powerful ways beyond what can easily be done with regular Git commits.
+This tutorial assumes familiarity with the basics of Git, including commits, branches, and merge conflicts.</description>
+    </item>
+    
+    <item>
+      <title>Usage Example</title>
+      <link>http://stacked-git.github.io/guides/usage-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://stacked-git.github.io/guides/usage-example/</guid>
+      <description>Setup StGit is used with regular Git repositories. Here we setup a simple Git repository with two files:
+$ git init myrepo $ cd myrepo $ echo &amp;#34;Hello&amp;#34; &amp;gt; hi.txt $ echo &amp;#34;Goodbye&amp;#34; &amp;gt; bye.txt $ git add hi.txt bye.txt $ git commit -m &amp;#34;Initial commit&amp;#34; The stg init command is run once to enable use of StGit on a branch, in this case the master branch.
+$ stg init After initializing StGit, new patches may be created.</description>
+    </item>
+    
+  </channel>
+</rss>

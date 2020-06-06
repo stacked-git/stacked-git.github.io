@@ -1,4 +1,0 @@
-Sitemap: https://stacked-git.github.io/sitemapindex.xml
-
-User-Agent: *
-Host: stacked-git.github.io

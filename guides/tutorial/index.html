@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html><head>
+    <title>
+         StGit Tutorial &ndash;  Stacked Git
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="/css/stgit.css">
+    <link rel="stylesheet" href="/css/chroma.css">
+</head>
+<body>
+        <div><header>
+  
+  <a href="/">
+    <img src="/stgit.svg" alt="Stacked Git logo">
+  </a>
+  
+  <h3><a href="/">Stacked Git</a></h3>
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/changelog/">
+          
+          Changelog
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/man/">
+          
+          Man Pages
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/">
+          
+          Guides
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/tutorial/">
+          
+          Tutorial
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/">
+          
+          Repository
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/issues">
+          
+          Issue Tracker
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/releases">
+          
+          Releases
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://groups.google.com/d/forum/stgit">
+          
+          Forum
+          <img src="/ext-link.svg" alt="external link">
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+<div>
+  <main>
+    <h1>
+      <a href="/guides/tutorial/">
+        StGit Tutorial
+      </a>
+    </h1>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#online-help">Online Help</a></li>
+        <li><a href="#setup-a-repository">Setup a Repository</a></li>
+      </ul>
+    </li>
+    <li><a href="#patches">Patches</a>
+      <ul>
+        <li><a href="#create-a-patch">Create a Patch</a></li>
+        <li><a href="#another-topic-another-patch">Another Topic, Another Patch</a></li>
+        <li><a href="#advanced-patch-refresh">Advanced Patch Refresh</a></li>
+        <li><a href="#about-commit-messages">About Commit Messages</a></li>
+        <li><a href="#renaming-patches">Renaming Patches</a></li>
+      </ul>
+    </li>
+    <li><a href="#conflicts">Conflicts</a>
+      <ul>
+        <li><a href="#undo">Undo</a></li>
+        <li><a href="#resolve-conflicts">Resolve Conflicts</a></li>
+      </ul>
+    </li>
+    <li><a href="#workflows">Workflows</a>
+      <ul>
+        <li><a href="#development-branch-workflow">Development branch workflow</a></li>
+        <li><a href="#email-based-workflow">Email-based workflow</a></li>
+        <li><a href="#working-with-remote-changes">Working with Remote Changes</a></li>
+        <li><a href="#when-patches-are-accepted-upstream">When patches are accepted upstream</a></li>
+        <li><a href="#importing-patches">Importing patches</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  <p>StGit is a command-line application that provides functionality similar
+to <a href="http://savannah.nongnu.org/projects/quilt">Quilt</a> or the <a href="https://www.mercurial-scm.org/wiki/MqExtension">Mercurial
+Queues extension</a>, i.e.
+pushing and popping patches to/from a stack, but using Git instead of
+<code>diff</code> and <code>patch</code>. StGit patches are stored in a Git repository as Git
+commits, but can be manipulated by StGit commands in a variety of
+powerful ways beyond what can easily be done with regular Git commits.</p>
+<p>This tutorial assumes familiarity with the basics of Git, including
+commits, branches, and merge conflicts. For more information on Git, see
+<a href="https://git-scm.com/docs/git">git(1)</a> or <a href="https://git-scm.com/">the Git home
+page</a>.</p>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="online-help">Online Help</h3>
+<p>For a full list of StGit commands:</p>
+<pre><code>$ stg help
+</code></pre><p>For quick help on an individual <code>stg</code> subcommand:</p>
+<pre><code>$ stg help &lt;cmd&gt;
+</code></pre><p>For more extensive help on a subcommand:</p>
+<pre><code>$ man stg-&lt;cmd&gt;
+</code></pre><p>The documentation is also available as <a href="/man">online man pages</a>.</p>
+<h3 id="setup-a-repository">Setup a Repository</h3>
+<p>StGit operates in the context of a regular Git repository, providing
+additional capabilities above and beyond those provided by Git.</p>
+<p>This tutorial uses StGit&rsquo;s own Git repository for its examples, but
+any regular Git repository may be used to work through this tutorial.</p>
+<p>Use <code>git init</code> to create or <code>git clone</code> to clone a Git repository.</p>
+<p>To clone the StGit repository:</p>
+<pre><code>$ git clone https://github.com/stacked-git/stgit.git
+$ cd stgit
+</code></pre><p>Before creating StGit patches, the StGit stack must be initialized
+on the current Git branch using <a href="/man/stg-init"><code>stg init</code></a>:</p>
+<pre><code>$ stg init
+</code></pre><p>This initializes the StGit stack metadata for the current branch. To
+have StGit patches on another branch, <code>stg init</code> must be run again
+on that branch.</p>
+<blockquote>
+<p><strong>NOTE</strong> As a shortcut, <a href="/man/stg-clone"><code>stg clone</code></a> will perform a
+<code>git clone</code> followed by <code>stg init</code>.</p>
+</blockquote>
+<h2 id="patches">Patches</h2>
+<h3 id="create-a-patch">Create a Patch</h3>
+<p>With the StGit stack initialized, patches may be created:</p>
+<pre><code>$ stg new my-first-patch
+</code></pre><p>This will create a patch called <code>my-first-patch</code>, and open an editor to
+edit the patch&rsquo;s commit message. This patch is empty, which can be seen
+by running <a href="/man/stg-show"><code>stg show</code></a>:</p>
+<pre><code>$ stg show
+</code></pre><blockquote>
+<p><strong>NOTE</strong> <code>stg new</code> may be called without a patch name, in which case
+the patch name will be generated by StGit based on the first line of
+the commit message.</p>
+</blockquote>
+<p>But empty patches are not particularly interesting. So the next step is
+to make a modification to a file in the working tree using a regular
+text editor.</p>
+<pre><code>$ $EDITOR setup.py
+$ stg status
+M stgit/setup.py
+</code></pre><p>To update a patch with changes from the working tree, <a href="/man/stg-refresh"><code>stg refresh</code></a> is used:</p>
+<pre><code>$ stg refresh
+</code></pre><p>And voilà &ndash; the patch is no longer empty:</p>
+<pre><code>$ stg show
+commit 3de32068c600d40d8af2a9cf1f1c762570ae9610
+Author: Audrey U. Thor &lt;author@example.com&gt;
+Date:   Sat Oct 4 16:10:54 2008 +0200
+
+    Tis but a patch
+
+diff --git a/setup.py b/setup.py
+index 808cd7fa9..9bdad1f86 100755
+--- a/setup.py
++++ b/setup.py
+@@ -1,5 +1,6 @@
+ #!/usr/bin/env python
+ # -*- coding: utf-8 -*-
++&quot;&quot;&quot;My first patch!&quot;&quot;&quot;
+
+ from distutils.core import setup
+</code></pre><p>Since the patch is also a regular Git commit, it can be seen by regular
+Git tools such as <a href="https://git-scm.com/docs/gitk"><code>gitk</code></a>.</p>
+<h3 id="another-topic-another-patch">Another Topic, Another Patch</h3>
+<p>When making a change for a new topic, create a new patch. This time the
+working tree is modified <em>before</em> creating the new patch. It is a
+feature of StGit that a patch can be created independent of the working
+tree state.</p>
+<pre><code>$ echo 'Audrey U. Thor' &gt; AUTHORS
+$ stg new credit --message 'Give me some credit'
+$ stg refresh
+</code></pre><blockquote>
+<p><strong>NOTE</strong> Use the <code>--message</code> (<code>-m</code>) option to <a href="/man/stg-new"><code>stg new</code></a> to give the patch a message without invoking an
+editor.</p>
+</blockquote>
+<p>The stack now contains two patches:</p>
+<pre><code>$ stg series --description
++ my-first-patch # This is my first patch
+&gt; credit         # Give me some credit
+</code></pre><p><a href="/man/stg-series"><code>stg series</code></a> lists the patches from bottom to top;
+<code>+</code> means that a patch is &lsquo;applied&rsquo;, and <code>&gt;</code> that it is the current, or
+topmost, patch.</p>
+<p>Further changes to the topmost patch can be made by just editing files
+in the working tree running <code>stg refresh</code> to capture those changes in
+the topmost patch.</p>
+<p>But how to change <code>my-first-patch</code>? The simplest way is to
+<a href="/man/stg-pop">pop</a> the <code>credit</code> patch. Doing so will make
+<code>my-first-patch</code> the topmost applied patch again:</p>
+<pre><code>$ stg pop credit
+Checking for changes in the working directory ... done
+Popping patch &quot;credit&quot; ... done
+Now at patch &quot;my-first-patch&quot;
+$ stg series --description
+&gt; my-first-patch # This is my first patch
+- credit         # Give me some credit
+</code></pre><p><a href="/man/stg-series"><code>stg series</code></a> now indicates that <code>my-first-patch</code> is
+topmost again. And running <a href="/man/stg-refresh"><code>stg refresh</code></a> will update
+<code>my-first-patch</code> with any changes made to the working tree.</p>
+<p>The minus sign (<code>-</code>) in front of <code>credit</code> in the <code>stg series</code> output
+indicates that the <code>credit</code> patch is &lsquo;unapplied&rsquo;, which means that the
+changes embodied in the <code>credit</code> patch are not currently applied to the
+work tree. Unapplied patches are also not seen in the regular Git
+history as seen by <code>git log</code> or <code>gitk</code>.</p>
+<p>An unapplied patch is reapplied and made the topmost patch using <a href="/man/stg-push"><code>stg push</code></a>:</p>
+<pre><code>$ stg push credit
+Checking for changes in the working directory ... done
+Fast-forwarded patch &quot;credit&quot;
+Now at patch &quot;credit&quot;
+</code></pre><blockquote>
+<p><strong>NOTE</strong> <a href="/man/stg-push"><code>stg push</code></a> and <a href="/man/stg-pop"><code>stg pop</code></a> may
+be called without specifying a patch name. Doing so causes the next
+unapplied patch to be pushed, or the topmost patch to be popped,
+respectively.</p>
+</blockquote>
+<h3 id="advanced-patch-refresh">Advanced Patch Refresh</h3>
+<p>By default <code>stg refresh</code> captures changes from the work tree into the
+topmost applied patch, however when working with multiple patches it is
+often the case that a change in the work tree should be captured by an
+already applied patch. The <code>--patch</code> option may be used with <code>stg refresh</code> to do just that.</p>
+<pre><code>$ stg series
++ my-first-patch
+&gt; credit
+$ $EDITOR setup.py
+$ stg refresh --patch my-first-patch
+Popped refresh-temp -- credit
+Pushing patch &quot;refresh-temp&quot; ... done
+Pushing patch &quot;credit&quot; ... done
+Now at patch &quot;credit&quot;
+$ stg status
+</code></pre><p>After the above refresh operation, the topmost patch remains <code>credit</code>,
+but the changes from the work tree are now part of <code>my-first-patch</code> and
+the work tree is clean as evidenced by running <code>stg status</code>.</p>
+<blockquote>
+<p><strong>NOTE</strong> Another way to update a non-topmost patch is to create a new
+patch, refresh the new patch with work tree changes, and then combine
+the new patch with the other already applied patch using <a href="/man/stg-squash">stg
+squash</a>.</p>
+</blockquote>
+<h3 id="about-commit-messages">About Commit Messages</h3>
+<p>An important part of StGit&rsquo;s value is to help create useful Git history.
+And critical to Git commit history are good commit messages.</p>
+<p>When creating a patch with <a href="/man/stg-new"><code>stg new</code></a>, an initial commit
+message is drafted, but as a patch evolves with refreshes and
+reorderings, the commit message typically needs to evolve as well.</p>
+<p>StGit makes it easy to modify (and re-modify) a patch&rsquo;s commit message
+using <a href="/man/stg-edit"><code>stg edit</code></a>:</p>
+<pre><code>$ stg edit
+</code></pre><p>In addition to using <code>stg edit</code> anytime, a patch&rsquo;s message may also be
+modified when refreshing by using <code>stg refresh --edit</code>.</p>
+<blockquote>
+<p><strong>NOTE</strong> Using <a href="/man/stg-edit">stg edit</a>&rsquo;s <code>--diff</code> option causes the
+patch&rsquo;s diff text to be present inline when editing the commit
+message, which can be helpful aid for writing a thorough commit
+message.</p>
+</blockquote>
+<blockquote>
+<p><strong>NOTE</strong> The commit message of any patch in the stack may be modified
+at any time using <code>stg edit &lt;patchname&gt;</code>. StGit <strong>does not</strong> need to
+apply (push) a patch in order to modify it&rsquo;s commit message, so
+editing patches&rsquo; commit messages can be done without risk of
+encountering a merge conflict.</p>
+</blockquote>
+<h3 id="renaming-patches">Renaming Patches</h3>
+<p>If a patch changes considerably, it might even deserve a new name.
+Use <a href="/man/stg-rename">stg rename</a> to rename a patch.</p>
+<h2 id="conflicts">Conflicts</h2>
+<p>Like with regular Git, there are various times in the normal use of
+StGit when <em>conflicts</em> can occur. With regular Git commands, a conflict
+may occur during <a href="https://git-scm.com/docs/git-merge">merge</a>,
+<a href="https://git-scm.com/docs/git-rebase">rebase</a>, or
+<a href="https://git-scm.com/docs/git-rebase">pull</a>. With StGit, conflicts may
+occur when applying or reordering a patch using one of the following
+commands:</p>
+<ul>
+<li><a href="/man/stg-push"><code>stg push</code></a></li>
+<li><a href="/man/stg-pick"><code>stg pick</code></a></li>
+<li><a href="/man/stg-float"><code>stg float</code></a></li>
+<li><a href="/man/stg-sink"><code>stg sink</code></a></li>
+<li><a href="/man/stg-pull"><code>stg pull</code></a></li>
+<li><a href="/man/stg-rebase"><code>stg rebase</code></a></li>
+</ul>
+<p>Normally, when re-pushing a patch after popping it and making a change
+to another patch, StGit is able to re-push the patch without conflict.
+In the following example, two patches are created that each modify a
+different file. First a test repository is initialized:</p>
+<pre><code>$ git init test-repo
+$ cd test-repo
+$ touch a.txt b.txt
+$ git add a.txt b.txt
+$ git commit -m &quot;Add files&quot;
+$ stg init
+</code></pre><p>Then the two patches are created:</p>
+<pre><code>$ stg new first -m 'First patch'
+$ echo 'a change' &gt;&gt; a.txt
+$ stg refresh
+$ stg new second -m 'Second patch'
+$ echo 'b change' &gt;&gt; b.txt
+$ stg refresh
+</code></pre><p>Then both patches are popped:</p>
+<pre><code>$ stg pop --all
+</code></pre><p>Next, the patches are reordered by pushing in the opposite order:</p>
+<pre><code>$ stg push second first
+$ stg series
++ second
+&gt; first
+</code></pre><p>StGit had no problems reordering these patches since they did not affect
+the same lines or even the same files. When using StGit, it is the
+typical case that no conflicts emerge when pushing or reordering
+patches; especially when each patch is limited to one coherent topic.</p>
+<p>But it is inevidable that sometimes multiple patches necessarily affect
+the same lines of a file. This is when a conflict may arise.</p>
+<pre><code>$ stg pop
+Checking for changes in the working directory ... done
+Popping patch &quot;first&quot; ... done
+Now at patch &quot;second&quot;
+$ echo 'another change' &gt;&gt; a.txt
+$ stg refresh
+</code></pre><p>Now, both patches add a line to the end of <code>a.txt</code>. What happens
+when attempting to apply both patches at once?</p>
+<pre><code>$ stg push
+Pushing patch &quot;first&quot; ... done (conflict)
+Error: 1 merge conflict(s)
+       CONFLICT (content): Merge conflict in a.txt
+Now at patch &quot;first&quot;
+</code></pre><p>StGit indicates that when it pushed <code>first</code> on top of <code>second</code> that
+since both modify the same lines of the same file (<code>a.txt</code>), there is a
+conflict. <a href="/man/stg-status"><code>stg status</code></a> can be used to see the status
+of files in the work tree, including those with conflicts:</p>
+<pre><code>$ stg status
+UU a.txt
+</code></pre><p>As indicated by <a href="/man/stg-push">stg push</a>, the conflict is in the file
+<code>a.txt</code>. If the patch modified multiple files, all modified files would
+be listed in the <code>status</code> output, prefixed with <code>UU</code> if there were
+unresolvable conflicts, or <code>M</code> if StGit was able to resolve all diff
+hunks within the file.</p>
+<p>When conflicts occur, there are two general options for how to respond:</p>
+<ol>
+<li>Undo the command caused the conflict(s).</li>
+<li>Resolve the conflicts.</li>
+</ol>
+<h3 id="undo">Undo</h3>
+<p>The <a href="/man/stg-undo"><code>stg undo</code></a> command can rewind the state of the
+StGit stack and work tree.</p>
+<pre><code>$ stg undo --hard
+Now at patch &quot;second&quot;
+</code></pre><blockquote>
+<p><strong>NOTE</strong> The <code>--hard</code> flag for <code>stg undo</code> is required when there are
+modifications in the work tree or index, as is the case when there
+are unresolved conflicts in the work tree.</p>
+</blockquote>
+<p>Undoing may be helpful when inter-patch dependencies are uncovered when
+attempting to reorder patches. In such cases, the best approach may be
+to undo the command that caused conflicts and not reorder the patches.</p>
+<p>In other cases, however, it may be that the conflict must be resolved
+manually&hellip;</p>
+<h3 id="resolve-conflicts">Resolve Conflicts</h3>
+<p>Resolving conflicts incurred while using StGit commands is the same
+process as when conflicts are incurred using Git commands directly:</p>
+<ul>
+<li>
+<p>Modify the affected files to decide on how the conflict should be
+resolved, removing conflict markers. This can either be done manually
+using a regular text editor, or with a tool such as <a href="https://git-scm.com/docs/git-mergetool"><code>git mergetool</code></a></p>
+</li>
+<li>
+<p>Tell Git that the conflict is resolved using <a href="https://git-scm.com/docs/git-add"><code>git add</code></a> or its StGit alias, <code>stg add</code>.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong> It may be helpful to read the <a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#_basic_merge_conflicts">Git Book&rsquo;s section on handling
+merge conflicts</a></p>
+</blockquote>
+<p>Back to the example, opening <code>a.txt</code> in a text editor reveals the
+following:</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; current
+another change
+=======
+a change
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; patched
+</code></pre><p>The &lsquo;conflict markers&rsquo; <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> indicate
+which lines were in the file before the patch was applied (<code>current</code>),
+and which conflicting lines were added by the patch (<code>patched</code>).</p>
+<p>To resolve this conflict <code>a.txt</code> is modified to choose which lines of
+text to retain while also removing the conflict markers. In this case,
+both lines are retained:</p>
+<pre><code>a change
+another change
+</code></pre><p>And the next step is to tell Git that the conflict has been resolved:</p>
+<pre><code>$ stg add a.txt
+$ stg status
+M  a.txt
+</code></pre><p>At this point, the status indicates that <code>a.txt</code> is modified, but no
+longer in conflict. The patch may now be refreshed:</p>
+<pre><code>$ stg refresh
+</code></pre><p>The state of the resolved and refreshed patch:</p>
+<pre><code>$ stg show
+commit 8e3ae5f6fa6e9a5f831353524da5e0b91727338e
+Author: Audrey U. Thor &lt;author@example.com&gt;
+Date:   Sun Oct 5 14:43:42 2008 +0200
+
+    First patch
+
+diff --git a/a.txt b/a.txt
+index 0a131d8..b4c7416 100644
+--- a/a.txt
++++ b/a.txt
+@@ -1 +1,2 @@
++a change
+ another change
+</code></pre><h2 id="workflows">Workflows</h2>
+<h3 id="development-branch-workflow">Development branch workflow</h3>
+<p>One common use of StGit is to &ldquo;polish&rdquo; a Git branch before publishing it
+to another public repository. The kinds of polish a that StGit can help
+with include:</p>
+<ul>
+<li>Complete and correct commit messages.</li>
+<li>Each patch limited to one coherent topic.</li>
+<li>Each patch standing on its own: passing tests, etc.</li>
+<li>Considerate patch (commit) order</li>
+</ul>
+<p>Careful curation of Git commit history, as enabled by StGit, can be
+of high value to those reviewing pull requests or trying to understand
+why or how code came to be the way it is.</p>
+<p>There are limits, however, to what history may be safely modified. As a
+general rule, any commits that have been made public (i.e. by pushing to
+a public repository) should be off-limits to history modification.</p>
+<p>As a concrete example, consider a situation where several Git commits
+have been made in a repository with commit messages such as:</p>
+<ul>
+<li>&ldquo;Improve the snarfle cache&rdquo;</li>
+<li>&ldquo;Remove debug printout&rdquo;</li>
+<li>&ldquo;New snarfle cache test&rdquo;</li>
+<li>&ldquo;Oops, spell function name correctly&rdquo;</li>
+<li>&ldquo;Fix documentation error&rdquo;</li>
+<li>&ldquo;More snarfle cache&rdquo;</li>
+</ul>
+<p>While the above may be the &ldquo;true&rdquo; histor of commits to the repository,
+it may not be the history that is most helpful to code reviewers or the
+developer who needs to understand what happended in this are of the code
+six months after the fact. Using StGit, this history can be revised to
+be higher quality and higher value.</p>
+<p>The first step is to make StGit patches from the Git commits to be
+revised:</p>
+<pre><code>$ stg uncommit --number 6
+Uncommitting 6 patches ...
+  Now at patch &quot;more-snarfle-cache&quot;
+done
+$ stg series --description
++ improve-the-snarfle-cache      # Improve the snarfle cache
++ remove-debug-printout          # Remove debug printout
++ new-snarfle-cache-test         # New snarfle cache test
++ oops-spell-function-name-corre # Oops, spell function name correctly
++ fix-documentation-error        # Fix documentation error
+&gt; more-snarfle-cache             # More snarfle cache
+</code></pre><p>The <a href="/man/stg-uncommit"><code>stg uncommit</code></a> command adds StGit metadata to
+the last few Git commits, turning them into StGit patches, and thus
+readying them to be operated on by other StGit commands.</p>
+<blockquote>
+<p><strong>NOTE</strong> With the <code>--number</code> flag, <a href="/man/stg-uncommit"><code>stg uncommit</code></a>
+uncommits that many commits and generates patch names based on their
+commit messages. Alternativly, patch names may be specified on the
+<code>stg uncommit</code> command line.</p>
+</blockquote>
+<p>A number of possible history revisions are possible at this point:</p>
+<ul>
+<li>
+<p>Continue developing, and take advantage of, for example <a href="/man/stg-goto"><code>stg goto</code></a> or <code>stg refresh --patch</code> to place modifications
+in the most appropriate patches.</p>
+</li>
+<li>
+<p>Use <a href="/man/stg-float"><code>stg float</code></a>, <a href="/man/stg-sink"><code>stg sink</code></a>, <a href="/man/stg-push"><code>stg push</code></a>, and <a href="/man/stg-pop"><code>stg pop</code></a> to reorder
+patches.</p>
+</li>
+<li>
+<p>Use <a href="/man/stg-squash"><code>stg squash</code></a> to combine two or more patches
+into one. <a href="/man/stg-squash"><code>squash</code></a> pushes and pops so that the
+patches to be squashed are consecutive, then makes one big patch out
+of the patches to be squashed, and finally pushes other patches back
+on the stack such that the topmost patch is the same as it was prior
+to running <code>stg squash</code>.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong> The above commands all cause patches to be pushed, either
+implicitly or explicitly. Thus these commands may trigger conflicts.
+If a push results in a conflict, the operation will be halted and
+the choice will have to be made to either <a href="/man/stg-undo"><code>undo</code></a> or
+resolve the conflicts.</p>
+</blockquote>
+<p>Once the history in the StGit stack satisfactorily revised, the patches
+can be converted back into regular Git commits:</p>
+<pre><code>$ stg commit --all
+</code></pre><blockquote>
+<p><em>TIP</em>: <a href="/man/stg-commit"><code>stg commit</code></a> can commit specific patches,
+leaving other patches as-is. This can be used to retire patches as
+they mature, while keeping newer and more volatile changes as patches.</p>
+</blockquote>
+<p>When completely done using StGit with a branch, <a href="/man/stg-branch"><code>stg branch</code></a> can be used to cleanup (remove) all StGit
+metadata from the branch or completely delete the branch:</p>
+<pre><code>$ stg branch --cleanup branchname
+$ stg branch --delete branchname
+</code></pre><blockquote>
+<p><strong>NOTE</strong> A branch must have an empty stack (no patches) before it is
+either cleaned-up or deleted.</p>
+</blockquote>
+<h3 id="email-based-workflow">Email-based workflow</h3>
+<p>In the &lsquo;Development branch workflow&rsquo; described above, it was assumed
+that only single developer was working on her own branch without having
+to worry about parallel development by others. While common, this is not
+the only use model for Git.</p>
+<p>An alternative use model is for many contributors to send their patches
+via email to a mailing list. This model is used, for example, by the
+Linux kernel community. In this use model, others read the patches
+posted to the mailing list, trying them out and providing feedback.
+Often, the patch author is asked to send updated versions of patches.
+When the project maintainer is satisfied with the patches, she will
+apply them and publish to a public repository.</p>
+<p>StGit is ideally suited for the process of creating patches, emailing
+them out for review, revising them, mailing them off again, and
+eventually getting them accepted into an upstream repository.</p>
+<h4 id="getting-patches-upstream">Getting patches upstream</h4>
+<p>Two StGit commands useful for sharing patches in an email-based workflow
+are <a href="/man/stg-mail"><code>stg mail</code></a> and <a href="/man/stg-export"><code>stg export</code></a>.</p>
+<ul>
+<li><a href="/man/stg-mail"><code>stg mail</code></a> sends an email containing one or more
+patches from a StGit stack.</li>
+<li><a href="/man/stg-export"><code>stg export</code></a> exports patches from a StGit stack to
+a filesystem directory, one text file per patch. This may be useful if
+patches need to be transported by something other than email.</li>
+</ul>
+<blockquote>
+<p><strong>NOTE</strong> Git has its own capability for sending commits via email:
+<a href="https://git-scm.com/docs/git-send-email"><code>git send-email</code></a>. Since
+StGit patches are Git commits, <a href="https://git-scm.com/docs/git-send-email"><code>git send-email</code></a> may be a better
+choice for sending patches via email than <code>stg mail</code>.</p>
+</blockquote>
+<blockquote>
+<p><strong>NOTE</strong> For exporting a single patch <a href="/man/stg-show"><code>stg show</code></a> may
+be used instead of <code>stg export</code>.</p>
+</blockquote>
+<p>Mailing a patch is as easy as this:</p>
+<pre><code>$ stg mail --to recipient@example.com &lt;patches&gt;
+</code></pre><p>One or more patches may be listed on the command line. Each patch will
+be sent as a separate email, with the first line of the commit message
+used as the email&rsquo;s subject.</p>
+<blockquote>
+<p><strong>NOTE</strong> <a href="/man/stg-mail"><code>stg mail</code></a> uses the <code>sendmail</code> program to
+send the emails. If <code>sendmail</code> is not properly set up, the
+<code>--smtp-server</code> option may alternatively be provided to <code>stg mail</code>
+to use an SMTP server instead of invoking <code>sendmail</code>.</p>
+</blockquote>
+<p>There are many command-line options to control exactly how patch emails
+are sent, as well as user-modifyable message templates. The <a href="/man/stg-mail">man
+page</a> has all the details, but two worth mentioning here
+are:</p>
+<ul>
+<li>
+<p><code>--edit-cover</code> opens an editor for writing an introductory message.
+All patch emails are then sent as replies to this &ldquo;cover message&rdquo;.
+Using a cover message is advised whenever sending more than one patch
+in order to give reviewers a quick overview of the patches.</p>
+</li>
+<li>
+<p><code>--edit-patches</code> enables editing each patch before it is sent. Any
+part of the patch email may be modified, but it is not advised to edit
+the diff itself since that will only affect the outgoing email and not
+the underlying patch in the StGit stack. What <code>--edit-patches</code> is
+useful for, however, is to add notes for the patch recipients:</p>
+</li>
+</ul>
+<pre><code>From: Audrey U. Thor &lt;author@example.com&gt;
+Subject: [PATCH] First line of the commit message
+
+The rest of the commit message
+
+---
+
+Everything after the line with the three dashes and
+before the diff is just a comment, and not part of the
+commit message. If there is anything you want the patch
+recipients to see, but that should not be recorded in
+the history if the patch is accepted, write it here.
+
+ stgit/main.py |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+
+diff --git a/stgit/main.py b/stgit/main.py
+index e324179..6398958 100644
+--- a/stgit/main.py
++++ b/stgit/main.py
+@@ -171,6 +171,7 @@ def _main():
+     sys.exit(ret or utils.STGIT_SUCCESS)
+
+ def main():
++    print 'My first patch!'
+     try:
+         _main()
+     finally:
+</code></pre><h3 id="working-with-remote-changes">Working with Remote Changes</h3>
+<p>In a project with multiple developers, while a local StGit stack is
+being developed, others will be doing the same. As a result, a stack
+will need to periodically incorporate changes from other developers.
+StGit has a few different tools to help with this.</p>
+<p>Because multiple developers may be working on the same files, pulling or
+rebasing remote changes may result in conflicts. It is almost always
+less work to rebase often so that smaller sets of conflicts can be
+resolved versus waiting and having larger sets of conflicts to resolve.
+And in most workflows, patches must be rebased prior to emailing or
+creating a pull request.</p>
+<h4 id="pulling-remote-changes">Pulling remote changes</h4>
+<p>The most straightforward way to incorporate changes from a remote
+repository is to use <a href="/man/stg-pull"><code>stg pull</code></a>.</p>
+<pre><code>$ stg pull
+</code></pre><p>Under the hood, <code>stg pull</code> first pops any applied patches, fetches
+changes from a remote repository, and then reapplies any previously
+applied patches. The net effect is that the patch stack is <em>rebased</em>
+on top of the new remote head.</p>
+<p>The outcome of <a href="/man/stg-pull"><code>stg pull</code></a> is thus similar to the
+outcome of using <a href="https://git-scm.com/docs/git-pull"><code>git pull</code></a> with
+its <code>--rebase</code> option.</p>
+<blockquote>
+<p><strong>NOTE</strong> Pulling changes from a remote repository may result in
+conflicts when patches are reapplied. When this occurs, the <code>stg pull</code>
+command will halt after pushing the first conflicting patch. After
+resolving conflicts and refreshing the conflicting patch, it becomes
+the user&rsquo;s responsibility to <a href="/man/stg-push"><code>push</code></a> or
+<a href="/man/stg-goto"><code>goto</code></a> the desired patch.</p>
+</blockquote>
+<blockquote>
+<p><strong>NOTE</strong> <a href="/man/stg-pull"><code>stg pull</code></a> pulls changes from the default
+remote associated with the branch, but a remote may also be explicitly
+specified on the <code>stg pull</code> command line.</p>
+</blockquote>
+<h4 id="fetch-remote-changes-and-rebase">Fetch remote changes and rebase</h4>
+<p>Whereas <code>stg pull</code> fetches remote changes, updates the local branch, and
+rebases the branch&rsquo;s stack with a single command, there are times when
+those steps need to be performed separately. <a href="/man/stg-rebase"><code>stg rebase</code></a> can be used as part of a two-step process to
+rebase a StGit stack with remote changes.</p>
+<p>Step one is to fetch changes from a remote repository using either <a href="https://git-scm.com/docs/git-fetch"><code>git fetch</code></a> or <a href="https://git-scm.com/docs/git-remote"><code>git remote update</code></a>:</p>
+<pre><code>$ git remote update
+</code></pre><p>This updates remote branch pointers, but does not modify corresponding
+local branches. Step two of this process is to update a local branch
+with the remote changes and rebase the StGit stack on top of that. The
+following example rebases to the <em>master</em> branch of a remote repository
+&ldquo;origin&rdquo;:</p>
+<pre><code>$ stg rebase remotes/origin/master
+</code></pre><p>Like <a href="/man/stg-pull"><code>stg pull</code></a>, <a href="/man/stg-rebase"><code>rebase</code></a> will
+first pop any applied patches, update the local branch to point at
+the same commit as the specified remote branch, and then reapply (push)
+any previously applied patches.</p>
+<p>The end result is that patches are now applied on top of the latest
+<code>remotes/origin/master</code>.</p>
+<h3 id="when-patches-are-accepted-upstream">When patches are accepted upstream</h3>
+<p>When patches are accepted into an upstream repository, a good practice
+is to pull or rebase those commits into the local repository. The one
+difference in the process from above is the use of the <code>--merged</code> (<code>-m</code>)
+flag with <a href="/man/stg-pull"><code>stg pull</code></a> or <a href="/man/stg-rebase"><code>stg rebase</code></a>:</p>
+<pre><code>$ stg pull --merged
+</code></pre><p>or:</p>
+<pre><code>$ git remote update
+$ stg rebase --merged remotes/origin/master
+</code></pre><p>The <code>--merged</code> flag helps StGit detect that local patches have been
+merged upstream, at some cost in performance.</p>
+<p>The merged patches will remain present in the StGit stack after the pull
+or rebase, but empty (no diff) since the change they added is now
+present in the stack base. <a href="/man/stg-series"><code>stg series --empty</code></a> will
+prefix any empty patches with a <code>0</code>. And <a href="/man/stg-clean">stg clean</a> will
+delete all empty patches from the stack:</p>
+<pre><code>$ stg series --empty
+0+ patch1
+ + patch2
+0&gt; patch3
+$ stg clean
+$ stg series --empty
+ &gt; patch2
+</code></pre><h3 id="importing-patches">Importing patches</h3>
+<p>StGit supports importing patches from several non-Git sources using
+the <a href="/man/stg-import"><code>stg import</code></a> command.</p>
+<ol>
+<li>
+<p>A patch (diff) file.</p>
+</li>
+<li>
+<p>Several patch files containing one patch each along with a <code>series</code>
+file listing the patch files in their correct order.</p>
+</li>
+<li>
+<p>An email containing a single patch.</p>
+</li>
+<li>
+<p>A mailbox file (in standard Unix <code>mbox</code> format) containing
+multiple emails with one patch in each.</p>
+</li>
+</ol>
+<h4 id="importing-a-plain-patch">Importing a plain patch</h4>
+<p>Importing a plain patch, such as produced by e.g. GNU <code>diff</code>, <code>git diff</code>, <code>git show</code>, <a href="/man/stg-diff">stg diff</a>, or <a href="/man/stg-show">stg
+show</a>, is simply:</p>
+<pre><code>$ stg import patch-file
+</code></pre><p>The imported patch will be at the top of the stack.</p>
+<p>If a path is not provided on the command line, <a href="/man/stg-import">stg
+import</a> will read the patch from its standard input.
+Thus a patch may be imported by piping the diff into <code>stg import</code>.</p>
+<p>By default, the imported patch&rsquo;s name will be derived from the file
+name. And if present, the patch&rsquo;s commit message and author info will be
+taken from the beginning of the patch. However, command line options may
+be used to override these defaults.</p>
+<h4 id="importing-a-patch-series">Importing a patch series</h4>
+<p>Some programs&mdash;among them <a href="/man/stg-export">stg export</a>&mdash;will create a
+directory of files with one patch per file, along with a &lsquo;series&rsquo; file
+(often called <code>series</code>) listing the correct patch order. Passing
+<code>--series</code> with name of the series file to <a href="/man/stg-import">stg import</a>
+will import the entire series in its correct order.</p>
+<h4 id="importing-a-patch-from-an-e-mail">Importing a patch from an e-mail</h4>
+<p>Importing a patch from an email is simple too:</p>
+<pre><code>$ stg import --mail my-mail
+</code></pre><p>The email should be in standard Git mail format (which is what <a href="/man/stg-mail">stg
+mail</a> produces)&mdash;that is, with the patch in-line in the
+mail, not attached. The authorship info is taken from the mail headers,
+and the commit message is read from the &lsquo;Subject:&rsquo; header and the mail
+body.</p>
+<p>If no filename is provided, <code>stg import --mail</code> will read from stdin.
+Thus a mail reader may be configured to pipe email contents into <code>stg import --mail</code> to import (and apply) a patch email.</p>
+<h4 id="importing-a-mailbox-full-of-patches">Importing a mailbox full of patches</h4>
+<p>Finally, in case importing one patch at a time is too much work, <a href="/man/stg-import">stg
+import</a> also accepts an entire Unix <code>mbox</code>-format
+mailbox, either on the command line or on its standard input; just use
+the <code>--mbox</code> flag. Each mail should contain one patch, and is imported
+just like with <code>--mail</code>.</p>
+<p>Mailboxes full of patches are produced by e.g. <a href="/man/stg-mail">stg mail</a>
+with the <code>--mbox</code> flag, but most mail readers can produce them too,
+meaning that patch emails may be copied or moved to a separate mailbox
+and then imported.</p>
+
+  </main>
+<footer>
+  <small>&copy; 2020 Stacked Git Authors</small>
+</footer>
+</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html><head>
+    <title>
+         stg-refresh(1) &ndash;  Stacked Git
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="/css/stgit.css">
+    <link rel="stylesheet" href="/css/chroma.css">
+</head>
+<body>
+        <div><header>
+  
+  <a href="/">
+    <img src="/stgit.svg" alt="Stacked Git logo">
+  </a>
+  
+  <h3><a href="/">Stacked Git</a></h3>
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/changelog/">
+          
+          Changelog
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/man/">
+          
+          Man Pages
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/">
+          
+          Guides
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/tutorial/">
+          
+          Tutorial
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/">
+          
+          Repository
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/issues">
+          
+          Issue Tracker
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/releases">
+          
+          Releases
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://groups.google.com/d/forum/stgit">
+          
+          Forum
+          <img src="/ext-link.svg" alt="external link">
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+<div>
+<main>
+  <h2>
+    <a href="/man/stg-refresh/">
+      stg-refresh(1)
+    </a>
+  </h2>
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>stg-refresh - Generate a new commit for the current patch</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg refresh</em> [options] [--] [&lt;files or dirs&gt;]</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Include the latest work tree and index changes in the current patch.
+This command generates a new git commit object for the patch; the old
+commit is no longer visible.</p>
+</div>
+<div class="paragraph">
+<p>Refresh will warn if the index is dirty, and require use of either the
+<em>--index</em> or <em>--force</em> options to override this check. This is to prevent
+accidental full refresh when only some changes were staged using git add
+interative mode.</p>
+</div>
+<div class="paragraph">
+<p>You may optionally list one or more files or directories relative to
+the current working directory; if you do, only matching files will be
+updated.</p>
+</div>
+<div class="paragraph">
+<p>Behind the scenes, stg refresh first creates a new temporary patch
+with your updates, and then merges that patch into the patch you asked
+to have refreshed. If you asked to refresh a patch other than the
+topmost patch, there can be conflicts; in that case, the temporary
+patch will be left for you to take care of, for example with stg
+squash.</p>
+</div>
+<div class="paragraph">
+<p>The creation of the temporary patch is recorded in a separate entry in
+the patch stack log; this means that one undo step will undo the merge
+between the other patch and the temp patch, and two undo steps will
+additionally get rid of the temp patch.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-u</dt>
+<dt class="hdlist1">--update</dt>
+<dd>
+<p>Only update the current patch files.</p>
+</dd>
+<dt class="hdlist1">-i</dt>
+<dt class="hdlist1">--index</dt>
+<dd>
+<p>Instead of setting the patch top to the current contents of
+the worktree, set it to the current contents of the index.</p>
+</dd>
+<dt class="hdlist1">-F</dt>
+<dt class="hdlist1">--force</dt>
+<dd>
+<p>Instead of warning the user when some work has already been staged
+(such as with git add interactive mode) force a full refresh.</p>
+</dd>
+<dt class="hdlist1">-p PATCH</dt>
+<dt class="hdlist1">--patch PATCH</dt>
+<dd>
+<p>Refresh (applied) PATCH instead of the top patch.</p>
+</dd>
+<dt class="hdlist1">-e</dt>
+<dt class="hdlist1">--edit</dt>
+<dd>
+<p>Invoke an editor for the patch description.</p>
+</dd>
+<dt class="hdlist1">-a NOTE</dt>
+<dt class="hdlist1">--annotate NOTE</dt>
+<dd>
+<p>Annotate the patch log entry.</p>
+</dd>
+<dt class="hdlist1">-s</dt>
+<dt class="hdlist1">--submodules</dt>
+<dd>
+<p>Include submodules when refreshing patch contents.</p>
+</dd>
+<dt class="hdlist1">--no-submodules</dt>
+<dd>
+<p>Exclude submodules when refreshing patch contents.</p>
+</dd>
+<dt class="hdlist1">-m MESSAGE</dt>
+<dt class="hdlist1">--message MESSAGE</dt>
+<dd>
+<p>Use MESSAGE instead of invoking the editor.</p>
+</dd>
+<dt class="hdlist1">-f FILE</dt>
+<dt class="hdlist1">--file FILE</dt>
+<dd>
+<p>Use the contents of FILE instead of invoking the editor.
+(If FILE is "-", write to stdout.)</p>
+</dd>
+<dt class="hdlist1">--no-verify</dt>
+<dd>
+<p>This option bypasses the commit-msg hook.</p>
+</dd>
+<dt class="hdlist1">--sign</dt>
+<dd>
+<p>Add a "Signed-off-by:" to the end of the patch.</p>
+</dd>
+<dt class="hdlist1">--ack</dt>
+<dd>
+<p>Add an "Acked-by:" line to the end of the patch.</p>
+</dd>
+<dt class="hdlist1">--review</dt>
+<dd>
+<p>Add a "Reviewed-by:" line to the end of the patch.</p>
+</dd>
+<dt class="hdlist1">--author "NAME &lt;EMAIL&gt;"</dt>
+<dd>
+<p>Set the author details.</p>
+</dd>
+<dt class="hdlist1">--authname NAME</dt>
+<dd>
+<p>Set the author name.</p>
+</dd>
+<dt class="hdlist1">--authemail EMAIL</dt>
+<dd>
+<p>Set the author email.</p>
+</dd>
+<dt class="hdlist1">--authdate DATE</dt>
+<dd>
+<p>Set the author date.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stgit">StGit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the StGit suite - see <a href="/man/stg">stg(1)</a></p>
+</div>
+</div>
+</div>
+
+</main>
+<footer>
+  <small>&copy; 2020 Stacked Git Authors</small>
+</footer>
+</div>
+        </div>
+    </body>
+</html>

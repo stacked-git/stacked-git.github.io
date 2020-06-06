@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html><head>
+    <title>
+         Emacs stgit-mode Guide &ndash;  Stacked Git
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="/css/stgit.css">
+    <link rel="stylesheet" href="/css/chroma.css">
+</head>
+<body>
+        <div><header>
+  
+  <a href="/">
+    <img src="/stgit.svg" alt="Stacked Git logo">
+  </a>
+  
+  <h3><a href="/">Stacked Git</a></h3>
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/changelog/">
+          
+          Changelog
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/man/">
+          
+          Man Pages
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/">
+          
+          Guides
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/tutorial/">
+          
+          Tutorial
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/">
+          
+          Repository
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/issues">
+          
+          Issue Tracker
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/releases">
+          
+          Releases
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://groups.google.com/d/forum/stgit">
+          
+          Forum
+          <img src="/ext-link.svg" alt="external link">
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+<div>
+  <main>
+    <h1>
+      <a href="/guides/emacs-stgit-mode/">
+        Emacs stgit-mode Guide
+      </a>
+    </h1>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#basic-commands">Basic Commands</a></li>
+    <li><a href="#creating-new-patches">Creating New Patches</a></li>
+    <li><a href="#inspecting-patches">Inspecting Patches</a></li>
+    <li><a href="#changing-the-patch-series">Changing the Patch Series</a></li>
+    <li><a href="#patch-names">Patch Names</a></li>
+    <li><a href="#showing-committed-patches">Showing Committed Patches</a></li>
+    <li><a href="#using-the-index-and-working-tree">Using the Index and Working Tree</a></li>
+    <li><a href="#branches">Branches</a></li>
+    <li><a href="#merge-conflicts">Merge Conflicts</a></li>
+  </ul>
+</nav>
+  <p>StGit comes with an Emacs mode, <code>stgit-mode</code>, supporting Emacs versions
+22 and later.</p>
+<p>To start using it, add the <code>stgit/contrib</code> directory to your Emacs
+load-path and run <code>(require 'stgit)</code>. For example, you can add the
+following to your <code>.emacs</code> file:</p>
+<pre><code>(add-to-list 'load-path &quot;/path/to/stgit/contrib&quot;)
+(require 'stgit)
+</code></pre><p>Start <code>stgit-mode</code> using <code>M-x stgit</code> and select the directory where the
+source code you want to use StGit on can be found. If StGit has not been
+initialized in this directory yet, you will need to run +M-x stgit-init+
+before you continue.</p>
+<p>The <code>stgit-mode</code> buffer (usually named <code>*stgit*</code>) has the following
+layout:</p>
+<pre><code>Branch: name-of-branch
+
++ The first applied patch
++ Another applied patch
+&gt; The topmost patch
+  Index
+    &lt;no files&gt;
+  Work Tree
+    &lt;no files&gt;
+- An unapplied patch
+- Another unapplied patch
+--
+</code></pre><p>The above means that the active branch name is <code>name-of-branch</code> and it
+contains five patches, three of which are applied. The git index and
+working tree contain no (modified) files.</p>
+<h2 id="basic-commands">Basic Commands</h2>
+<p>To get help, press <code>h</code>. This opens a new buffer which lists all commands
+supported in <code>stgit-mode</code>. Also, if you have the menu bar enabled
+(toggled using <code>M-x menu-bar-mode</code>), a new menu entry called <code>StGit</code>
+will appear, from which you can run several StGit commands. As the menu
+should be self-explanatory, the rest of this tutorial will focus on
+available keyboard commands.</p>
+<p>Move the point (cursor) between lines using <code>C-p</code> and <code>C-n</code>, or between
+patches using <code>p</code> and <code>n</code>.</p>
+<p>You can <a href="/man/stg-undo">undo</a> and <a href="/man/stg-redo">redo</a> StGit commands
+using <code>C-/</code> and <code>C-c C-/</code>, respectively.</p>
+<h2 id="creating-new-patches">Creating New Patches</h2>
+<p>If you want to create a new patch, first make some changes that should
+go into it. As you save a file which is Git-controlled, it will appear
+as a modification in the <code>Work Tree</code> section:</p>
+<pre><code>  Work Tree
+    Modified       foo.txt
+</code></pre><p>To create a new patch based on the changes in the index or, if it
+contains no changes, the working tree, press <code>c</code>. This opens a new
+buffer where you can enter the patch description. When you are done,
+press <code>C-c C-c</code>. Your new patch will now show up in the <code>*stgit*</code>
+buffer, and the working tree will no longer contain any modifications:</p>
+<pre><code>+ The topmost patch
+&gt; First line of your new description
+  Index
+    &lt;no files&gt;
+  Work Tree
+    &lt;no files&gt;
+</code></pre><p>As you make additional changes in your files, and want to include them
+in the topmost patch, press <code>r</code>, which runs <a href="/man/stg-refresh">stg
+refresh</a>. If you want to add the changes to a patch
+which is not topmost, move the point to the line of that patch and press
+<code>C-u r</code>.</p>
+<h2 id="inspecting-patches">Inspecting Patches</h2>
+<p>To see what a particular patch contains, you can move the point (cursor)
+to the line of that patch, and press <code>RET</code> (Enter). This will &ldquo;expand&rdquo;
+the patch and show which files it changes:</p>
+<pre><code>+ My patch
+    Modified       foo.txt
+    Deleted        bar.c
+</code></pre><p>You can press <code>=</code>, which will show the diff of that patch or file in a
+new buffer. With a prefix argument (<code>C-u =</code>), the diff will not show
+changes in whitespace.</p>
+<p>To visit (open) a modified file in another Emacs window, press <code>o</code> on
+that line. <code>RET</code> will visit it in the current window.</p>
+<h2 id="changing-the-patch-series">Changing the Patch Series</h2>
+<p>You can <a href="/man/stg-push">push</a> and <a href="/man/stg-pop">pop</a> patches using <code>&gt;</code>
+(pushes the topmost unapplied patch onto the stack) and <code>&lt;</code> (pops the
+topmost applied patch off the stack).</p>
+<p>By moving the point to a particular patch and pressing <code>P</code> (<code>S-p</code>) you
+either (if it already was applied) pop that patch off the stack, or (if
+it was unapplied) push it onto the stack.</p>
+<p>You can move patches by first marking one or more using <code>m</code>. Then, move
+the point to where in the series you want these patches to move, and
+press <code>M</code>. Use <code>DEL</code> or <code>u</code> to remove a mark.</p>
+<p>You can also combine (<a href="/man/stg-squash">squash</a>) two or more patches by
+marking them and pressing <code>S</code> (<code>S-s</code>). This will open a new buffer where
+you can edit the patch description of the new, combined, patch. When
+done, press <code>C-c C-c</code>, and the topmost of the marked patches will be
+replaced in the stack by one combined patch.</p>
+<p>You can <a href="/man/stg-delete">delete</a> a patch by moving to its line and
+pressing <code>D</code>. If you press <code>C-u D</code>, the contents of the patch will be
+spilled to the index.</p>
+<p>To <a href="/man/stg-edit">edit</a> the description of a patch, press <code>e</code>. This
+opens the patch description in a new buffer. Press <code>C-c C-c</code> when you
+are done editing the patch.</p>
+<p>These operations may result in merge conflicts; more about that later.</p>
+<h2 id="patch-names">Patch Names</h2>
+<p>By default, the patch description is shown but not the patch names. You
+can toggle showing the names using <code>t n</code>. To rename a patch, press <code>C-c C-r</code>.</p>
+<h2 id="showing-committed-patches">Showing Committed Patches</h2>
+<p>Sometimes it is convenient to be able to investigate already committed
+patches. Toggle showing these using <code>t h</code>. With a prefix argument, you
+can set how many to show; e.g., <code>7 t h</code> will show seven already
+committed patches.</p>
+<h2 id="using-the-index-and-working-tree">Using the Index and Working Tree</h2>
+<p>You can move a changed file between the index and the working tree using
+<code>i</code>. This is useful if your working tree contains a number of changes
+and you want to create or refresh a patch using only some of the changed
+files. Once you have the correct set of files in the index, use <code>c</code> to
+create or <code>r</code> to refresh patches using only the files in the index.</p>
+<p>If you want to revert a change in either the index or the working tree,
+move the point to that line and press <code>U</code>. If you press <code>U</code> on the
+<code>Index</code> or <code>Work Tree</code> lines, all the changes in the index or working
+tree will be reverted.</p>
+<h2 id="branches">Branches</h2>
+<p>You can switch to another <a href="/man/stg-branch">branch</a> by pressing <code>B</code>. If
+you type the name of a branch that does not exist, you will be asked
+whether to create one. The new branch will be based off the current
+<code>HEAD</code>.</p>
+<p>Use <code>C-c C-b</code> to <a href="/man/stg-rebase">rebase</a> the current branch. It will
+default to rebasing to the <code>git config</code> setting for
+<code>branch.&lt;branch&gt;.stgit.parentbranch</code>.</p>
+<h2 id="merge-conflicts">Merge Conflicts</h2>
+<p>If an operation resulted in a merge conflict, the files with conflicts
+will show as <code>Unmerged</code> in the <code>*stgit*</code> buffer.</p>
+<p>To handle the conflicts, you can <a href="/man/stg-undo">undo</a> the operation
+that caused the conflict using <code>C-u C-/</code>. Note the <code>C-u</code> prefix, which
+will tell the undo operation to continue despite the index or working
+tree containing changes.</p>
+<p>If you instead want to resovle the changes, you must first edit the
+files with conflicts to make sure they are in the correct state. Once
+you have done this, press <code>R</code> on the line of that file, which will
+remove the <code>Unmerged</code> flag. Once all conflicts have been resolved, you
+can continue working as normal, for example by refreshing the patch that
+had the conflict.</p>
+<p>To investigate the reason of conflicts, you can use the <code>d b</code>, <code>d o</code>,
+and <code>d t</code> commands to, respectively, show the diffs against the merge
+base, our branch, or their branch. <code>d c</code> shows a combined diff. See
+<a href="https://git-scm.com/docs/git-diff">git-diff(1)</a> for more information
+about these commands.</p>
+<p>A more powerful tool to resolve conflicts is the Emacs <code>smerge-mode</code>. To
+start using it to resolve a conflict, press <code>d m</code>. It is outside the
+scope of this tutorial to explain how to use it, but press <code>q</code> to leave
+<code>smerge-mode</code>.</p>
+
+  </main>
+<footer>
+  <small>&copy; 2020 Stacked Git Authors</small>
+</footer>
+</div>
+        </div>
+    </body>
+</html>

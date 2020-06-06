@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html><head>
+    <title>
+         stg-mail(1) &ndash;  Stacked Git
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="/css/stgit.css">
+    <link rel="stylesheet" href="/css/chroma.css">
+</head>
+<body>
+        <div><header>
+  
+  <a href="/">
+    <img src="/stgit.svg" alt="Stacked Git logo">
+  </a>
+  
+  <h3><a href="/">Stacked Git</a></h3>
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/changelog/">
+          
+          Changelog
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/man/">
+          
+          Man Pages
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/">
+          
+          Guides
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/tutorial/">
+          
+          Tutorial
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/">
+          
+          Repository
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/issues">
+          
+          Issue Tracker
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/releases">
+          
+          Releases
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://groups.google.com/d/forum/stgit">
+          
+          Forum
+          <img src="/ext-link.svg" alt="external link">
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+<div>
+<main>
+  <h2>
+    <a href="/man/stg-mail/">
+      stg-mail(1)
+    </a>
+  </h2>
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>stg-mail - Send a patch or series of patches by e-mail</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg mail</em>  [options] [--] [&lt;patch1&gt;] [&lt;patch2&gt;] [&lt;patch3&gt;..&lt;patch4&gt;]</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Send a patch or a range of patches by e-mail using the SMTP server
+specified by the <em>stgit.smtpserver</em> configuration option, or the
+<em>--smtp-server</em> command line option. This option can also be an
+absolute path to <em>sendmail</em> followed by command line arguments.</p>
+</div>
+<div class="paragraph">
+<p>The From address and the e-mail format are generated from the template
+file passed as argument to <em>--template</em> (defaulting to
+<em>.git/patchmail.tmpl</em> or <em>~/.stgit/templates/patchmail.tmpl</em> or
+<em>/usr/share/stgit/templates/patchmail.tmpl</em>). A patch can be sent as
+attachment using the --attach option in which case the
+<em>mailattch.tmpl</em> template will be used instead of <em>patchmail.tmpl</em>.</p>
+</div>
+<div class="paragraph">
+<p>The To/Cc/Bcc addresses can either be added to the template file or
+passed via the corresponding command line options. They can be e-mail
+addresses or aliases which are automatically expanded to the values
+stored in the [mail "alias"] section of GIT configuration files.</p>
+</div>
+<div class="paragraph">
+<p>A preamble e-mail can be sent using the <em>--cover</em> and/or
+<em>--edit-cover</em> options. The first allows the user to specify a file to
+be used as a template. The latter option will invoke the editor on the
+specified file (defaulting to <em>.git/covermail.tmpl</em> or
+<em>~/.stgit/templates/covermail.tmpl</em> or
+<em>/usr/share/stgit/templates/covermail.tmpl</em>).</p>
+</div>
+<div class="paragraph">
+<p>All the subsequent e-mails appear as replies to the first e-mail sent
+(either the preamble or the first patch). E-mails can be seen as
+replies to a different e-mail by using the <em>--in-reply-to</em> option.</p>
+</div>
+<div class="paragraph">
+<p>SMTP authentication is also possible with <em>--smtp-user</em> and
+<em>--smtp-password</em> options, also available as configuration settings:
+<em>smtpuser</em> and <em>smtppassword</em>. TLS encryption can be enabled by
+<em>--smtp-tls</em> option and <em>smtptls</em> setting.</p>
+</div>
+<div class="paragraph">
+<p>The following variables are accepted by both the preamble and the
+patch e-mail templates:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%(diffstat)s     - diff statistics
+%(number)s       - empty if only one patch is sent or 'patchnr/totalnr'
+%(snumber)s      - stripped version of '%(number)s'
+%(nspace)s       - ' ' if %(number)s is non-empty, otherwise empty string
+%(patchnr)s      - patch number
+%(sender)s       - 'sender'  or 'authname &lt;authemail&gt;' as per the config file
+%(totalnr)s      - total number of patches to be sent
+%(version)s      - 'version' string passed on the command line (or empty)
+%(vspace)s       - ' ' if %(version)s is non-empty, otherwise empty string</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to the common variables, the preamble e-mail template
+accepts the following:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%(shortlog)s     - first line of each patch description, listed by author</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to the common variables, the patch e-mail template accepts
+the following:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>%(authdate)s     - patch creation date
+%(authemail)s    - author's email
+%(authname)s     - author's name
+%(commemail)s    - committer's e-mail
+%(commname)s     - committer's name
+%(diff)s         - unified diff of the patch
+%(fromauth)s     - 'From: author\n\n' if different from sender
+%(longdescr)s    - the rest of the patch description, after the first line
+%(patch)s        - patch name
+%(prefix)s       - 'prefix' string passed on the command line
+%(pspace)s       - ' ' if %(prefix)s is non-empty, otherwise empty string
+%(shortdescr)s   - the first line of the patch description</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-a</dt>
+<dt class="hdlist1">--all</dt>
+<dd>
+<p>E-mail all the applied patches.</p>
+</dd>
+<dt class="hdlist1">--to TO</dt>
+<dd>
+<p>Add TO to the To: list.</p>
+</dd>
+<dt class="hdlist1">--cc CC</dt>
+<dd>
+<p>Add CC to the Cc: list.</p>
+</dd>
+<dt class="hdlist1">--bcc BCC</dt>
+<dd>
+<p>Add BCC to the Bcc: list.</p>
+</dd>
+<dt class="hdlist1">--auto</dt>
+<dd>
+<p>Automatically cc the patch signers.</p>
+</dd>
+<dt class="hdlist1">--no-thread</dt>
+<dd>
+<p>Do not send subsequent messages as replies.</p>
+</dd>
+<dt class="hdlist1">--unrelated</dt>
+<dd>
+<p>Send patches without sequence numbering.</p>
+</dd>
+<dt class="hdlist1">--attach</dt>
+<dd>
+<p>Send a patch as attachment.</p>
+</dd>
+<dt class="hdlist1">--attach-inline</dt>
+<dd>
+<p>Send a patch inline and as an attachment.</p>
+</dd>
+<dt class="hdlist1">-v VERSION</dt>
+<dt class="hdlist1">--version VERSION</dt>
+<dd>
+<p>Add VERSION to the [PATCH &#8230;&#8203;] prefix.</p>
+</dd>
+<dt class="hdlist1">--prefix PREFIX</dt>
+<dd>
+<p>Add PREFIX to the [&#8230;&#8203; PATCH &#8230;&#8203;] prefix.</p>
+</dd>
+<dt class="hdlist1">-t FILE</dt>
+<dt class="hdlist1">--template FILE</dt>
+<dd>
+<p>Use FILE as the message template.</p>
+</dd>
+<dt class="hdlist1">-c FILE</dt>
+<dt class="hdlist1">--cover FILE</dt>
+<dd>
+<p>Send FILE as the cover message.</p>
+</dd>
+<dt class="hdlist1">-e</dt>
+<dt class="hdlist1">--edit-cover</dt>
+<dd>
+<p>Edit the cover message before sending.</p>
+</dd>
+<dt class="hdlist1">-E</dt>
+<dt class="hdlist1">--edit-patches</dt>
+<dd>
+<p>Edit each patch before sending.</p>
+</dd>
+<dt class="hdlist1">-s SECONDS</dt>
+<dt class="hdlist1">--sleep SECONDS</dt>
+<dd>
+<p>Sleep for SECONDS between e-mails sending.</p>
+</dd>
+<dt class="hdlist1">--in-reply-to REFID</dt>
+<dd>
+<p>Use REFID as the reference id.</p>
+</dd>
+<dt class="hdlist1">--smtp-server HOST[:PORT] or "/path/to/sendmail -t -i"</dt>
+<dd>
+<p>SMTP server or command to use for sending mail.</p>
+</dd>
+<dt class="hdlist1">-u USER</dt>
+<dt class="hdlist1">--smtp-user USER</dt>
+<dd>
+<p>Username for SMTP authentication.</p>
+</dd>
+<dt class="hdlist1">-p PASSWORD</dt>
+<dt class="hdlist1">--smtp-password PASSWORD</dt>
+<dd>
+<p>Password for SMTP authentication.</p>
+</dd>
+<dt class="hdlist1">-T</dt>
+<dt class="hdlist1">--smtp-tls</dt>
+<dd>
+<p>Use SMTP with TLS encryption.</p>
+</dd>
+<dt class="hdlist1">-b BRANCH</dt>
+<dt class="hdlist1">--branch BRANCH</dt>
+<dd>
+<p>Use BRANCH instead of the default branch.</p>
+</dd>
+<dt class="hdlist1">-m</dt>
+<dt class="hdlist1">--mbox</dt>
+<dd>
+<p>Generate an mbox file instead of sending.</p>
+</dd>
+<dt class="hdlist1">--domain DOMAIN</dt>
+<dd>
+<p>Use DOMAIN when generating message IDs (instead of the system hostname).</p>
+</dd>
+<dt class="hdlist1">--git</dt>
+<dd>
+<p>Use git send-email (EXPERIMENTAL).</p>
+</dd>
+<dt class="hdlist1">-O OPTIONS</dt>
+<dt class="hdlist1">--diff-opts OPTIONS</dt>
+<dd>
+<p>Extra options to pass to "git diff".</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stgit">StGit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the StGit suite - see <a href="/man/stg">stg(1)</a></p>
+</div>
+</div>
+</div>
+
+</main>
+<footer>
+  <small>&copy; 2020 Stacked Git Authors</small>
+</footer>
+</div>
+        </div>
+    </body>
+</html>

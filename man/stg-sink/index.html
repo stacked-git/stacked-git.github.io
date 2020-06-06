@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html><head>
+    <title>
+         stg-sink(1) &ndash;  Stacked Git
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="/css/stgit.css">
+    <link rel="stylesheet" href="/css/chroma.css">
+</head>
+<body>
+        <div><header>
+  
+  <a href="/">
+    <img src="/stgit.svg" alt="Stacked Git logo">
+  </a>
+  
+  <h3><a href="/">Stacked Git</a></h3>
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/changelog/">
+          
+          Changelog
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/man/">
+          
+          Man Pages
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/">
+          
+          Guides
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/tutorial/">
+          
+          Tutorial
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/">
+          
+          Repository
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/issues">
+          
+          Issue Tracker
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/releases">
+          
+          Releases
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://groups.google.com/d/forum/stgit">
+          
+          Forum
+          <img src="/ext-link.svg" alt="external link">
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+<div>
+<main>
+  <h2>
+    <a href="/man/stg-sink/">
+      stg-sink(1)
+    </a>
+  </h2>
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>stg-sink - Send patches deeper down the stack</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg sink</em> [-t &lt;target patch&gt;] [-n] [--] [&lt;patches&gt;]</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is the opposite operation of <a href="/man/stg-float">stg float</a>: move the specified
+patches down the stack.  It is for example useful to group stable
+patches near the bottom of the stack, where they are less likely to be
+impacted by the push of another patch, and from where they can be more
+easily committed or pushed.</p>
+</div>
+<div class="paragraph">
+<p>If no patch is specified on command-line, the current patch gets sunk.
+By default patches are sunk to the bottom of the stack, but the <em>--to</em>
+option allows one to place them under any applied patch.</p>
+</div>
+<div class="paragraph">
+<p>Sinking internally involves popping all patches (or all patches
+including &lt;target patch&gt;), then pushing the patches to sink, and then
+(unless <em>--nopush</em> is also given) pushing back into place the
+formerly-applied patches.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-n</dt>
+<dt class="hdlist1">--nopush</dt>
+<dd>
+<p>Do not push back on the stack the formerly-applied patches.
+Only the patches to sink are pushed.</p>
+</dd>
+<dt class="hdlist1">-t TARGET</dt>
+<dt class="hdlist1">--to TARGET</dt>
+<dd>
+<p>Specify a target patch to place the patches below, instead of
+sinking them to the bottom of the stack.</p>
+</dd>
+<dt class="hdlist1">-k</dt>
+<dt class="hdlist1">--keep</dt>
+<dd>
+<p>Keep the local changes.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stgit">StGit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the StGit suite - see <a href="/man/stg">stg(1)</a></p>
+</div>
+</div>
+</div>
+
+</main>
+<footer>
+  <small>&copy; 2020 Stacked Git Authors</small>
+</footer>
+</div>
+        </div>
+    </body>
+</html>

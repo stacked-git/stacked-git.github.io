@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
     <title>
-         Categories &ndash;  Stacked Git
+         stg-pull(1) &ndash;  Stacked Git
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,14 +94,80 @@
   </nav>
 </header>
 <div>
-  <main>
-    <h1>
-      <a href="/categories/">
-        Categories
-      </a>
-    </h1>
-  
-  </main>
+<main>
+  <h2>
+    <a href="/man/stg-pull/">
+      stg-pull(1)
+    </a>
+  </h2>
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>stg-pull - Pull changes from a remote repository</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg pull</em> [options] [--] [&lt;repository&gt;]</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pull the latest changes from the given remote repository (defaulting
+to branch.&lt;name&gt;.remote, or <em>origin</em> if not set). This command works
+by popping all the patches from the stack, pulling the changes in the
+parent repository, setting the base of the stack to the latest parent
+HEAD and pushing the patches back (unless <em>--nopush</em> is specified).
+The <em>push</em> operation can fail if there are conflicts. They need to be
+resolved and the patch pushed again.</p>
+</div>
+<div class="paragraph">
+<p>Check the <em>git fetch</em> documentation for the &lt;repository&gt; format.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-n</dt>
+<dt class="hdlist1">--nopush</dt>
+<dd>
+<p>Do not push the patches back after pulling.</p>
+</dd>
+<dt class="hdlist1">-m</dt>
+<dt class="hdlist1">--merged</dt>
+<dd>
+<p>Check for patches merged upstream.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stgit">StGit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the StGit suite - see <a href="/man/stg">stg(1)</a></p>
+</div>
+</div>
+</div>
+
+</main>
 <footer>
   <small>&copy; 2020 Stacked Git Authors</small>
 </footer>

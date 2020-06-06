@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html><head>
+    <title>
+         stg-push(1) &ndash;  Stacked Git
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="/css/stgit.css">
+    <link rel="stylesheet" href="/css/chroma.css">
+</head>
+<body>
+        <div><header>
+  
+  <a href="/">
+    <img src="/stgit.svg" alt="Stacked Git logo">
+  </a>
+  
+  <h3><a href="/">Stacked Git</a></h3>
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/changelog/">
+          
+          Changelog
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/man/">
+          
+          Man Pages
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/">
+          
+          Guides
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/tutorial/">
+          
+          Tutorial
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/">
+          
+          Repository
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/issues">
+          
+          Issue Tracker
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/releases">
+          
+          Releases
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://groups.google.com/d/forum/stgit">
+          
+          Forum
+          <img src="/ext-link.svg" alt="external link">
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+<div>
+<main>
+  <h2>
+    <a href="/man/stg-push/">
+      stg-push(1)
+    </a>
+  </h2>
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>stg-push - Push one or more patches onto the stack</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg push</em> [options] [--] [&lt;patch1&gt;] [&lt;patch2&gt;] [&lt;patch3&gt;..&lt;patch4&gt;]</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Push one or more patches (defaulting to the first unapplied one) onto
+the stack. The <em>push</em> operation allows patch reordering by commuting
+them with the three-way merge algorithm. If there are conflicts while
+pushing a patch, those conflicts are written to the work tree, and the
+command halts. Conflicts raised during the push operation have to be
+fixed and the <em>git add --update</em> command run (alternatively, you may
+undo the conflicting push with <em>stg undo</em>).</p>
+</div>
+<div class="paragraph">
+<p>The command also notifies when the patch becomes empty (fully merged
+upstream) or is modified (three-way merged) by the <em>push</em> operation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-a</dt>
+<dt class="hdlist1">--all</dt>
+<dd>
+<p>Push all the unapplied patches.</p>
+</dd>
+<dt class="hdlist1">-n NUMBER</dt>
+<dt class="hdlist1">--number NUMBER</dt>
+<dd>
+<p>Push the specified number of patches.</p>
+<div class="paragraph">
+<p>With a negative number, push all but that many patches.</p>
+</div>
+</dd>
+<dt class="hdlist1">--reverse</dt>
+<dd>
+<p>Push the patches in reverse order.</p>
+</dd>
+<dt class="hdlist1">--set-tree</dt>
+<dd>
+<p>Push the patches, but don&#8217;t perform a merge. Instead, the
+resulting tree will be identical to the tree that the patch
+previously created.</p>
+<div class="paragraph">
+<p>This can be useful when splitting a patch by first popping the
+patch and creating a new patch with some of the
+changes. Pushing the original patch with <em>--set-tree</em> will
+avoid conflicts and only the remaining changes will be in the
+patch.</p>
+</div>
+</dd>
+<dt class="hdlist1">-k</dt>
+<dt class="hdlist1">--keep</dt>
+<dd>
+<p>Keep the local changes.</p>
+</dd>
+<dt class="hdlist1">-m</dt>
+<dt class="hdlist1">--merged</dt>
+<dd>
+<p>Check for patches merged upstream.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stgit">StGit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the StGit suite - see <a href="/man/stg">stg(1)</a></p>
+</div>
+</div>
+</div>
+
+</main>
+<footer>
+  <small>&copy; 2020 Stacked Git Authors</small>
+</footer>
+</div>
+        </div>
+    </body>
+</html>

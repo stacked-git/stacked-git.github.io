@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html><head>
+    <title>
+         stg(1) &ndash;  Stacked Git
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="/css/stgit.css">
+    <link rel="stylesheet" href="/css/chroma.css">
+</head>
+<body>
+        <div><header>
+  
+  <a href="/">
+    <img src="/stgit.svg" alt="Stacked Git logo">
+  </a>
+  
+  <h3><a href="/">Stacked Git</a></h3>
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/changelog/">
+          
+          Changelog
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/man/">
+          
+          Man Pages
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/">
+          
+          Guides
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/tutorial/">
+          
+          Tutorial
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/">
+          
+          Repository
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/issues">
+          
+          Issue Tracker
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/releases">
+          
+          Releases
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://groups.google.com/d/forum/stgit">
+          
+          Forum
+          <img src="/ext-link.svg" alt="external link">
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+<div>
+<main>
+  <h2>
+    <a href="/man/stg/">
+      stg(1)
+    </a>
+  </h2>
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>stg - Manage stacks of patches using the Git content tracker</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg</em> [--version | --help]
+<em>stg</em> [--help &lt;command&gt; | &lt;command&gt; --help]
+<em>stg</em> &lt;command&gt; [COMMAND OPTIONS] [ARGS]</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>StGit (Stacked Git) is an application that provides a convenient way
+to maintain a <em>patch stack</em> on top of a Git branch:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The topmost (most recent) commits of a branch are given names.
+Such a named commit is called a <em>patch</em>.</p>
+</li>
+<li>
+<p>After making changes to the worktree, you can incorporate the
+changes into an existing patch; this is called <em>refreshing</em>. You
+may refresh any patch, not just the topmost one.</p>
+</li>
+<li>
+<p>You can <em>pop</em> a patch: temporarily putting it aside, so that the
+patch below it becomes the topmost patch. Later you may <em>push</em> it
+onto the stack again. Pushing and popping can be used to reorder
+patches.</p>
+</li>
+<li>
+<p>You can easily <em>rebase</em> your patch stack on top of any other Git
+commit. (The <em>base</em> of a patch stack is the most recent Git commit
+that is not an StGit patch.) For example, if you started making
+patches on top of someone else&#8217;s branch, and that person publishes
+an updated branch, you can take all your patches and apply them on
+top of the updated branch.</p>
+</li>
+<li>
+<p>As you would expect, changing what is below a patch can cause that
+patch to no longer apply cleanly&#8201;&#8212;&#8201;this can occur when you
+reorder patches, rebase patches, or refresh a non-topmost patch.
+StGit uses Git&#8217;s rename-aware three-way merge capability to
+automatically fix up what it can; if it still fails, it lets you
+manually resolve the conflict just like you would resolve a merge
+conflict in Git.</p>
+</li>
+<li>
+<p>The patch stack is just some extra metadata attached to regular
+Git commits, so you can continue to use most Git tools along with
+StGit.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_typical_uses">Typical uses</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Tracking branch</dt>
+<dd>
+<p>Tracking changes from a remote branch, while maintaining local
+modifications against that branch, possibly with the intent of
+sending some patches upstream. You can modify your patch stack as
+much as you want, and when your patches are finally accepted
+upstream, the permanent recorded Git history will contain just the
+final sequence of patches, and not the messy sequence of edits that
+produced them.</p>
+<div class="paragraph">
+<p>Commands of interest in this workflow are e.g. <a href="/man/stg-rebase">rebase</a> and
+<a href="/man/stg-mail">mail</a>.</p>
+</div>
+</dd>
+<dt class="hdlist1">Development branch</dt>
+<dd>
+<p>Even if you have no "upstream" to send patches to, you can use StGit
+as a convenient way to modify the recent history of a Git branch.
+For example, instead of first committing change <em>A</em>, then change
+<em>B</em>, and then <em>A2</em> to fix <em>A</em> because it wasn&#8217;t quite right, you
+could incorporate the fix directly into <em>A</em>. This way of working
+results in a much more readable Git history than if you had
+immortalized every misstep you made on your way to the right
+solution.</p>
+<div class="paragraph">
+<p>Commands of interest in this workflow are e.g. <a href="/man/stg-uncommit">uncommit</a>,
+which can be used to move the patch stack base downwards&#8201;&#8212;&#8201;i.e., turn
+Git commits into StGit patches after the fact&#8201;&#8212;&#8201;and
+<a href="/man/stg-commit">commit</a>, its inverse.</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="tutorial.html">the tutorial</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_specifying_patches">Specifying patches</h3>
+<div class="paragraph">
+<p>Many StGit commands take references to StGit patches as arguments.
+Patches in the stack are identified with short names, each of which
+must be unique in the stack.</p>
+</div>
+<div class="paragraph">
+<p>Patches in the current branch are simply referred to by their name.
+Some commands allow you to specify a patch in another branch of the
+repository; this is done by prefixing the patch name with the branch
+name and a colon (e.g. <code>otherbranch:thatpatch</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_specifying_commits">Specifying commits</h3>
+<div class="paragraph">
+<p>Some StGit commands take Git commits as arguments. StGit accepts all
+commit expressions that Git does; and in addition, a patch name
+(optionally prefixed by a branch name and a colon) is allowed in this
+context. The usual Git modifiers ^ and ~ are also allowed;
+e.g., <code>abranch:apatch~2</code> is the grandparent of the commit that is the
+patch <code>apatch</code> on branch <code>abranch</code>.</p>
+</div>
+<div class="paragraph">
+<p>Instead of a patch name, you can say <code>{base}</code> to refer to the
+stack base (the commit just below the bottommost patch); so,
+<code>abranch:{base}</code> is the base of the stack in branch <code>abranch</code>.</p>
+</div>
+<div class="paragraph">
+<p>If you need to pass a given StGit reference to a Git command,
+<a href="/man/stg-id">stg id</a> will convert it to a Git commit id for you.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following generic option flags are available. Additional options
+are available for (and documented with) the different subcommands.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">--version</dt>
+<dd>
+<p>Prints the StGit version, as well as version of other components
+used, such as Git and Python.</p>
+</dd>
+<dt class="hdlist1">--help</dt>
+<dd>
+<p>Prints the synopsis and a list of all subcommands. If an StGit
+subcommand is given, prints the synposis for that subcommand.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stgit_commands">STGIT COMMANDS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We divide StGit commands in thematic groups, according to the primary
+type of object they create or change.</p>
+</div>
+<div class="sect2">
+<h3 id="_repository_commands">Repository commands</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="/man/stg-clone">stg clone</a></dt>
+<dd>
+<p>Make a local clone of a remote repository</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-id">stg id</a></dt>
+<dd>
+<p>Print the git hash value of a StGit reference</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_stack_branch_commands">Stack (branch) commands</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="/man/stg-branch">stg branch</a></dt>
+<dd>
+<p>Branch operations: switch, list, create, rename, delete, &#8230;&#8203;</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-clean">stg clean</a></dt>
+<dd>
+<p>Delete the empty patches in the series</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-commit">stg commit</a></dt>
+<dd>
+<p>Permanently store the applied patches into the stack base</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-float">stg float</a></dt>
+<dd>
+<p>Push patches to the top, even if applied</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-goto">stg goto</a></dt>
+<dd>
+<p>Push or pop patches to the given one</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-hide">stg hide</a></dt>
+<dd>
+<p>Hide a patch in the series</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-init">stg init</a></dt>
+<dd>
+<p>Initialise the current branch for use with StGIT</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-log">stg log</a></dt>
+<dd>
+<p>Display or optionally clear the patch changelog</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-next">stg next</a></dt>
+<dd>
+<p>Print the name of the next patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-patches">stg patches</a></dt>
+<dd>
+<p>Show the applied patches modifying a file</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-pop">stg pop</a></dt>
+<dd>
+<p>Pop one or more patches from the stack</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-prev">stg prev</a></dt>
+<dd>
+<p>Print the name of the previous patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-publish">stg publish</a></dt>
+<dd>
+<p>(DEPRECATED) Push the stack changes to a merge-friendly branch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-pull">stg pull</a></dt>
+<dd>
+<p>Pull changes from a remote repository</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-push">stg push</a></dt>
+<dd>
+<p>Push one or more patches onto the stack</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-rebase">stg rebase</a></dt>
+<dd>
+<p>Move the stack base to another point in history</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-redo">stg redo</a></dt>
+<dd>
+<p>Undo the last undo operation</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-repair">stg repair</a></dt>
+<dd>
+<p>Fix StGit metadata if branch was modified with git commands</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-reset">stg reset</a></dt>
+<dd>
+<p>Reset the patch stack to an earlier state</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-series">stg series</a></dt>
+<dd>
+<p>Print the patch series</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-sink">stg sink</a></dt>
+<dd>
+<p>Send patches deeper down the stack</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-squash">stg squash</a></dt>
+<dd>
+<p>Squash two or more patches into one</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-top">stg top</a></dt>
+<dd>
+<p>Print the name of the top patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-uncommit">stg uncommit</a></dt>
+<dd>
+<p>Turn regular git commits into StGit patches</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-undo">stg undo</a></dt>
+<dd>
+<p>Undo the last operation</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-unhide">stg unhide</a></dt>
+<dd>
+<p>Unhide a hidden patch</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_patch_commands">Patch commands</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="/man/stg-delete">stg delete</a></dt>
+<dd>
+<p>Delete patches</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-edit">stg edit</a></dt>
+<dd>
+<p>Edit a patch description or diff</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-export">stg export</a></dt>
+<dd>
+<p>Export patches to a directory</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-files">stg files</a></dt>
+<dd>
+<p>Show the files modified by a patch (or the current patch)</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-fold">stg fold</a></dt>
+<dd>
+<p>Integrate a GNU diff patch into the current patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-import">stg import</a></dt>
+<dd>
+<p>Import a GNU diff file as a new patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-mail">stg mail</a></dt>
+<dd>
+<p>Send a patch or series of patches by e-mail</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-new">stg new</a></dt>
+<dd>
+<p>Create a new, empty patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-pick">stg pick</a></dt>
+<dd>
+<p>Import a patch from a different branch or a commit object</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-refresh">stg refresh</a></dt>
+<dd>
+<p>Generate a new commit for the current patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-rename">stg rename</a></dt>
+<dd>
+<p>Rename a patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-show">stg show</a></dt>
+<dd>
+<p>Show the commit corresponding to a patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-sync">stg sync</a></dt>
+<dd>
+<p>Synchronise patches with a branch or a series</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_indexworktree_commands">Index/worktree commands</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="/man/stg-diff">stg diff</a></dt>
+<dd>
+<p>Show the tree diff</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration_mechanism">CONFIGURATION MECHANISM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>StGit uses the same configuration mechanism as Git. See <a href="https://git-scm.com/docs/git">git(7)</a>
+for more details.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_templates">TEMPLATES</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A number of StGit commands make use of template files to provide
+useful default texts to be edited by the user. These <code>&lt;name&gt;.tmpl</code>
+template files are searched in the following directories:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>$GITDIR/</code> (in practice, the <code>.git/</code> directory in your repository)</p>
+</li>
+<li>
+<p><code>$HOME/.stgit/templates/</code></p>
+</li>
+<li>
+<p><code>/usr/share/stgit/templates/</code></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+</main>
+<footer>
+  <small>&copy; 2020 Stacked Git Authors</small>
+</footer>
+</div>
+        </div>
+    </body>
+</html>

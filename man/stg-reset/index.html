@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
     <title>
-         Categories &ndash;  Stacked Git
+         stg-reset(1) &ndash;  Stacked Git
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,14 +94,72 @@
   </nav>
 </header>
 <div>
-  <main>
-    <h1>
-      <a href="/categories/">
-        Categories
-      </a>
-    </h1>
-  
-  </main>
+<main>
+  <h2>
+    <a href="/man/stg-reset/">
+      stg-reset(1)
+    </a>
+  </h2>
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>stg-reset - Reset the patch stack to an earlier state</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg reset</em> [options] [--] [&lt;state&gt; [&lt;patchnames&gt;]]</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Reset the patch stack to an earlier state. If no state is specified,
+reset only the changes in the worktree.</p>
+</div>
+<div class="paragraph">
+<p>The state is specified with a commit id from a stack log; "stg log" lets
+you view this log, and "stg reset" lets you reset to any state you see
+in the log. If one or more patch names are given, reset only those
+patches, and leave the rest alone.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">--hard</dt>
+<dd>
+<p>Discard changes in your index/worktree.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stgit">StGit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the StGit suite - see <a href="/man/stg">stg(1)</a></p>
+</div>
+</div>
+</div>
+
+</main>
 <footer>
   <small>&copy; 2020 Stacked Git Authors</small>
 </footer>

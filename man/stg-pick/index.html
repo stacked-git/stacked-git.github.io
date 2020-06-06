@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html><head>
+    <title>
+         stg-pick(1) &ndash;  Stacked Git
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="/css/stgit.css">
+    <link rel="stylesheet" href="/css/chroma.css">
+</head>
+<body>
+        <div><header>
+  
+  <a href="/">
+    <img src="/stgit.svg" alt="Stacked Git logo">
+  </a>
+  
+  <h3><a href="/">Stacked Git</a></h3>
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/changelog/">
+          
+          Changelog
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/man/">
+          
+          Man Pages
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/">
+          
+          Guides
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/tutorial/">
+          
+          Tutorial
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/">
+          
+          Repository
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/issues">
+          
+          Issue Tracker
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/releases">
+          
+          Releases
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://groups.google.com/d/forum/stgit">
+          
+          Forum
+          <img src="/ext-link.svg" alt="external link">
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+<div>
+<main>
+  <h2>
+    <a href="/man/stg-pick/">
+      stg-pick(1)
+    </a>
+  </h2>
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>stg-pick - Import a patch from a different branch or a commit object</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg pick</em> [options] [--] ([&lt;patch1&gt;] [&lt;patch2&gt;] [&lt;patch3&gt;..&lt;patch4&gt;])|&lt;commit&gt;</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Import one or more patches from a different branch or a commit object
+into the current series. By default, the name of the imported patch is
+used as the name of the current patch. It can be overridden with the
+<em>--name</em> option. A commit object can be reverted with the <em>--revert</em>
+option. The log and author information are those of the commit
+object.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-n NAME</dt>
+<dt class="hdlist1">--name NAME</dt>
+<dd>
+<p>Use NAME as the patch name.</p>
+</dd>
+<dt class="hdlist1">-B REF-BRANCH</dt>
+<dt class="hdlist1">--ref-branch REF-BRANCH</dt>
+<dd>
+<p>Pick patches from BRANCH.</p>
+</dd>
+<dt class="hdlist1">-r</dt>
+<dt class="hdlist1">--revert</dt>
+<dd>
+<p>Revert the given commit object.</p>
+</dd>
+<dt class="hdlist1">-p COMMITID</dt>
+<dt class="hdlist1">--parent COMMITID</dt>
+<dd>
+<p>Use COMMITID as parent.</p>
+</dd>
+<dt class="hdlist1">-x</dt>
+<dt class="hdlist1">--expose</dt>
+<dd>
+<p>Append the imported commit id to the patch log.</p>
+</dd>
+<dt class="hdlist1">--fold</dt>
+<dd>
+<p>Fold the commit object into the current patch.</p>
+</dd>
+<dt class="hdlist1">--update</dt>
+<dd>
+<p>Like fold but only update the current patch files.</p>
+</dd>
+<dt class="hdlist1">-f FILE</dt>
+<dt class="hdlist1">--file FILE</dt>
+<dd>
+<p>Only fold the given file (can be used multiple times).</p>
+</dd>
+<dt class="hdlist1">--unapplied</dt>
+<dd>
+<p>Keep the patch unapplied.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stgit">StGit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the StGit suite - see <a href="/man/stg">stg(1)</a></p>
+</div>
+</div>
+</div>
+
+</main>
+<footer>
+  <small>&copy; 2020 Stacked Git Authors</small>
+</footer>
+</div>
+        </div>
+    </body>
+</html>

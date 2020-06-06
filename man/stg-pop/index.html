@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
     <title>
-         Categories &ndash;  Stacked Git
+         stg-pop(1) &ndash;  Stacked Git
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,14 +94,92 @@
   </nav>
 </header>
 <div>
-  <main>
-    <h1>
-      <a href="/categories/">
-        Categories
-      </a>
-    </h1>
-  
-  </main>
+<main>
+  <h2>
+    <a href="/man/stg-pop/">
+      stg-pop(1)
+    </a>
+  </h2>
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>stg-pop - Pop one or more patches from the stack</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg pop</em> [options] [--] [&lt;patch1&gt;] [&lt;patch2&gt;] [&lt;patch3&gt;..&lt;patch4&gt;]</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pop the topmost patch or a range of patches from the stack. The
+command fails if there are conflicts or local changes (and --keep was
+not specified).</p>
+</div>
+<div class="paragraph">
+<p>A series of pop and push operations are performed so that only the
+patches passed on the command line are popped from the stack. Some of
+the push operations may fail because of conflicts ("stg undo" would
+revert the last push operation).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-a</dt>
+<dt class="hdlist1">--all</dt>
+<dd>
+<p>Pop all the applied patches.</p>
+</dd>
+<dt class="hdlist1">-s</dt>
+<dt class="hdlist1">--spill</dt>
+<dd>
+<p>Pop a patch, keeping its modifications in the tree.</p>
+</dd>
+<dt class="hdlist1">-n NUMBER</dt>
+<dt class="hdlist1">--number NUMBER</dt>
+<dd>
+<p>Pop the specified number of patches.</p>
+<div class="paragraph">
+<p>With a negative number, pop all but that many patches.</p>
+</div>
+</dd>
+<dt class="hdlist1">-k</dt>
+<dt class="hdlist1">--keep</dt>
+<dd>
+<p>Keep the local changes.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stgit">StGit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the StGit suite - see <a href="/man/stg">stg(1)</a></p>
+</div>
+</div>
+</div>
+
+</main>
 <footer>
   <small>&copy; 2020 Stacked Git Authors</small>
 </footer>

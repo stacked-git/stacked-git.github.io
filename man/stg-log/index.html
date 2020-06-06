@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
     <title>
-         Categories &ndash;  Stacked Git
+         stg-log(1) &ndash;  Stacked Git
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,14 +94,101 @@
   </nav>
 </header>
 <div>
-  <main>
-    <h1>
-      <a href="/categories/">
-        Categories
-      </a>
-    </h1>
-  
-  </main>
+<main>
+  <h2>
+    <a href="/man/stg-log/">
+      stg-log(1)
+    </a>
+  </h2>
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>stg-log - Display or optionally clear the patch changelog</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg log</em> [options] [--] [&lt;patches&gt;]</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>List the history of the patch stack: the stack log. If one or more
+patch names are given, limit the list to the log entries that touch
+the named patches.</p>
+</div>
+<div class="paragraph">
+<p>"stg undo" and "stg redo" let you step back and forth in the patch
+stack. "stg reset" lets you go directly to any state.</p>
+</div>
+<div class="paragraph">
+<p>Given the --clear option, the log history will be deleted.
+This may be useful if the tree view has become too cluttered
+to be useful.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-b BRANCH</dt>
+<dt class="hdlist1">--branch BRANCH</dt>
+<dd>
+<p>Use BRANCH instead of the default one.</p>
+</dd>
+<dt class="hdlist1">-d</dt>
+<dt class="hdlist1">--diff</dt>
+<dd>
+<p>Show the refresh diffs.</p>
+</dd>
+<dt class="hdlist1">-n NUMBER</dt>
+<dt class="hdlist1">--number NUMBER</dt>
+<dd>
+<p>Limit the output to NUMBER commits.</p>
+</dd>
+<dt class="hdlist1">-f</dt>
+<dt class="hdlist1">--full</dt>
+<dd>
+<p>Show the full commit ids.</p>
+</dd>
+<dt class="hdlist1">-g</dt>
+<dt class="hdlist1">--graphical</dt>
+<dd>
+<p>Run gitk instead of printing.</p>
+</dd>
+<dt class="hdlist1">--clear</dt>
+<dd>
+<p>Clear the log history.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stgit">StGit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the StGit suite - see <a href="/man/stg">stg(1)</a></p>
+</div>
+</div>
+</div>
+
+</main>
 <footer>
   <small>&copy; 2020 Stacked Git Authors</small>
 </footer>

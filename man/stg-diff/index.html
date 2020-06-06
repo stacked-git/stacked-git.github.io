@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
     <title>
-         Categories &ndash;  Stacked Git
+         stg-diff(1) &ndash;  Stacked Git
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,14 +94,79 @@
   </nav>
 </header>
 <div>
-  <main>
-    <h1>
-      <a href="/categories/">
-        Categories
-      </a>
-    </h1>
-  
-  </main>
+<main>
+  <h2>
+    <a href="/man/stg-diff/">
+      stg-diff(1)
+    </a>
+  </h2>
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>stg-diff - Show the tree diff</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg diff</em> [options] [--] [&lt;files or dirs&gt;]</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Show the diff (default) or diffstat between the current working copy
+or a tree-ish object and another tree-ish object (defaulting to HEAD).
+File names can also be given to restrict the diff output. The
+tree-ish object has the format accepted by the <a href="/man/stg-id">stg id</a> command.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-r rev1[..[rev2]]</dt>
+<dt class="hdlist1">--range rev1[..[rev2]]</dt>
+<dd>
+<p>Show the diff between revisions.</p>
+</dd>
+<dt class="hdlist1">-s</dt>
+<dt class="hdlist1">--stat</dt>
+<dd>
+<p>Show the stat instead of the diff.</p>
+</dd>
+<dt class="hdlist1">-O OPTIONS</dt>
+<dt class="hdlist1">--diff-opts OPTIONS</dt>
+<dd>
+<p>Extra options to pass to "git diff".</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stgit">StGit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the StGit suite - see <a href="/man/stg">stg(1)</a></p>
+</div>
+</div>
+</div>
+
+</main>
 <footer>
   <small>&copy; 2020 Stacked Git Authors</small>
 </footer>
