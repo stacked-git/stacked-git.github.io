@@ -16,7 +16,12 @@ jobs:
         with:
           hugo-version: '0.72.0'
 
-      - name: Install other dependencies
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+
+      - name: Install asciidoctor
         run: |
           gem install asciidoctor
 
