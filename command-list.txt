@@ -33,8 +33,6 @@ linkstg:pop[]::
     Pop one or more patches from the stack
 linkstg:prev[]::
     Print the name of the previous patch
-linkstg:publish[]::
-    (DEPRECATED) Push the stack changes to a merge-friendly branch
 linkstg:pull[]::
     Pull changes from a remote repository
 linkstg:push[]::

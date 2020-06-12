@@ -42,6 +42,9 @@ the patch stack log; this means that one undo step will undo the merge
 between the other patch and the temp patch, and two undo steps will
 additionally get rid of the temp patch.
 
+Additionally, the '--spill' option resets the topmost patch, emptying
+the patch while leaving the patch's changes intact in the worktree.
+
 OPTIONS
 -------
 -u::
@@ -76,6 +79,9 @@ OPTIONS
 
 --no-submodules::
         Exclude submodules when refreshing patch contents.
+
+--spill::
+        Spill patch content to worktree and index, erasing patch content..
 
 -m MESSAGE::
 --message MESSAGE::

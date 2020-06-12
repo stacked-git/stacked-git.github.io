@@ -60,6 +60,9 @@ OPTIONS
 --description::
         Show a short description for each patch.
 
+--no-description::
+        Inverse of --description.
+
 --author::
         Show the author name for each patch.
 

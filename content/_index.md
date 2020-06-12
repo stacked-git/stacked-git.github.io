@@ -33,6 +33,12 @@ functionality.
 
 StGit is licensed under the GNU General Public License, version 2.
 
+## News
+
+- 2020-06-12: [StGit v0.23][v023] has been released.
+
+[v023]: https://github.com/stacked-git/stgit/releases/tag/v0.23
+
 ## Why Stacked Git?
 
 The *stack of patches* model is a natural way to maintain a clean Git
@@ -48,12 +54,13 @@ safely create, push, pop, refresh, and reorder patches.
 ### Dependencies
 
 StGit is written in pure Python with no third-party Python dependencies.
-StGit currently supports Python version 2.6, 2.7, 3.4, 3.5, 3.6, 3.7,
-and 3.8, although support for Python 2 will be dropped in a future
-release.
+StGit currently supports Python version 3.5 through 3.9. The last
+version of StGit to support Python 2 was [v0.23][v0.23].
 
 StGit interoperates closely with Git and does most of its work by
 running `git` commands. Git 2.2.0 or newer is required.
+
+[v0.23]: https://github.com/stacked-git/stgit/releases/tag/v0.23
 
 ### Package Repositories
 
