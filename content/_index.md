@@ -33,8 +33,7 @@ functionality.
 
 StGit is licensed under the GNU General Public License, version 2.
 
-Why Stacked Git?
-----------------
+## Why Stacked Git?
 
 The *stack of patches* model is a natural way to maintain a clean Git
 history while working on several changes concurrently. A stack-oriented
@@ -44,11 +43,9 @@ involving rebase, branches, ammended commits, and stashes.
 StGit, via the `stg` command line tool, provides commands to quickly and
 safely create, push, pop, refresh, and reorder patches.
 
-Installation
-============
+## Installation
 
-Dependencies
-------------
+### Dependencies
 
 StGit is written in pure Python with no third-party Python dependencies.
 StGit currently supports Python version 2.6, 2.7, 3.4, 3.5, 3.6, 3.7,
@@ -58,29 +55,29 @@ release.
 StGit interoperates closely with Git and does most of its work by
 running `git` commands. Git 2.2.0 or newer is required.
 
-Package Repositories
---------------------
+### Package Repositories
 
 Recent versions of StGit are available via many package repositories
-such as [HomeBrew](https://formulae.brew.sh/formula/stgit) and for many
-Linux distributions including:
-[Alpine](https://pkgs.alpinelinux.org/packages?name=stgit),
-[Arch](https://aur.archlinux.org/packages/stgit),
-[Fedora](https://src.fedoraproject.org/rpms/stgit),
-[Nix](https://nixos.org/nixos/packages.html?attr=gitAndTools.stgit) and
-[Ubuntu](https://packages.ubuntu.com/source/focal/stgit).
+such as [HomeBrew][pkg-homebrew] and for many Linux distributions
+including: [Alpine][pkg-alpine], [Arch][pkg-arch], [Fedora][pkg-fedora],
+[Nix][pkg-nix] and [Ubuntu][pkg-ubuntu].
 
 More details about StGit packages availability for various operating
-systems can be [found on
-repology](https://repology.org/project/stgit/versions).
+systems can be [found on repology][repology].
 
-Source Installation
--------------------
+[pkg-homebrew]: https://formulae.brew.sh/formula/stgit
+[pkg-alpine]: https://pkgs.alpinelinux.org/packages?name=stgit
+[pkg-arch]: https://aur.archlinux.org/packages/stgit
+[pkg-fedora]: https://src.fedoraproject.org/rpms/stgit
+[pkg-nix]: https://nixos.org/nixos/packages.html?attr=gitAndTools.stgit
+[pkg-ubuntu]: https://packages.ubuntu.com/source/focal/stgit
+[repology]: https://repology.org/project/stgit/versions
+
+### Source Installation
 
 StGit may also be installed from source. Download the [latest
-release](https://github.com/stacked-git/stgit/releases/latest) or clone
-from the [StGit repository on
-GitHub](https://github.com/stacked-git/stgit).
+release][gh-latest] or clone from the [StGit repository on
+GitHub][gh-repo].
 
 ```sh
 git clone https://github.com/stacked-git/stgit.git
@@ -93,10 +90,9 @@ make prefix=/usr/local install install-doc
 ```
 
 For more information about installation, see [the INSTALL
-file](https://github.com/stacked-git/stgit/blob/master/INSTALL).
+file][gh-install].
 
-Getting Started
-===============
+## Getting Started
 
 This [quick example of using StGit](usage-example) gives an idea of
 a basic StGit workflow using basic commands such as [stg
@@ -109,59 +105,65 @@ tutorial](man/tutorial.html).
 StGit also comes with a complete set of man pages which are [also
 available online](man/stg).
 
-Project Details
-===============
+## Project Details
 
-StGit source code is hosted on GitHub.
+[StGit source code](gh-repo) is hosted on GitHub.
 
-Maintainers
------------
+### Maintainers
 
 StGit is maintained by Pete Grayson and Catalin Marinas.
 
-Contributions
--------------
+### Contributions
 
 Issues and feature requests may be reported on the [StGit issue
-tracker](https://github.com/stacked-git/stgit/issues).
+tracker][gh-issues].
 
 Pull requests are welcome and may be submitted to the [repo on
-GitHub](https://github.com/stacked-git/stgit).
+GitHub][gh-repo].
 
-Mailing List
-------------
+See [CONTRIBUTING.md][gh-contributing] for more details about how to
+contribute to StGit.
+
+### Mailing List
 
 For questions or discussion, please send email to [the StGit mailing
 list](stgit@googlegroups.com). Or use the [Google Groups web
-interface](https://groups.google.com/d/forum/stgit).
+interface][gg-forum].
 
-Historical
-----------
+## Historical
 
 The StGit project was originally hosted at gna.org. That site is no
-longer available, but a
-[snapshot](https://web.archive.org/web/20170305222727/http://gna.org/projects/stgit/)
-remains available via the [Wayback Machine](https://web.archive.org/).
+longer available, but a [snapshot][gna-snapshot] remains available via
+the [Wayback Machine](https://web.archive.org/).
 
-Other Patch Stack Tools
------------------------
+## Other Patch Stack Tools
 
 StGit is not the first or only patch stack tool. Both
-[Quilt](https://savannah.nongnu.org/projects/quilt/) and Mercurial\'s
-[mq extension](https://www.mercurial-scm.org/wiki/MqExtension) offer
+[Quilt][site-quilt] and Mercurial\'s [mq extension][site-mq] offer
 similar interfaces for managing a stack (or \"queue\" or \"series\") of
 patches. While Quilt operates on patches outside the context of any
 other version control system using GNU diff, the mq extension is part of
-the [Mercurial](https://www.mercurial-scm.org/) version control system.
+the [Mercurial][site-mercurial] version control system.
 
 Similar to mq\'s relationship to Mercurial, StGit is tightly coupled to
 Git. StGit keeps its stack metadata as objects in the git repo and
 patches themselves are git commits.
 
-Acknowledgements
-----------------
+## Acknowledgements
 
 Many thanks to Peter Grayson, Karl Wiberg, Yann Dirson, Chuck Lever and
-Paolo Blaisorblade Giarrusso for their great contribution to the
-development of StGit. Many thanks to all the people who contributed
-patches, ideas or reported bugs.
+Paolo "Blaisorblade" Giarrusso for their great contribution to the
+development of StGit. Many thanks to [all the people who contributed
+patches][gh-authors], ideas or reported bugs.
+
+[gg-forum]: https://groups.google.com/d/forum/stgit
+[gh-authors]: https://github.com/stacked-git/stgit/blob/master/AUTHORS.md
+[gh-contributing]: https://github.com/stacked-git/stgit/blob/master/CONTRIBUTING.md
+[gh-install]: https://github.com/stacked-git/stgit/blob/master/INSTALL
+[gh-issues]: https://github.com/stacked-git/stgit/issues
+[gh-latest]: https://github.com/stacked-git/stgit/releases/latest
+[gh-repo]: https://github.com/stacked-git/stgit
+[gna-snapshot]: https://web.archive.org/web/20170305222727/http://gna.org/projects/stgit/
+[site-mercurial]: https://www.mercurial-scm.org/
+[site-mq]: https://www.mercurial-scm.org/wiki/MqExtension
+[site-quilt]: https://savannah.nongnu.org/projects/quilt/
