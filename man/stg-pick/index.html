@@ -133,6 +133,14 @@ used as the name of the current patch. It can be overridden with the
 option. The log and author information are those of the commit
 object.</p>
 </div>
+<div class="paragraph">
+<p>When using the <em>--expose</em> option, the format of the commit message is
+determined by the <em>stgit.pick.expose-format</em> configuration option. This option
+is a format string as may supplied as the <em>--pretty</em> option to
+<a href="https://git-scm.com/docs/git-show">git-show(1)</a>. The default is "format:%B%n(imported from commit %H)",
+which appends the commit hash of the picked commit to the patch&#8217;s commit
+message.</p>
+</div>
 </div>
 </div>
 <div class="sect1">

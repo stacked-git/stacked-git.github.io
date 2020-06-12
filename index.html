@@ -135,37 +135,31 @@ workflow using StGit can compliment, or even replace, many Git workflows
 involving rebase, branches, ammended commits, and stashes.</p>
 <p>StGit, via the <code>stg</code> command line tool, provides commands to quickly and
 safely create, push, pop, refresh, and reorder patches.</p>
-<h1 id="installation">Installation</h1>
-<h2 id="dependencies">Dependencies</h2>
+<h2 id="installation">Installation</h2>
+<h3 id="dependencies">Dependencies</h3>
 <p>StGit is written in pure Python with no third-party Python dependencies.
 StGit currently supports Python version 2.6, 2.7, 3.4, 3.5, 3.6, 3.7,
 and 3.8, although support for Python 2 will be dropped in a future
 release.</p>
 <p>StGit interoperates closely with Git and does most of its work by
 running <code>git</code> commands. Git 2.2.0 or newer is required.</p>
-<h2 id="package-repositories">Package Repositories</h2>
+<h3 id="package-repositories">Package Repositories</h3>
 <p>Recent versions of StGit are available via many package repositories
-such as <a href="https://formulae.brew.sh/formula/stgit">HomeBrew</a> and for many
-Linux distributions including:
-<a href="https://pkgs.alpinelinux.org/packages?name=stgit">Alpine</a>,
-<a href="https://aur.archlinux.org/packages/stgit">Arch</a>,
-<a href="https://src.fedoraproject.org/rpms/stgit">Fedora</a>,
-<a href="https://nixos.org/nixos/packages.html?attr=gitAndTools.stgit">Nix</a> and
-<a href="https://packages.ubuntu.com/source/focal/stgit">Ubuntu</a>.</p>
+such as <a href="https://formulae.brew.sh/formula/stgit">HomeBrew</a> and for many Linux distributions
+including: <a href="https://pkgs.alpinelinux.org/packages?name=stgit">Alpine</a>, <a href="https://aur.archlinux.org/packages/stgit">Arch</a>, <a href="https://src.fedoraproject.org/rpms/stgit">Fedora</a>,
+<a href="https://nixos.org/nixos/packages.html?attr=gitAndTools.stgit">Nix</a> and <a href="https://packages.ubuntu.com/source/focal/stgit">Ubuntu</a>.</p>
 <p>More details about StGit packages availability for various operating
-systems can be <a href="https://repology.org/project/stgit/versions">found on
-repology</a>.</p>
-<h2 id="source-installation">Source Installation</h2>
+systems can be <a href="https://repology.org/project/stgit/versions">found on repology</a>.</p>
+<h3 id="source-installation">Source Installation</h3>
 <p>StGit may also be installed from source. Download the <a href="https://github.com/stacked-git/stgit/releases/latest">latest
-release</a> or clone
-from the <a href="https://github.com/stacked-git/stgit">StGit repository on
+release</a> or clone from the <a href="https://github.com/stacked-git/stgit">StGit repository on
 GitHub</a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">git clone https://github.com/stacked-git/stgit.git
 </code></pre></div><p>To install from source, choose a <code>prefix</code> and:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">make <span class="nv">prefix</span><span class="o">=</span>/usr/local install install-doc
 </code></pre></div><p>For more information about installation, see <a href="https://github.com/stacked-git/stgit/blob/master/INSTALL">the INSTALL
 file</a>.</p>
-<h1 id="getting-started">Getting Started</h1>
+<h2 id="getting-started">Getting Started</h2>
 <p>This <a href="usage-example">quick example of using StGit</a> gives an idea of
 a basic StGit workflow using basic commands such as <a href="man/stg-push">stg
 push</a>, <a href="man/stg-pop">stg pop</a>, and <a href="man/stg-refresh">stg
@@ -174,28 +168,28 @@ refresh</a>.</p>
 tutorial</a>.</p>
 <p>StGit also comes with a complete set of man pages which are <a href="man/stg">also
 available online</a>.</p>
-<h1 id="project-details">Project Details</h1>
-<p>StGit source code is hosted on GitHub.</p>
-<h2 id="maintainers">Maintainers</h2>
+<h2 id="project-details">Project Details</h2>
+<p><a href="gh-repo">StGit source code</a> is hosted on GitHub.</p>
+<h3 id="maintainers">Maintainers</h3>
 <p>StGit is maintained by Pete Grayson and Catalin Marinas.</p>
-<h2 id="contributions">Contributions</h2>
+<h3 id="contributions">Contributions</h3>
 <p>Issues and feature requests may be reported on the <a href="https://github.com/stacked-git/stgit/issues">StGit issue
 tracker</a>.</p>
 <p>Pull requests are welcome and may be submitted to the <a href="https://github.com/stacked-git/stgit">repo on
 GitHub</a>.</p>
-<h2 id="mailing-list">Mailing List</h2>
+<p>See <a href="https://github.com/stacked-git/stgit/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> for more details about how to
+contribute to StGit.</p>
+<h3 id="mailing-list">Mailing List</h3>
 <p>For questions or discussion, please send email to <a href="stgit@googlegroups.com">the StGit mailing
 list</a>. Or use the <a href="https://groups.google.com/d/forum/stgit">Google Groups web
 interface</a>.</p>
 <h2 id="historical">Historical</h2>
 <p>The StGit project was originally hosted at gna.org. That site is no
-longer available, but a
-<a href="https://web.archive.org/web/20170305222727/http://gna.org/projects/stgit/">snapshot</a>
-remains available via the <a href="https://web.archive.org/">Wayback Machine</a>.</p>
+longer available, but a <a href="https://web.archive.org/web/20170305222727/http://gna.org/projects/stgit/">snapshot</a> remains available via
+the <a href="https://web.archive.org/">Wayback Machine</a>.</p>
 <h2 id="other-patch-stack-tools">Other Patch Stack Tools</h2>
 <p>StGit is not the first or only patch stack tool. Both
-<a href="https://savannah.nongnu.org/projects/quilt/">Quilt</a> and Mercurial's
-<a href="https://www.mercurial-scm.org/wiki/MqExtension">mq extension</a> offer
+<a href="https://savannah.nongnu.org/projects/quilt/">Quilt</a> and Mercurial's <a href="https://www.mercurial-scm.org/wiki/MqExtension">mq extension</a> offer
 similar interfaces for managing a stack (or &quot;queue&quot; or &quot;series&quot;) of
 patches. While Quilt operates on patches outside the context of any
 other version control system using GNU diff, the mq extension is part of
@@ -205,9 +199,9 @@ Git. StGit keeps its stack metadata as objects in the git repo and
 patches themselves are git commits.</p>
 <h2 id="acknowledgements">Acknowledgements</h2>
 <p>Many thanks to Peter Grayson, Karl Wiberg, Yann Dirson, Chuck Lever and
-Paolo Blaisorblade Giarrusso for their great contribution to the
-development of StGit. Many thanks to all the people who contributed
-patches, ideas or reported bugs.</p>
+Paolo &ldquo;Blaisorblade&rdquo; Giarrusso for their great contribution to the
+development of StGit. Many thanks to <a href="https://github.com/stacked-git/stgit/blob/master/AUTHORS.md">all the people who contributed
+patches</a>, ideas or reported bugs.</p>
 
 </main>
 <footer>
