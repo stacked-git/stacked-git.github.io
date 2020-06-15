@@ -386,6 +386,9 @@ ul.man-list > li:nth-last-child(n+10) ~ * {
     font-weight: 600;
     font-family: monospace;
 }
+.sect1 dt.hdlist1 + dt.hdlist1 {
+    margin-top: var(--s-3);
+}
 
 .sect1 ul,
 .sect1 ol {
@@ -398,16 +401,21 @@ ul.man-list > li:nth-last-child(n+10) ~ * {
 }
 
 .verseblock {
-    font-size: 1.25em;
     font-family: monospace;
     background: var(--color-lightish);
     padding-left: 1em;
     padding-top: 1em;
     padding-bottom: 1em;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .sectionbody > * + * {
     margin-top: var(--s1);
+}
+
+.sectionbody > .sect2 + .sect2 {
+    margin-top: var(--s3);
 }
 
 .sect1 > .sectionbody {
