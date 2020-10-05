@@ -126,50 +126,50 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you modify an StGit stack (branch) with some git commands&#8201;&#8212;&#8201;such
-as commit, pull, merge, and rebase&#8201;&#8212;&#8201;you will leave the StGit
+<p>If you modify an StGit stack (branch) with some git commands — such
+as commit, pull, merge, and rebase — you will leave the StGit
 metadata in an inconsistent state. In that situation, you have two
 options:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Use "stg undo" to undo the effect of the git commands. (If you
-know what you are doing and want more control, "git reset" or
+<p>Use &#34;stg undo&#34; to undo the effect of the git commands. (If you
+know what you are doing and want more control, &#34;git reset&#34; or
 similar will work too.)</p>
 </li>
 <li>
-<p>Use "stg repair". This will fix up the StGit metadata to
+<p>Use &#34;stg repair&#34;. This will fix up the StGit metadata to
 accommodate the modifications to the branch. Specifically, it will
 do the following:</p>
 <div class="ulist">
 <ul>
 <li>
 <p>If you have made regular git commits on top of your stack of
-StGit patches, "stg repair" makes new StGit patches out of
+StGit patches, &#34;stg repair&#34; makes new StGit patches out of
 them, preserving their contents.</p>
 </li>
 <li>
 <p>However, merge commits cannot become patches; if you have
-committed a merge on top of your stack, "repair" will simply
+committed a merge on top of your stack, &#34;repair&#34; will simply
 mark all patches below the merge unapplied, since they are no
-longer reachable. If this is not what you want, use "stg
-undo" to get rid of the merge and run "stg repair" again.</p>
+longer reachable. If this is not what you want, use &#34;stg
+undo&#34; to get rid of the merge and run &#34;stg repair&#34; again.</p>
 </li>
 <li>
 <p>The applied patches are supposed to be precisely those that
 are reachable from the branch head. If you have used e.g.
-"git reset" to move the head, some applied patches may no
+&#34;git reset&#34; to move the head, some applied patches may no
 longer be reachable, and some unapplied patches may have
-become reachable. "stg repair" will correct the appliedness
+become reachable. &#34;stg repair&#34; will correct the appliedness
 of such patches.</p>
 <div class="literalblock">
 <div class="content">
-<pre>"stg repair" will fix these inconsistencies reliably, so as long
+<pre>&#34;stg repair&#34; will fix these inconsistencies reliably, so as long
 as you like what it does, you have no reason to avoid causing
 them in the first place. For example, you might find it
 convenient to make commits with a graphical tool and then have
-"stg repair" make proper patches of the commits.</pre>
+&#34;stg repair&#34; make proper patches of the commits.</pre>
 </div>
 </div>
 </li>
@@ -180,17 +180,17 @@ convenient to make commits with a graphical tool and then have
 </div>
 <div class="admonitionblock note">
 <table>
-<tr>
+<tbody><tr>
 <td class="icon">
 <div class="title">Note</div>
 </td>
 <td class="content">
-If using git commands on the stack was a mistake, running "stg
-repair" is <em>not</em> what you want. In that case, what you want is option
+If using git commands on the stack was a mistake, running &#34;stg
+repair&#34; is <em>not</em> what you want. In that case, what you want is option
 (1) above.
 </td>
 </tr>
-</table>
+</tbody></table>
 </div>
 </div>
 </div>

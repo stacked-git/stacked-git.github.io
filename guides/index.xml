@@ -5,11 +5,7 @@
     <link>http://stacked-git.github.io/guides/</link>
     <description>Recent content in StGit Guides on Stacked Git</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="http://stacked-git.github.io/guides/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language><atom:link href="http://stacked-git.github.io/guides/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Emacs stgit-mode Guide</title>
       <link>http://stacked-git.github.io/guides/emacs-stgit-mode/</link>

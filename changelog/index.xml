@@ -5,10 +5,6 @@
     <link>http://stacked-git.github.io/changelog/</link>
     <description>Recent content in StGit Changelog on Stacked Git</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="http://stacked-git.github.io/changelog/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language><atom:link href="http://stacked-git.github.io/changelog/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

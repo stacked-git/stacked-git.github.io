@@ -143,7 +143,7 @@ attachment using the --attach option in which case the
 <p>The To/Cc/Bcc addresses can either be added to the template file or
 passed via the corresponding command line options. They can be e-mail
 addresses or aliases which are automatically expanded to the values
-stored in the [mail "alias"] section of GIT configuration files.</p>
+stored in the [mail &#34;alias&#34;] section of GIT configuration files.</p>
 </div>
 <div class="paragraph">
 <p>A preamble e-mail can be sent using the <em>--cover</em> and/or
@@ -171,14 +171,14 @@ patch e-mail templates:</p>
 <div class="literalblock">
 <div class="content">
 <pre>%(diffstat)s     - diff statistics
-%(number)s       - empty if only one patch is sent or 'patchnr/totalnr'
-%(snumber)s      - stripped version of '%(number)s'
-%(nspace)s       - ' ' if %(number)s is non-empty, otherwise empty string
+%(number)s       - empty if only one patch is sent or &#39;patchnr/totalnr&#39;
+%(snumber)s      - stripped version of &#39;%(number)s&#39;
+%(nspace)s       - &#39; &#39; if %(number)s is non-empty, otherwise empty string
 %(patchnr)s      - patch number
-%(sender)s       - 'sender'  or 'authname &lt;authemail&gt;' as per the config file
+%(sender)s       - &#39;sender&#39;  or &#39;authname &lt;authemail&gt;&#39; as per the config file
 %(totalnr)s      - total number of patches to be sent
-%(version)s      - 'version' string passed on the command line (or empty)
-%(vspace)s       - ' ' if %(version)s is non-empty, otherwise empty string</pre>
+%(version)s      - &#39;version&#39; string passed on the command line (or empty)
+%(vspace)s       - &#39; &#39; if %(version)s is non-empty, otherwise empty string</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -197,16 +197,16 @@ the following:</p>
 <div class="literalblock">
 <div class="content">
 <pre>%(authdate)s     - patch creation date
-%(authemail)s    - author's email
-%(authname)s     - author's name
-%(commemail)s    - committer's e-mail
-%(commname)s     - committer's name
+%(authemail)s    - author&#39;s email
+%(authname)s     - author&#39;s name
+%(commemail)s    - committer&#39;s e-mail
+%(commname)s     - committer&#39;s name
 %(diff)s         - unified diff of the patch
-%(fromauth)s     - 'From: author\n\n' if different from sender
+%(fromauth)s     - &#39;From: author\n\n&#39; if different from sender
 %(longdescr)s    - the rest of the patch description, after the first line
 %(patch)s        - patch name
-%(prefix)s       - 'prefix' string passed on the command line
-%(pspace)s       - ' ' if %(prefix)s is non-empty, otherwise empty string
+%(prefix)s       - &#39;prefix&#39; string passed on the command line
+%(pspace)s       - &#39; &#39; if %(prefix)s is non-empty, otherwise empty string
 %(shortdescr)s   - the first line of the patch description</pre>
 </div>
 </div>
@@ -257,11 +257,11 @@ the following:</p>
 <dt class="hdlist1">-v VERSION</dt>
 <dt class="hdlist1">--version VERSION</dt>
 <dd>
-<p>Add VERSION to the [PATCH &#8230;&#8203;] prefix.</p>
+<p>Add VERSION to the [PATCH …​] prefix.</p>
 </dd>
 <dt class="hdlist1">--prefix PREFIX</dt>
 <dd>
-<p>Add PREFIX to the [&#8230;&#8203; PATCH &#8230;&#8203;] prefix.</p>
+<p>Add PREFIX to the […​ PATCH …​] prefix.</p>
 </dd>
 <dt class="hdlist1">-t FILE</dt>
 <dt class="hdlist1">--template FILE</dt>
@@ -292,7 +292,7 @@ the following:</p>
 <dd>
 <p>Use REFID as the reference id.</p>
 </dd>
-<dt class="hdlist1">--smtp-server HOST[:PORT] or "/path/to/sendmail -t -i"</dt>
+<dt class="hdlist1">--smtp-server HOST[:PORT] or &#34;/path/to/sendmail -t -i&#34;</dt>
 <dd>
 <p>SMTP server or command to use for sending mail.</p>
 </dd>
@@ -332,7 +332,7 @@ the following:</p>
 <dt class="hdlist1">-O OPTIONS</dt>
 <dt class="hdlist1">--diff-opts OPTIONS</dt>
 <dd>
-<p>Extra options to pass to "git diff".</p>
+<p>Extra options to pass to &#34;git diff&#34;.</p>
 </dd>
 </dl>
 </div>

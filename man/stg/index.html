@@ -152,15 +152,15 @@ patches.</p>
 <p>You can easily <em>rebase</em> your patch stack on top of any other Git
 commit. (The <em>base</em> of a patch stack is the most recent Git commit
 that is not an StGit patch.) For example, if you started making
-patches on top of someone else&#8217;s branch, and that person publishes
+patches on top of someone else’s branch, and that person publishes
 an updated branch, you can take all your patches and apply them on
 top of the updated branch.</p>
 </li>
 <li>
 <p>As you would expect, changing what is below a patch can cause that
-patch to no longer apply cleanly&#8201;&#8212;&#8201;this can occur when you
+patch to no longer apply cleanly — this can occur when you
 reorder patches, rebase patches, or refresh a non-topmost patch.
-StGit uses Git&#8217;s rename-aware three-way merge capability to
+StGit uses Git’s rename-aware three-way merge capability to
 automatically fix up what it can; if it still fails, it lets you
 manually resolve the conflict just like you would resolve a merge
 conflict in Git.</p>
@@ -192,18 +192,18 @@ produced them.</p>
 </dd>
 <dt class="hdlist1">Development branch</dt>
 <dd>
-<p>Even if you have no "upstream" to send patches to, you can use StGit
+<p>Even if you have no &#34;upstream&#34; to send patches to, you can use StGit
 as a convenient way to modify the recent history of a Git branch.
 For example, instead of first committing change <em>A</em>, then change
-<em>B</em>, and then <em>A2</em> to fix <em>A</em> because it wasn&#8217;t quite right, you
+<em>B</em>, and then <em>A2</em> to fix <em>A</em> because it wasn’t quite right, you
 could incorporate the fix directly into <em>A</em>. This way of working
 results in a much more readable Git history than if you had
 immortalized every misstep you made on your way to the right
 solution.</p>
 <div class="paragraph">
 <p>Commands of interest in this workflow are e.g. <a href="/man/stg-uncommit">uncommit</a>,
-which can be used to move the patch stack base downwards&#8201;&#8212;&#8201;i.e., turn
-Git commits into StGit patches after the fact&#8201;&#8212;&#8201;and
+which can be used to move the patch stack base downwards — i.e., turn
+Git commits into StGit patches after the fact — and
 <a href="/man/stg-commit">commit</a>, its inverse.</p>
 </div>
 </dd>
@@ -301,7 +301,7 @@ type of object they create or change.</p>
 <dl>
 <dt class="hdlist1"><a href="/man/stg-branch">stg branch</a></dt>
 <dd>
-<p>Branch operations: switch, list, create, rename, delete, &#8230;&#8203;</p>
+<p>Branch operations: switch, list, create, rename, delete, …​</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-clean">stg clean</a></dt>
 <dd>

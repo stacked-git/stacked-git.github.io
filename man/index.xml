@@ -5,11 +5,7 @@
     <link>http://stacked-git.github.io/man/</link>
     <description>Recent content in Man pages on Stacked Git</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="http://stacked-git.github.io/man/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language><atom:link href="http://stacked-git.github.io/man/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>stg(1)</title>
       <link>http://stacked-git.github.io/man/stg/</link>
@@ -27,7 +23,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://stacked-git.github.io/man/stg-branch/</guid>
-      <description>NAME stg-branch - Branch operations: switch, list, create, rename, delete, &amp;#8230;&amp;#8203;
+      <description>NAME stg-branch - Branch operations: switch, list, create, rename, delete, …​
    SYNOPSIS stg branch stg branch [--merge] [--] &amp;lt;branch&amp;gt; stg branch --list stg branch --create [--] &amp;lt;new-branch&amp;gt; [&amp;lt;committish&amp;gt;] stg branch --clone [--] [&amp;lt;new-branch&amp;gt;] stg branch --rename [--] [&amp;lt;old-name&amp;gt;] &amp;lt;new-name&amp;gt; stg branch --protect [--] [&amp;lt;branch&amp;gt;] stg branch --unprotect [--] [&amp;lt;branch&amp;gt;] stg branch --delete [--force] [--] &amp;lt;branch&amp;gt; stg branch --cleanup [--force] [--] [&amp;lt;branch&amp;gt;] stg branch --description=&amp;lt;description&amp;gt; [--] [&amp;lt;branch&amp;gt;]    DESCRIPTION Create, clone, switch between, rename, or delete development branches within a git repository.</description>
     </item>
     
@@ -50,8 +46,8 @@
       
       <guid>http://stacked-git.github.io/man/stg-clone/</guid>
       <description>NAME stg-clone - Make a local clone of a remote repository
-   SYNOPSIS stg clone &amp;lt;repository&amp;gt; &amp;lt;dir&amp;gt;    DESCRIPTION Clone a git repository into the local directory &amp;lt;dir&amp;gt; (using linkstg:clone[]) and initialise the local branch &#34;master&#34;.
- This operation is for example suitable to start working using the &#34;tracking branch&#34; workflow (see 1). Other means to setup an StGit stack are linkstg:init[] and the --create and --clone commands of linkstg:branch[].</description>
+   SYNOPSIS stg clone &amp;lt;repository&amp;gt; &amp;lt;dir&amp;gt;    DESCRIPTION Clone a git repository into the local directory &amp;lt;dir&amp;gt; (using linkstg:clone[]) and initialise the local branch &amp;#34;master&amp;#34;.
+ This operation is for example suitable to start working using the &amp;#34;tracking branch&amp;#34; workflow (see 1). Other means to setup an StGit stack are linkstg:init[] and the --create and --clone commands of linkstg:branch[].</description>
     </item>
     
     <item>
@@ -72,7 +68,7 @@
       <guid>http://stacked-git.github.io/man/stg-delete/</guid>
       <description>NAME stg-delete - Delete patches
    SYNOPSIS stg delete [options] [--] &amp;lt;patch1&amp;gt; [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;]    DESCRIPTION Delete the patches passed as arguments.
-   OPTIONS  --spill  Delete the patches, but do not touch the index and worktree. This only works with applied patches at the top of the stack. The effect is to &#34;spill&#34; the patch contents into the index and worktree. This can be useful e.</description>
+   OPTIONS  --spill  Delete the patches, but do not touch the index and worktree. This only works with applied patches at the top of the stack. The effect is to &amp;#34;spill&amp;#34; the patch contents into the index and worktree. This can be useful e.</description>
     </item>
     
     <item>
@@ -106,7 +102,7 @@
       <guid>http://stacked-git.github.io/man/stg-export/</guid>
       <description>NAME stg-export - Export patches to a directory
    SYNOPSIS stg export [options] [--] [&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;]    DESCRIPTION Export a range of applied patches to a given directory (defaults to patches-&amp;lt;branch&amp;gt;) in a standard unified GNU diff format. A template file (defaulting to .git/patchexport.tmpl or ~/.stgit/templates/patchexport.tmpl or /usr/share/stgit/templates/patchexport.tmpl) can be used for the patch format. The following variables are supported in the template file:
- %(description)s - patch description %(shortdescr)s - the first line of the patch description %(longdescr)s - the rest of the patch description, after the first line %(diffstat)s - the diff statistics %(authname)s - author&#39;s name %(authemail)s - author&#39;s e-mail %(authdate)s - patch creation date %(commname)s - committer&#39;s name %(commemail)s - committer&#39;s e-mail     OPTIONS  -d DIR --dir DIR  Export patches to DIR instead of the default.</description>
+ %(description)s - patch description %(shortdescr)s - the first line of the patch description %(longdescr)s - the rest of the patch description, after the first line %(diffstat)s - the diff statistics %(authname)s - author&amp;#39;s name %(authemail)s - author&amp;#39;s e-mail %(authdate)s - patch creation date %(commname)s - committer&amp;#39;s name %(commemail)s - committer&amp;#39;s e-mail     OPTIONS  -d DIR --dir DIR  Export patches to DIR instead of the default.</description>
     </item>
     
     <item>
@@ -116,7 +112,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-files/</guid>
       <description>NAME stg-files - Show the files modified by a patch (or the current patch)
-   SYNOPSIS stg files [options] [--] [[&amp;lt;branch&amp;gt;:]&amp;lt;patch&amp;gt;]    DESCRIPTION List the files modified by the given patch (defaulting to the current one). Passing the --stat option shows the diff statistics for the given patch. Note that this command doesn&amp;#8217;t show the files modified in the working tree and not yet included in the patch by a refresh command.</description>
+   SYNOPSIS stg files [options] [--] [[&amp;lt;branch&amp;gt;:]&amp;lt;patch&amp;gt;]    DESCRIPTION List the files modified by the given patch (defaulting to the current one). Passing the --stat option shows the diff statistics for the given patch. Note that this command doesn’t show the files modified in the working tree and not yet included in the patch by a refresh command.</description>
     </item>
     
     <item>
@@ -171,7 +167,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-id/</guid>
       <description>NAME stg-id - Print the git hash value of a StGit reference
-   SYNOPSIS stg id [options] [--] [&amp;lt;id&amp;gt;]    DESCRIPTION Print the SHA1 value of a Git id (defaulting to HEAD). In addition to the standard Git id&amp;#8217;s like heads and tags, this command also accepts [&amp;lt;branch&amp;gt;:]&amp;lt;patch&amp;gt; for the id of a patch, [&amp;lt;branch&amp;gt;:]{base} for the base of the stack and [&amp;lt;branch&amp;gt;:]{public} for the public branch corresponding to the stack (see the publish command for details).</description>
+   SYNOPSIS stg id [options] [--] [&amp;lt;id&amp;gt;]    DESCRIPTION Print the SHA1 value of a Git id (defaulting to HEAD). In addition to the standard Git id’s like heads and tags, this command also accepts [&amp;lt;branch&amp;gt;:]&amp;lt;patch&amp;gt; for the id of a patch, [&amp;lt;branch&amp;gt;:]{base} for the base of the stack and [&amp;lt;branch&amp;gt;:]{public} for the public branch corresponding to the stack (see the publish command for details).</description>
     </item>
     
     <item>
@@ -204,7 +200,7 @@
       <guid>http://stacked-git.github.io/man/stg-log/</guid>
       <description>NAME stg-log - Display or optionally clear the patch changelog
    SYNOPSIS stg log [options] [--] [&amp;lt;patches&amp;gt;]    DESCRIPTION List the history of the patch stack: the stack log. If one or more patch names are given, limit the list to the log entries that touch the named patches.
- &#34;stg undo&#34; and &#34;stg redo&#34; let you step back and forth in the patch stack. &#34;stg reset&#34;</description>
+ &amp;#34;stg undo&amp;#34; and &amp;#34;stg redo&amp;#34; let you step back and forth in the patch stack. &amp;#34;stg reset&amp;#34; lets you go directly to any state.</description>
     </item>
     
     <item>
@@ -225,7 +221,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-new/</guid>
       <description>NAME stg-new - Create a new, empty patch
-   SYNOPSIS stg new [options] [--] [&amp;lt;name&amp;gt;]    DESCRIPTION Create a new, empty patch on the current stack. The new patch is created on top of the currently applied patches, and is made the new top of the stack. Uncommitted changes in the work tree are not included in the patch&amp;#8201;&amp;#8212;&amp;#8201;that is handled by linkstg:refresh[].
+   SYNOPSIS stg new [options] [--] [&amp;lt;name&amp;gt;]    DESCRIPTION Create a new, empty patch on the current stack. The new patch is created on top of the currently applied patches, and is made the new top of the stack. Uncommitted changes in the work tree are not included in the patch — that is handled by linkstg:refresh[].
  The given name must be unique in the stack, and may only contain alphanumeric characters, dashes and underscores.</description>
     </item>
     
@@ -337,8 +333,8 @@
       
       <guid>http://stacked-git.github.io/man/stg-redo/</guid>
       <description>NAME stg-redo - Undo the last undo operation
-   SYNOPSIS stg redo    DESCRIPTION If the last command was an undo, reset the patch stack to the state it had before the undo. Consecutive invocations of &#34;stg redo&#34; will undo the effects of consecutive invocations of &#34;stg undo&#34;.
- It is an error to run &#34;stg redo&#34; if the last command was not an undo.
+   SYNOPSIS stg redo    DESCRIPTION If the last command was an undo, reset the patch stack to the state it had before the undo. Consecutive invocations of &amp;#34;stg redo&amp;#34; will undo the effects of consecutive invocations of &amp;#34;stg undo&amp;#34;.
+ It is an error to run &amp;#34;stg redo&amp;#34; if the last command was not an undo.
    OPTIONS  -n N --number N  Undo the last N undos.</description>
     </item>
     
@@ -373,8 +369,8 @@
       
       <guid>http://stacked-git.github.io/man/stg-repair/</guid>
       <description>NAME stg-repair - Fix StGit metadata if branch was modified with git commands
-   SYNOPSIS stg repair    DESCRIPTION If you modify an StGit stack (branch) with some git commands&amp;#8201;&amp;#8212;&amp;#8201;such as commit, pull, merge, and rebase&amp;#8201;&amp;#8212;&amp;#8201;you will leave the StGit metadata in an inconsistent state. In that situation, you have two options:
-  Use &#34;stg undo&#34; to undo the effect of the git commands. (If you know what you are doing and want more control, &#34;</description>
+   SYNOPSIS stg repair    DESCRIPTION If you modify an StGit stack (branch) with some git commands — such as commit, pull, merge, and rebase — you will leave the StGit metadata in an inconsistent state. In that situation, you have two options:
+  Use &amp;#34;stg undo&amp;#34; to undo the effect of the git commands.</description>
     </item>
     
     <item>
@@ -385,7 +381,7 @@
       <guid>http://stacked-git.github.io/man/stg-reset/</guid>
       <description>NAME stg-reset - Reset the patch stack to an earlier state
    SYNOPSIS stg reset [options] [--] [&amp;lt;state&amp;gt; [&amp;lt;patchnames&amp;gt;]]    DESCRIPTION Reset the patch stack to an earlier state. If no state is specified, reset only the changes in the worktree.
- The state is specified with a commit id from a stack log; &#34;stg log&#34; lets you view this log, and &#34;stg reset&#34; lets you reset to any state you see in the log.</description>
+ The state is specified with a commit id from a stack log; &amp;#34;stg log&amp;#34; lets you view this log, and &amp;#34;stg reset&amp;#34; lets you reset to any state you see in the log.</description>
     </item>
     
     <item>
@@ -462,7 +458,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-uncommit/</guid>
       <description>NAME stg-uncommit - Turn regular git commits into StGit patches
-   SYNOPSIS stg uncommit [--] &amp;lt;patch-name-1&amp;gt; [&amp;lt;patch-name-2&amp;gt; &amp;#8230;&amp;#8203;] stg uncommit -n NUM [--] [&amp;lt;prefix&amp;gt;] stg uncommit -t &amp;lt;committish&amp;gt; [-x]    DESCRIPTION Take one or more git commits at the base of the current stack and turn them into StGIT patches. The new patches are created as applied patches at the bottom of the stack. This is the opposite of stg commit.</description>
+   SYNOPSIS stg uncommit [--] &amp;lt;patch-name-1&amp;gt; [&amp;lt;patch-name-2&amp;gt; …​] stg uncommit -n NUM [--] [&amp;lt;prefix&amp;gt;] stg uncommit -t &amp;lt;committish&amp;gt; [-x]    DESCRIPTION Take one or more git commits at the base of the current stack and turn them into StGIT patches. The new patches are created as applied patches at the bottom of the stack. This is the opposite of stg commit.</description>
     </item>
     
     <item>
@@ -472,7 +468,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-undo/</guid>
       <description>NAME stg-undo - Undo the last operation
-   SYNOPSIS stg undo    DESCRIPTION Reset the patch stack to the previous state. Consecutive invocations of &#34;stg undo&#34; will take you ever further into the past.
+   SYNOPSIS stg undo    DESCRIPTION Reset the patch stack to the previous state. Consecutive invocations of &amp;#34;stg undo&amp;#34; will take you ever further into the past.
    OPTIONS  -n N --number N  Undo the last N commands.
  --hard  Discard changes in your index/worktree.
      StGit Part of the StGit suite - see linkman:stg[1]</description>
