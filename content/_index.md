@@ -94,20 +94,20 @@ file][gh-install].
 
 ## Getting Started
 
-This [quick example of using StGit](usage-example) gives an idea of
-a basic StGit workflow using basic commands such as [stg
+This [quick example of using StGit](guides/usage-example/) gives an idea
+of a basic StGit workflow using basic commands such as [stg
 push](man/stg-push), [stg pop](man/stg-pop), and [stg
 refresh](man/stg-refresh).
 
 For a more complete guide to using StGit, [see the
-tutorial](man/tutorial.html).
+tutorial](guides/tutorial/).
 
 StGit also comes with a complete set of man pages which are [also
 available online](man/stg).
 
 ## Project Details
 
-[StGit source code](gh-repo) is hosted on GitHub.
+[StGit source code][gh-repo] is hosted on GitHub.
 
 ### Maintainers
 
