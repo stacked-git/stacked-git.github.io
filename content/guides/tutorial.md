@@ -506,7 +506,7 @@ have been made in a repository with commit messages such as:
 - "Fix documentation error"
 - "More snarfle cache"
 
-While the above may be the "true" histor of commits to the repository,
+While the above may be the "true" history of commits to the repository,
 it may not be the history that is most helpful to code reviewers or the
 developer who needs to understand what happended in this are of the code
 six months after the fact. Using StGit, this history can be revised to
