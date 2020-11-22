@@ -480,7 +480,7 @@ index 0a131d8..b4c7416 100644
 ### Development branch workflow
 
 One common use of StGit is to "polish" a Git branch before publishing it
-to another public repository. The kinds of polish a that StGit can help
+to another public repository. The kinds of polish that StGit can help
 with include:
 
 - Complete and correct commit messages.
