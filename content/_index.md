@@ -35,9 +35,26 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
-- 2020-06-12: [StGit v0.23][v023] has been released.
+### 2021-02-07: [StGit v1.0][v1.0] has been released.
 
-[v023]: https://github.com/stacked-git/stgit/releases/tag/v0.23
+The 1.0 release has been over a decade in the making. While light on new
+features, this release represents a major upgrade in StGit's foundation.
+
+Internally, StGit now maintains all metadata in Git objects. This
+enables novel workflows involving StGit stacks to be pushed and pulled
+from remote repositories using `git push` and `git pull`.
+
+And StGit has been fully migrated to Python 3. Dropping compatibility
+with Python 2 has allowed StGit's code to become simpler and avoid
+error-prone compatibility code. Python 3.5 is the new minimum required
+version.
+
+See the [changelog](changelog/) for more details.
+
+### 2020-06-12: [StGit v0.23][v0.23] has been released.
+
+[v1.0]: https://github.com/stacked-git/stgit/releases/tag/v1.0
+[v0.23]: https://github.com/stacked-git/stgit/releases/tag/v0.23
 
 ## Why Stacked Git?
 
@@ -59,8 +76,6 @@ version of StGit to support Python 2 was [v0.23][v0.23].
 
 StGit interoperates closely with Git and does most of its work by
 running `git` commands. Git 2.2.0 or newer is required.
-
-[v0.23]: https://github.com/stacked-git/stgit/releases/tag/v0.23
 
 ### Package Repositories
 
