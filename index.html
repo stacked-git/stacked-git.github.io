@@ -129,9 +129,18 @@ the StGit patches into other repositories using standard Git
 functionality.</p>
 <p>StGit is licensed under the GNU General Public License, version 2.</p>
 <h2 id="news">News</h2>
-<ul>
-<li>2020-06-12: <a href="https://github.com/stacked-git/stgit/releases/tag/v0.23">StGit v0.23</a> has been released.</li>
-</ul>
+<h3 id="2021-02-07-stgit-v10v10-has-been-released">2021-02-07: <a href="https://github.com/stacked-git/stgit/releases/tag/v1.0">StGit v1.0</a> has been released.</h3>
+<p>The 1.0 release has been over a decade in the making. While light on new
+features, this release represents a major upgrade in StGit&rsquo;s foundation.</p>
+<p>Internally, StGit now maintains all metadata in Git objects. This
+enables novel workflows involving StGit stacks to be pushed and pulled
+from remote repositories using <code>git push</code> and <code>git pull</code>.</p>
+<p>And StGit has been fully migrated to Python 3. Dropping compatibility
+with Python 2 has allowed StGit&rsquo;s code to become simpler and avoid
+error-prone compatibility code. Python 3.5 is the new minimum required
+version.</p>
+<p>See the <a href="changelog/">changelog</a> for more details.</p>
+<h3 id="2020-06-12-stgit-v023v023-has-been-released">2020-06-12: <a href="https://github.com/stacked-git/stgit/releases/tag/v0.23">StGit v0.23</a> has been released.</h3>
 <h2 id="why-stacked-git">Why Stacked Git?</h2>
 <p>The <em>stack of patches</em> model is a natural way to maintain a clean Git
 history while working on several changes concurrently. A stack-oriented
