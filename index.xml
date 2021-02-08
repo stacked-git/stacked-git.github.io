@@ -178,7 +178,7 @@ To start using it, add the stgit/contrib directory to your Emacs load-path and r
       
       <guid>http://stacked-git.github.io/man/stg-id/</guid>
       <description>NAME stg-id - Print the git hash value of a StGit reference
-   SYNOPSIS stg id [options] [--] [&amp;lt;id&amp;gt;]    DESCRIPTION Print the SHA1 value of a Git id (defaulting to HEAD). In addition to the standard Git id’s like heads and tags, this command also accepts [&amp;lt;branch&amp;gt;:]&amp;lt;patch&amp;gt; for the id of a patch, [&amp;lt;branch&amp;gt;:]{base} for the base of the stack and [&amp;lt;branch&amp;gt;:]{public} for the public branch corresponding to the stack (see the publish command for details).</description>
+   SYNOPSIS stg id [options] [--] [&amp;lt;id&amp;gt;]    DESCRIPTION Print the SHA1 value of a Git id (defaulting to HEAD). In addition to the standard Git id’s like heads and tags, this command also accepts [&amp;lt;branch&amp;gt;:]&amp;lt;patch&amp;gt; for the id of a patch and [&amp;lt;branch&amp;gt;:]{base} for the base of the stack. If no branch is specified, it defaults to the current one.</description>
     </item>
     
     <item>
@@ -292,17 +292,6 @@ To start using it, add the stgit/contrib directory to your Emacs load-path and r
    OPTIONS  -b BRANCH --branch BRANCH  Use BRANCH instead of the default branch.
      StGit Part of the StGit suite - see linkman:stg[1]
    </description>
-    </item>
-    
-    <item>
-      <title>stg-publish(1)</title>
-      <link>http://stacked-git.github.io/man/stg-publish/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://stacked-git.github.io/man/stg-publish/</guid>
-      <description>NAME stg-publish - (DEPRECATED) Push the stack changes to a merge-friendly branch
-   SYNOPSIS stg publish [options] [--] [branch]    DESCRIPTION DEPRECATED: The stg publish command will be removed in a future version of StGit.
- This command commits a set of changes on a separate (called public) branch based on the modifications of the given or current stack. The history of the public branch is not re-written, making it merge-friendly and feasible for publishing.</description>
     </item>
     
     <item>

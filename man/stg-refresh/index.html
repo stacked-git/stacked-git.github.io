@@ -155,6 +155,10 @@ the patch stack log; this means that one undo step will undo the merge
 between the other patch and the temp patch, and two undo steps will
 additionally get rid of the temp patch.</p>
 </div>
+<div class="paragraph">
+<p>Additionally, the <em>--spill</em> option resets the topmost patch, emptying
+the patch while leaving the patch’s changes intact in the worktree.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -202,6 +206,10 @@ the worktree, set it to the current contents of the index.</p>
 <dt class="hdlist1">--no-submodules</dt>
 <dd>
 <p>Exclude submodules when refreshing patch contents.</p>
+</dd>
+<dt class="hdlist1">--spill</dt>
+<dd>
+<p>Spill patch content to worktree and index, erasing patch content..</p>
 </dd>
 <dt class="hdlist1">-m MESSAGE</dt>
 <dt class="hdlist1">--message MESSAGE</dt>
