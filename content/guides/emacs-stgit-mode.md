@@ -184,7 +184,7 @@ that caused the conflict using `C-u C-/`. Note the `C-u` prefix, which
 will tell the undo operation to continue despite the index or working
 tree containing changes.
 
-If you instead want to resovle the changes, you must first edit the
+If you instead want to resolve the changes, you must first edit the
 files with conflicts to make sure they are in the correct state. Once
 you have done this, press `R` on the line of that file, which will
 remove the `Unmerged` flag. Once all conflicts have been resolved, you

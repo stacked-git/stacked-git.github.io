@@ -61,7 +61,7 @@ See the [changelog](changelog/) for more details.
 The *stack of patches* model is a natural way to maintain a clean Git
 history while working on several changes concurrently. A stack-oriented
 workflow using StGit can compliment, or even replace, many Git workflows
-involving rebase, branches, ammended commits, and stashes.
+involving rebase, branches, amended commits, and stashes.
 
 StGit, via the `stg` command line tool, provides commands to quickly and
 safely create, push, pop, refresh, and reorder patches.

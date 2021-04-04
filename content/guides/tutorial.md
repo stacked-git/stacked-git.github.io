@@ -336,7 +336,7 @@ the same lines or even the same files. When using StGit, it is the
 typical case that no conflicts emerge when pushing or reordering
 patches; especially when each patch is limited to one coherent topic.
 
-But it is inevidable that sometimes multiple patches necessarily affect
+But it is inevitable that sometimes multiple patches necessarily affect
 the same lines of a file. This is when a conflict may arise.
 
 ```
@@ -508,7 +508,7 @@ have been made in a repository with commit messages such as:
 
 While the above may be the "true" history of commits to the repository,
 it may not be the history that is most helpful to code reviewers or the
-developer who needs to understand what happended in this are of the code
+developer who needs to understand what happened in this are of the code
 six months after the fact. Using StGit, this history can be revised to
 be higher quality and higher value.
 
@@ -641,7 +641,7 @@ used as the email's subject.
 > to use an SMTP server instead of invoking `sendmail`.
 
 There are many command-line options to control exactly how patch emails
-are sent, as well as user-modifyable message templates. The [man
+are sent, as well as user-modifiable message templates. The [man
 page](/man/stg-mail) has all the details, but two worth mentioning here
 are:
 
