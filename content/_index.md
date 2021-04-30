@@ -35,6 +35,15 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2021-04-30: [StGit v1.1][v1.1] has been released.
+
+The marquee feature of StGit 1.1 is preliminary support signed patches.
+StGit now respects Git's `commit.gpgsign` configuration option to create
+signed patches (commits).
+
+This release also contains several minor new features and a few key bug
+fixes. See the [changelog](changelog/) for all the details.
+
 ### 2021-02-07: [StGit v1.0][v1.0] has been released.
 
 The 1.0 release has been over a decade in the making. While light on new
@@ -53,6 +62,7 @@ See the [changelog](changelog/) for more details.
 
 ### 2020-06-12: [StGit v0.23][v0.23] has been released.
 
+[v1.1]: https://github.com/stacked-git/stgit/releases/tag/v1.1
 [v1.0]: https://github.com/stacked-git/stgit/releases/tag/v1.0
 [v0.23]: https://github.com/stacked-git/stgit/releases/tag/v0.23
 

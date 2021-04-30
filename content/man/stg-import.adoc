@@ -62,6 +62,9 @@ OPTIONS
 --stripname::
         Strip numbering and extension from patch name.
 
+-C N::
+        Ensure N lines of surrounding context for each change.
+
 -i::
 --ignore::
         Ignore the applied patches in the series.

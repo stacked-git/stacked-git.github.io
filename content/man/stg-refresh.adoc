@@ -69,6 +69,10 @@ OPTIONS
 --edit::
         Invoke an editor for the patch description.
 
+-d::
+--diff::
+        Show diff when editing patch description.
+
 -a NOTE::
 --annotate NOTE::
         Annotate the patch log entry.
@@ -115,6 +119,10 @@ OPTIONS
 
 --authdate DATE::
         Set the author date.
+
+-O OPTIONS::
+--diff-opts OPTIONS::
+        Extra options to pass to "git diff".
 
 StGit
 -----

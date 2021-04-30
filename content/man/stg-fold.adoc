@@ -38,6 +38,9 @@ OPTIONS
 --strip N::
         Remove N leading slashes from diff paths (default 1).
 
+-C N::
+        Ensure N lines of surrounding context for each change.
+
 --reject::
         Leave the rejected hunks in corresponding *.rej files.
 
