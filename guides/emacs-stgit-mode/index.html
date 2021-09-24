@@ -118,7 +118,7 @@
 <p>To start using it, add the <code>stgit/contrib</code> directory to your Emacs
 load-path and run <code>(require 'stgit)</code>. For example, you can add the
 following to your <code>.emacs</code> file:</p>
-<pre><code>(add-to-list 'load-path &quot;/path/to/stgit/contrib&quot;)
+<pre tabindex="0"><code>(add-to-list 'load-path &quot;/path/to/stgit/contrib&quot;)
 (require 'stgit)
 </code></pre><p>Start <code>stgit-mode</code> using <code>M-x stgit</code> and select the directory where the
 source code you want to use StGit on can be found. If StGit has not been
@@ -126,7 +126,7 @@ initialized in this directory yet, you will need to run +M-x stgit-init+
 before you continue.</p>
 <p>The <code>stgit-mode</code> buffer (usually named <code>*stgit*</code>) has the following
 layout:</p>
-<pre><code>Branch: name-of-branch
+<pre tabindex="0"><code>Branch: name-of-branch
 
 + The first applied patch
 + Another applied patch
@@ -156,14 +156,14 @@ using <code>C-/</code> and <code>C-c C-/</code>, respectively.</p>
 <p>If you want to create a new patch, first make some changes that should
 go into it. As you save a file which is Git-controlled, it will appear
 as a modification in the <code>Work Tree</code> section:</p>
-<pre><code>  Work Tree
+<pre tabindex="0"><code>  Work Tree
     Modified       foo.txt
 </code></pre><p>To create a new patch based on the changes in the index or, if it
 contains no changes, the working tree, press <code>c</code>. This opens a new
 buffer where you can enter the patch description. When you are done,
 press <code>C-c C-c</code>. Your new patch will now show up in the <code>*stgit*</code>
 buffer, and the working tree will no longer contain any modifications:</p>
-<pre><code>+ The topmost patch
+<pre tabindex="0"><code>+ The topmost patch
 &gt; First line of your new description
   Index
     &lt;no files&gt;
@@ -178,7 +178,7 @@ which is not topmost, move the point to the line of that patch and press
 <p>To see what a particular patch contains, you can move the point (cursor)
 to the line of that patch, and press <code>RET</code> (Enter). This will &ldquo;expand&rdquo;
 the patch and show which files it changes:</p>
-<pre><code>+ My patch
+<pre tabindex="0"><code>+ My patch
     Modified       foo.txt
     Deleted        bar.c
 </code></pre><p>You can press <code>=</code>, which will show the diff of that patch or file in a

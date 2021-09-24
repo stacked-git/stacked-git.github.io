@@ -110,7 +110,7 @@
   <h2 id="setup">Setup</h2>
 <p>StGit is used with regular Git repositories. Here we setup a simple Git
 repository with two files:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git init myrepo
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git init myrepo
 $ <span class="nb">cd</span> myrepo
 $ <span class="nb">echo</span> <span class="s2">&#34;Hello&#34;</span> &gt; hi.txt
 $ <span class="nb">echo</span> <span class="s2">&#34;Goodbye&#34;</span> &gt; bye.txt
@@ -118,10 +118,10 @@ $ git add hi.txt bye.txt
 $ git commit -m <span class="s2">&#34;Initial commit&#34;</span>
 </code></pre></div><p>The <code>stg init</code> command is run once to enable use of StGit on a branch,
 in this case the <code>master</code> branch.</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ stg init
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ stg init
 </code></pre></div><p>After initializing StGit, new patches may be created. But first, let&rsquo;s
 make an edit to one of the files.</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ <span class="nb">echo</span> <span class="s2">&#34;Hello world&#34;</span> &gt; hi.txt
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ <span class="nb">echo</span> <span class="s2">&#34;Hello world&#34;</span> &gt; hi.txt
 $ stg status
  M hi.txt
 </code></pre></div><p>The <code>stg status</code> command is just a built-in alias for <code>git status -s</code>.</p>
@@ -136,24 +136,24 @@ we will be prompted to enter a message interactively using <code>$EDITOR</code>.
 <p>A nice thing about StGit patches is that their commit message can easily
 be revised the using <code>stg edit</code>. So for now, we use a short and simple
 message.</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ stg new -m <span class="s2">&#34;Improve greeting&#34;</span> hello-patch
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ stg new -m <span class="s2">&#34;Improve greeting&#34;</span> hello-patch
 Now at patch <span class="s2">&#34;hello-patch&#34;</span>
 </code></pre></div><p>With the first patch created, we can take a look at the patch stack
 using the <code>stg series</code> command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ stg series
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ stg series
 &gt; hello-patch
 </code></pre></div><p>Creating a new patch with <code>stg new</code> does not capture modifications in
 our working tree to the patch. Another step is required to incorporate
 modifications from the working tree into the current (topmost) patch.
 To do this, we use <code>stg refresh</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ stg status
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ stg status
  M hi.txt
 $ stg refresh
 Now at patch <span class="s2">&#34;hello-patch&#34;</span>
 $ stg status
 </code></pre></div><p>We can see the contents of a patch using <code>stg show</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ stg show hello-patch
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-diff" data-lang="diff">commit 4ce03d47953f19771ff4e1030a296c4628e43531
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ stg show hello-patch
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff">commit 4ce03d47953f19771ff4e1030a296c4628e43531
 Author: Au Thor &lt;author@example.com&gt;
 Date:   Wed Jan 1 23:59:00 2020 -0400
 
@@ -169,7 +169,7 @@ Date:   Wed Jan 1 23:59:00 2020 -0400
 </span></code></pre></div><h2 id="working-with-multiple-patches">Working with Multiple Patches</h2>
 <p>StGit is most useful when working on more than one patch concurrently.
 Let&rsquo;s add another patch to improve the goodbye.</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ stg new -m <span class="s2">&#34;goodbye&#34;</span> goodbye-patch
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ stg new -m <span class="s2">&#34;goodbye&#34;</span> goodbye-patch
 Now at patch <span class="s2">&#34;goodbye-patch&#34;</span>
 $ stg series
 + hello-patch
@@ -180,7 +180,7 @@ Now at patch <span class="s2">&#34;goodbye-patch&#34;</span>
 </code></pre></div><p>These patches are looking good...except the greeting is missing
 punctuation! With StGit, we can easily revisit an earlier patch, make
 changes, and return to the prior patch using <code>stg pop</code> and <code>stg push</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ stg pop
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ stg pop
 Popped goodbye-patch
 Now at patch <span class="s2">&#34;hello-patch&#34;</span>
 $ <span class="nb">echo</span> <span class="s2">&#34;Hello, world.&#34;</span> &gt; hi.txt
@@ -192,11 +192,11 @@ Now at patch <span class="s2">&#34;goodbye-patch&#34;</span>
 </code></pre></div><p>We want to make sure to have quality commit messages before we call
 these patches complete. Let&rsquo;s update the top patch (<code>goodbye-patch</code>)
 with an improved commit message using <code>stg edit</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ stg edit -m <span class="s2">&#34;Use elaborate farewell&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ stg edit -m <span class="s2">&#34;Use elaborate farewell&#34;</span>
 </code></pre></div><p>Perfect. The last step is to commit these patches to the repository&rsquo;s
 history using <code>stg commit</code>. We use the <code>--all</code> option to indicate that
 we want all applied patches to be committed.</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ stg commit --all
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh">$ stg commit --all
 </code></pre></div><p>StGit patches are regular, first-class Git commit objects. They are
 visible when running <code>git log</code> and can be manipulated using regular Git
 commands. Thus <code>stg commit</code> does not modify the patches (commits),
