@@ -18,7 +18,7 @@
     --color-hover: #aa87de;
     --color-complement: #7add7a;
 
-    --ratio: 1.2;
+    --ratio: 1.125;
     --s-5: calc(var(--s0) / var(--ratio) / var(--ratio) / var(--ratio) / var(--ratio) / var(--ratio));
     --s-4: calc(var(--s0) / var(--ratio) / var(--ratio) / var(--ratio) / var(--ratio));
     --s-3: calc(var(--s0) / var(--ratio) / var(--ratio) / var(--ratio));
