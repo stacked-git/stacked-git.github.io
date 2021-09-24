@@ -285,7 +285,7 @@ td:first-child {
     font-weight: 700;
 }
 
-code {
+pre, code {
     font-family: var(--font-mono);
     font-size: 0.9em;
 }
@@ -321,6 +321,9 @@ a:hover {
 }
 code {
     background: var(--color-lightish);
+}
+p code {
+    padding: 0 0.25em 0 0.25em;
 }
 
 
@@ -398,6 +401,15 @@ ul.man-list > li:nth-last-child(n+10) ~ * {
 .sect1 ul > * + *,
 .sect1 ol > * + *, {
     margin-top: var(--s0);
+}
+
+.literalblock {
+    background: var(--color-lightish);
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .verseblock {
