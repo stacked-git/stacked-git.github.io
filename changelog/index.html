@@ -102,42 +102,119 @@
   
   
   
-<h2 id="11-2021-04-30"><a href="https://github.com/stacked-git/stgit/releases/tag/v1.1">[1.1] 2021-04-30</a></h2>
+<h2 id="12-2021-09-26"><a href="https://github.com/stacked-git/stgit/releases/tag/v1.2">[1.2] 2021-09-26</a></h2>
 <h3 id="removed">Removed</h3>
+<h3 id="deprecated">Deprecated</h3>
+<ul>
+<li>Python 3.5, which became EOL 2020-09-13, support is deprecated and
+will be removed in a future StGit release</li>
+<li>Python 3.6, which will be EOL 2021-12-23, support is deprecated and
+will be removed in a future StGit release</li>
+</ul>
 <h3 id="added">Added</h3>
+<ul>
+<li><code>stg rebase </code> learns <code>--interactive</code>; easily re-order, edit, squash,
+fixup, or delete patches via your editor</li>
+<li><code>stg rebase</code> learns <code>--autostash</code>; stash changes before the rebase and
+apply them after. Also configurable with the <code>stgit.autostash</code>
+configuration option</li>
+<li><code>stg edit</code> can now rename patches (<a href="https://github.com/stacked-git/stgit/issues/119">#119</a>)</li>
+<li><code>stg edit</code> gains helpful instructions (<a href="https://github.com/stacked-git/stgit/issues/138">#138</a>)</li>
+<li><code>stg new</code> learns <code>--verbose</code>, which includes a diff in the editor
+window (similar to <code>git commit --verbose</code>). This behavior is also
+configurable with the <code>stgit.new.verbose</code> configuration option</li>
+<li><code>stg push</code> and <code>stg float</code> learn <code>--noapply</code> option; allows patches
+to be reordered without updating worktree and deferring merge conflict
+resolution (<a href="https://github.com/stacked-git/stgit/issues/144">#144</a>)</li>
+<li><code>stg edit</code>, <code>stg refresh</code>, and <code>stg new</code> learn the <code>--sign-by</code>,
+<code>--ack-by</code>, and <code>--review-by</code> options which allow those respective
+trailers' values to be specified by the user on the command line (<a href="https://github.com/stacked-git/stgit/issues/92">#92</a>)</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Stack metadata version 5; stack metadata is moved from
+<code>refs/heads/&lt;branch&gt;.stgit</code> to <code>refs/stacks/&lt;branch&gt;</code> and the stack
+metadata file now uses a JSON format instead of the prior custom
+format; the stack metadata will be upgraded to v5 on first use of
+this version of StGit; like all stack metadata upgrades, <strong>this is a
+one-way auto-upgrade for existing stacks</strong> (<a href="https://github.com/stacked-git/stgit/issues/65">#65</a>)</li>
+<li>Use setuptools instead of distutils for packaging</li>
+<li>No git or python version checks in setup.py</li>
+<li>Use different dynamic versioning system</li>
+<li>Install <code>stg</code> executable as console_script entry point</li>
+<li>More sophisticated search for bash.exe on Windows when running hooks</li>
+<li>The editor window text for <code>stg squash</code> has been modified to mirror
+git&rsquo;s behavior &ndash; the squash edit message now includes all commits
+(<a href="https://github.com/stacked-git/stgit/issues/71">#71</a>)</li>
+<li>Binary diffs are no longer shown when with <code>stg edit -d</code></li>
+<li>Multiple trailers can now be added at once; this is now allowed, for
+example: <code>stg edit --sign --review --ack</code></li>
+<li>Update zsh completion for <code>stg rebase</code> to show local and remote heads
+(<a href="https://github.com/stacked-git/stgit/issues/102">#102</a>)</li>
+<li>Zsh completions for commands with patch arguments now comprehend the
+effect of <code>-b/--branch</code> and <code>-B/--ref-branch</code></li>
+<li>Zsh completions now guard patch names&ndash;one less TAB press to complete
+patch names in certain contexts</li>
+<li><code>stg import</code> now extracts the <code>Message-ID</code> email header into the patch
+message (<a href="https://github.com/stacked-git/stgit/issues/42">#42</a>)</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Repair crash when attempting to export empty patch (<a href="https://github.com/stacked-git/stgit/issues/112">#112</a>)</li>
+<li>Exact command name matches are unambiguous (<a href="https://github.com/stacked-git/stgit/issues/110">#110</a>)</li>
+<li>Exiting with an empty <code>stg edit</code> editor will now abort the edit;
+previously it would delete your commit message. (<a href="https://github.com/stacked-git/stgit/issues/138">#138</a>)</li>
+<li>Repair completions when stg.series.description is enabled in config</li>
+<li>Workaround child process reaping race on Windows (<a href="https://github.com/stacked-git/stgit/issues/78">#78</a>)</li>
+<li>Repair crash with <code>stg float --series</code> when bad patch name in series</li>
+<li>Repair zsh completion for <code>stg float</code> to accept multiple patch names</li>
+<li>Repair zsh completion for changed files, affecting <code>stg refresh</code> and
+<code>stg diff</code></li>
+</ul>
+<h3 id="internal">Internal</h3>
+<ul>
+<li>Add link to coverage.io project to CONTRIBUTING.md</li>
+<li>Set smart <code>exclude_lines</code> default for &lsquo;coverage&rsquo;</li>
+<li>Expanded test suite for <code>stg edit</code></li>
+<li>Add pkgtest.py script to help test StGit packaging</li>
+<li>Cleanup .gitignore files</li>
+</ul>
+<h2 id="11-2021-04-30"><a href="https://github.com/stacked-git/stgit/releases/tag/v1.1">[1.1] 2021-04-30</a></h2>
+<h3 id="removed-1">Removed</h3>
+<h3 id="added-1">Added</h3>
 <ul>
 <li>StGit GPG-signs patches when <code>commit.gpgsign</code> is set (<a href="https://github.com/stacked-git/stgit/issues/12">#12</a>)</li>
 <li>Support <code>core.hooksPath</code> in git config</li>
 <li>Add <code>-C</code> option for <code>stg import</code> and <code>stg fold</code> (<a href="https://github.com/stacked-git/stgit/issues/18">#18</a>)</li>
 </ul>
-<h3 id="changed">Changed</h3>
+<h3 id="changed-1">Changed</h3>
 <ul>
 <li>Allow importing mail and series from urls (<a href="https://github.com/stacked-git/stgit/issues/94">#94</a>)</li>
 <li><code>stg refresh --edit</code> may also use <code>--diff</code> and <code>--diff-opts</code> (<a href="https://github.com/stacked-git/stgit/issues/98">#98</a>)</li>
 <li><code>stg goto</code> allows sha1 of a patch instead of patch name (<a href="https://github.com/stacked-git/stgit/issues/93">#93</a>)</li>
 </ul>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed-1">Fixed</h3>
 <ul>
 <li>Repair hang in <code>stg pull -m</code>, <code>stg goto -m</code>, and <code>stg push -m</code></li>
 <li>Repair <code>stg mail</code> to show diffstat of whole series (<a href="https://github.com/stacked-git/stgit/issues/104">#104</a>)</li>
 <li>Repair MANIFEST.in to include AUTHORS.md and README.md files</li>
 </ul>
 <h2 id="10-2021-02-07"><a href="https://github.com/stacked-git/stgit/releases/tag/v1.0">[1.0] 2021-02-07</a></h2>
-<h3 id="removed-1">Removed</h3>
+<h3 id="removed-2">Removed</h3>
 <ul>
 <li>Drop support for Python &lt; 3.5</li>
 <li>Remove previously deprecated <code>stg publish</code> command</li>
 <li>Removed contrib scripts: <code>stg-swallow</code>, <code>stg-fold-files-from</code>,
 <code>stg-dispatch</code>, <code>stg-whatchanged</code>, and <code>stg-show-old</code></li>
 </ul>
-<h3 id="added-1">Added</h3>
+<h3 id="added-2">Added</h3>
 <ul>
 <li>The pre-commit hook is now run for <code>stg refresh</code></li>
 <li>New <code>--spill</code> option for <code>stg refresh</code></li>
 <li>Add stgit.series.description config option (<a href="https://github.com/stacked-git/stgit/issues/88">#88</a>)</li>
 <li>Official support for Python versions up to 3.9</li>
 </ul>
-<h3 id="changed-1">Changed</h3>
+<h3 id="changed-2">Changed</h3>
 <ul>
 <li>Stack metadata format 4. All metadata now kept in Git objects; no more
 stack state files in .git/patches. <strong>A one-way auto-upgrade to format
@@ -147,7 +224,7 @@ branch.</strong></li>
 <li><code>contrib/stgbashprompt.sh</code> is no longer executable</li>
 <li>Internal docstrings now use reStructuredText instead of Epytext</li>
 </ul>
-<h3 id="fixed-1">Fixed</h3>
+<h3 id="fixed-2">Fixed</h3>
 <ul>
 <li>Importing large patches is much, much faster (<a href="https://github.com/stacked-git/stgit/issues/66">#66</a>)</li>
 <li>Other performance improvements when dealing with large patches</li>
@@ -161,24 +238,24 @@ branch.</strong></li>
 <li>Repair <code>mail --auto</code> to strip comments after addrs (<a href="https://github.com/stacked-git/stgit/issues/91">#91</a>)</li>
 </ul>
 <h2 id="023-2020-06-12"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.23">[0.23] 2020-06-12</a></h2>
-<h3 id="removed-2">Removed</h3>
+<h3 id="removed-3">Removed</h3>
 <ul>
 <li>Drop support for Python 3.3; Python 2 (2.6 and 2.7) remain
 deprecated, but supported for one last release</li>
 <li>Tutorial is removed; it now exists as part of the website</li>
 </ul>
-<h3 id="deprecated">Deprecated</h3>
+<h3 id="deprecated-1">Deprecated</h3>
 <ul>
 <li>Python 2.x support is deprecated and will be removed in a future
 release</li>
 </ul>
-<h3 id="added-2">Added</h3>
+<h3 id="added-3">Added</h3>
 <ul>
 <li>Support html5 output of docs from asciidoc</li>
 <li>Add <code>--expose</code> option for <code>stg pick</code> to allow picked commit message to
 be customized</li>
 </ul>
-<h3 id="changed-2">Changed</h3>
+<h3 id="changed-3">Changed</h3>
 <ul>
 <li>Limit mail diffstat to 72 columns</li>
 <li>Added pyproject.toml file for black configuration</li>
@@ -187,7 +264,7 @@ be customized</li>
 <li>Replaced RELEASENOTES with this CHANGELOG.md</li>
 <li>Replaces Documentation/SubmittingPatches with CONTRIBUTING.md</li>
 </ul>
-<h3 id="fixed-2">Fixed</h3>
+<h3 id="fixed-3">Fixed</h3>
 <ul>
 <li>Repair MANIFEST.in and generated source dist</li>
 <li>Repair importing mail with &ldquo;: &quot; (colon space) in subject</li>
@@ -200,7 +277,7 @@ be customized</li>
 <li>Repair build.py for Python 2 with explicit <code>flush()</code></li>
 <li><code>stgit.refreshsubmodules</code> added to sample gitconfig</li>
 </ul>
-<h3 id="internal">Internal</h3>
+<h3 id="internal-1">Internal</h3>
 <ul>
 <li>Update docs build system from upstream Git docs</li>
 <li>Use coverage contexts to map commands to covered lines</li>
@@ -209,22 +286,22 @@ be customized</li>
 <li>Format StGit source using black formatter</li>
 </ul>
 <h2 id="022---2020-03-02"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.22">[0.22] - 2020-03-02</a></h2>
-<h3 id="removed-3">Removed</h3>
+<h3 id="removed-4">Removed</h3>
 <ul>
 <li>Remove debian packaging; downstream Debian uses its own anyway</li>
 </ul>
-<h3 id="deprecated-1">Deprecated</h3>
+<h3 id="deprecated-2">Deprecated</h3>
 <ul>
 <li>Python 2.x support is deprecated and will be removed in the next StGit
 release</li>
 <li><code>stg publish</code> is deprecated and will be removed in the next StGit
 release</li>
 </ul>
-<h3 id="added-3">Added</h3>
+<h3 id="added-4">Added</h3>
 <ul>
 <li><code>stg import</code> has new &ndash;keep-cr option, like <code>git mailsplit</code></li>
 </ul>
-<h3 id="changed-3">Changed</h3>
+<h3 id="changed-4">Changed</h3>
 <ul>
 <li><code>stg new</code> now includes patch name in log message</li>
 <li><code>stg branch --rename</code> can now rename the current branch</li>
@@ -240,7 +317,7 @@ consistent with <code>stg push</code></li>
 <li>Many additional tests and test improvements</li>
 <li>All stgit commands now use &ldquo;new&rdquo; git library infrastructure</li>
 </ul>
-<h3 id="fixed-3">Fixed</h3>
+<h3 id="fixed-4">Fixed</h3>
 <ul>
 <li><code>stg branch --create</code> inherits remote correctly from parent commitish</li>
 <li>Patch names are checked earlier to avoid inconsistent stack states</li>
@@ -249,11 +326,11 @@ consistent with <code>stg push</code></li>
 git repo</li>
 </ul>
 <h2 id="021---2019-10-28"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.21">[0.21] - 2019-10-28</a></h2>
-<h3 id="changed-4">Changed</h3>
+<h3 id="changed-5">Changed</h3>
 <ul>
 <li>Faster handling of large patches (<a href="https://github.com/stacked-git/stgit/issues/44">#44</a>)</li>
 </ul>
-<h3 id="fixed-4">Fixed</h3>
+<h3 id="fixed-5">Fixed</h3>
 <ul>
 <li>Build reproducibility repairs (Thanks reproducible-builds.org team!)</li>
 <li>Python can now be run with optimizations (<code>python -O</code>)</li>
@@ -261,7 +338,7 @@ git repo</li>
 <li>Improved command line option parsing for <code>stg log</code></li>
 </ul>
 <h2 id="020---2019-10-04"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.20">[0.20] - 2019-10-04</a></h2>
-<h3 id="added-4">Added</h3>
+<h3 id="added-5">Added</h3>
 <ul>
 <li><code>stg patches -d</code> can now output colored diffs.</li>
 <li><code>stg publish --overwrite</code> allows branch to be overwritten instead of
@@ -272,7 +349,7 @@ creating new commits.</li>
 <li><code>stg mail --domain</code> option overrides the host&rsquo;s domain in the message
 ID.</li>
 </ul>
-<h3 id="changed-5">Changed</h3>
+<h3 id="changed-6">Changed</h3>
 <ul>
 <li>Branch protection metadata now captured in config instead of
 .git/patches/<!-- raw HTML omitted -->protect file. This updates stgit&rsquo;s metadata
@@ -285,7 +362,7 @@ more isatty() test (<a href="https://github.com/stacked-git/stgit/issues/35">#35
 <li>Converted to &ldquo;new&rdquo; lib infrastructure: <code>show</code>, <code>patches</code>, <code>diff</code>,
 <code>pick</code>, <code>pull</code>, <code>rebase</code>, and <code>fold</code>.</li>
 </ul>
-<h3 id="fixed-5">Fixed</h3>
+<h3 id="fixed-6">Fixed</h3>
 <ul>
 <li><code>stg show</code> detects conflicting &ndash;applied and &ndash;unapplied options.</li>
 <li><code>stg show --stat</code> now shows commit headers.</li>
@@ -318,7 +395,7 @@ regular commit object.</li>
 <li>Fail faster when patch name has slash ('/') (<a href="https://github.com/stacked-git/stgit/issues/24">#24</a>).</li>
 </ul>
 <h2 id="019-2018-11-05"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.19">[0.19] 2018-11-05</a></h2>
-<h3 id="changed-6">Changed</h3>
+<h3 id="changed-7">Changed</h3>
 <ul>
 <li>Python 3 support. StGit supports Python 2.6, 2.7, 3.3, 3.4, 3.5, 3.6,
 and 3.7. PyPy interpreters are also supported.</li>
@@ -330,7 +407,7 @@ Submodules are also not included by default when refreshing a patch.</li>
 support.</li>
 <li>Many new test cases were added.</li>
 </ul>
-<h3 id="fixed-6">Fixed</h3>
+<h3 id="fixed-7">Fixed</h3>
 <ul>
 <li>Repair handling of emails with utf-8 bodies containing latin-1
 characters. Also correctly decode email headers containing quoted
@@ -338,52 +415,52 @@ encoded words.</li>
 <li>StGit&rsquo;s version is now correct/available in the release archive.</li>
 </ul>
 <h2 id="018-2017-08-14"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.18">[0.18] 2017-08-14</a></h2>
-<h3 id="added-5">Added</h3>
+<h3 id="added-6">Added</h3>
 <ul>
 <li><code>commit-msg</code> hook support for easier integration with Gerrit, allowing
 a Change-Id line to be inserted in the commit message</li>
 <li><code>stg mail</code> improvements for &lsquo;Suggested-by:&rsquo; tag and auto generation of
 Cc for the cover letter based on all tags in the series</li>
 <li><code>stg mail</code> bash completion for the &ndash;to, &ndash;cc and &ndash;bcc options based
-on the content of the [mail &ldquo;alias&rdquo;] section of GIT configuration</li>
+on the content of the [mail &ldquo;alias&rdquo;] section of Git configuration</li>
 <li><code>stg edit --review</code> option to add a &lsquo;Reviewed-by:&rsquo; tag</li>
 <li><code>stg pop --spill</code> functionality to allow popping a patch from the
 stack while keeping its modification in the tree</li>
 </ul>
-<h3 id="changed-7">Changed</h3>
+<h3 id="changed-8">Changed</h3>
 <ul>
 <li>Project page details updated (gna.org has been shut down)</li>
 </ul>
-<h3 id="fixed-7">Fixed</h3>
+<h3 id="fixed-8">Fixed</h3>
 <ul>
 <li>Various fixes and test coverage improvements</li>
 </ul>
 <h2 id="0171-2013-09-30"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.17.1">[0.17.1] 2013-09-30</a></h2>
-<h3 id="changed-8">Changed</h3>
+<h3 id="changed-9">Changed</h3>
 <ul>
 <li>Test suite improvements.</li>
 <li>Print tracebacks to stderr.</li>
 <li>Run test suite in parallel.</li>
 </ul>
-<h3 id="fixed-8">Fixed</h3>
+<h3 id="fixed-9">Fixed</h3>
 <ul>
 <li>Fix dirty index errors when resolving conflicts.</li>
 <li>Fix &ndash;authdate date parsing.</li>
 </ul>
 <h2 id="017-2013-06-27"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.17">[0.17] 2013-06-27</a></h2>
-<h3 id="added-6">Added</h3>
+<h3 id="added-7">Added</h3>
 <ul>
 <li><code>stg delete --top</code> option for deleting the top patch.</li>
 <li><code>stg branch --merge</code> option for merging the work tree changes into the
 other branch.</li>
 <li>Support for sending patches both as attachment and inline.</li>
 </ul>
-<h3 id="changed-9">Changed</h3>
+<h3 id="changed-10">Changed</h3>
 <ul>
 <li><code>stg mail</code> no longer filters explicitly added <code>--cc</code> sender address.</li>
 <li><code>stg refresh</code> warns when index is dirty.</li>
 </ul>
-<h3 id="fixed-9">Fixed</h3>
+<h3 id="fixed-10">Fixed</h3>
 <ul>
 <li>Fix for parsing the commit header correctly.</li>
 <li>Several <code>stgit.el</code> (Emacs mode) improvements.</li>
@@ -392,7 +469,7 @@ other branch.</li>
 <li>Email template fixes.</li>
 </ul>
 <h2 id="016-2012-01-09"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.16">[0.16] 2012-01-09</a></h2>
-<h3 id="added-7">Added</h3>
+<h3 id="added-8">Added</h3>
 <ul>
 <li>UI adjustments to better match the Git commands.
 <ul>
@@ -406,18 +483,18 @@ given branch.</li>
 <li><code>stg mail</code> can use <code>git send-email</code> directly.</li>
 <li>Vim syntax highlighting for StGit commit messages.</li>
 </ul>
-<h3 id="fixed-10">Fixed</h3>
+<h3 id="fixed-11">Fixed</h3>
 <ul>
 <li>Several improvements to the Emacs mode (stgit.el).</li>
 <li>Many bug-fixes.</li>
 </ul>
 <h2 id="015-2009-10-24"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.15">[0.15] 2009-10-24</a></h2>
-<h3 id="removed-4">Removed</h3>
+<h3 id="removed-5">Removed</h3>
 <ul>
 <li>The commands &ldquo;stg add&rdquo;, &ldquo;stg rm&rdquo;, &ldquo;stg cp&rdquo;, and &ldquo;stg resolved&rdquo; were
 removed, since there are corresponding Git equivalents.</li>
 </ul>
-<h3 id="added-8">Added</h3>
+<h3 id="added-9">Added</h3>
 <ul>
 <li>New core infrastructure for repository operations, including:
 <ul>
@@ -450,7 +527,7 @@ It displays the patch stack in an Emacs buffer, and can handle all
 common StGit tasks.</li>
 <li>Man pages and an improved tutorial.</li>
 </ul>
-<h3 id="changed-10">Changed</h3>
+<h3 id="changed-11">Changed</h3>
 <ul>
 <li>Improved bash tab-completion, automatically generated from the stg
 command definitions.</li>

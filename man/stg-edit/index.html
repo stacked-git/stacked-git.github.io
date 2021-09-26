@@ -136,22 +136,20 @@ diff.</p>
 <div class="literalblock">
 <div class="content">
 <pre>From: A U Thor &lt;author@example.com&gt;
-Date: creation date</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Patch description</pre>
+Date: creation date
+
+Patch description</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>If --diff was specified, the diff appears at the bottom, after a
 separator:</p>
 </div>
-<hr/>
 <div class="literalblock">
 <div class="content">
-<pre>Diff text</pre>
+<pre>---
+
+Diff text</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -191,15 +189,27 @@ flag of stg push.</p>
 </dd>
 <dt class="hdlist1">--sign</dt>
 <dd>
-<p>Add a &#34;Signed-off-by:&#34; to the end of the patch.</p>
+<p>Add a &#34;Signed-off-by:&#34; trailer to the end of the message using the committer name and email for the trailer value.</p>
+</dd>
+<dt class="hdlist1">--sign-by VALUE</dt>
+<dd>
+<p>Add a &#34;Signed-off-by:&#34; trailer with a custom VALUE to the end of the message.</p>
 </dd>
 <dt class="hdlist1">--ack</dt>
 <dd>
-<p>Add an &#34;Acked-by:&#34; line to the end of the patch.</p>
+<p>Add an &#34;Acked-by:&#34; trailer to the end of the message using the commiter name and email for the trailer value.</p>
+</dd>
+<dt class="hdlist1">--ack-by VALUE</dt>
+<dd>
+<p>Add an &#34;Acked-by:&#34; trailer with a custom VALUE to the end of the message.</p>
 </dd>
 <dt class="hdlist1">--review</dt>
 <dd>
-<p>Add a &#34;Reviewed-by:&#34; line to the end of the patch.</p>
+<p>Add a &#34;Reviewed-by:&#34; trailer to the end of the message using the commiter name and email for the trailer value.</p>
+</dd>
+<dt class="hdlist1">--review-by VALUE</dt>
+<dd>
+<p>Add a &#34;Reviewed-by:&#34; trailer with custom VALUE to the end of the message.</p>
 </dd>
 <dt class="hdlist1">-m MESSAGE</dt>
 <dt class="hdlist1">--message MESSAGE</dt>

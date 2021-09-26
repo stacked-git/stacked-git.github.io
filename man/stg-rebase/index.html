@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg rebase</em> [options] [--] &lt;new-base-id&gt;</pre>
+<pre class="content"><em>stg rebase</em> [options] [--] [new-base-id]</pre>
 </div>
 </div>
 </div>
@@ -127,7 +127,7 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Pop all patches from current stack, move the stack base to the given
-&lt;new-base-id&gt; and push the patches back.</p>
+[new-base-id] and push the patches back.</p>
 </div>
 <div class="paragraph">
 <p>If you experience merge conflicts, resolve the problem and continue
@@ -156,6 +156,11 @@ $ stg push next-patch..top-patch</pre>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
+<dt class="hdlist1">-i</dt>
+<dt class="hdlist1">--interactive</dt>
+<dd>
+<p>Open an interactive editor to manipulate patches.</p>
+</dd>
 <dt class="hdlist1">-n</dt>
 <dt class="hdlist1">--nopush</dt>
 <dd>
@@ -165,6 +170,13 @@ $ stg push next-patch..top-patch</pre>
 <dt class="hdlist1">--merged</dt>
 <dd>
 <p>Check for patches merged upstream.</p>
+</dd>
+<dt class="hdlist1">--autostash</dt>
+<dd>
+<p>Automatically create a temporary stash before the operation begins, and
+apply it after the operation ends. This means that you can run rebase on a
+dirty work-tree. However, use with care: the final stash application after a
+successful rebase might result in non-trivial conflicts.</p>
 </dd>
 </dl>
 </div>

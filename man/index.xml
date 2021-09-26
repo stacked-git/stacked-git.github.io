@@ -57,7 +57,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-commit/</guid>
       <description>NAME stg-commit - Permanently store the applied patches into the stack base
-   SYNOPSIS stg commit stg commit [--] &amp;lt;patchnames&amp;gt; stg commit -n NUM stg commit --all    DESCRIPTION Merge one or more patches into the base of the current stack and remove them from the series while advancing the base. This is the opposite of stg uncommit. Use this command if you no longer want to manage a patch with StGIT.</description>
+   SYNOPSIS stg commit stg commit [--] &amp;lt;patchnames&amp;gt; stg commit -n NUM stg commit --all    DESCRIPTION Merge one or more patches into the base of the current stack and remove them from the series while advancing the base. This is the opposite of stg uncommit. Use this command if you no longer want to manage a patch with StGit.</description>
     </item>
     
     <item>
@@ -91,7 +91,7 @@
       <description>NAME stg-edit - Edit a patch description or diff
    SYNOPSIS stg edit [options] [--] [&amp;lt;patch&amp;gt;]    DESCRIPTION Edit the description and author information of the given patch (or the current patch if no patch name was given). With --diff, also edit the diff.
  The editor is invoked with the following contents:
- From: A U Thor &amp;lt;author@example.com&amp;gt; Date: creation date   Patch description   If --diff was specified, the diff appears at the bottom, after a separator:</description>
+ From: A U Thor &amp;lt;author@example.com&amp;gt; Date: creation date Patch description   If --diff was specified, the diff appears at the bottom, after a separator:</description>
     </item>
     
     <item>
@@ -186,8 +186,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://stacked-git.github.io/man/stg-init/</guid>
-      <description>NAME stg-init - Initialise the current branch for use with StGIT
-   SYNOPSIS stg init    DESCRIPTION Initialise the current git branch to be used as an StGIT stack. The branch (and the git repository it is in) must already exist and contain at least one commit.
+      <description>NAME stg-init - Initialise the current branch for use with StGit
+   SYNOPSIS stg init    DESCRIPTION Initialise the current git branch to be used as an StGit stack. The branch (and the git repository it is in) must already exist and contain at least one commit.
    StGit Part of the StGit suite - see linkman:stg[1]
    </description>
     </item>
@@ -310,7 +310,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-rebase/</guid>
       <description>NAME stg-rebase - Move the stack base to another point in history
-   SYNOPSIS stg rebase [options] [--] &amp;lt;new-base-id&amp;gt;    DESCRIPTION Pop all patches from current stack, move the stack base to the given &amp;lt;new-base-id&amp;gt; and push the patches back.
+   SYNOPSIS stg rebase [options] [--] [new-base-id]    DESCRIPTION Pop all patches from current stack, move the stack base to the given [new-base-id] and push the patches back.
  If you experience merge conflicts, resolve the problem and continue the rebase by executing the following sequence:
  $ git add --update $ stg refresh $ stg goto top-patch   Or if you want to skip that patch:</description>
     </item>
@@ -447,7 +447,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-uncommit/</guid>
       <description>NAME stg-uncommit - Turn regular git commits into StGit patches
-   SYNOPSIS stg uncommit [--] &amp;lt;patch-name-1&amp;gt; [&amp;lt;patch-name-2&amp;gt; …​] stg uncommit -n NUM [--] [&amp;lt;prefix&amp;gt;] stg uncommit -t &amp;lt;committish&amp;gt; [-x]    DESCRIPTION Take one or more git commits at the base of the current stack and turn them into StGIT patches. The new patches are created as applied patches at the bottom of the stack. This is the opposite of stg commit.</description>
+   SYNOPSIS stg uncommit [--] &amp;lt;patch-name-1&amp;gt; [&amp;lt;patch-name-2&amp;gt; …​] stg uncommit -n NUM [--] [&amp;lt;prefix&amp;gt;] stg uncommit -t &amp;lt;committish&amp;gt; [-x]    DESCRIPTION Take one or more git commits at the base of the current stack and turn them into StGit patches. The new patches are created as applied patches at the bottom of the stack. This is the opposite of stg commit.</description>
     </item>
     
     <item>

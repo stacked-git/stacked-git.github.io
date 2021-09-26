@@ -129,6 +129,22 @@ the StGit patches into other repositories using standard Git
 functionality.</p>
 <p>StGit is licensed under the GNU General Public License, version 2.</p>
 <h2 id="news">News</h2>
+<h3 id="2021-09-26-stgit-v12v12-has-been-released">2021-09-26: <a href="https://github.com/stacked-git/stgit/releases/tag/v1.2">StGit v1.2</a> has been released.</h3>
+<p>This release is choc full of new features, including
+<code>stg rebase --interactive</code> and <code>stg rebase --autostash</code> as well as many
+quality of life improvements to <code>new</code>, <code>edit</code>, <code>squash</code>.</p>
+<p>StGit v1.2 updates the stack metadata. Gone are <code>.stgit</code> branches!
+Instead, stack metadata refs are now found in the new <code>refs/stacks</code>
+namespace instead of the regular branches namespace (<code>refs/heads</code>). This
+change eliminates clutter when looking at branch lists and in various
+forms of <code>git log</code>.</p>
+<p>An important packaging change to be aware of is that StGit now uses
+setuptools instead of the deprecated distutils. This change will affect
+downstream StGit packagers, but hopefully StGit vectoring toward modern
+Python packaging standards will be a positive in the long run.</p>
+<p>See the <a href="changelog/">changelog</a> for all the details on this release.</p>
+<p><em>Many thanks to Topher Brown for significant contributions to StGit
+v1.2!</em></p>
 <h3 id="2021-04-30-stgit-v11v11-has-been-released">2021-04-30: <a href="https://github.com/stacked-git/stgit/releases/tag/v1.1">StGit v1.1</a> has been released.</h3>
 <p>The marquee feature of StGit 1.1 is preliminary support signed patches.
 StGit now respects Git&rsquo;s <code>commit.gpgsign</code> configuration option to create
@@ -146,7 +162,6 @@ with Python 2 has allowed StGit&rsquo;s code to become simpler and avoid
 error-prone compatibility code. Python 3.5 is the new minimum required
 version.</p>
 <p>See the <a href="changelog/">changelog</a> for more details.</p>
-<h3 id="2020-06-12-stgit-v023v023-has-been-released">2020-06-12: <a href="https://github.com/stacked-git/stgit/releases/tag/v0.23">StGit v0.23</a> has been released.</h3>
 <h2 id="why-stacked-git">Why Stacked Git?</h2>
 <p>The <em>stack of patches</em> model is a natural way to maintain a clean Git
 history while working on several changes concurrently. A stack-oriented

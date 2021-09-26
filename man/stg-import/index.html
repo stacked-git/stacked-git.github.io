@@ -136,7 +136,7 @@ mbox files.</p>
 </div>
 <div class="paragraph">
 <p>If a patch does not apply cleanly, the failed diff is written to the
-.stgit-failed.patch file and an empty StGIT patch is added to the
+.stgit-failed.patch file and an empty StGit patch is added to the
 stack.</p>
 </div>
 <div class="paragraph">
@@ -239,15 +239,27 @@ line.</p>
 </dd>
 <dt class="hdlist1">--sign</dt>
 <dd>
-<p>Add a &#34;Signed-off-by:&#34; to the end of the patch.</p>
+<p>Add a &#34;Signed-off-by:&#34; trailer to the end of the message using the committer name and email for the trailer value.</p>
+</dd>
+<dt class="hdlist1">--sign-by VALUE</dt>
+<dd>
+<p>Add a &#34;Signed-off-by:&#34; trailer with a custom VALUE to the end of the message.</p>
 </dd>
 <dt class="hdlist1">--ack</dt>
 <dd>
-<p>Add an &#34;Acked-by:&#34; line to the end of the patch.</p>
+<p>Add an &#34;Acked-by:&#34; trailer to the end of the message using the commiter name and email for the trailer value.</p>
+</dd>
+<dt class="hdlist1">--ack-by VALUE</dt>
+<dd>
+<p>Add an &#34;Acked-by:&#34; trailer with a custom VALUE to the end of the message.</p>
 </dd>
 <dt class="hdlist1">--review</dt>
 <dd>
-<p>Add a &#34;Reviewed-by:&#34; line to the end of the patch.</p>
+<p>Add a &#34;Reviewed-by:&#34; trailer to the end of the message using the commiter name and email for the trailer value.</p>
+</dd>
+<dt class="hdlist1">--review-by VALUE</dt>
+<dd>
+<p>Add a &#34;Reviewed-by:&#34; trailer with custom VALUE to the end of the message.</p>
 </dd>
 </dl>
 </div>
