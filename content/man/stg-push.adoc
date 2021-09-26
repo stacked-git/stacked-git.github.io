@@ -43,6 +43,9 @@ With a negative number, push all but that many patches.
 --reverse::
         Push the patches in reverse order.
 
+--noapply::
+        Reorder patches by pushing without applying..
+
 --set-tree::
         Push the patches, but don't perform a merge. Instead, the
         resulting tree will be identical to the tree that the patch

@@ -4,6 +4,81 @@ title = 'StGit Changelog'
 
 # Changelog
 
+## [1.2] 2021-09-26
+
+### Removed
+
+### Deprecated
+- Python 3.5, which became EOL 2020-09-13, support is deprecated and
+  will be removed in a future StGit release
+- Python 3.6, which will be EOL 2021-12-23, support is deprecated and
+  will be removed in a future StGit release
+
+### Added
+- `stg rebase ` learns `--interactive`; easily re-order, edit, squash,
+  fixup, or delete patches via your editor
+- `stg rebase` learns `--autostash`; stash changes before the rebase and
+  apply them after. Also configurable with the `stgit.autostash`
+  configuration option
+- `stg edit` can now rename patches (#119)
+- `stg edit` gains helpful instructions (#138)
+- `stg new` learns `--verbose`, which includes a diff in the editor
+  window (similar to `git commit --verbose`). This behavior is also
+  configurable with the `stgit.new.verbose` configuration option
+- `stg push` and `stg float` learn `--noapply` option; allows patches
+  to be reordered without updating worktree and deferring merge conflict
+  resolution (#144)
+- `stg edit`, `stg refresh`, and `stg new` learn the `--sign-by`,
+  `--ack-by`, and `--review-by` options which allow those respective
+  trailers' values to be specified by the user on the command line (#92)
+
+### Changed
+- Stack metadata version 5; stack metadata is moved from
+  `refs/heads/<branch>.stgit` to `refs/stacks/<branch>` and the stack
+  metadata file now uses a JSON format instead of the prior custom
+  format; the stack metadata will be upgraded to v5 on first use of
+  this version of StGit; like all stack metadata upgrades, **this is a
+  one-way auto-upgrade for existing stacks** (#65)
+- Use setuptools instead of distutils for packaging
+- No git or python version checks in setup.py
+- Use different dynamic versioning system
+- Install `stg` executable as console_script entry point
+- More sophisticated search for bash.exe on Windows when running hooks
+- The editor window text for `stg squash` has been modified to mirror
+  git's behavior -- the squash edit message now includes all commits
+  (#71)
+- Binary diffs are no longer shown when with `stg edit -d`
+- Multiple trailers can now be added at once; this is now allowed, for
+  example: `stg edit --sign --review --ack`
+- Update zsh completion for `stg rebase` to show local and remote heads
+  (#102)
+- Zsh completions for commands with patch arguments now comprehend the
+  effect of `-b/--branch` and `-B/--ref-branch`
+- Zsh completions now guard patch names--one less TAB press to complete
+  patch names in certain contexts
+- `stg import` now extracts the `Message-ID` email header into the patch
+  message (#42)
+
+### Fixed
+- Repair crash when attempting to export empty patch (#112)
+- Exact command name matches are unambiguous (#110)
+- Exiting with an empty `stg edit` editor will now abort the edit;
+  previously it would delete your commit message. (#138)
+- Repair completions when stg.series.description is enabled in config
+- Workaround child process reaping race on Windows (#78)
+- Repair crash with `stg float --series` when bad patch name in series
+- Repair zsh completion for `stg float` to accept multiple patch names
+- Repair zsh completion for changed files, affecting `stg refresh` and
+  `stg diff`
+
+### Internal
+- Add link to coverage.io project to CONTRIBUTING.md
+- Set smart `exclude_lines` default for 'coverage'
+- Expanded test suite for `stg edit`
+- Add pkgtest.py script to help test StGit packaging
+- Cleanup .gitignore files
+
+
 ## [1.1] 2021-04-30
 
 ### Removed
@@ -236,7 +311,7 @@ title = 'StGit Changelog'
 - `stg mail` improvements for 'Suggested-by:' tag and auto generation of
   Cc for the cover letter based on all tags in the series
 - `stg mail` bash completion for the --to, --cc and --bcc options based
-  on the content of the [mail "alias"] section of GIT configuration
+  on the content of the [mail "alias"] section of Git configuration
 - `stg edit --review` option to add a 'Reviewed-by:' tag
 - `stg pop --spill` functionality to allow popping a patch from the
   stack while keeping its modification in the tree

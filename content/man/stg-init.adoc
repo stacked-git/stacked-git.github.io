@@ -7,7 +7,7 @@ stg-init(1)
 
 NAME
 ----
-stg-init - Initialise the current branch for use with StGIT
+stg-init - Initialise the current branch for use with StGit
 
 SYNOPSIS
 --------
@@ -17,7 +17,7 @@ SYNOPSIS
 DESCRIPTION
 -----------
 
-Initialise the current git branch to be used as an StGIT stack. The
+Initialise the current git branch to be used as an StGit stack. The
 branch (and the git repository it is in) must already exist and
 contain at least one commit.
 

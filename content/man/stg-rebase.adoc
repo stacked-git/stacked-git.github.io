@@ -12,13 +12,13 @@ stg-rebase - Move the stack base to another point in history
 SYNOPSIS
 --------
 [verse]
-'stg rebase' [options] [--] <new-base-id>
+'stg rebase' [options] [--] [new-base-id]
 
 DESCRIPTION
 -----------
 
 Pop all patches from current stack, move the stack base to the given
-<new-base-id> and push the patches back.
+[new-base-id] and push the patches back.
 
 If you experience merge conflicts, resolve the problem and continue
 the rebase by executing the following sequence:
@@ -34,6 +34,10 @@ Or if you want to skip that patch:
 
 OPTIONS
 -------
+-i::
+--interactive::
+        Open an interactive editor to manipulate patches.
+
 -n::
 --nopush::
         Do not push the patches back after rebasing.
@@ -41,6 +45,12 @@ OPTIONS
 -m::
 --merged::
         Check for patches merged upstream.
+
+--autostash::
+        Automatically create a temporary stash before the operation begins, and
+        apply it after the operation ends. This means that you can run rebase on a
+        dirty work-tree. However, use with care: the final stash application after a
+        successful rebase might result in non-trivial conflicts.
 
 StGit
 -----

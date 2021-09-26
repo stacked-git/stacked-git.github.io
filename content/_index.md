@@ -35,6 +35,28 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2021-09-26: [StGit v1.2][v1.2] has been released.
+
+This release is choc full of new features, including
+`stg rebase --interactive` and `stg rebase --autostash` as well as many
+quality of life improvements to `new`, `edit`, `squash`.
+
+StGit v1.2 updates the stack metadata. Gone are `.stgit` branches!
+Instead, stack metadata refs are now found in the new `refs/stacks`
+namespace instead of the regular branches namespace (`refs/heads`). This
+change eliminates clutter when looking at branch lists and in various
+forms of `git log`.
+
+An important packaging change to be aware of is that StGit now uses
+setuptools instead of the deprecated distutils. This change will affect
+downstream StGit packagers, but hopefully StGit vectoring toward modern
+Python packaging standards will be a positive in the long run.
+
+See the [changelog](changelog/) for all the details on this release.
+
+*Many thanks to Topher Brown for significant contributions to StGit
+v1.2!*
+
 ### 2021-04-30: [StGit v1.1][v1.1] has been released.
 
 The marquee feature of StGit 1.1 is preliminary support signed patches.
@@ -60,8 +82,7 @@ version.
 
 See the [changelog](changelog/) for more details.
 
-### 2020-06-12: [StGit v0.23][v0.23] has been released.
-
+[v1.2]: https://github.com/stacked-git/stgit/releases/tag/v1.2
 [v1.1]: https://github.com/stacked-git/stgit/releases/tag/v1.1
 [v1.0]: https://github.com/stacked-git/stgit/releases/tag/v1.0
 [v0.23]: https://github.com/stacked-git/stgit/releases/tag/v0.23

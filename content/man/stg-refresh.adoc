@@ -100,13 +100,22 @@ OPTIONS
         This option bypasses the commit-msg hook.
 
 --sign::
-        Add a "Signed-off-by:" to the end of the patch.
+        Add a "Signed-off-by:" trailer to the end of the message using the committer name and email for the trailer value.
+
+--sign-by VALUE::
+        Add a "Signed-off-by:" trailer with a custom VALUE to the end of the message.
 
 --ack::
-        Add an "Acked-by:" line to the end of the patch.
+        Add an "Acked-by:" trailer to the end of the message using the commiter name and email for the trailer value.
+
+--ack-by VALUE::
+        Add an "Acked-by:" trailer with a custom VALUE to the end of the message.
 
 --review::
-        Add a "Reviewed-by:" line to the end of the patch.
+        Add a "Reviewed-by:" trailer to the end of the message using the commiter name and email for the trailer value.
+
+--review-by VALUE::
+        Add a "Reviewed-by:" trailer with custom VALUE to the end of the message.
 
 --author "NAME <EMAIL>"::
         Set the author details.

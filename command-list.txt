@@ -22,7 +22,7 @@ linkstg:goto[]::
 linkstg:hide[]::
     Hide a patch in the series
 linkstg:init[]::
-    Initialise the current branch for use with StGIT
+    Initialise the current branch for use with StGit
 linkstg:log[]::
     Display or optionally clear the patch changelog
 linkstg:next[]::
