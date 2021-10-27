@@ -35,6 +35,14 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2021-10-27: [StGit v1.4][v1.4] has been released.
+
+This is mostly a bugfix release with a couple minor features affecting
+importing patches from mail and `stg commit` no longer committing empty
+patches by default.
+
+See the [changelog](changelog/) for all the details on this release.
+
 ### 2021-09-26: [StGit v1.3][v1.3] has been released.
 
 This is a hot fix release that repairs a crash regression when using
