@@ -12,10 +12,10 @@ stg-commit - Permanently store the applied patches into the stack base
 SYNOPSIS
 --------
 [verse]
-'stg commit' 
-'stg commit' [--] <patchnames>
-'stg commit' -n NUM
-'stg commit' --all
+'stg commit' [options]
+'stg commit' [options] [--] <patchnames>
+'stg commit' [options] -n NUM
+'stg commit' [options] --all
 
 DESCRIPTION
 -----------
@@ -42,6 +42,9 @@ OPTIONS
 -a::
 --all::
         Commit all applied patches.
+
+--allow-empty::
+        Allow empty patches to be committed.
 
 StGit
 -----

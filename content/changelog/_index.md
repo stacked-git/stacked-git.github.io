@@ -4,6 +4,51 @@ title = 'StGit Changelog'
 
 # Changelog
 
+## [1.4] 2021-10-27
+
+### Removed
+- Python 3.5, which became EOL 2020-09-13, support is deprecated and
+  will be removed in a future StGit release
+- Python 3.6, which will be EOL 2021-12-23, support is deprecated and
+  will be removed in a future StGit release
+
+### Added
+- The new `stg import --message-id` option causes the Message-ID from
+  imported emails to be included as the Message-Id trailer in the patch
+  description (#42)
+- The new 'stgit.import.message-id' config option also enables the
+  Message-Id trailer (#42)
+
+### Changed
+- `stg import` no longer creates "Message-Id" trailer by default when
+  importing patches from email (#42)
+- StGit works with Python 3.10
+- `stg version` prints a more abbreviated Python version
+- `stg commit` will no longer commit empty patches by default; the
+  `--allow-empty` option may be used to override this behavior (#158)
+- The `stgit.main.main()` function now takes an argv parameter and
+  returns an int return code in most cases instead of calling
+  sys.exit(), thus making main() a bit easier to use as an API.
+
+### Fixed
+- Repair stack upgrade with `stg branch --list` (#155)
+- Repair crash in `stg squash` with out of order patches and no name
+  specified (#157)
+- Zsh completions learn `stg float --noapply` option
+- Zsh completion for `stg sink` now allows multiple patches
+
+
+## [1.3] 2021-09-26
+
+### Removed
+
+### Added
+
+### Changed
+
+### Fixed
+- Repair crash regression when using `stgit.autosign`
+
 ## [1.2] 2021-09-26
 
 ### Removed

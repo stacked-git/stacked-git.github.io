@@ -82,6 +82,9 @@ OPTIONS
 --keep-cr::
         Do not remove "\r" from email lines ending with "\r\n".
 
+--message-id::
+        Create Message-Id trailer in patch description based on the Message-ID email header. This option is applicable when importing with --mail or --mbox. This behavior may also be enabled via the 'stgit.import.message-id' configuration option.
+
 -e::
 --edit::
         Invoke an editor for the patch description.
