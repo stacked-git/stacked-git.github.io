@@ -35,6 +35,11 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2021-09-26: [StGit v1.3][v1.3] has been released.
+
+This is a hot fix release that repairs a crash regression when using
+the `stgit.autosign` configuration option.
+
 ### 2021-09-26: [StGit v1.2][v1.2] has been released.
 
 This release is choc full of new features, including
