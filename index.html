@@ -129,12 +129,16 @@ the StGit patches into other repositories using standard Git
 functionality.</p>
 <p>StGit is licensed under the GNU General Public License, version 2.</p>
 <h2 id="news">News</h2>
-<h3 id="2021-10-27-stgit-v14v14-has-been-released">2021-10-27: [StGit v1.4][v1.4] has been released.</h3>
+<h3 id="2022-01-28-stgit-v15v15-has-been-released">2022-01-28: <a href="https://github.com/stacked-git/stgit/releases/tag/v1.5">StGit v1.5</a> has been released.</h3>
+<p>Several pesky bugs repaired along with some other minor improvements.</p>
+<p>Thanks to everyone who submitted a PR or reported an issue!</p>
+<p>See the <a href="changelog/">changelog</a> for all the details on this release.</p>
+<h3 id="2021-10-27-stgit-v14v14-has-been-released">2021-10-27: <a href="https://github.com/stacked-git/stgit/releases/tag/v1.4">StGit v1.4</a> has been released.</h3>
 <p>This is mostly a bugfix release with a couple minor features affecting
 importing patches from mail and <code>stg commit</code> no longer committing empty
 patches by default.</p>
 <p>See the <a href="changelog/">changelog</a> for all the details on this release.</p>
-<h3 id="2021-09-26-stgit-v13v13-has-been-released">2021-09-26: [StGit v1.3][v1.3] has been released.</h3>
+<h3 id="2021-09-26-stgit-v13v13-has-been-released">2021-09-26: <a href="https://github.com/stacked-git/stgit/releases/tag/v1.3">StGit v1.3</a> has been released.</h3>
 <p>This is a hot fix release that repairs a crash regression when using
 the <code>stgit.autosign</code> configuration option.</p>
 <h3 id="2021-09-26-stgit-v12v12-has-been-released">2021-09-26: <a href="https://github.com/stacked-git/stgit/releases/tag/v1.2">StGit v1.2</a> has been released.</h3>
@@ -153,23 +157,6 @@ Python packaging standards will be a positive in the long run.</p>
 <p>See the <a href="changelog/">changelog</a> for all the details on this release.</p>
 <p><em>Many thanks to Topher Brown for significant contributions to StGit
 v1.2!</em></p>
-<h3 id="2021-04-30-stgit-v11v11-has-been-released">2021-04-30: <a href="https://github.com/stacked-git/stgit/releases/tag/v1.1">StGit v1.1</a> has been released.</h3>
-<p>The marquee feature of StGit 1.1 is preliminary support signed patches.
-StGit now respects Git&rsquo;s <code>commit.gpgsign</code> configuration option to create
-signed patches (commits).</p>
-<p>This release also contains several minor new features and a few key bug
-fixes. See the <a href="changelog/">changelog</a> for all the details.</p>
-<h3 id="2021-02-07-stgit-v10v10-has-been-released">2021-02-07: <a href="https://github.com/stacked-git/stgit/releases/tag/v1.0">StGit v1.0</a> has been released.</h3>
-<p>The 1.0 release has been over a decade in the making. While light on new
-features, this release represents a major upgrade in StGit&rsquo;s foundation.</p>
-<p>Internally, StGit now maintains all metadata in Git objects. This
-enables novel workflows involving StGit stacks to be pushed and pulled
-from remote repositories using <code>git push</code> and <code>git pull</code>.</p>
-<p>And StGit has been fully migrated to Python 3. Dropping compatibility
-with Python 2 has allowed StGit&rsquo;s code to become simpler and avoid
-error-prone compatibility code. Python 3.5 is the new minimum required
-version.</p>
-<p>See the <a href="changelog/">changelog</a> for more details.</p>
 <h2 id="why-stacked-git">Why Stacked Git?</h2>
 <p>The <em>stack of patches</em> model is a natural way to maintain a clean Git
 history while working on several changes concurrently. A stack-oriented
@@ -181,7 +168,7 @@ safely create, push, pop, refresh, and reorder patches.</p>
 <h3 id="dependencies">Dependencies</h3>
 <p>StGit is written in pure Python with no third-party Python dependencies.
 StGit currently supports Python version 3.5 through 3.9. The last
-version of StGit to support Python 2 was <a href="https://github.com/stacked-git/stgit/releases/tag/v0.23">v0.23</a>.</p>
+version of StGit to support Python 2 was [v0.23][v0.23].</p>
 <p>StGit interoperates closely with Git and does most of its work by
 running <code>git</code> commands. Git 2.2.0 or newer is required.</p>
 <h3 id="package-repositories">Package Repositories</h3>
