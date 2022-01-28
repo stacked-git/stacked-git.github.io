@@ -27,7 +27,7 @@ as they were prior to the float operation.
 OPTIONS
 -------
 --noapply::
-        Reorder patches by floating without applying..
+        Reorder patches by floating without applying.
 
 -s FILE::
 --series FILE::

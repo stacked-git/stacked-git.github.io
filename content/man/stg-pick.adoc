@@ -63,7 +63,7 @@ OPTIONS
 --file FILE::
         Only fold the given file (can be used multiple times).
 
---unapplied::
+--noapply::
         Keep the patch unapplied.
 
 StGit
