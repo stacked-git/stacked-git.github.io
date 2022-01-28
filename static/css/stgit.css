@@ -41,7 +41,7 @@
     --border-thick: var(--s-2);
 
     line-height: var(--ratio);
-    font-size: calc(.25vw + 1em);
+    /* font-size: calc(.25vw + 1em); */
     font-family: var(--font-plain);
     background-color: var(--color-light);
     color: var(--color-dark);
