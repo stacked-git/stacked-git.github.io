@@ -35,6 +35,14 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2022-01-28: [StGit v1.5][v1.5] has been released.
+
+Several pesky bugs repaired along with some other minor improvements.
+
+Thanks to everyone who submitted a PR or reported an issue!
+
+See the [changelog](changelog/) for all the details on this release.
+
 ### 2021-10-27: [StGit v1.4][v1.4] has been released.
 
 This is mostly a bugfix release with a couple minor features affecting
@@ -70,35 +78,10 @@ See the [changelog](changelog/) for all the details on this release.
 *Many thanks to Topher Brown for significant contributions to StGit
 v1.2!*
 
-### 2021-04-30: [StGit v1.1][v1.1] has been released.
-
-The marquee feature of StGit 1.1 is preliminary support signed patches.
-StGit now respects Git's `commit.gpgsign` configuration option to create
-signed patches (commits).
-
-This release also contains several minor new features and a few key bug
-fixes. See the [changelog](changelog/) for all the details.
-
-### 2021-02-07: [StGit v1.0][v1.0] has been released.
-
-The 1.0 release has been over a decade in the making. While light on new
-features, this release represents a major upgrade in StGit's foundation.
-
-Internally, StGit now maintains all metadata in Git objects. This
-enables novel workflows involving StGit stacks to be pushed and pulled
-from remote repositories using `git push` and `git pull`.
-
-And StGit has been fully migrated to Python 3. Dropping compatibility
-with Python 2 has allowed StGit's code to become simpler and avoid
-error-prone compatibility code. Python 3.5 is the new minimum required
-version.
-
-See the [changelog](changelog/) for more details.
-
+[v1.5]: https://github.com/stacked-git/stgit/releases/tag/v1.5
+[v1.4]: https://github.com/stacked-git/stgit/releases/tag/v1.4
+[v1.3]: https://github.com/stacked-git/stgit/releases/tag/v1.3
 [v1.2]: https://github.com/stacked-git/stgit/releases/tag/v1.2
-[v1.1]: https://github.com/stacked-git/stgit/releases/tag/v1.1
-[v1.0]: https://github.com/stacked-git/stgit/releases/tag/v1.0
-[v0.23]: https://github.com/stacked-git/stgit/releases/tag/v0.23
 
 ## Why Stacked Git?
 
