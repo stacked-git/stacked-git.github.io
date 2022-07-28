@@ -209,7 +209,7 @@ index 808cd7fa9..9bdad1f86 100755
 @@ -1,5 +1,6 @@
  #!/usr/bin/env python
  # -*- coding: utf-8 -*-
-+&quot;&quot;&quot;My first patch!&quot;&quot;&quot;
++&#34;&#34;&#34;My first patch!&#34;&#34;&#34;
 
  from distutils.core import setup
 </code></pre><p>Since the patch is also a regular Git commit, it can be seen by regular
@@ -219,8 +219,8 @@ Git tools such as <a href="https://git-scm.com/docs/gitk"><code>gitk</code></a>.
 working tree is modified <em>before</em> creating the new patch. It is a
 feature of StGit that a patch can be created independent of the working
 tree state.</p>
-<pre tabindex="0"><code>$ echo 'Audrey U. Thor' &gt; AUTHORS
-$ stg new credit --message 'Give me some credit'
+<pre tabindex="0"><code>$ echo &#39;Audrey U. Thor&#39; &gt; AUTHORS
+$ stg new credit --message &#39;Give me some credit&#39;
 $ stg refresh
 </code></pre><blockquote>
 <p><strong>NOTE</strong> Use the <code>--message</code> (<code>-m</code>) option to <a href="/man/stg-new"><code>stg new</code></a> to give the patch a message without invoking an
@@ -241,8 +241,8 @@ the topmost patch.</p>
 <code>my-first-patch</code> the topmost applied patch again:</p>
 <pre tabindex="0"><code>$ stg pop credit
 Checking for changes in the working directory ... done
-Popping patch &quot;credit&quot; ... done
-Now at patch &quot;my-first-patch&quot;
+Popping patch &#34;credit&#34; ... done
+Now at patch &#34;my-first-patch&#34;
 $ stg series --description
 &gt; my-first-patch # This is my first patch
 - credit         # Give me some credit
@@ -257,8 +257,8 @@ history as seen by <code>git log</code> or <code>gitk</code>.</p>
 <p>An unapplied patch is reapplied and made the topmost patch using <a href="/man/stg-push"><code>stg push</code></a>:</p>
 <pre tabindex="0"><code>$ stg push credit
 Checking for changes in the working directory ... done
-Fast-forwarded patch &quot;credit&quot;
-Now at patch &quot;credit&quot;
+Fast-forwarded patch &#34;credit&#34;
+Now at patch &#34;credit&#34;
 </code></pre><blockquote>
 <p><strong>NOTE</strong> <a href="/man/stg-push"><code>stg push</code></a> and <a href="/man/stg-pop"><code>stg pop</code></a> may
 be called without specifying a patch name. Doing so causes the next
@@ -276,9 +276,9 @@ already applied patch. The <code>--patch</code> option may be used with <code>st
 $ $EDITOR setup.py
 $ stg refresh --patch my-first-patch
 Popped refresh-temp -- credit
-Pushing patch &quot;refresh-temp&quot; ... done
-Pushing patch &quot;credit&quot; ... done
-Now at patch &quot;credit&quot;
+Pushing patch &#34;refresh-temp&#34; ... done
+Pushing patch &#34;credit&#34; ... done
+Now at patch &#34;credit&#34;
 $ stg status
 </code></pre><p>After the above refresh operation, the topmost patch remains <code>credit</code>,
 but the changes from the work tree are now part of <code>my-first-patch</code> and
@@ -310,7 +310,7 @@ message.</p>
 <p><strong>NOTE</strong> The commit message of any patch in the stack may be modified
 at any time using <code>stg edit &lt;patchname&gt;</code>. StGit <strong>does not</strong> need to
 apply (push) a patch in order to modify it&rsquo;s commit message, so
-editing patches' commit messages can be done without risk of
+editing patches&rsquo; commit messages can be done without risk of
 encountering a merge conflict.</p>
 </blockquote>
 <h3 id="renaming-patches">Renaming Patches</h3>
@@ -340,14 +340,14 @@ different file. First a test repository is initialized:</p>
 $ cd test-repo
 $ touch a.txt b.txt
 $ git add a.txt b.txt
-$ git commit -m &quot;Add files&quot;
+$ git commit -m &#34;Add files&#34;
 $ stg init
 </code></pre><p>Then the two patches are created:</p>
-<pre tabindex="0"><code>$ stg new first -m 'First patch'
-$ echo 'a change' &gt;&gt; a.txt
+<pre tabindex="0"><code>$ stg new first -m &#39;First patch&#39;
+$ echo &#39;a change&#39; &gt;&gt; a.txt
 $ stg refresh
-$ stg new second -m 'Second patch'
-$ echo 'b change' &gt;&gt; b.txt
+$ stg new second -m &#39;Second patch&#39;
+$ echo &#39;b change&#39; &gt;&gt; b.txt
 $ stg refresh
 </code></pre><p>Then both patches are popped:</p>
 <pre tabindex="0"><code>$ stg pop --all
@@ -364,17 +364,17 @@ patches; especially when each patch is limited to one coherent topic.</p>
 the same lines of a file. This is when a conflict may arise.</p>
 <pre tabindex="0"><code>$ stg pop
 Checking for changes in the working directory ... done
-Popping patch &quot;first&quot; ... done
-Now at patch &quot;second&quot;
-$ echo 'another change' &gt;&gt; a.txt
+Popping patch &#34;first&#34; ... done
+Now at patch &#34;second&#34;
+$ echo &#39;another change&#39; &gt;&gt; a.txt
 $ stg refresh
 </code></pre><p>Now, both patches add a line to the end of <code>a.txt</code>. What happens
 when attempting to apply both patches at once?</p>
 <pre tabindex="0"><code>$ stg push
-Pushing patch &quot;first&quot; ... done (conflict)
+Pushing patch &#34;first&#34; ... done (conflict)
 Error: 1 merge conflict(s)
        CONFLICT (content): Merge conflict in a.txt
-Now at patch &quot;first&quot;
+Now at patch &#34;first&#34;
 </code></pre><p>StGit indicates that when it pushed <code>first</code> on top of <code>second</code> that
 since both modify the same lines of the same file (<code>a.txt</code>), there is a
 conflict. <a href="/man/stg-status"><code>stg status</code></a> can be used to see the status
@@ -395,7 +395,7 @@ hunks within the file.</p>
 <p>The <a href="/man/stg-undo"><code>stg undo</code></a> command can rewind the state of the
 StGit stack and work tree.</p>
 <pre tabindex="0"><code>$ stg undo --hard
-Now at patch &quot;second&quot;
+Now at patch &#34;second&#34;
 </code></pre><blockquote>
 <p><strong>NOTE</strong> The <code>--hard</code> flag for <code>stg undo</code> is required when there are
 modifications in the work tree or index, as is the case when there
@@ -496,7 +496,7 @@ be higher quality and higher value.</p>
 revised:</p>
 <pre tabindex="0"><code>$ stg uncommit --number 6
 Uncommitting 6 patches ...
-  Now at patch &quot;more-snarfle-cache&quot;
+  Now at patch &#34;more-snarfle-cache&#34;
 done
 $ stg series --description
 + improve-the-snarfle-cache      # Improve the snarfle cache
@@ -646,7 +646,7 @@ index e324179..6398958 100644
      sys.exit(ret or utils.STGIT_SUCCESS)
 
  def main():
-+    print 'My first patch!'
++    print &#39;My first patch!&#39;
      try:
          _main()
      finally:

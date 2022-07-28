@@ -10,8 +10,6 @@
   </url><url>
     <loc>http://stacked-git.github.io/</loc>
   </url><url>
-    <loc>http://stacked-git.github.io/man/stg/</loc>
-  </url><url>
     <loc>http://stacked-git.github.io/man/stg-branch/</loc>
   </url><url>
     <loc>http://stacked-git.github.io/man/stg-clean/</loc>
@@ -93,6 +91,8 @@
     <loc>http://stacked-git.github.io/man/stg-undo/</loc>
   </url><url>
     <loc>http://stacked-git.github.io/man/stg-unhide/</loc>
+  </url><url>
+    <loc>http://stacked-git.github.io/man/stg/</loc>
   </url><url>
     <loc>http://stacked-git.github.io/changelog/</loc>
   </url><url>

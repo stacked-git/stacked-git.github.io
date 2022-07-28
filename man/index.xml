@@ -7,24 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="http://stacked-git.github.io/man/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>stg(1)</title>
-      <link>http://stacked-git.github.io/man/stg/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://stacked-git.github.io/man/stg/</guid>
-      <description>NAME stg - Manage stacks of patches using the Git content tracker
-   SYNOPSIS stg [--version | --help] stg [--help &amp;lt;command&amp;gt; | &amp;lt;command&amp;gt; --help] stg &amp;lt;command&amp;gt; [COMMAND OPTIONS] [ARGS]    DESCRIPTION StGit (Stacked Git) is an application that provides a convenient way to maintain a patch stack on top of a Git branch:
-   The topmost (most recent) commits of a branch are given names.</description>
-    </item>
-    
-    <item>
       <title>stg-branch(1)</title>
       <link>http://stacked-git.github.io/man/stg-branch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://stacked-git.github.io/man/stg-branch/</guid>
       <description>NAME stg-branch - Branch operations: switch, list, create, rename, delete, …​
-   SYNOPSIS stg branch stg branch [--merge] [--] &amp;lt;branch&amp;gt; stg branch --list stg branch --create [--] &amp;lt;new-branch&amp;gt; [&amp;lt;committish&amp;gt;] stg branch --clone [--] [&amp;lt;new-branch&amp;gt;] stg branch --rename [--] [&amp;lt;old-name&amp;gt;] &amp;lt;new-name&amp;gt; stg branch --protect [--] [&amp;lt;branch&amp;gt;] stg branch --unprotect [--] [&amp;lt;branch&amp;gt;] stg branch --delete [--force] [--] &amp;lt;branch&amp;gt; stg branch --cleanup [--force] [--] [&amp;lt;branch&amp;gt;] stg branch --description=&amp;lt;description&amp;gt; [--] [&amp;lt;branch&amp;gt;]    DESCRIPTION Create, clone, switch between, rename, or delete development branches within a git repository.</description>
+SYNOPSIS stg branch stg branch [--merge] [--] &amp;lt;branch&amp;gt; stg branch --list stg branch --create [--] &amp;lt;new-branch&amp;gt; [&amp;lt;committish&amp;gt;] stg branch --clone [--] [&amp;lt;new-branch&amp;gt;] stg branch --rename [--] [&amp;lt;old-name&amp;gt;] &amp;lt;new-name&amp;gt; stg branch --protect [--] [&amp;lt;branch&amp;gt;] stg branch --unprotect [--] [&amp;lt;branch&amp;gt;] stg branch --delete [--force] [--] &amp;lt;branch&amp;gt; stg branch --cleanup [--force] [--] [&amp;lt;branch&amp;gt;] stg branch --description=&amp;lt;description&amp;gt; [--] [&amp;lt;branch&amp;gt;] DESCRIPTION Create, clone, switch between, rename, or delete development branches within a git repository.</description>
     </item>
     
     <item>
@@ -34,9 +23,10 @@
       
       <guid>http://stacked-git.github.io/man/stg-clean/</guid>
       <description>NAME stg-clean - Delete the empty patches in the series
-   SYNOPSIS stg clean    DESCRIPTION Delete the empty patches in the whole series or only those applied or unapplied. A patch is considered empty if the two commit objects representing its boundaries refer to the same tree object.
-   OPTIONS  -a --applied  Delete the empty applied patches.
- -u --unapplied  Delete the empty unapplied patches.</description>
+SYNOPSIS stg clean DESCRIPTION Delete the empty patches in the whole series or only those applied or unapplied. A patch is considered empty if the two commit objects representing its boundaries refer to the same tree object.
+OPTIONS -a --applied Delete the empty applied patches.
+-u --unapplied Delete the empty unapplied patches.
+StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     
     <item>
@@ -46,8 +36,9 @@
       
       <guid>http://stacked-git.github.io/man/stg-clone/</guid>
       <description>NAME stg-clone - Make a local clone of a remote repository
-   SYNOPSIS stg clone &amp;lt;repository&amp;gt; &amp;lt;dir&amp;gt;    DESCRIPTION Clone a git repository into the local directory &amp;lt;dir&amp;gt; (using linkstg:clone[]) and initialise the local branch &amp;#34;master&amp;#34;.
- This operation is for example suitable to start working using the &amp;#34;tracking branch&amp;#34; workflow (see 1). Other means to setup an StGit stack are linkstg:init[] and the --create and --clone commands of linkstg:branch[].</description>
+SYNOPSIS stg clone &amp;lt;repository&amp;gt; &amp;lt;dir&amp;gt; DESCRIPTION Clone a git repository into the local directory &amp;lt;dir&amp;gt; (using linkstg:clone[]) and initialise the local branch &amp;#34;master&amp;#34;.
+This operation is for example suitable to start working using the &amp;#34;tracking branch&amp;#34; workflow (see 1). Other means to setup an StGit stack are linkstg:init[] and the --create and --clone commands of linkstg:branch[].
+The target directory &amp;lt;dir&amp;gt; will be created by this command, and must not already exist.</description>
     </item>
     
     <item>
@@ -57,7 +48,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-commit/</guid>
       <description>NAME stg-commit - Permanently store the applied patches into the stack base
-   SYNOPSIS stg commit [options] stg commit [options] [--] &amp;lt;patchnames&amp;gt; stg commit [options] -n NUM stg commit [options] --all    DESCRIPTION Merge one or more patches into the base of the current stack and remove them from the series while advancing the base. This is the opposite of stg uncommit. Use this command if you no longer want to manage a patch with StGit.</description>
+SYNOPSIS stg commit [options] stg commit [options] [--] &amp;lt;patchnames&amp;gt; stg commit [options] -n NUM stg commit [options] --all DESCRIPTION Merge one or more patches into the base of the current stack and remove them from the series while advancing the base. This is the opposite of stg uncommit. Use this command if you no longer want to manage a patch with StGit.</description>
     </item>
     
     <item>
@@ -67,8 +58,8 @@
       
       <guid>http://stacked-git.github.io/man/stg-delete/</guid>
       <description>NAME stg-delete - Delete patches
-   SYNOPSIS stg delete [options] [--] &amp;lt;patch1&amp;gt; [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;]    DESCRIPTION Delete the patches passed as arguments.
-   OPTIONS  --spill  Delete the patches, but do not touch the index and worktree. This only works with applied patches at the top of the stack. The effect is to &amp;#34;spill&amp;#34; the patch contents into the index and worktree. This can be useful e.</description>
+SYNOPSIS stg delete [options] [--] &amp;lt;patch1&amp;gt; [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;] DESCRIPTION Delete the patches passed as arguments.
+OPTIONS --spill Delete the patches, but do not touch the index and worktree. This only works with applied patches at the top of the stack. The effect is to &amp;#34;spill&amp;#34; the patch contents into the index and worktree. This can be useful e.g. if you want to split a patch into several smaller pieces.</description>
     </item>
     
     <item>
@@ -78,8 +69,8 @@
       
       <guid>http://stacked-git.github.io/man/stg-diff/</guid>
       <description>NAME stg-diff - Show the tree diff
-   SYNOPSIS stg diff [options] [--] [&amp;lt;files or dirs&amp;gt;]    DESCRIPTION Show the diff (default) or diffstat between the current working copy or a tree-ish object and another tree-ish object (defaulting to HEAD). File names can also be given to restrict the diff output. The tree-ish object has the format accepted by the linkstg:id[] command.
-   OPTIONS  -r rev1[.</description>
+SYNOPSIS stg diff [options] [--] [&amp;lt;files or dirs&amp;gt;] DESCRIPTION Show the diff (default) or diffstat between the current working copy or a tree-ish object and another tree-ish object (defaulting to HEAD). File names can also be given to restrict the diff output. The tree-ish object has the format accepted by the linkstg:id[] command.
+OPTIONS -r rev1[..[rev2]] --range rev1[..[rev2]] Show the diff between revisions.</description>
     </item>
     
     <item>
@@ -89,9 +80,9 @@
       
       <guid>http://stacked-git.github.io/man/stg-edit/</guid>
       <description>NAME stg-edit - Edit a patch description or diff
-   SYNOPSIS stg edit [options] [--] [&amp;lt;patch&amp;gt;]    DESCRIPTION Edit the description and author information of the given patch (or the current patch if no patch name was given). With --diff, also edit the diff.
- The editor is invoked with the following contents:
- From: A U Thor &amp;lt;author@example.com&amp;gt; Date: creation date Patch description   If --diff was specified, the diff appears at the bottom, after a separator:</description>
+SYNOPSIS stg edit [options] [--] [&amp;lt;patch&amp;gt;] DESCRIPTION Edit the description and author information of the given patch (or the current patch if no patch name was given). With --diff, also edit the diff.
+The editor is invoked with the following contents:
+From: A U Thor &amp;lt;author@example.com&amp;gt; Date: creation date Patch description If --diff was specified, the diff appears at the bottom, after a separator:</description>
     </item>
     
     <item>
@@ -101,8 +92,8 @@
       
       <guid>http://stacked-git.github.io/man/stg-export/</guid>
       <description>NAME stg-export - Export patches to a directory
-   SYNOPSIS stg export [options] [--] [&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;]    DESCRIPTION Export a range of applied patches to a given directory (defaults to patches-&amp;lt;branch&amp;gt;) in a standard unified GNU diff format. A template file (defaulting to .git/patchexport.tmpl or ~/.stgit/templates/patchexport.tmpl or /usr/share/stgit/templates/patchexport.tmpl) can be used for the patch format. The following variables are supported in the template file:
- %(description)s - patch description %(shortdescr)s - the first line of the patch description %(longdescr)s - the rest of the patch description, after the first line %(diffstat)s - the diff statistics %(authname)s - author&amp;#39;s name %(authemail)s - author&amp;#39;s e-mail %(authdate)s - patch creation date %(commname)s - committer&amp;#39;s name %(commemail)s - committer&amp;#39;s e-mail     OPTIONS  -d DIR --dir DIR  Export patches to DIR instead of the default.</description>
+SYNOPSIS stg export [options] [--] [&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;] DESCRIPTION Export a range of applied patches to a given directory (defaults to patches-&amp;lt;branch&amp;gt;) in a standard unified GNU diff format. A template file (defaulting to .git/patchexport.tmpl or ~/.stgit/templates/patchexport.tmpl or /usr/share/stgit/templates/patchexport.tmpl) can be used for the patch format. The following variables are supported in the template file:
+%(description)s - patch description %(shortdescr)s - the first line of the patch description %(longdescr)s - the rest of the patch description, after the first line %(diffstat)s - the diff statistics %(authname)s - author&amp;#39;s name %(authemail)s - author&amp;#39;s e-mail %(authdate)s - patch creation date %(commname)s - committer&amp;#39;s name %(commemail)s - committer&amp;#39;s e-mail OPTIONS -d DIR --dir DIR Export patches to DIR instead of the default.</description>
     </item>
     
     <item>
@@ -112,7 +103,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-files/</guid>
       <description>NAME stg-files - Show the files modified by a patch (or the current patch)
-   SYNOPSIS stg files [options] [--] [[&amp;lt;branch&amp;gt;:]&amp;lt;patch&amp;gt;]    DESCRIPTION List the files modified by the given patch (defaulting to the current one). Passing the --stat option shows the diff statistics for the given patch. Note that this command doesn’t show the files modified in the working tree and not yet included in the patch by a refresh command.</description>
+SYNOPSIS stg files [options] [--] [[&amp;lt;branch&amp;gt;:]&amp;lt;patch&amp;gt;] DESCRIPTION List the files modified by the given patch (defaulting to the current one). Passing the --stat option shows the diff statistics for the given patch. Note that this command doesn’t show the files modified in the working tree and not yet included in the patch by a refresh command.</description>
     </item>
     
     <item>
@@ -122,7 +113,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-float/</guid>
       <description>NAME stg-float - Push patches to the top, even if applied
-   SYNOPSIS stg float [--] &amp;lt;patches&amp;gt; stg float -s &amp;lt;series&amp;gt;    DESCRIPTION Float a patch or range of patches to be the top-most applied patches. The patches to be floated may currently be either applied or unapplied. The necessary pop and push operations will be performed to float the named patches. Patches not specified will remain applied or unapplied as they were prior to the float operation.</description>
+SYNOPSIS stg float [--] &amp;lt;patches&amp;gt; stg float -s &amp;lt;series&amp;gt; DESCRIPTION Float a patch or range of patches to be the top-most applied patches. The patches to be floated may currently be either applied or unapplied. The necessary pop and push operations will be performed to float the named patches. Patches not specified will remain applied or unapplied as they were prior to the float operation.</description>
     </item>
     
     <item>
@@ -132,7 +123,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-fold/</guid>
       <description>NAME stg-fold - Integrate a GNU diff patch into the current patch
-   SYNOPSIS stg fold [options] [--] [&amp;lt;file&amp;gt;]    DESCRIPTION Apply the given GNU diff file (or the standard input) onto the top of the current patch. With the --threeway option, the patch is applied onto the bottom of the current patch and a three-way merge is performed with the current top. With the --base option, the patch is applied onto the specified base and a three-way merged is performed with the current top.</description>
+SYNOPSIS stg fold [options] [--] [&amp;lt;file&amp;gt;] DESCRIPTION Apply the given GNU diff file (or the standard input) onto the top of the current patch. With the --threeway option, the patch is applied onto the bottom of the current patch and a three-way merge is performed with the current top. With the --base option, the patch is applied onto the specified base and a three-way merged is performed with the current top.</description>
     </item>
     
     <item>
@@ -142,10 +133,10 @@
       
       <guid>http://stacked-git.github.io/man/stg-goto/</guid>
       <description>NAME stg-goto - Push or pop patches to the given one
-   SYNOPSIS stg goto [options] [--] &amp;lt;patch-name&amp;gt;    DESCRIPTION Push/pop patches to/from the stack until the one given on the command line becomes current.
-   OPTIONS  -k --keep  Keep the local changes.
- -m --merged  Check for patches merged upstream.
-     StGit Part of the StGit suite - see linkman:stg[1]</description>
+SYNOPSIS stg goto [options] [--] &amp;lt;patch-name&amp;gt; DESCRIPTION Push/pop patches to/from the stack until the one given on the command line becomes current.
+OPTIONS -k --keep Keep the local changes.
+-m --merged Check for patches merged upstream.
+StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     
     <item>
@@ -155,9 +146,9 @@
       
       <guid>http://stacked-git.github.io/man/stg-hide/</guid>
       <description>NAME stg-hide - Hide a patch in the series
-   SYNOPSIS stg hide [options] [--] &amp;lt;patch-range&amp;gt;    DESCRIPTION Hide a range of unapplied patches so that they are no longer shown in the plain series command output.
-   OPTIONS  -b BRANCH --branch BRANCH  Use BRANCH instead of the default branch.
-     StGit Part of the StGit suite - see linkman:stg[1]</description>
+SYNOPSIS stg hide [options] [--] &amp;lt;patch-range&amp;gt; DESCRIPTION Hide a range of unapplied patches so that they are no longer shown in the plain series command output.
+OPTIONS -b BRANCH --branch BRANCH Use BRANCH instead of the default branch.
+StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     
     <item>
@@ -167,7 +158,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-id/</guid>
       <description>NAME stg-id - Print the git hash value of a StGit reference
-   SYNOPSIS stg id [options] [--] [&amp;lt;id&amp;gt;]    DESCRIPTION Print the SHA1 value of a Git id (defaulting to HEAD). In addition to the standard Git id’s like heads and tags, this command also accepts [&amp;lt;branch&amp;gt;:]&amp;lt;patch&amp;gt; for the id of a patch and [&amp;lt;branch&amp;gt;:]{base} for the base of the stack. If no branch is specified, it defaults to the current one.</description>
+SYNOPSIS stg id [options] [--] [&amp;lt;id&amp;gt;] DESCRIPTION Print the SHA1 value of a Git id (defaulting to HEAD). In addition to the standard Git id’s like heads and tags, this command also accepts [&amp;lt;branch&amp;gt;:]&amp;lt;patch&amp;gt; for the id of a patch and [&amp;lt;branch&amp;gt;:]{base} for the base of the stack. If no branch is specified, it defaults to the current one.</description>
     </item>
     
     <item>
@@ -177,7 +168,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-import/</guid>
       <description>NAME stg-import - Import a GNU diff file as a new patch
-   SYNOPSIS stg import [options] [--] [&amp;lt;file&amp;gt;|&amp;lt;url&amp;gt;]    DESCRIPTION Create a new patch and apply the given GNU diff file (or the standard input). By default, the file name is used as the patch name but this can be overridden with the --name option. The patch can either be a normal file with the description at the top or it can have standard mail format, the Subject, From and Date headers being used for generating the patch information.</description>
+SYNOPSIS stg import [options] [--] [&amp;lt;file&amp;gt;|&amp;lt;url&amp;gt;] DESCRIPTION Create a new patch and apply the given GNU diff file (or the standard input). By default, the file name is used as the patch name but this can be overridden with the --name option. The patch can either be a normal file with the description at the top or it can have standard mail format, the Subject, From and Date headers being used for generating the patch information.</description>
     </item>
     
     <item>
@@ -187,9 +178,8 @@
       
       <guid>http://stacked-git.github.io/man/stg-init/</guid>
       <description>NAME stg-init - Initialise the current branch for use with StGit
-   SYNOPSIS stg init    DESCRIPTION Initialise the current git branch to be used as an StGit stack. The branch (and the git repository it is in) must already exist and contain at least one commit.
-   StGit Part of the StGit suite - see linkman:stg[1]
-   </description>
+SYNOPSIS stg init DESCRIPTION Initialise the current git branch to be used as an StGit stack. The branch (and the git repository it is in) must already exist and contain at least one commit.
+StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     
     <item>
@@ -199,8 +189,8 @@
       
       <guid>http://stacked-git.github.io/man/stg-log/</guid>
       <description>NAME stg-log - Display or optionally clear the patch changelog
-   SYNOPSIS stg log [options] [--] [&amp;lt;patches&amp;gt;]    DESCRIPTION List the history of the patch stack: the stack log. If one or more patch names are given, limit the list to the log entries that touch the named patches.
- &amp;#34;stg undo&amp;#34; and &amp;#34;stg redo&amp;#34; let you step back and forth in the patch stack. &amp;#34;stg reset&amp;#34; lets you go directly to any state.</description>
+SYNOPSIS stg log [options] [--] [&amp;lt;patches&amp;gt;] DESCRIPTION List the history of the patch stack: the stack log. If one or more patch names are given, limit the list to the log entries that touch the named patches.
+&amp;#34;stg undo&amp;#34; and &amp;#34;stg redo&amp;#34; let you step back and forth in the patch stack. &amp;#34;stg reset&amp;#34; lets you go directly to any state.</description>
     </item>
     
     <item>
@@ -210,8 +200,8 @@
       
       <guid>http://stacked-git.github.io/man/stg-mail/</guid>
       <description>NAME stg-mail - Send a patch or series of patches by e-mail
-   SYNOPSIS stg mail [options] [--] [&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;]    DESCRIPTION Send a patch or a range of patches by e-mail using the SMTP server specified by the stgit.smtpserver configuration option, or the --smtp-server command line option. This option can also be an absolute path to sendmail followed by command line arguments.
- The From address and the e-mail format are generated from the template file passed as argument to --template (defaulting to .</description>
+SYNOPSIS stg mail [options] [--] [&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;] DESCRIPTION Send a patch or a range of patches by e-mail using the SMTP server specified by the stgit.smtpserver configuration option, or the --smtp-server command line option. This option can also be an absolute path to sendmail followed by command line arguments.
+The From address and the e-mail format are generated from the template file passed as argument to --template (defaulting to .</description>
     </item>
     
     <item>
@@ -221,8 +211,8 @@
       
       <guid>http://stacked-git.github.io/man/stg-new/</guid>
       <description>NAME stg-new - Create a new, empty patch
-   SYNOPSIS stg new [options] [--] [&amp;lt;name&amp;gt;]    DESCRIPTION Create a new, empty patch on the current stack. The new patch is created on top of the currently applied patches, and is made the new top of the stack. Uncommitted changes in the work tree are not included in the patch — that is handled by linkstg:refresh[].
- The given name must be unique in the stack, and may only contain alphanumeric characters, dashes and underscores.</description>
+SYNOPSIS stg new [options] [--] [&amp;lt;name&amp;gt;] DESCRIPTION Create a new, empty patch on the current stack. The new patch is created on top of the currently applied patches, and is made the new top of the stack. Uncommitted changes in the work tree are not included in the patch — that is handled by linkstg:refresh[].
+The given name must be unique in the stack, and may only contain alphanumeric characters, dashes and underscores.</description>
     </item>
     
     <item>
@@ -232,10 +222,9 @@
       
       <guid>http://stacked-git.github.io/man/stg-next/</guid>
       <description>NAME stg-next - Print the name of the next patch
-   SYNOPSIS stg next    DESCRIPTION Print the name of the next patch.
-   OPTIONS  -b BRANCH --branch BRANCH  Use BRANCH instead of the default branch.
-     StGit Part of the StGit suite - see linkman:stg[1]
-   </description>
+SYNOPSIS stg next DESCRIPTION Print the name of the next patch.
+OPTIONS -b BRANCH --branch BRANCH Use BRANCH instead of the default branch.
+StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     
     <item>
@@ -245,8 +234,9 @@
       
       <guid>http://stacked-git.github.io/man/stg-patches/</guid>
       <description>NAME stg-patches - Show the applied patches modifying a file
-   SYNOPSIS stg patches [options] [--] [&amp;lt;files or dirs&amp;gt;]    DESCRIPTION Show the applied patches modifying the given files. Without arguments, it shows the patches affected by the local tree modifications. The --diff option also lists the patch log and the diff for the given files.
-   OPTIONS  -d --diff  Show the diff for the given files.</description>
+SYNOPSIS stg patches [options] [--] [&amp;lt;files or dirs&amp;gt;] DESCRIPTION Show the applied patches modifying the given files. Without arguments, it shows the patches affected by the local tree modifications. The --diff option also lists the patch log and the diff for the given files.
+OPTIONS -d --diff Show the diff for the given files.
+-b BRANCH --branch BRANCH Use BRANCH instead of the default branch.</description>
     </item>
     
     <item>
@@ -256,7 +246,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-pick/</guid>
       <description>NAME stg-pick - Import a patch from a different branch or a commit object
-   SYNOPSIS stg pick [options] [--] ([&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;])|&amp;lt;commit&amp;gt;    DESCRIPTION Import one or more patches from a different branch or a commit object into the current series. By default, the name of the imported patch is used as the name of the current patch. It can be overridden with the --name option.</description>
+SYNOPSIS stg pick [options] [--] ([&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;])|&amp;lt;commit&amp;gt; DESCRIPTION Import one or more patches from a different branch or a commit object into the current series. By default, the name of the imported patch is used as the name of the current patch. It can be overridden with the --name option. A commit object can be reverted with the --revert option.</description>
     </item>
     
     <item>
@@ -266,8 +256,8 @@
       
       <guid>http://stacked-git.github.io/man/stg-pop/</guid>
       <description>NAME stg-pop - Pop one or more patches from the stack
-   SYNOPSIS stg pop [options] [--] [&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;]    DESCRIPTION Pop the topmost patch or a range of patches from the stack. The command fails if there are conflicts or local changes (and --keep was not specified).
- A series of pop and push operations are performed so that only the patches passed on the command line are popped from the stack.</description>
+SYNOPSIS stg pop [options] [--] [&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;] DESCRIPTION Pop the topmost patch or a range of patches from the stack. The command fails if there are conflicts or local changes (and --keep was not specified).
+A series of pop and push operations are performed so that only the patches passed on the command line are popped from the stack.</description>
     </item>
     
     <item>
@@ -277,10 +267,9 @@
       
       <guid>http://stacked-git.github.io/man/stg-prev/</guid>
       <description>NAME stg-prev - Print the name of the previous patch
-   SYNOPSIS stg prev    DESCRIPTION Print the name of the previous patch.
-   OPTIONS  -b BRANCH --branch BRANCH  Use BRANCH instead of the default branch.
-     StGit Part of the StGit suite - see linkman:stg[1]
-   </description>
+SYNOPSIS stg prev DESCRIPTION Print the name of the previous patch.
+OPTIONS -b BRANCH --branch BRANCH Use BRANCH instead of the default branch.
+StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     
     <item>
@@ -290,7 +279,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-pull/</guid>
       <description>NAME stg-pull - Pull changes from a remote repository
-   SYNOPSIS stg pull [options] [--] [&amp;lt;repository&amp;gt;]    DESCRIPTION Pull the latest changes from the given remote repository (defaulting to branch.&amp;lt;name&amp;gt;.remote, or origin if not set). This command works by popping all the patches from the stack, pulling the changes in the parent repository, setting the base of the stack to the latest parent HEAD and pushing the patches back (unless --nopush is specified).</description>
+SYNOPSIS stg pull [options] [--] [&amp;lt;repository&amp;gt;] DESCRIPTION Pull the latest changes from the given remote repository (defaulting to branch.&amp;lt;name&amp;gt;.remote, or origin if not set). This command works by popping all the patches from the stack, pulling the changes in the parent repository, setting the base of the stack to the latest parent HEAD and pushing the patches back (unless --nopush is specified).</description>
     </item>
     
     <item>
@@ -300,7 +289,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-push/</guid>
       <description>NAME stg-push - Push one or more patches onto the stack
-   SYNOPSIS stg push [options] [--] [&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;]    DESCRIPTION Push one or more patches (defaulting to the first unapplied one) onto the stack. The push operation allows patch reordering by commuting them with the three-way merge algorithm. If there are conflicts while pushing a patch, those conflicts are written to the work tree, and the command halts.</description>
+SYNOPSIS stg push [options] [--] [&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;] DESCRIPTION Push one or more patches (defaulting to the first unapplied one) onto the stack. The push operation allows patch reordering by commuting them with the three-way merge algorithm. If there are conflicts while pushing a patch, those conflicts are written to the work tree, and the command halts. Conflicts raised during the push operation have to be fixed and the git add --update command run (alternatively, you may undo the conflicting push with stg undo).</description>
     </item>
     
     <item>
@@ -310,9 +299,9 @@
       
       <guid>http://stacked-git.github.io/man/stg-rebase/</guid>
       <description>NAME stg-rebase - Move the stack base to another point in history
-   SYNOPSIS stg rebase [options] [--] [new-base-id]    DESCRIPTION Pop all patches from current stack, move the stack base to the given [new-base-id] and push the patches back.
- If you experience merge conflicts, resolve the problem and continue the rebase by executing the following sequence:
- $ git add --update $ stg refresh $ stg goto top-patch   Or if you want to skip that patch:</description>
+SYNOPSIS stg rebase [options] [--] [new-base-id] DESCRIPTION Pop all patches from current stack, move the stack base to the given [new-base-id] and push the patches back.
+If you experience merge conflicts, resolve the problem and continue the rebase by executing the following sequence:
+$ git add --update $ stg refresh $ stg goto top-patch Or if you want to skip that patch:</description>
     </item>
     
     <item>
@@ -322,9 +311,9 @@
       
       <guid>http://stacked-git.github.io/man/stg-redo/</guid>
       <description>NAME stg-redo - Undo the last undo operation
-   SYNOPSIS stg redo    DESCRIPTION If the last command was an undo, reset the patch stack to the state it had before the undo. Consecutive invocations of &amp;#34;stg redo&amp;#34; will undo the effects of consecutive invocations of &amp;#34;stg undo&amp;#34;.
- It is an error to run &amp;#34;stg redo&amp;#34; if the last command was not an undo.
-   OPTIONS  -n N --number N  Undo the last N undos.</description>
+SYNOPSIS stg redo DESCRIPTION If the last command was an undo, reset the patch stack to the state it had before the undo. Consecutive invocations of &amp;#34;stg redo&amp;#34; will undo the effects of consecutive invocations of &amp;#34;stg undo&amp;#34;.
+It is an error to run &amp;#34;stg redo&amp;#34; if the last command was not an undo.
+OPTIONS -n N --number N Undo the last N undos.</description>
     </item>
     
     <item>
@@ -334,8 +323,8 @@
       
       <guid>http://stacked-git.github.io/man/stg-refresh/</guid>
       <description>NAME stg-refresh - Generate a new commit for the current patch
-   SYNOPSIS stg refresh [options] [--] [&amp;lt;files or dirs&amp;gt;]    DESCRIPTION Include the latest work tree and index changes in the current patch. This command generates a new git commit object for the patch; the old commit is no longer visible.
- Refresh will warn if the index is dirty, and require use of either the --index or --force options to override this check.</description>
+SYNOPSIS stg refresh [options] [--] [&amp;lt;files or dirs&amp;gt;] DESCRIPTION Include the latest work tree and index changes in the current patch. This command generates a new git commit object for the patch; the old commit is no longer visible.
+Refresh will warn if the index is dirty, and require use of either the --index or --force options to override this check.</description>
     </item>
     
     <item>
@@ -345,10 +334,9 @@
       
       <guid>http://stacked-git.github.io/man/stg-rename/</guid>
       <description>NAME stg-rename - Rename a patch
-   SYNOPSIS stg rename [options] [--] [oldpatch] &amp;lt;newpatch&amp;gt;    DESCRIPTION Rename &amp;lt;oldpatch&amp;gt; into &amp;lt;newpatch&amp;gt; in a series. If &amp;lt;oldpatch&amp;gt; is not given, the top-most patch will be renamed.
-   OPTIONS  -b BRANCH --branch BRANCH  use BRANCH instead of the default one.
-     StGit Part of the StGit suite - see linkman:stg[1]
-   </description>
+SYNOPSIS stg rename [options] [--] [oldpatch] &amp;lt;newpatch&amp;gt; DESCRIPTION Rename &amp;lt;oldpatch&amp;gt; into &amp;lt;newpatch&amp;gt; in a series. If &amp;lt;oldpatch&amp;gt; is not given, the top-most patch will be renamed.
+OPTIONS -b BRANCH --branch BRANCH use BRANCH instead of the default one.
+StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     
     <item>
@@ -358,8 +346,8 @@
       
       <guid>http://stacked-git.github.io/man/stg-repair/</guid>
       <description>NAME stg-repair - Fix StGit metadata if branch was modified with git commands
-   SYNOPSIS stg repair    DESCRIPTION If you modify an StGit stack (branch) with some git commands — such as commit, pull, merge, and rebase — you will leave the StGit metadata in an inconsistent state. In that situation, you have two options:
-  Use &amp;#34;stg undo&amp;#34; to undo the effect of the git commands.</description>
+SYNOPSIS stg repair DESCRIPTION If you modify an StGit stack (branch) with some git commands — such as commit, pull, merge, and rebase — you will leave the StGit metadata in an inconsistent state. In that situation, you have two options:
+Use &amp;#34;stg undo&amp;#34; to undo the effect of the git commands. (If you know what you are doing and want more control, &amp;#34;git reset&amp;#34; or similar will work too.</description>
     </item>
     
     <item>
@@ -369,8 +357,8 @@
       
       <guid>http://stacked-git.github.io/man/stg-reset/</guid>
       <description>NAME stg-reset - Reset the patch stack to an earlier state
-   SYNOPSIS stg reset [options] [--] [&amp;lt;state&amp;gt; [&amp;lt;patchnames&amp;gt;]]    DESCRIPTION Reset the patch stack to an earlier state. If no state is specified, reset only the changes in the worktree.
- The state is specified with a commit id from a stack log; &amp;#34;stg log&amp;#34; lets you view this log, and &amp;#34;stg reset&amp;#34; lets you reset to any state you see in the log.</description>
+SYNOPSIS stg reset [options] [--] [&amp;lt;state&amp;gt; [&amp;lt;patchnames&amp;gt;]] DESCRIPTION Reset the patch stack to an earlier state. If no state is specified, reset only the changes in the worktree.
+The state is specified with a commit id from a stack log; &amp;#34;stg log&amp;#34; lets you view this log, and &amp;#34;stg reset&amp;#34; lets you reset to any state you see in the log.</description>
     </item>
     
     <item>
@@ -380,8 +368,9 @@
       
       <guid>http://stacked-git.github.io/man/stg-series/</guid>
       <description>NAME stg-series - Print the patch series
-   SYNOPSIS stg series [options] [--] [&amp;lt;patch-range&amp;gt;]    DESCRIPTION Show all the patches in the series, or just those in the given range, ordered from top to bottom.
- The applied patches are prefixed with a + (except the current patch, which is prefixed with a &amp;gt;), the unapplied patches with a -, and the hidden patches with a !</description>
+SYNOPSIS stg series [options] [--] [&amp;lt;patch-range&amp;gt;] DESCRIPTION Show all the patches in the series, or just those in the given range, ordered from top to bottom.
+The applied patches are prefixed with a + (except the current patch, which is prefixed with a &amp;gt;), the unapplied patches with a -, and the hidden patches with a !.
+Empty patches are prefixed with a 0.</description>
     </item>
     
     <item>
@@ -391,8 +380,9 @@
       
       <guid>http://stacked-git.github.io/man/stg-show/</guid>
       <description>NAME stg-show - Show the commit corresponding to a patch
-   SYNOPSIS stg show [-b] [-s] [-O] [--] [&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;] stg show (--applied | --unapplied) [-b] [-s] [-O]    DESCRIPTION Show the commit log and the diff corresponding to the given patches. The output is similar to that generated by git show.
-   OPTIONS  -b BRANCH --branch BRANCH  Use BRANCH instead of the default branch.</description>
+SYNOPSIS stg show [-b] [-s] [-O] [--] [&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;] stg show (--applied | --unapplied) [-b] [-s] [-O] DESCRIPTION Show the commit log and the diff corresponding to the given patches. The output is similar to that generated by git show.
+OPTIONS -b BRANCH --branch BRANCH Use BRANCH instead of the default branch.
+-a --applied Show the applied patches.</description>
     </item>
     
     <item>
@@ -402,7 +392,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-sink/</guid>
       <description>NAME stg-sink - Send patches deeper down the stack
-   SYNOPSIS stg sink [-t &amp;lt;target patch&amp;gt;] [-n] [--] [&amp;lt;patches&amp;gt;]    DESCRIPTION This is the opposite operation of linkstg:float[]: move the specified patches down the stack. It is for example useful to group stable patches near the bottom of the stack, where they are less likely to be impacted by the push of another patch, and from where they can be more easily committed or pushed.</description>
+SYNOPSIS stg sink [-t &amp;lt;target patch&amp;gt;] [-n] [--] [&amp;lt;patches&amp;gt;] DESCRIPTION This is the opposite operation of linkstg:float[]: move the specified patches down the stack. It is for example useful to group stable patches near the bottom of the stack, where they are less likely to be impacted by the push of another patch, and from where they can be more easily committed or pushed.</description>
     </item>
     
     <item>
@@ -412,9 +402,10 @@
       
       <guid>http://stacked-git.github.io/man/stg-squash/</guid>
       <description>NAME stg-squash - Squash two or more patches into one
-   SYNOPSIS stg squash [options] [--] &amp;lt;patches&amp;gt;    DESCRIPTION Squash two or more patches, creating one big patch that contains all their changes. In more detail:
-  Pop all the given patches, plus any other patches on top of them.
-  Push the given patches in the order they were given on the command line.</description>
+SYNOPSIS stg squash [options] [--] &amp;lt;patches&amp;gt; DESCRIPTION Squash two or more patches, creating one big patch that contains all their changes. In more detail:
+Pop all the given patches, plus any other patches on top of them.
+Push the given patches in the order they were given on the command line.
+Squash the given patches into one big patch.</description>
     </item>
     
     <item>
@@ -424,7 +415,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-sync/</guid>
       <description>NAME stg-sync - Synchronise patches with a branch or a series
-   SYNOPSIS stg sync [options] [--] [&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;]    DESCRIPTION For each of the specified patches perform a three-way merge with the same patch in the specified branch or series. The command can be used for keeping patches on several branches in sync. Note that the operation may fail for some patches because of conflicts.</description>
+SYNOPSIS stg sync [options] [--] [&amp;lt;patch1&amp;gt;] [&amp;lt;patch2&amp;gt;] [&amp;lt;patch3&amp;gt;..&amp;lt;patch4&amp;gt;] DESCRIPTION For each of the specified patches perform a three-way merge with the same patch in the specified branch or series. The command can be used for keeping patches on several branches in sync. Note that the operation may fail for some patches because of conflicts. The patches in the series must apply cleanly.</description>
     </item>
     
     <item>
@@ -434,10 +425,9 @@
       
       <guid>http://stacked-git.github.io/man/stg-top/</guid>
       <description>NAME stg-top - Print the name of the top patch
-   SYNOPSIS stg top    DESCRIPTION Print the name of the current (topmost) patch.
-   OPTIONS  -b BRANCH --branch BRANCH  Use BRANCH instead of the default branch.
-     StGit Part of the StGit suite - see linkman:stg[1]
-   </description>
+SYNOPSIS stg top DESCRIPTION Print the name of the current (topmost) patch.
+OPTIONS -b BRANCH --branch BRANCH Use BRANCH instead of the default branch.
+StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     
     <item>
@@ -447,7 +437,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-uncommit/</guid>
       <description>NAME stg-uncommit - Turn regular git commits into StGit patches
-   SYNOPSIS stg uncommit [--] &amp;lt;patch-name-1&amp;gt; [&amp;lt;patch-name-2&amp;gt; …​] stg uncommit -n NUM [--] [&amp;lt;prefix&amp;gt;] stg uncommit -t &amp;lt;committish&amp;gt; [-x]    DESCRIPTION Take one or more git commits at the base of the current stack and turn them into StGit patches. The new patches are created as applied patches at the bottom of the stack. This is the opposite of stg commit.</description>
+SYNOPSIS stg uncommit [--] &amp;lt;patch-name-1&amp;gt; [&amp;lt;patch-name-2&amp;gt; …​] stg uncommit -n NUM [--] [&amp;lt;prefix&amp;gt;] stg uncommit -t &amp;lt;committish&amp;gt; [-x] DESCRIPTION Take one or more git commits at the base of the current stack and turn them into StGit patches. The new patches are created as applied patches at the bottom of the stack. This is the opposite of stg commit.</description>
     </item>
     
     <item>
@@ -457,10 +447,10 @@
       
       <guid>http://stacked-git.github.io/man/stg-undo/</guid>
       <description>NAME stg-undo - Undo the last operation
-   SYNOPSIS stg undo    DESCRIPTION Reset the patch stack to the previous state. Consecutive invocations of &amp;#34;stg undo&amp;#34; will take you ever further into the past.
-   OPTIONS  -n N --number N  Undo the last N commands.
- --hard  Discard changes in your index/worktree.
-     StGit Part of the StGit suite - see linkman:stg[1]</description>
+SYNOPSIS stg undo DESCRIPTION Reset the patch stack to the previous state. Consecutive invocations of &amp;#34;stg undo&amp;#34; will take you ever further into the past.
+OPTIONS -n N --number N Undo the last N commands.
+--hard Discard changes in your index/worktree.
+StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     
     <item>
@@ -470,10 +460,20 @@
       
       <guid>http://stacked-git.github.io/man/stg-unhide/</guid>
       <description>NAME stg-unhide - Unhide a hidden patch
-   SYNOPSIS stg unhide [options] [--] &amp;lt;patch-range&amp;gt;    DESCRIPTION Unhide a hidden range of patches so that they are shown in the plain stg series command output.
-   OPTIONS  -b BRANCH --branch BRANCH  Use BRANCH instead of the default branch.
-     StGit Part of the StGit suite - see linkman:stg[1]
-   </description>
+SYNOPSIS stg unhide [options] [--] &amp;lt;patch-range&amp;gt; DESCRIPTION Unhide a hidden range of patches so that they are shown in the plain stg series command output.
+OPTIONS -b BRANCH --branch BRANCH Use BRANCH instead of the default branch.
+StGit Part of the StGit suite - see linkman:stg[1]</description>
+    </item>
+    
+    <item>
+      <title>stg(1)</title>
+      <link>http://stacked-git.github.io/man/stg/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://stacked-git.github.io/man/stg/</guid>
+      <description>NAME stg - Manage stacks of patches using the Git content tracker
+SYNOPSIS stg [--version | --help] stg [--help &amp;lt;command&amp;gt; | &amp;lt;command&amp;gt; --help] stg &amp;lt;command&amp;gt; [COMMAND OPTIONS] [ARGS] DESCRIPTION StGit (Stacked Git) is an application that provides a convenient way to maintain a patch stack on top of a Git branch:
+The topmost (most recent) commits of a branch are given names. Such a named commit is called a patch.</description>
     </item>
     
   </channel>
