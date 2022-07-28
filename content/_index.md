@@ -35,6 +35,15 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2022-07-28: [StGit v2.0.0-beta.1][v2.0.0-beta.1] has been released.
+
+This is the first beta release of StGit 2.0. This is a reimplementation
+of Stacked Git in Rust. In addition to significant performance
+improvements, StGit 2.0 contains a number of new features, fixes, and
+refinements compared to StGit 1.x.
+
+See the [changelog](changelog/) for all the details on this release.
+
 ### 2022-01-28: [StGit v1.5][v1.5] has been released.
 
 Several pesky bugs repaired along with some other minor improvements.
@@ -56,32 +65,10 @@ See the [changelog](changelog/) for all the details on this release.
 This is a hot fix release that repairs a crash regression when using
 the `stgit.autosign` configuration option.
 
-### 2021-09-26: [StGit v1.2][v1.2] has been released.
-
-This release is choc full of new features, including
-`stg rebase --interactive` and `stg rebase --autostash` as well as many
-quality of life improvements to `new`, `edit`, `squash`.
-
-StGit v1.2 updates the stack metadata. Gone are `.stgit` branches!
-Instead, stack metadata refs are now found in the new `refs/stacks`
-namespace instead of the regular branches namespace (`refs/heads`). This
-change eliminates clutter when looking at branch lists and in various
-forms of `git log`.
-
-An important packaging change to be aware of is that StGit now uses
-setuptools instead of the deprecated distutils. This change will affect
-downstream StGit packagers, but hopefully StGit vectoring toward modern
-Python packaging standards will be a positive in the long run.
-
-See the [changelog](changelog/) for all the details on this release.
-
-*Many thanks to Topher Brown for significant contributions to StGit
-v1.2!*
-
+[v2.0.0-beta.1]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0-beta.1
 [v1.5]: https://github.com/stacked-git/stgit/releases/tag/v1.5
 [v1.4]: https://github.com/stacked-git/stgit/releases/tag/v1.4
 [v1.3]: https://github.com/stacked-git/stgit/releases/tag/v1.3
-[v1.2]: https://github.com/stacked-git/stgit/releases/tag/v1.2
 
 ## Why Stacked Git?
 
@@ -138,7 +125,7 @@ To install from source, choose a `prefix` and:
 make prefix=/usr/local install install-doc
 ```
 
-For more information about installation, see [the INSTALL
+For more information about installation, see [the INSTALL.md
 file][gh-install].
 
 ## Getting Started
@@ -208,7 +195,7 @@ patches][gh-authors], ideas or reported bugs.
 [gg-forum]: https://groups.google.com/d/forum/stgit
 [gh-authors]: https://github.com/stacked-git/stgit/blob/master/AUTHORS.md
 [gh-contributing]: https://github.com/stacked-git/stgit/blob/master/CONTRIBUTING.md
-[gh-install]: https://github.com/stacked-git/stgit/blob/master/INSTALL
+[gh-install]: https://github.com/stacked-git/stgit/blob/master/INSTALL.md
 [gh-issues]: https://github.com/stacked-git/stgit/issues
 [gh-latest]: https://github.com/stacked-git/stgit/releases/latest
 [gh-repo]: https://github.com/stacked-git/stgit
