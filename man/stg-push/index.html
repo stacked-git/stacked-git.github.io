@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-push - Push one or more patches onto the stack</p>
+<p>stg-push - Push (apply) one or more unapplied patches</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,9 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg push</em> [options] [--] [&lt;patch1&gt;] [&lt;patch2&gt;] [&lt;patch3&gt;..&lt;patch4&gt;]</pre>
+<pre class="content"><em>stg push</em> [OPTIONS] [patch]…​
+<em>stg push</em> [OPTIONS] -n &lt;number&gt;
+<em>stg push</em> [OPTIONS] --all</pre>
 </div>
 </div>
 </div>
@@ -126,17 +128,17 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Push one or more patches (defaulting to the first unapplied one) onto
-the stack. The <em>push</em> operation allows patch reordering by commuting
-them with the three-way merge algorithm. If there are conflicts while
-pushing a patch, those conflicts are written to the work tree, and the
-command halts. Conflicts raised during the push operation have to be
-fixed and the <em>git add --update</em> command run (alternatively, you may
-undo the conflicting push with <em>stg undo</em>).</p>
+<p>Push one or more unapplied patches from the series onto the stack.</p>
 </div>
 <div class="paragraph">
-<p>The command also notifies when the patch becomes empty (fully merged
-upstream) or is modified (three-way merged) by the <em>push</em> operation.</p>
+<p>By default, the first unapplied patch is pushed.</p>
+</div>
+<div class="paragraph">
+<p>Unapplied patches may be pushed in arbitrary order, but out of order pushes may
+result in merge conflicts. If there are conflicts while pushing a patch, the
+conflicts are written to the work tree and the push command halts. Conflicts
+may then be resolved using the normal Git methods, or alternatively the push
+may be undone using <a href="/man/stg-undo">stg undo</a>.</p>
 </div>
 </div>
 </div>
@@ -148,46 +150,46 @@ upstream) or is modified (three-way merged) by the <em>push</em> operation.</p>
 <dt class="hdlist1">-a</dt>
 <dt class="hdlist1">--all</dt>
 <dd>
-<p>Push all the unapplied patches.</p>
+<p>Push all unapplied patches</p>
 </dd>
-<dt class="hdlist1">-n NUMBER</dt>
-<dt class="hdlist1">--number NUMBER</dt>
+<dt class="hdlist1">-n &lt;n&gt;</dt>
+<dt class="hdlist1">--number=&lt;n&gt;</dt>
 <dd>
 <p>Push the specified number of patches.</p>
 <div class="paragraph">
-<p>With a negative number, push all but that many patches.</p>
+<p>A negative number indicates to push all but that number of patches</p>
 </div>
 </dd>
 <dt class="hdlist1">--reverse</dt>
 <dd>
-<p>Push the patches in reverse order.</p>
+<p>Push the patches in reverse order</p>
 </dd>
 <dt class="hdlist1">--noapply</dt>
 <dd>
-<p>Reorder patches by pushing without applying.</p>
+<p>Reorder patches by pushing without applying</p>
 </dd>
 <dt class="hdlist1">--set-tree</dt>
 <dd>
-<p>Push the patches, but don’t perform a merge. Instead, the
-resulting tree will be identical to the tree that the patch
-previously created.</p>
+<p>Push patches keeping their original trees.</p>
 <div class="paragraph">
-<p>This can be useful when splitting a patch by first popping the
-patch and creating a new patch with some of the
-changes. Pushing the original patch with <em>--set-tree</em> will
-avoid conflicts and only the remaining changes will be in the
-patch.</p>
+<p>For each patch pushed, instead of performing a merge, the patch is pushed such
+the resulting tree will be identical to the tree associated with the patch.</p>
+</div>
+<div class="paragraph">
+<p>This can be useful when splitting a patch by first popping the patch and
+creating a new patch with some of the changes. Pushing the original patch with
+<em>--set-tree</em> will avoid conflicts and only the remaining changes will be in the patch.</p>
 </div>
 </dd>
 <dt class="hdlist1">-k</dt>
 <dt class="hdlist1">--keep</dt>
 <dd>
-<p>Keep the local changes.</p>
+<p>Keep the local changes</p>
 </dd>
 <dt class="hdlist1">-m</dt>
 <dt class="hdlist1">--merged</dt>
 <dd>
-<p>Check for patches merged upstream.</p>
+<p>Check for patches merged upstream</p>
 </dd>
 </dl>
 </div>

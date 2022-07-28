@@ -119,16 +119,16 @@
 <div class="sectionbody">
 <div class="verseblock">
 <pre class="content"><em>stg branch</em>
-<em>stg branch</em> [--merge] [--] &lt;branch&gt;
-<em>stg branch</em> --list
-<em>stg branch</em> --create [--] &lt;new-branch&gt; [&lt;committish&gt;]
-<em>stg branch</em> --clone [--] [&lt;new-branch&gt;]
-<em>stg branch</em> --rename [--] [&lt;old-name&gt;] &lt;new-name&gt;
-<em>stg branch</em> --protect [--] [&lt;branch&gt;]
-<em>stg branch</em> --unprotect [--] [&lt;branch&gt;]
-<em>stg branch</em> --delete [--force] [--] &lt;branch&gt;
-<em>stg branch</em> --cleanup [--force] [--] [&lt;branch&gt;]
-<em>stg branch</em> --description=&lt;description&gt; [--] [&lt;branch&gt;]</pre>
+<em>stg branch</em> [--merge] &lt;branch&gt;
+<em>stg branch</em> {--list,-l}
+<em>stg branch</em> {--create,-c} &lt;new-branch&gt; [committish]
+<em>stg branch</em> --clone [new-branch]
+<em>stg branch</em> {--rename,-r} [old-name] &lt;new-name&gt;
+<em>stg branch</em> {--protect,-p} [branch]
+<em>stg branch</em> {--unprotect,-u} [branch]
+<em>stg branch</em> --delete [--force] &lt;branch&gt;
+<em>stg branch</em> --cleanup [--force] [branch]
+<em>stg branch</em> {--describe,-d} &lt;description&gt; [branch]</pre>
 </div>
 </div>
 </div>
@@ -136,18 +136,85 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Create, clone, switch between, rename, or delete development branches
-within a git repository.</p>
+<p>Create, clone, switch, rename, or delete StGit-enabled branches.</p>
 </div>
+<div class="paragraph">
+<p>With no arguments, the current branch is printed to stdout.</p>
+</div>
+<div class="paragraph">
+<p>With a single argument, switch to the named branch.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_commands">COMMANDS</h2>
+<div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><em>stg branch</em></dt>
+<dt class="hdlist1">--list</dt>
 <dd>
-<p>Display the name of the current branch.</p>
+<p>List each branch in the current repository along with its description, if
+any. The current branch is prefixed with <em>&gt;</em>. Branches initialized with
+StGit stacks are prefixed with <em>s</em>. Protected branches are prefixed with <em>p</em>.</p>
 </dd>
-<dt class="hdlist1"><em>stg branch</em> &lt;branch&gt;</dt>
+<dt class="hdlist1">--create</dt>
 <dd>
-<p>Switch to the given branch.</p>
+<p>Create and switch to a new branch. The new branch is initialized as a StGit
+patch stack. The new branch will be based on the current HEAD, by default,
+unless an optional committish provided for the base.</p>
+<div class="paragraph">
+<p>StGit attempts to detect the branch from which the new branch forked, as well
+as the remote repository of that parent branch such that &#34;stg pull&#34; will pull
+from the correct remote branch. A warning will be printed if the parrent branch
+cannot be determined.</p>
+</div>
+</dd>
+<dt class="hdlist1">--clone</dt>
+<dd>
+<p>Clone the current branch as &lt;new-branch&gt;, if specified, or using the
+current branch name with a timestamp.</p>
+<div class="paragraph">
+<p>The description of the new branch will indicate it is a clone of the current
+branch. The parent information of the new branch is copied from the current branch.</p>
+</div>
+</dd>
+<dt class="hdlist1">--rename</dt>
+<dd>
+<p>Rename an existing branch</p>
+</dd>
+<dt class="hdlist1">--protect</dt>
+<dd>
+<p>Prevent StGit from modifying a branch</p>
+</dd>
+<dt class="hdlist1">--unprotect</dt>
+<dd>
+<p>Allow StGit to modify a previously protected branch</p>
+</dd>
+<dt class="hdlist1">--delete</dt>
+<dd>
+<p>Delete a branch.</p>
+<div class="paragraph">
+<p>The branch will not be deleted if there are any patches remaining unless the
+--force option is provided.</p>
+</div>
+<div class="paragraph">
+<p>A protected branch may not be deleted; it must be unprotected first.</p>
+</div>
+</dd>
+<dt class="hdlist1">--cleanup</dt>
+<dd>
+<p>Remove StGit patch stack from branch. The operation will be refused if any
+patches remain, unless the --force option is provided.</p>
+<div class="paragraph">
+<p>A protected branch will not be cleaned up; it must be unprotected first.</p>
+</div>
+<div class="paragraph">
+<p>A cleaned up branch may be reinitialized using &#34;stg init&#34;.</p>
+</div>
+</dd>
+<dt class="hdlist1">--describe</dt>
+<dd>
+<p>Set the branch description</p>
 </dd>
 </dl>
 </div>
@@ -158,104 +225,33 @@ within a git repository.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-l</dt>
-<dt class="hdlist1">--list</dt>
-<dd>
-<p>List each branch in the current repository, followed by its
-branch description (if any). The current branch is prefixed
-with <em>&gt;</em>. Branches that have been initialized for StGit (with
-<a href="/man/stg-init">stg init</a>) are prefixed with <em>s</em>. Protected branches are
-prefixed with <em>p</em>.</p>
-</dd>
-<dt class="hdlist1">-c</dt>
-<dt class="hdlist1">--create</dt>
-<dd>
-<p>Create (and switch to) a new branch. The new branch is already
-initialized as an StGit patch stack, so you do not have to run
-<a href="/man/stg-init">stg init</a> manually. If you give a committish argument,
-the new branch is based there; otherwise, it is based at the
-current HEAD.</p>
-<div class="paragraph">
-<p>StGit will try to detect the branch off of which the new
-branch is forked, as well as the remote repository from which
-that parent branch is taken (if any), so that running
-<a href="/man/stg-pull">stg pull</a> will automatically pull new commits from the
-correct branch. It will warn if it cannot guess the parent
-branch (e.g. if you do not specify a branch name as
-committish).</p>
-</div>
-</dd>
-<dt class="hdlist1">--clone</dt>
-<dd>
-<p>Clone the current branch, under the name &lt;new-branch&gt; if
-specified, or using the current branch’s name plus a
-timestamp.</p>
-<div class="paragraph">
-<p>The description of the new branch is set to tell it is a clone
-of the current branch. The parent information of the new
-branch is copied from the current branch.</p>
-</div>
-</dd>
-<dt class="hdlist1">-r</dt>
-<dt class="hdlist1">--rename</dt>
-<dd>
-<p>Rename an existing branch.</p>
-</dd>
-<dt class="hdlist1">-p</dt>
-<dt class="hdlist1">--protect</dt>
-<dd>
-<p>Prevent StGit from modifying a branch — either the current
-one, or one named on the command line.</p>
-</dd>
-<dt class="hdlist1">-u</dt>
-<dt class="hdlist1">--unprotect</dt>
-<dd>
-<p>Allow StGit to modify a branch — either the current one, or
-one named on the command line. This undoes the effect of an
-earlier <em>stg branch --protect</em> command.</p>
-</dd>
-<dt class="hdlist1">--delete</dt>
-<dd>
-<p>Delete the named branch. If there are any patches left in the
-branch, StGit will refuse to delete it unless you give the
-<em>--force</em> flag.</p>
-<div class="paragraph">
-<p>A protected branch cannot be deleted; it must be unprotected
-first (see <em>--unprotect</em> above).</p>
-</div>
-<div class="paragraph">
-<p>If you delete the current branch, you are switched to the
-&#34;master&#34; branch, if it exists.</p>
-</div>
-</dd>
-<dt class="hdlist1">--cleanup</dt>
-<dd>
-<p>Remove the StGit information for the current or given branch. If there
-are patches left in the branch, StGit refuses the operation unless
-<em>--force</em> is given.</p>
-<div class="paragraph">
-<p>A protected branch cannot be cleaned up; it must be unprotected first
-(see <em>--unprotect</em> above).</p>
-</div>
-<div class="paragraph">
-<p>A cleaned up branch can be re-initialised using the <em>stg init</em>
-command.</p>
-</div>
-</dd>
-<dt class="hdlist1">-d DESCRIPTION</dt>
-<dt class="hdlist1">--description DESCRIPTION</dt>
-<dd>
-<p>Set the branch description.</p>
-</dd>
 <dt class="hdlist1">--merge</dt>
 <dd>
-<p>Merge work tree changes into the other branch.</p>
-</dd>
-<dt class="hdlist1">--force</dt>
-<dd>
-<p>Force a delete when the series is not empty.</p>
+<p>Merge work tree changes into the other branch</p>
 </dd>
 </dl>
+</div>
+<div class="sect2">
+<h3 id="_delete_options">--DELETE OPTIONS</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">--force</dt>
+<dd>
+<p>Force deletion even if branch has patches</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cleanup_options">--CLEANUP OPTIONS</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">--force</dt>
+<dd>
+<p>Force clean up even if branch has patches</p>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 </div>

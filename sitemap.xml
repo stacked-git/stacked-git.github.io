@@ -14,15 +14,17 @@
   </url><url>
     <loc>http://stacked-git.github.io/man/stg-clean/</loc>
   </url><url>
-    <loc>http://stacked-git.github.io/man/stg-clone/</loc>
-  </url><url>
     <loc>http://stacked-git.github.io/man/stg-commit/</loc>
+  </url><url>
+    <loc>http://stacked-git.github.io/man/stg-completion/</loc>
   </url><url>
     <loc>http://stacked-git.github.io/man/stg-delete/</loc>
   </url><url>
     <loc>http://stacked-git.github.io/man/stg-diff/</loc>
   </url><url>
     <loc>http://stacked-git.github.io/man/stg-edit/</loc>
+  </url><url>
+    <loc>http://stacked-git.github.io/man/stg-email/</loc>
   </url><url>
     <loc>http://stacked-git.github.io/man/stg-export/</loc>
   </url><url>
@@ -34,6 +36,8 @@
   </url><url>
     <loc>http://stacked-git.github.io/man/stg-goto/</loc>
   </url><url>
+    <loc>http://stacked-git.github.io/man/stg-help/</loc>
+  </url><url>
     <loc>http://stacked-git.github.io/man/stg-hide/</loc>
   </url><url>
     <loc>http://stacked-git.github.io/man/stg-id/</loc>
@@ -43,8 +47,6 @@
     <loc>http://stacked-git.github.io/man/stg-init/</loc>
   </url><url>
     <loc>http://stacked-git.github.io/man/stg-log/</loc>
-  </url><url>
-    <loc>http://stacked-git.github.io/man/stg-mail/</loc>
   </url><url>
     <loc>http://stacked-git.github.io/man/stg-new/</loc>
   </url><url>
@@ -80,6 +82,8 @@
   </url><url>
     <loc>http://stacked-git.github.io/man/stg-sink/</loc>
   </url><url>
+    <loc>http://stacked-git.github.io/man/stg-spill/</loc>
+  </url><url>
     <loc>http://stacked-git.github.io/man/stg-squash/</loc>
   </url><url>
     <loc>http://stacked-git.github.io/man/stg-sync/</loc>
@@ -91,6 +95,8 @@
     <loc>http://stacked-git.github.io/man/stg-undo/</loc>
   </url><url>
     <loc>http://stacked-git.github.io/man/stg-unhide/</loc>
+  </url><url>
+    <loc>http://stacked-git.github.io/man/stg-version/</loc>
   </url><url>
     <loc>http://stacked-git.github.io/man/stg/</loc>
   </url><url>

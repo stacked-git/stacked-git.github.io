@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-edit - Edit a patch description or diff</p>
+<p>stg-edit - Edit a patch</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg edit</em> [options] [--] [&lt;patch&gt;]</pre>
+<pre class="content"><em>stg edit</em> [OPTIONS] [--] [patch]</pre>
 </div>
 </div>
 </div>
@@ -126,49 +126,24 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Edit the description and author information of the given patch (or the
-current patch if no patch name was given). With --diff, also edit the
-diff.</p>
+<p>Edit a patch. Various aspects of a patch may be edited, including the message,
+author, patch name, or even the patch’s diff.</p>
 </div>
 <div class="paragraph">
-<p>The editor is invoked with the following contents:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>From: A U Thor &lt;author@example.com&gt;
-Date: creation date
-
-Patch description</pre>
-</div>
+<p>By default, the topmost patch is edited.</p>
 </div>
 <div class="paragraph">
-<p>If --diff was specified, the diff appears at the bottom, after a
-separator:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>---
-
-Diff text</pre>
-</div>
+<p>With no options or when <em>--edit</em> is specified, the patch details are edited
+interactively. Alternatively, command line options may be used to modify the
+patch non-interactively.</p>
 </div>
 <div class="paragraph">
-<p>Command-line options can be used to modify specific information
-without invoking the editor. (With the --edit option, the editor is
-invoked even if such command-line options are given.)</p>
-</div>
-<div class="paragraph">
-<p>If the patch diff is edited but does not apply, no changes are made to
-the patch at all. The edited patch is saved to a file which you can
-feed to &#34;stg edit --file&#34;, once you have made sure it does apply.</p>
-</div>
-<div class="paragraph">
-<p>With --set-tree you set the git tree of the patch to the specified
-TREE-ISH without changing the tree of any other patches. When used on
-the top patch, the index and work tree will be updated to match the
-tree.  This low-level option is primarily meant to be used by tools
-built on top of StGit, such as the Emacs mode. See also the --set-tree
-flag of stg push.</p>
+<p>The <em>--diff</em> option causes the patch’s diff to be appended to the patch
+description when editing interactively. This diff may be edited interactively
+(or just used as a reference when editing the patch’s message). The StGit
+attempts to apply the modified diff to the patch’s parent tree. If the updated
+diff does not apply, no changes are made to the patch and the edited patch is
+saved to a file which may be corrected and then fed-back into &#34;stg edit --file&#34;.</p>
 </div>
 </div>
 </div>
@@ -177,92 +152,92 @@ flag of stg push.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-d</dt>
-<dt class="hdlist1">--diff</dt>
-<dd>
-<p>Edit the patch diff.</p>
-</dd>
 <dt class="hdlist1">-e</dt>
 <dt class="hdlist1">--edit</dt>
 <dd>
-<p>Invoke interactive editor.</p>
+<p>Invoke editor for patch description</p>
 </dd>
-<dt class="hdlist1">--sign</dt>
+<dt class="hdlist1">-d</dt>
+<dt class="hdlist1">--diff</dt>
 <dd>
-<p>Add a &#34;Signed-off-by:&#34; trailer to the end of the message using the committer name and email for the trailer value.</p>
+<p>Show diff when editing patch description</p>
 </dd>
-<dt class="hdlist1">--sign-by VALUE</dt>
+<dt class="hdlist1">-m &lt;message&gt;</dt>
+<dt class="hdlist1">--message=&lt;message&gt;</dt>
 <dd>
-<p>Add a &#34;Signed-off-by:&#34; trailer with a custom VALUE to the end of the message.</p>
+<p>Use message instead of invoking the editor</p>
 </dd>
-<dt class="hdlist1">--ack</dt>
+<dt class="hdlist1">-f &lt;path&gt;</dt>
+<dt class="hdlist1">--file=&lt;path&gt;</dt>
 <dd>
-<p>Add an &#34;Acked-by:&#34; trailer to the end of the message using the commiter name and email for the trailer value.</p>
-</dd>
-<dt class="hdlist1">--ack-by VALUE</dt>
-<dd>
-<p>Add an &#34;Acked-by:&#34; trailer with a custom VALUE to the end of the message.</p>
-</dd>
-<dt class="hdlist1">--review</dt>
-<dd>
-<p>Add a &#34;Reviewed-by:&#34; trailer to the end of the message using the commiter name and email for the trailer value.</p>
-</dd>
-<dt class="hdlist1">--review-by VALUE</dt>
-<dd>
-<p>Add a &#34;Reviewed-by:&#34; trailer with custom VALUE to the end of the message.</p>
-</dd>
-<dt class="hdlist1">-m MESSAGE</dt>
-<dt class="hdlist1">--message MESSAGE</dt>
-<dd>
-<p>Use MESSAGE instead of invoking the editor.</p>
-</dd>
-<dt class="hdlist1">-f FILE</dt>
-<dt class="hdlist1">--file FILE</dt>
-<dd>
-<p>Use the contents of FILE instead of invoking the editor.
-(If FILE is &#34;-&#34;, write to stdout.)</p>
-</dd>
-<dt class="hdlist1">--save-template FILE</dt>
-<dd>
-<p>Instead of running the command, just write the message
-template to FILE, and exit. (If FILE is &#34;-&#34;, write to
-stdout.)</p>
-<div class="paragraph">
-<p>When driving StGit from another program, it is often
-useful to first call a command with <em>--save-template</em>,
-then let the user edit the message, and then call the
-same command with <em>--file</em>.</p>
-</div>
+<p>Use the contents of file instead of invoking the editor. Use &#34;-&#34; to read
+from stdin.</p>
 </dd>
 <dt class="hdlist1">--no-verify</dt>
 <dd>
-<p>This option bypasses the commit-msg hook.</p>
+<p>Disable commit-msg hook</p>
 </dd>
-<dt class="hdlist1">--author &#34;NAME &lt;EMAIL&gt;&#34;</dt>
+<dt class="hdlist1">--signoff[=&lt;value&gt;]</dt>
 <dd>
-<p>Set the author details.</p>
+<p>Add &#34;Signed-off-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer name and email. This option
+may be provided multiple times.</p>
+</div>
 </dd>
-<dt class="hdlist1">--authname NAME</dt>
+<dt class="hdlist1">--ack[=&lt;value&gt;]</dt>
 <dd>
-<p>Set the author name.</p>
+<p>Add &#34;Acked-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer’s name and email. This
+option may be provided multiple times.</p>
+</div>
 </dd>
-<dt class="hdlist1">--authemail EMAIL</dt>
+<dt class="hdlist1">--review[=&lt;value&gt;]</dt>
 <dd>
-<p>Set the author email.</p>
+<p>Add &#34;Reviewed-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer’s name and email. This
+option may be provided multiple times.</p>
+</div>
 </dd>
-<dt class="hdlist1">--authdate DATE</dt>
+<dt class="hdlist1">--author=&lt;name-and-email&gt;</dt>
 <dd>
-<p>Set the author date.</p>
+<p>Set the author &#34;name &lt;email&gt;&#34;</p>
 </dd>
-<dt class="hdlist1">-O OPTIONS</dt>
-<dt class="hdlist1">--diff-opts OPTIONS</dt>
+<dt class="hdlist1">--authname=&lt;name&gt;</dt>
 <dd>
-<p>Extra options to pass to &#34;git diff&#34;.</p>
+<p>Set the author name</p>
 </dd>
-<dt class="hdlist1">-t TREE-ISH</dt>
-<dt class="hdlist1">--set-tree TREE-ISH</dt>
+<dt class="hdlist1">--authemail=&lt;email&gt;</dt>
 <dd>
-<p>Set the git tree of the patch to TREE-ISH.</p>
+<p>Set the author email</p>
+</dd>
+<dt class="hdlist1">--authdate=&lt;date&gt;</dt>
+<dd>
+<p>Set the date the patch was authored.</p>
+<div class="paragraph">
+<p>Use &#34;now&#34; to use the current time and date.</p>
+</div>
+</dd>
+<dt class="hdlist1">--save-template=&lt;file&gt;</dt>
+<dd>
+<p>Instead of running the command, just write the patch description to FILE,
+and exit. (If FILE is &#34;-&#34;, write to stdout.)</p>
+<div class="paragraph">
+<p>When driving StGit from another program, it may be useful to first call a
+command with <em>--save-template</em>, then let the user edit the message, and then
+call the same command with <em>--file</em>.</p>
+</div>
+</dd>
+<dt class="hdlist1">-t &lt;treeish&gt;</dt>
+<dt class="hdlist1">--set-tree=&lt;treeish&gt;</dt>
+<dd>
+<p>With --set-tree the patch’s git tree is set to the specified treeish
+without changing the tree of any other patches. When used on the top patch,
+the index and work tree will be updated to match the new tree. This
+low-level option is primarily meant to be used by tools built on top of
+StGit, such as the Emacs mode. See also the <em>--set-tree</em> flag of &#34;stg push&#34;.</p>
 </dd>
 </dl>
 </div>

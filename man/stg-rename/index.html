@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg rename</em> [options] [--] [oldpatch] &lt;newpatch&gt;</pre>
+<pre class="content"><em>stg rename</em> [OPTIONS] [old-patch] &lt;new-patch&gt;</pre>
 </div>
 </div>
 </div>
@@ -126,8 +126,8 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Rename &lt;oldpatch&gt; into &lt;newpatch&gt; in a series. If &lt;oldpatch&gt; is not
-given, the top-most patch will be renamed.</p>
+<p>Rename [oldpatch] to &lt;newpatch&gt;. If [oldpatch] is not given, the topmost patch
+will be renamed.</p>
 </div>
 </div>
 </div>
@@ -136,10 +136,10 @@ given, the top-most patch will be renamed.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-b BRANCH</dt>
-<dt class="hdlist1">--branch BRANCH</dt>
+<dt class="hdlist1">-b &lt;branch&gt;</dt>
+<dt class="hdlist1">--branch=&lt;branch&gt;</dt>
 <dd>
-<p>use BRANCH instead of the default one.</p>
+<p>Use BRANCH instead of current branch</p>
 </dd>
 </dl>
 </div>

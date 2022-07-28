@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-pick - Import a patch from a different branch or a commit object</p>
+<p>stg-pick - Import a patch from another branch or a commit object</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,10 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg pick</em> [options] [--] ([&lt;patch1&gt;] [&lt;patch2&gt;] [&lt;patch3&gt;..&lt;patch4&gt;])|&lt;commit&gt;</pre>
+<pre class="content"><em>stg pick</em> [OPTIONS] &lt;source&gt;…​
+<em>stg pick</em> [OPTIONS] [--name NAME] [--parent COMMITTISH] &lt;source&gt;
+<em>stg pick</em> [OPTIONS] --fold [--file PATH]…​ &lt;source&gt;…​
+<em>stg pick</em> [OPTIONS] --update &lt;source&gt;…​</pre>
 </div>
 </div>
 </div>
@@ -126,20 +129,19 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Import one or more patches from a different branch or a commit object
-into the current series. By default, the name of the imported patch is
-used as the name of the current patch. It can be overridden with the
-<em>--name</em> option. A commit object can be reverted with the <em>--revert</em>
-option. The log and author information are those of the commit
-object.</p>
+<p>Import one or more patches from another branch or commit object into the
+current series.</p>
 </div>
 <div class="paragraph">
-<p>When using the <em>--expose</em> option, the format of the commit message is
-determined by the <em>stgit.pick.expose-format</em> configuration option. This option
-is a format string as may supplied as the <em>--pretty</em> option to
-<a href="https://git-scm.com/docs/git-show">git-show(1)</a>. The default is &#34;format:%B%n(imported from commit %H)&#34;,
-which appends the commit hash of the picked commit to the patch’s commit
-message.</p>
+<p>By default, the imported patch’s name is reused, but may be overridden with the
+--name option. A commit object can be reverted with the --revert option.</p>
+</div>
+<div class="paragraph">
+<p>When using the --expose option, the format of the commit message is determinded
+by the <em>stgit.pick.expose-format</em> configuration option. This option is a format
+string as may be supplied to the --pretty option of <a href="https://git-scm.com/docs/git-show">git-show(1)</a>. The
+default is &#34;format:%B%n(imported from commit %H)&#34;, which appends the commit
+hash of the picked commit to the patch’s commit message.</p>
 </div>
 </div>
 </div>
@@ -148,47 +150,47 @@ message.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-n NAME</dt>
-<dt class="hdlist1">--name NAME</dt>
+<dt class="hdlist1">-B &lt;branch&gt;</dt>
+<dt class="hdlist1">--ref-branch=&lt;branch&gt;</dt>
 <dd>
-<p>Use NAME as the patch name.</p>
-</dd>
-<dt class="hdlist1">-B REF-BRANCH</dt>
-<dt class="hdlist1">--ref-branch REF-BRANCH</dt>
-<dd>
-<p>Pick patches from BRANCH.</p>
+<p>Pick patches from &lt;branch&gt;</p>
 </dd>
 <dt class="hdlist1">-r</dt>
 <dt class="hdlist1">--revert</dt>
 <dd>
-<p>Revert the given commit object.</p>
-</dd>
-<dt class="hdlist1">-p COMMITID</dt>
-<dt class="hdlist1">--parent COMMITID</dt>
-<dd>
-<p>Use COMMITID as parent.</p>
+<p>Revert the given commit object</p>
 </dd>
 <dt class="hdlist1">-x</dt>
 <dt class="hdlist1">--expose</dt>
 <dd>
-<p>Append the imported commit id to the patch log.</p>
-</dd>
-<dt class="hdlist1">--fold</dt>
-<dd>
-<p>Fold the commit object into the current patch.</p>
-</dd>
-<dt class="hdlist1">--update</dt>
-<dd>
-<p>Like fold but only update the current patch files.</p>
-</dd>
-<dt class="hdlist1">-f FILE</dt>
-<dt class="hdlist1">--file FILE</dt>
-<dd>
-<p>Only fold the given file (can be used multiple times).</p>
+<p>Append the imported commit id to the patch log</p>
 </dd>
 <dt class="hdlist1">--noapply</dt>
 <dd>
-<p>Keep the patch unapplied.</p>
+<p>Keep the imported patch unapplied</p>
+</dd>
+<dt class="hdlist1">-n &lt;name&gt;</dt>
+<dt class="hdlist1">--name=&lt;name&gt;</dt>
+<dd>
+<p>Use &lt;name&gt; for the patch name</p>
+</dd>
+<dt class="hdlist1">-p &lt;committish&gt;</dt>
+<dt class="hdlist1">--parent=&lt;committish&gt;</dt>
+<dd>
+<p>Use &lt;committish&gt; as parent</p>
+</dd>
+<dt class="hdlist1">--fold</dt>
+<dd>
+<p>Fold the commit object into the current patch</p>
+</dd>
+<dt class="hdlist1">--update</dt>
+<dd>
+<p>Like fold but only update the current patch’s files</p>
+</dd>
+<dt class="hdlist1">-f &lt;path&gt;</dt>
+<dt class="hdlist1">--file=&lt;path&gt;</dt>
+<dd>
+<p>Only fold the given file (may be used multiple times)</p>
 </dd>
 </dl>
 </div>

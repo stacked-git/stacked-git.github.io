@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-id - Print the git hash value of a StGit reference</p>
+<p>stg-id - Print git hash of a StGit revision</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg id</em> [options] [--] [&lt;id&gt;]</pre>
+<pre class="content"><em>stg id</em> [OPTIONS] [revision]</pre>
 </div>
 </div>
 </div>
@@ -126,11 +126,27 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Print the SHA1 value of a Git id (defaulting to HEAD). In addition to the
-standard Git id’s like heads and tags, this command also accepts
-<em>[&lt;branch&gt;:]&lt;patch&gt;</em> for the id of a patch and <em>[&lt;branch&gt;:]{base}</em> for the
-base of the stack. If no branch is specified, it defaults to the current one.
-The bottom of a patch is accessible with the <em>[&lt;branch&gt;:]&lt;patch&gt;^</em> format.</p>
+<p>Print the hash (object id) of a StGit revision.</p>
+</div>
+<div class="paragraph">
+<p>In addition to standard Git revision specifiers (revspecs), patches may be
+specified in the form <em>[&lt;branch&gt;:]&lt;patch&gt;</em> or <em>[&lt;branch&gt;:]{base}</em> for the base
+of a stack. If no branch is specified, the current branch is used by default.
+The parent of a patch may be specified with <em>[&lt;branch&gt;:]&lt;patch&gt;^</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-b &lt;branch&gt;</dt>
+<dt class="hdlist1">--branch=&lt;branch&gt;</dt>
+<dd>
+<p>Use BRANCH instead of current branch</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>

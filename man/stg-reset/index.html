@@ -118,7 +118,8 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg reset</em> [options] [--] [&lt;state&gt; [&lt;patchnames&gt;]]</pre>
+<pre class="content"><em>stg reset</em> [--hard] [&lt;committish&gt; [&lt;patchname&gt;…​]]
+<em>stg reset</em> --hard</pre>
 </div>
 </div>
 </div>
@@ -126,14 +127,13 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Reset the patch stack to an earlier state. If no state is specified,
-reset only the changes in the worktree.</p>
+<p>Reset the patch stack to an earlier state. If no state is specified, reset only
+the changes in the worktree.</p>
 </div>
 <div class="paragraph">
-<p>The state is specified with a commit id from a stack log; &#34;stg log&#34; lets
-you view this log, and &#34;stg reset&#34; lets you reset to any state you see
-in the log. If one or more patch names are given, reset only those
-patches, and leave the rest alone.</p>
+<p>The state is specified with a commit id from the stack log, which may be viewed
+with &#34;stg log&#34;. Patch name arguments may optionally be provided to limit which
+patches are reset.</p>
 </div>
 </div>
 </div>
@@ -144,7 +144,7 @@ patches, and leave the rest alone.</p>
 <dl>
 <dt class="hdlist1">--hard</dt>
 <dd>
-<p>Discard changes in your index/worktree.</p>
+<p>Discard changes in the index and worktree</p>
 </dd>
 </dl>
 </div>

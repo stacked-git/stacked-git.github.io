@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-patches - Show the applied patches modifying a file</p>
+<p>stg-patches - Show patches that modify files</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg patches</em> [options] [--] [&lt;files or dirs&gt;]</pre>
+<pre class="content"><em>stg patches</em> [OPTIONS] [path]…​</pre>
 </div>
 </div>
 </div>
@@ -126,10 +126,8 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Show the applied patches modifying the given files. Without arguments,
-it shows the patches affected by the local tree modifications. The
-<em>--diff</em> option also lists the patch log and the diff for the given
-files.</p>
+<p>Show the applied patches modifying the given paths. Without path arguments, the
+files modified in the working tree are used as the paths.</p>
 </div>
 </div>
 </div>
@@ -138,20 +136,20 @@ files.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
+<dt class="hdlist1">-b &lt;branch&gt;</dt>
+<dt class="hdlist1">--branch=&lt;branch&gt;</dt>
+<dd>
+<p>Use BRANCH instead of current branch</p>
+</dd>
 <dt class="hdlist1">-d</dt>
 <dt class="hdlist1">--diff</dt>
 <dd>
-<p>Show the diff for the given files.</p>
+<p>Show the diff for the given paths</p>
 </dd>
-<dt class="hdlist1">-b BRANCH</dt>
-<dt class="hdlist1">--branch BRANCH</dt>
+<dt class="hdlist1">-O &lt;options&gt;</dt>
+<dt class="hdlist1">--diff-opts=&lt;options&gt;</dt>
 <dd>
-<p>Use BRANCH instead of the default branch.</p>
-</dd>
-<dt class="hdlist1">-O OPTIONS</dt>
-<dt class="hdlist1">--diff-opts OPTIONS</dt>
-<dd>
-<p>Extra options to pass to &#34;git diff&#34;.</p>
+<p>Extra options to pass to &#34;git diff&#34;</p>
 </dd>
 </dl>
 </div>

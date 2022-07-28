@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-new - Create a new, empty patch</p>
+<p>stg-new - Create a new patch at top of the stack</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg new</em> [options] [--] [&lt;name&gt;]</pre>
+<pre class="content"><em>stg new</em> [OPTIONS] [patchname] [-- &lt;path&gt;…​]</pre>
 </div>
 </div>
 </div>
@@ -126,21 +126,20 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Create a new, empty patch on the current stack. The new patch is
-created on top of the currently applied patches, and is made the new
-top of the stack. Uncommitted changes in the work tree are not
-included in the patch — that is handled by <a href="/man/stg-refresh">stg refresh</a>.</p>
+<p>Create a new, empty patch on the current stack. The new patch is created on top
+of the currently applied patches, and is made the new top of the stack.
+Uncommitted changes in the work tree are not included in the patch — that is
+handled by stg-refresh.</p>
 </div>
 <div class="paragraph">
-<p>The given name must be unique in the stack, and may only contain
-alphanumeric characters, dashes and underscores. If no name is given,
-one is generated from the first line of the patch’s commit message.</p>
+<p>The given name must be unique in the stack, and may only contain alphanumeric
+characters, dashes and underscores. If no name is given, one is generated from
+the first line of the patch’s commit message.</p>
 </div>
 <div class="paragraph">
-<p>An editor will be launched to edit the commit message to be used for
-the patch, unless the <em>--message</em> flag already specified one. The
-<em>patchdescr.tmpl</em> template file (if available) is used to pre-fill the
-editor.</p>
+<p>An editor will be launched to edit the commit message to be used for the patch,
+unless the <em>--message</em> flag already specified one. The <em>patchdescr.tmpl</em>
+template file (if available) is used to pre-fill the editor.</p>
 </div>
 </div>
 </div>
@@ -149,78 +148,116 @@ editor.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-v</dt>
-<dt class="hdlist1">--verbose</dt>
+<dt class="hdlist1">-r</dt>
+<dt class="hdlist1">--refresh</dt>
 <dd>
-<p>In addition to the names of files that have been changed, also show a
-diff of staged and unstaged changes.</p>
+<p>Refresh the new patch with changes from work tree. New patches are empty by
+default, but with this option the new patch will capture outstanding
+changes in the work tree as if &#34;stg refresh&#34; was run. Use &#34;--index&#34; to
+refresh from the index instead of the work tree.</p>
 </dd>
-<dt class="hdlist1">--author &#34;NAME &lt;EMAIL&gt;&#34;</dt>
+<dt class="hdlist1">-i</dt>
+<dt class="hdlist1">--index</dt>
 <dd>
-<p>Set the author details.</p>
+<p>Instead of refreshing the patch with the current contents of the worktree,
+use the current contents of the index.</p>
 </dd>
-<dt class="hdlist1">--authname NAME</dt>
+<dt class="hdlist1">-F</dt>
+<dt class="hdlist1">--force</dt>
 <dd>
-<p>Set the author name.</p>
-</dd>
-<dt class="hdlist1">--authemail EMAIL</dt>
-<dd>
-<p>Set the author email.</p>
-</dd>
-<dt class="hdlist1">--authdate DATE</dt>
-<dd>
-<p>Set the author date.</p>
-</dd>
-<dt class="hdlist1">-m MESSAGE</dt>
-<dt class="hdlist1">--message MESSAGE</dt>
-<dd>
-<p>Use MESSAGE instead of invoking the editor.</p>
-</dd>
-<dt class="hdlist1">-f FILE</dt>
-<dt class="hdlist1">--file FILE</dt>
-<dd>
-<p>Use the contents of FILE instead of invoking the editor.
-(If FILE is &#34;-&#34;, write to stdout.)</p>
-</dd>
-<dt class="hdlist1">--save-template FILE</dt>
-<dd>
-<p>Instead of running the command, just write the message
-template to FILE, and exit. (If FILE is &#34;-&#34;, write to
-stdout.)</p>
+<p>Force refresh with staged and unstaged changes.</p>
 <div class="paragraph">
-<p>When driving StGit from another program, it is often
-useful to first call a command with <em>--save-template</em>,
-then let the user edit the message, and then call the
-same command with <em>--file</em>.</p>
+<p>By default, if there are staged changes in the index along with unstaged
+changes in the work tree, the command will abort. This option forces the
+command to proceed using both the staged and unstaged changes.</p>
 </div>
 </dd>
-<dt class="hdlist1">--sign</dt>
+<dt class="hdlist1">-s</dt>
+<dt class="hdlist1">--submodules</dt>
 <dd>
-<p>Add a &#34;Signed-off-by:&#34; trailer to the end of the message using the committer name and email for the trailer value.</p>
+<p>Include submodules in patch content</p>
 </dd>
-<dt class="hdlist1">--sign-by VALUE</dt>
+<dt class="hdlist1">--no-submodules</dt>
 <dd>
-<p>Add a &#34;Signed-off-by:&#34; trailer with a custom VALUE to the end of the message.</p>
+<p>Exclude submodules in patch content</p>
 </dd>
-<dt class="hdlist1">--ack</dt>
+<dt class="hdlist1">-e</dt>
+<dt class="hdlist1">--edit</dt>
 <dd>
-<p>Add an &#34;Acked-by:&#34; trailer to the end of the message using the commiter name and email for the trailer value.</p>
+<p>Invoke editor for patch description</p>
 </dd>
-<dt class="hdlist1">--ack-by VALUE</dt>
+<dt class="hdlist1">-d</dt>
+<dt class="hdlist1">--diff</dt>
 <dd>
-<p>Add an &#34;Acked-by:&#34; trailer with a custom VALUE to the end of the message.</p>
+<p>Show diff when editing patch description</p>
 </dd>
-<dt class="hdlist1">--review</dt>
+<dt class="hdlist1">-m &lt;message&gt;</dt>
+<dt class="hdlist1">--message=&lt;message&gt;</dt>
 <dd>
-<p>Add a &#34;Reviewed-by:&#34; trailer to the end of the message using the commiter name and email for the trailer value.</p>
+<p>Use message instead of invoking the editor</p>
 </dd>
-<dt class="hdlist1">--review-by VALUE</dt>
+<dt class="hdlist1">-f &lt;path&gt;</dt>
+<dt class="hdlist1">--file=&lt;path&gt;</dt>
 <dd>
-<p>Add a &#34;Reviewed-by:&#34; trailer with custom VALUE to the end of the message.</p>
+<p>Use the contents of file instead of invoking the editor. Use &#34;-&#34; to read
+from stdin.</p>
 </dd>
 <dt class="hdlist1">--no-verify</dt>
 <dd>
-<p>This option bypasses the commit-msg hook.</p>
+<p>Disable commit-msg hook</p>
+</dd>
+<dt class="hdlist1">--signoff[=&lt;value&gt;]</dt>
+<dd>
+<p>Add &#34;Signed-off-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer name and email. This option
+may be provided multiple times.</p>
+</div>
+</dd>
+<dt class="hdlist1">--ack[=&lt;value&gt;]</dt>
+<dd>
+<p>Add &#34;Acked-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer’s name and email. This
+option may be provided multiple times.</p>
+</div>
+</dd>
+<dt class="hdlist1">--review[=&lt;value&gt;]</dt>
+<dd>
+<p>Add &#34;Reviewed-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer’s name and email. This
+option may be provided multiple times.</p>
+</div>
+</dd>
+<dt class="hdlist1">--author=&lt;name-and-email&gt;</dt>
+<dd>
+<p>Set the author &#34;name &lt;email&gt;&#34;</p>
+</dd>
+<dt class="hdlist1">--authname=&lt;name&gt;</dt>
+<dd>
+<p>Set the author name</p>
+</dd>
+<dt class="hdlist1">--authemail=&lt;email&gt;</dt>
+<dd>
+<p>Set the author email</p>
+</dd>
+<dt class="hdlist1">--authdate=&lt;date&gt;</dt>
+<dd>
+<p>Set the date the patch was authored.</p>
+<div class="paragraph">
+<p>Use &#34;now&#34; to use the current time and date.</p>
+</div>
+</dd>
+<dt class="hdlist1">--save-template=&lt;file&gt;</dt>
+<dd>
+<p>Instead of running the command, just write the patch description to FILE,
+and exit. (If FILE is &#34;-&#34;, write to stdout.)</p>
+<div class="paragraph">
+<p>When driving StGit from another program, it may be useful to first call a
+command with <em>--save-template</em>, then let the user edit the message, and then
+call the same command with <em>--file</em>.</p>
+</div>
 </dd>
 </dl>
 </div>

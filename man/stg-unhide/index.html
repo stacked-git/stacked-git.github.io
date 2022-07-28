@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-unhide - Unhide a hidden patch</p>
+<p>stg-unhide - Unhide hidden patches</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg unhide</em> [options] [--] &lt;patch-range&gt;</pre>
+<pre class="content"><em>stg unhide</em> [OPTIONS] &lt;patch&gt;…​</pre>
 </div>
 </div>
 </div>
@@ -126,8 +126,10 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Unhide a hidden range of patches so that they are shown in the plain
-<em>stg series</em> command output.</p>
+<p>Unhide hidden patches in the series.</p>
+</div>
+<div class="paragraph">
+<p>Hidden patches are no longer shown in the plain <em>series</em> output.</p>
 </div>
 </div>
 </div>
@@ -136,10 +138,10 @@
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-b BRANCH</dt>
-<dt class="hdlist1">--branch BRANCH</dt>
+<dt class="hdlist1">-b &lt;branch&gt;</dt>
+<dt class="hdlist1">--branch=&lt;branch&gt;</dt>
 <dd>
-<p>Use BRANCH instead of the default branch.</p>
+<p>Use BRANCH instead of current branch</p>
 </dd>
 </dl>
 </div>

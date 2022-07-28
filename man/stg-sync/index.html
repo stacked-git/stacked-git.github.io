@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-sync - Synchronise patches with a branch or a series</p>
+<p>stg-sync - Synchronize patches with a branch or a series</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg sync</em> [options] [--] [&lt;patch1&gt;] [&lt;patch2&gt;] [&lt;patch3&gt;..&lt;patch4&gt;]</pre>
+<pre class="content"><em>stg sync</em> &lt;--ref-branch=BRANCH|--series=SERIES&gt; [&lt;patch&gt;…​|--all]</pre>
 </div>
 </div>
 </div>
@@ -126,11 +126,10 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For each of the specified patches perform a three-way merge with the
-same patch in the specified branch or series. The command can be used
-for keeping patches on several branches in sync. Note that the
-operation may fail for some patches because of conflicts. The patches
-in the series must apply cleanly.</p>
+<p>For each of the specified patches, perform a three-way merge with the same
+patch in the specified branch or series. The command can be used for keeping
+patches on several branches in sync. Note that the operation may fail for some
+patches because of conflicts. The patches in the series must apply cleanly.</p>
 </div>
 </div>
 </div>
@@ -142,17 +141,17 @@ in the series must apply cleanly.</p>
 <dt class="hdlist1">-a</dt>
 <dt class="hdlist1">--all</dt>
 <dd>
-<p>Synchronise all the applied patches.</p>
+<p>Synchronize all applied patches</p>
 </dd>
-<dt class="hdlist1">-B REF-BRANCH</dt>
-<dt class="hdlist1">--ref-branch REF-BRANCH</dt>
+<dt class="hdlist1">-B &lt;branch&gt;</dt>
+<dt class="hdlist1">--ref-branch=&lt;branch&gt;</dt>
 <dd>
-<p>Syncronise patches with BRANCH.</p>
+<p>Synchronize patches with &lt;branch&gt;</p>
 </dd>
-<dt class="hdlist1">-s SERIES</dt>
-<dt class="hdlist1">--series SERIES</dt>
+<dt class="hdlist1">-s &lt;series&gt;</dt>
+<dt class="hdlist1">--series=&lt;series&gt;</dt>
 <dd>
-<p>Syncronise patches with SERIES.</p>
+<p>Synchronize patches with &lt;series&gt;</p>
 </dd>
 </dl>
 </div>

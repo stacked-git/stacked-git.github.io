@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-undo - Undo the last operation</p>
+<p>stg-undo - Undo the last command</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg undo</em></pre>
+<pre class="content"><em>stg undo</em> [OPTIONS]</pre>
 </div>
 </div>
 </div>
@@ -126,8 +126,8 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Reset the patch stack to the previous state. Consecutive invocations
-of &#34;stg undo&#34; will take you ever further into the past.</p>
+<p>Reset the patch stack to the state before the last operation. Consecutive undos
+will go back to yet older stack states.</p>
 </div>
 </div>
 </div>
@@ -136,14 +136,14 @@ of &#34;stg undo&#34; will take you ever further into the past.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-n N</dt>
-<dt class="hdlist1">--number N</dt>
+<dt class="hdlist1">-n &lt;n&gt;</dt>
+<dt class="hdlist1">--number=&lt;n&gt;</dt>
 <dd>
-<p>Undo the last N commands.</p>
+<p>Undo the last &lt;n&gt; commands</p>
 </dd>
 <dt class="hdlist1">--hard</dt>
 <dd>
-<p>Discard changes in your index/worktree.</p>
+<p>Discard changes in the index and worktree</p>
 </dd>
 </dl>
 </div>

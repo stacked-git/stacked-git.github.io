@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html><head>
+    <title>
+         stg-completion(1) &ndash;  Stacked Git
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="/css/stgit.css">
+    <link rel="stylesheet" href="/css/chroma.css">
+</head>
+<body>
+        <div><header>
+  
+  <a href="/">
+    <img src="/stgit.svg" alt="Stacked Git logo">
+  </a>
+  
+  <h3><a href="/">Stacked Git</a></h3>
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/changelog/">
+          
+          Changelog
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/man/">
+          
+          Man Pages
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/">
+          
+          Guides
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/tutorial/">
+          
+          Tutorial
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/">
+          
+          Repository
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/issues">
+          
+          Issue Tracker
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/releases">
+          
+          Releases
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://groups.google.com/d/forum/stgit">
+          
+          Forum
+          <img src="/ext-link.svg" alt="external link">
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+<div>
+<main>
+  <h2>
+    <a href="/man/stg-completion/">
+      stg-completion(1)
+    </a>
+  </h2>
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>stg-completion - Support for shell completions</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg completion bash</em> [OPTIONS]
+<em>stg completion fish</em> [OPTIONS]
+<em>stg completion zsh</em> [OPTIONS]
+<em>stg completion list aliases</em> [OPTIONS]
+<em>stg completion list commands</em> [OPTIONS]
+<em>stg completion list commands-and-aliases</em> [OPTIONS]
+<em>stg completion list help</em> [OPTIONS] [SUBCOMMAND]…​
+<em>stg completion man</em> [OPTIONS]
+<em>stg completion help</em> [OPTIONS] [SUBCOMMAND]…​</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Support completions for bash, fish, and zsh. Also provides <em>stg completion
+list</em> command for dynamically introspecting StGit’s commands and aliases.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_commands">COMMANDS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">bash</dt>
+<dd>
+<p>Generate bash completion script</p>
+</dd>
+<dt class="hdlist1">fish</dt>
+<dd>
+<p>Generate fish shell completion script</p>
+</dd>
+<dt class="hdlist1">zsh</dt>
+<dd>
+<p>Generate zsh completion script</p>
+</dd>
+<dt class="hdlist1">list aliases</dt>
+<dd>
+<p>List aliases</p>
+</dd>
+<dt class="hdlist1">list commands</dt>
+<dd>
+<p>List StGit commands</p>
+</dd>
+<dt class="hdlist1">list commands-and-aliases</dt>
+<dd>
+<p>List StGit commands and aliases</p>
+</dd>
+<dt class="hdlist1">man</dt>
+<dd>
+<p>Generate man pages in asciidoc format. The generated asciidoc files may be
+further processed by asciidoc or asciidoctor to produce roff, html, or
+other output formats.</p>
+<div class="paragraph">
+<p>One file is generated for each <code>stg</code> command. The output directory defaults to
+the current directory, but may be specified with <code>--output</code>. The output files
+are named <code>stg-&lt;command&gt;.txt</code>.</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-o &lt;path&gt;</dt>
+<dt class="hdlist1">--output=&lt;path&gt;</dt>
+<dd>
+<p>Output to &lt;path&gt;</p>
+</dd>
+</dl>
+</div>
+<div class="sect2">
+<h3 id="_bash_options">BASH OPTIONS</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-o &lt;path&gt;</dt>
+<dt class="hdlist1">--output=&lt;path&gt;</dt>
+<dd>
+<p>Output completion script to &lt;path&gt;</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fish_options">FISH OPTIONS</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-o &lt;path&gt;</dt>
+<dt class="hdlist1">--output=&lt;path&gt;</dt>
+<dd>
+<p>Output completion script to &lt;path&gt;</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zsh_options">ZSH OPTIONS</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-o &lt;path&gt;</dt>
+<dt class="hdlist1">--output=&lt;path&gt;</dt>
+<dd>
+<p>Output completion script to &lt;path&gt;</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_list_aliases_options">LIST ALIASES OPTIONS</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">--show-expansion</dt>
+<dd>
+<p>Show alias expansion</p>
+</dd>
+<dt class="hdlist1">--style=(name-only|asciidoc|fish|zsh)</dt>
+<dd>
+<p>Choose output format style</p>
+</dd>
+<dt class="hdlist1">-o &lt;path&gt;</dt>
+<dt class="hdlist1">--output=&lt;path&gt;</dt>
+<dd>
+<p>Output to &lt;path&gt;</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_list_commands_options">LIST COMMANDS OPTIONS</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">--style=(name-only|asciidoc|fish|zsh)</dt>
+<dd>
+<p>Choose output format style</p>
+</dd>
+<dt class="hdlist1">-o &lt;path&gt;</dt>
+<dt class="hdlist1">--output=&lt;path&gt;</dt>
+<dd>
+<p>Output to &lt;path&gt;</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_list_commands_and_aliases_options">LIST COMMANDS-AND-ALIASES OPTIONS</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">--style=(name-only|asciidoc|fish|zsh)</dt>
+<dd>
+<p>Choose output format style</p>
+</dd>
+<dt class="hdlist1">-o &lt;path&gt;</dt>
+<dt class="hdlist1">--output=&lt;path&gt;</dt>
+<dd>
+<p>Output to &lt;path&gt;</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_man_options">MAN OPTIONS</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-o &lt;dir&gt;</dt>
+<dt class="hdlist1">--output=&lt;dir&gt;</dt>
+<dd>
+<p>Output man pages to &lt;dir&gt;</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stgit">StGit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the StGit suite - see <a href="/man/stg">stg(1)</a></p>
+</div>
+</div>
+</div>
+
+</main>
+<footer>
+  <small>&copy; 2022 Stacked Git Authors</small>
+</footer>
+</div>
+        </div>
+    </body>
+</html>

@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg redo</em></pre>
+<pre class="content"><em>stg redo</em> [OPTIONS]</pre>
 </div>
 </div>
 </div>
@@ -126,13 +126,12 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If the last command was an undo, reset the patch stack to the state it
-had before the undo. Consecutive invocations of &#34;stg redo&#34; will undo
-the effects of consecutive invocations of &#34;stg undo&#34;.</p>
+<p>If the last command was an undo, the patch stack state will be reset to its
+state before the undo. Consecutive redos will undo the effects of consecutive
+invocations of &#34;stg undo&#34;.</p>
 </div>
 <div class="paragraph">
-<p>It is an error to run &#34;stg redo&#34; if the last command was not an
-undo.</p>
+<p>It is an error to redo if the last stack-modifying command was not an undo.</p>
 </div>
 </div>
 </div>
@@ -141,14 +140,14 @@ undo.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-n N</dt>
-<dt class="hdlist1">--number N</dt>
+<dt class="hdlist1">-n &lt;n&gt;</dt>
+<dt class="hdlist1">--number=&lt;n&gt;</dt>
 <dd>
-<p>Undo the last N undos.</p>
+<p>Undo the last &lt;n&gt; undos</p>
 </dd>
 <dt class="hdlist1">--hard</dt>
 <dd>
-<p>Discard changes in your index/worktree.</p>
+<p>Discard changes in the index and worktree</p>
 </dd>
 </dl>
 </div>

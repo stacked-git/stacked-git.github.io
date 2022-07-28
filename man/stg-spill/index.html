@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
     <title>
-         stg-sink(1) &ndash;  Stacked Git
+         stg-spill(1) &ndash;  Stacked Git
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -96,8 +96,8 @@
 <div>
 <main>
   <h2>
-    <a href="/man/stg-sink/">
-      stg-sink(1)
+    <a href="/man/stg-spill/">
+      stg-spill(1)
     </a>
   </h2>
 
@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-sink - Move patches deeper in the stack</p>
+<p>stg-spill - Spill changes from the topmost patch</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg sink</em> [OPTIONS] [patch]…​</pre>
+<pre class="content"><em>stg spill</em> [OPTIONS] [path]…​</pre>
 </div>
 </div>
 </div>
@@ -126,22 +126,12 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Move the specified patches down the stack.</p>
+<p>Spill changes from the topmost patch. Changes are removed from the patch, but
+remain in the index and worktree.</p>
 </div>
 <div class="paragraph">
-<p>If no patch is specified on the command line, the current (topmost) patch is
-sunk. By default, patches are sunk to the bottom of the stack, but the <em>--to</em>
-option may be used to place them under any applied patch.</p>
-</div>
-<div class="paragraph">
-<p>Internally, sinking involves popping all patches to the bottom (or to the
-target patch if <em>--to</em> is used), then pushing the patches to sink, and then,
-unless <em>--nopush</em> is specified, pushing back any other formerly applied patches.</p>
-</div>
-<div class="paragraph">
-<p>Sinking may be useful, for example, to group stable patches at the bottom of
-the stack where they less likely to be impacted by the push of another patch,
-and from where they can be more easily committed or pushed to another repository.</p>
+<p>Spilling a patch may be useful for reselecting the files/hunks to be included
+in the patch.</p>
 </div>
 </div>
 </div>
@@ -150,24 +140,17 @@ and from where they can be more easily committed or pushed to another repository
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-n</dt>
-<dt class="hdlist1">--nopush</dt>
+<dt class="hdlist1">-a &lt;note&gt;</dt>
+<dt class="hdlist1">--annotate=&lt;note&gt;</dt>
 <dd>
-<p>Do not push any formerly applied patches after sinking. Only the patches to
-sink are pushed.</p>
+<p>Annotate the patch log entry with note</p>
 </dd>
-<dt class="hdlist1">-t &lt;target&gt;</dt>
-<dt class="hdlist1">--to=&lt;target&gt;</dt>
+<dt class="hdlist1">-r</dt>
+<dt class="hdlist1">--reset</dt>
 <dd>
-<p>Sink patches below &lt;target&gt; patch.</p>
-<div class="paragraph">
-<p>Specified patches are placed below &lt;target&gt; instead of at the bottom of the stack.</p>
-</div>
-</dd>
-<dt class="hdlist1">-k</dt>
-<dt class="hdlist1">--keep</dt>
-<dd>
-<p>Keep the local changes</p>
+<p>Also reset the index such that the patch’s changes only remain in the
+worktree. Without this option, the patch’s changes will be in both the
+index and worktree.</p>
 </dd>
 </dl>
 </div>

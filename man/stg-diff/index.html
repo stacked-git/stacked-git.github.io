@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-diff - Show the tree diff</p>
+<p>stg-diff - Show a diff</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg diff</em> [options] [--] [&lt;files or dirs&gt;]</pre>
+<pre class="content"><em>stg diff</em> [OPTIONS] [path]…​</pre>
 </div>
 </div>
 </div>
@@ -126,10 +126,10 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Show the diff (default) or diffstat between the current working copy
-or a tree-ish object and another tree-ish object (defaulting to HEAD).
-File names can also be given to restrict the diff output. The
-tree-ish object has the format accepted by the <a href="/man/stg-id">stg id</a> command.</p>
+<p>Show the diff (default) or diffstat between the current working copy or a
+tree-ish object and another tree-ish object (defaulting to HEAD). File names
+can also be given to restrict the diff output. The tree-ish object has the
+format accepted by the <a href="/man/stg-id">stg id</a> command.</p>
 </div>
 </div>
 </div>
@@ -138,20 +138,21 @@ tree-ish object has the format accepted by the <a href="/man/stg-id">stg id</a> 
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-r rev1[..[rev2]]</dt>
-<dt class="hdlist1">--range rev1[..[rev2]]</dt>
+<dt class="hdlist1">-r &lt;revspec&gt;</dt>
+<dt class="hdlist1">--range=&lt;revspec&gt;</dt>
 <dd>
-<p>Show the diff between revisions.</p>
+<p>Show diff between specified revisions. Revisions ranges are specified as
+<em>rev1[..[rev2]]</em>. The revisions may be standard Git revision specifiers or patches.</p>
 </dd>
 <dt class="hdlist1">-s</dt>
 <dt class="hdlist1">--stat</dt>
 <dd>
-<p>Show the stat instead of the diff.</p>
+<p>Show the stat instead of the diff</p>
 </dd>
-<dt class="hdlist1">-O OPTIONS</dt>
-<dt class="hdlist1">--diff-opts OPTIONS</dt>
+<dt class="hdlist1">-O &lt;options&gt;</dt>
+<dt class="hdlist1">--diff-opts=&lt;options&gt;</dt>
 <dd>
-<p>Extra options to pass to &#34;git diff&#34;.</p>
+<p>Extra options to pass to &#34;git diff&#34;</p>
 </dd>
 </dl>
 </div>

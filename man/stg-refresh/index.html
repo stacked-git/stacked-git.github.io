@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-refresh - Generate a new commit for the current patch</p>
+<p>stg-refresh - Incorporate worktree changes into current patch</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg refresh</em> [options] [--] [&lt;files or dirs&gt;]</pre>
+<pre class="content"><em>stg refresh</em> [OPTIONS] [--] [path]…​</pre>
 </div>
 </div>
 </div>
@@ -126,9 +126,9 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Include the latest work tree and index changes in the current patch.
-This command generates a new git commit object for the patch; the old
-commit is no longer visible.</p>
+<p>Include the latest work tree and index changes in the current patch. This
+command generates a new git commit object for the patch; the old commit is no
+longer visible.</p>
 </div>
 <div class="paragraph">
 <p>Refresh will warn if the index is dirty, and require use of either the
@@ -137,27 +137,21 @@ accidental full refresh when only some changes were staged using git add
 interative mode.</p>
 </div>
 <div class="paragraph">
-<p>You may optionally list one or more files or directories relative to
-the current working directory; if you do, only matching files will be
-updated.</p>
+<p>You may optionally list one or more files or directories relative to the
+current working directory; if you do, only matching files will be updated.</p>
 </div>
 <div class="paragraph">
-<p>Behind the scenes, stg refresh first creates a new temporary patch
-with your updates, and then merges that patch into the patch you asked
-to have refreshed. If you asked to refresh a patch other than the
-topmost patch, there can be conflicts; in that case, the temporary
-patch will be left for you to take care of, for example with stg
-squash.</p>
+<p>Behind the scenes, stg refresh first creates a new temporary patch with your
+updates, and then merges that patch into the patch you asked to have refreshed.
+If you asked to refresh a patch other than the topmost patch, there can be
+conflicts; in that case, the temporary patch will be left for you to take care
+of, for example with stg squash.</p>
 </div>
 <div class="paragraph">
-<p>The creation of the temporary patch is recorded in a separate entry in
-the patch stack log; this means that one undo step will undo the merge
-between the other patch and the temp patch, and two undo steps will
-additionally get rid of the temp patch.</p>
-</div>
-<div class="paragraph">
-<p>Additionally, the <em>--spill</em> option resets the topmost patch, emptying
-the patch while leaving the patch’s changes intact in the worktree.</p>
+<p>The creation of the temporary patch is recorded in a separate entry in the
+patch stack log; this means that one undo step will undo the merge between the
+other patch and the temp patch, and two undo steps will additionally get rid of
+the temp patch.</p>
 </div>
 </div>
 </div>
@@ -169,112 +163,106 @@ the patch while leaving the patch’s changes intact in the worktree.</p>
 <dt class="hdlist1">-u</dt>
 <dt class="hdlist1">--update</dt>
 <dd>
-<p>Only update the current patch files.</p>
+<p>Only update the current patch files</p>
 </dd>
 <dt class="hdlist1">-i</dt>
 <dt class="hdlist1">--index</dt>
 <dd>
-<p>Instead of setting the patch top to the current contents of
-the worktree, set it to the current contents of the index.</p>
+<p>Instead of setting the patch top to the current contents of the worktree,
+set it to the current contents of the index.</p>
 </dd>
 <dt class="hdlist1">-F</dt>
 <dt class="hdlist1">--force</dt>
 <dd>
-<p>Instead of warning the user when some work has already been staged
-(such as with git add interactive mode) force a full refresh.</p>
+<p>Instead of warning the user when some work has already been staged (such as
+with git add interactive mode) force a full refresh.</p>
 </dd>
-<dt class="hdlist1">-p PATCH</dt>
-<dt class="hdlist1">--patch PATCH</dt>
+<dt class="hdlist1">-p &lt;patch&gt;</dt>
+<dt class="hdlist1">--patch=&lt;patch&gt;</dt>
 <dd>
-<p>Refresh (applied) PATCH instead of the top patch.</p>
+<p>Refresh (applied) &lt;patch&gt; instead of the top patch</p>
 </dd>
-<dt class="hdlist1">-e</dt>
-<dt class="hdlist1">--edit</dt>
+<dt class="hdlist1">-a &lt;note&gt;</dt>
+<dt class="hdlist1">--annotate=&lt;note&gt;</dt>
 <dd>
-<p>Invoke an editor for the patch description.</p>
-</dd>
-<dt class="hdlist1">-d</dt>
-<dt class="hdlist1">--diff</dt>
-<dd>
-<p>Show diff when editing patch description.</p>
-</dd>
-<dt class="hdlist1">-a NOTE</dt>
-<dt class="hdlist1">--annotate NOTE</dt>
-<dd>
-<p>Annotate the patch log entry.</p>
+<p>Annotate the patch log entry with &lt;note&gt;</p>
 </dd>
 <dt class="hdlist1">-s</dt>
 <dt class="hdlist1">--submodules</dt>
 <dd>
-<p>Include submodules when refreshing patch contents.</p>
+<p>Include submodules in patch content</p>
 </dd>
 <dt class="hdlist1">--no-submodules</dt>
 <dd>
-<p>Exclude submodules when refreshing patch contents.</p>
+<p>Exclude submodules in patch content</p>
 </dd>
-<dt class="hdlist1">--spill</dt>
+<dt class="hdlist1">-e</dt>
+<dt class="hdlist1">--edit</dt>
 <dd>
-<p>Spill patch content to worktree and index, erasing patch content..</p>
+<p>Invoke editor for patch description</p>
 </dd>
-<dt class="hdlist1">-m MESSAGE</dt>
-<dt class="hdlist1">--message MESSAGE</dt>
+<dt class="hdlist1">-d</dt>
+<dt class="hdlist1">--diff</dt>
 <dd>
-<p>Use MESSAGE instead of invoking the editor.</p>
+<p>Show diff when editing patch description</p>
 </dd>
-<dt class="hdlist1">-f FILE</dt>
-<dt class="hdlist1">--file FILE</dt>
+<dt class="hdlist1">-m &lt;message&gt;</dt>
+<dt class="hdlist1">--message=&lt;message&gt;</dt>
 <dd>
-<p>Use the contents of FILE instead of invoking the editor.
-(If FILE is &#34;-&#34;, write to stdout.)</p>
+<p>Use message instead of invoking the editor</p>
+</dd>
+<dt class="hdlist1">-f &lt;path&gt;</dt>
+<dt class="hdlist1">--file=&lt;path&gt;</dt>
+<dd>
+<p>Use the contents of file instead of invoking the editor. Use &#34;-&#34; to read
+from stdin.</p>
 </dd>
 <dt class="hdlist1">--no-verify</dt>
 <dd>
-<p>This option bypasses the commit-msg hook.</p>
+<p>Disable commit-msg hook</p>
 </dd>
-<dt class="hdlist1">--sign</dt>
+<dt class="hdlist1">--signoff[=&lt;value&gt;]</dt>
 <dd>
-<p>Add a &#34;Signed-off-by:&#34; trailer to the end of the message using the committer name and email for the trailer value.</p>
+<p>Add &#34;Signed-off-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer name and email. This option
+may be provided multiple times.</p>
+</div>
 </dd>
-<dt class="hdlist1">--sign-by VALUE</dt>
+<dt class="hdlist1">--ack[=&lt;value&gt;]</dt>
 <dd>
-<p>Add a &#34;Signed-off-by:&#34; trailer with a custom VALUE to the end of the message.</p>
+<p>Add &#34;Acked-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer’s name and email. This
+option may be provided multiple times.</p>
+</div>
 </dd>
-<dt class="hdlist1">--ack</dt>
+<dt class="hdlist1">--review[=&lt;value&gt;]</dt>
 <dd>
-<p>Add an &#34;Acked-by:&#34; trailer to the end of the message using the commiter name and email for the trailer value.</p>
+<p>Add &#34;Reviewed-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer’s name and email. This
+option may be provided multiple times.</p>
+</div>
 </dd>
-<dt class="hdlist1">--ack-by VALUE</dt>
+<dt class="hdlist1">--author=&lt;name-and-email&gt;</dt>
 <dd>
-<p>Add an &#34;Acked-by:&#34; trailer with a custom VALUE to the end of the message.</p>
+<p>Set the author &#34;name &lt;email&gt;&#34;</p>
 </dd>
-<dt class="hdlist1">--review</dt>
+<dt class="hdlist1">--authname=&lt;name&gt;</dt>
 <dd>
-<p>Add a &#34;Reviewed-by:&#34; trailer to the end of the message using the commiter name and email for the trailer value.</p>
+<p>Set the author name</p>
 </dd>
-<dt class="hdlist1">--review-by VALUE</dt>
+<dt class="hdlist1">--authemail=&lt;email&gt;</dt>
 <dd>
-<p>Add a &#34;Reviewed-by:&#34; trailer with custom VALUE to the end of the message.</p>
+<p>Set the author email</p>
 </dd>
-<dt class="hdlist1">--author &#34;NAME &lt;EMAIL&gt;&#34;</dt>
+<dt class="hdlist1">--authdate=&lt;date&gt;</dt>
 <dd>
-<p>Set the author details.</p>
-</dd>
-<dt class="hdlist1">--authname NAME</dt>
-<dd>
-<p>Set the author name.</p>
-</dd>
-<dt class="hdlist1">--authemail EMAIL</dt>
-<dd>
-<p>Set the author email.</p>
-</dd>
-<dt class="hdlist1">--authdate DATE</dt>
-<dd>
-<p>Set the author date.</p>
-</dd>
-<dt class="hdlist1">-O OPTIONS</dt>
-<dt class="hdlist1">--diff-opts OPTIONS</dt>
-<dd>
-<p>Extra options to pass to &#34;git diff&#34;.</p>
+<p>Set the date the patch was authored.</p>
+<div class="paragraph">
+<p>Use &#34;now&#34; to use the current time and date.</p>
+</div>
 </dd>
 </dl>
 </div>

@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-log - Display or optionally clear the patch changelog</p>
+<p>stg-log - Display or optionally clear the stack changelog</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,8 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg log</em> [options] [--] [&lt;patches&gt;]</pre>
+<pre class="content"><em>stg log</em> [OPTIONS] [--] [patch]…​
+<em>stg log</em> --clear</pre>
 </div>
 </div>
 </div>
@@ -126,18 +127,18 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>List the history of the patch stack: the stack log. If one or more
-patch names are given, limit the list to the log entries that touch
-the named patches.</p>
+<p>Show the history of changes to the stack. If one or more patch names are given,
+only the changes affecting those patches are shown.</p>
 </div>
 <div class="paragraph">
-<p>&#34;stg undo&#34; and &#34;stg redo&#34; let you step back and forth in the patch
-stack. &#34;stg reset&#34; lets you go directly to any state.</p>
+<p>The &#34;stg undo&#34; and &#34;stg redo&#34; commands may be used to step back and forth
+through historical stack states. The &#34;stg reset&#34; command may be used to reset
+the stack directly to a historic state.</p>
 </div>
 <div class="paragraph">
-<p>Given the --clear option, the log history will be deleted.
-This may be useful if the tree view has become too cluttered
-to be useful.</p>
+<p>The --clear option may be used to delete the stack’s change history. Undo and
+redo are unavailable on a stack without change history. Clearing the stack
+state history cannot be undone.</p>
 </div>
 </div>
 </div>
@@ -146,34 +147,34 @@ to be useful.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-b BRANCH</dt>
-<dt class="hdlist1">--branch BRANCH</dt>
+<dt class="hdlist1">-b &lt;branch&gt;</dt>
+<dt class="hdlist1">--branch=&lt;branch&gt;</dt>
 <dd>
-<p>Use BRANCH instead of the default one.</p>
+<p>Use BRANCH instead of current branch</p>
 </dd>
 <dt class="hdlist1">-d</dt>
 <dt class="hdlist1">--diff</dt>
 <dd>
-<p>Show the refresh diffs.</p>
+<p>Show stack state diffs</p>
 </dd>
-<dt class="hdlist1">-n NUMBER</dt>
-<dt class="hdlist1">--number NUMBER</dt>
+<dt class="hdlist1">-n &lt;n&gt;</dt>
+<dt class="hdlist1">--number=&lt;n&gt;</dt>
 <dd>
-<p>Limit the output to NUMBER commits.</p>
+<p>Limit output to &lt;n&gt; commits</p>
 </dd>
 <dt class="hdlist1">-f</dt>
 <dt class="hdlist1">--full</dt>
 <dd>
-<p>Show the full commit ids.</p>
+<p>Show using full commit log format</p>
 </dd>
 <dt class="hdlist1">-g</dt>
 <dt class="hdlist1">--graphical</dt>
 <dd>
-<p>Run gitk instead of printing.</p>
+<p>Run gitk instead of printing to stdout</p>
 </dd>
 <dt class="hdlist1">--clear</dt>
 <dd>
-<p>Clear the log history.</p>
+<p>Clear the stack history</p>
 </dd>
 </dl>
 </div>

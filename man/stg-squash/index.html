@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg squash</em> [options] [--] &lt;patches&gt;</pre>
+<pre class="content"><em>stg squash</em> [OPTIONS] &lt;patch&gt;…​</pre>
 </div>
 </div>
 </div>
@@ -126,8 +126,10 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Squash two or more patches, creating one big patch that contains all
-their changes. In more detail:</p>
+<p>Squash two or more patches, creating one patch with their combined changes.</p>
+</div>
+<div class="paragraph">
+<p>The squash process, at a high level:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -135,25 +137,24 @@ their changes. In more detail:</p>
 <p>Pop all the given patches, plus any other patches on top of them.</p>
 </li>
 <li>
-<p>Push the given patches in the order they were given on the
-command line.</p>
+<p>Push the given patches in the order they were given on the command line.
+This establishes a tree containing the combined changes from the given patches.</p>
 </li>
 <li>
-<p>Squash the given patches into one big patch.</p>
+<p>Replace given patches with a new, squashed patch.</p>
 </li>
 <li>
-<p>Allow the user to edit the commit message of the new patch
-interactively.</p>
+<p>Allow the user to interactively edit the commit message of the new, squashed patch.</p>
 </li>
 <li>
-<p>Push the other patches that were popped in step (1).</p>
+<p>Push other patches that were popped in step (1), if any.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Conflicts can occur whenever we push a patch; that is, in step (2) and
-(5). If there are conflicts, the command will stop so that you can
-resolve them.</p>
+<p>Conflicts can occur whenever a patch is pushed; this is, in steps (2) and (5).
+If conflicts occur, the squash command will halt such that the conflicts may be
+resolved manually.</p>
 </div>
 </div>
 </div>
@@ -162,37 +163,88 @@ resolve them.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-n NAME</dt>
-<dt class="hdlist1">--name NAME</dt>
+<dt class="hdlist1">-n &lt;name&gt;</dt>
+<dt class="hdlist1">--name=&lt;name&gt;</dt>
 <dd>
-<p>Name of squashed patch.</p>
+<p>Use &lt;name&gt; for the squashed patch</p>
 </dd>
-<dt class="hdlist1">-m MESSAGE</dt>
-<dt class="hdlist1">--message MESSAGE</dt>
+<dt class="hdlist1">-e</dt>
+<dt class="hdlist1">--edit</dt>
 <dd>
-<p>Use MESSAGE instead of invoking the editor.</p>
+<p>Invoke editor for patch description</p>
 </dd>
-<dt class="hdlist1">-f FILE</dt>
-<dt class="hdlist1">--file FILE</dt>
+<dt class="hdlist1">-d</dt>
+<dt class="hdlist1">--diff</dt>
 <dd>
-<p>Use the contents of FILE instead of invoking the editor.
-(If FILE is &#34;-&#34;, write to stdout.)</p>
+<p>Show diff when editing patch description</p>
 </dd>
-<dt class="hdlist1">--save-template FILE</dt>
+<dt class="hdlist1">-m &lt;message&gt;</dt>
+<dt class="hdlist1">--message=&lt;message&gt;</dt>
 <dd>
-<p>Instead of running the command, just write the message
-template to FILE, and exit. (If FILE is &#34;-&#34;, write to
-stdout.)</p>
-<div class="paragraph">
-<p>When driving StGit from another program, it is often
-useful to first call a command with <em>--save-template</em>,
-then let the user edit the message, and then call the
-same command with <em>--file</em>.</p>
-</div>
+<p>Use message instead of invoking the editor</p>
+</dd>
+<dt class="hdlist1">-f &lt;path&gt;</dt>
+<dt class="hdlist1">--file=&lt;path&gt;</dt>
+<dd>
+<p>Use the contents of file instead of invoking the editor. Use &#34;-&#34; to read
+from stdin.</p>
 </dd>
 <dt class="hdlist1">--no-verify</dt>
 <dd>
-<p>This option bypasses the commit-msg hook.</p>
+<p>Disable commit-msg hook</p>
+</dd>
+<dt class="hdlist1">--signoff[=&lt;value&gt;]</dt>
+<dd>
+<p>Add &#34;Signed-off-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer name and email. This option
+may be provided multiple times.</p>
+</div>
+</dd>
+<dt class="hdlist1">--ack[=&lt;value&gt;]</dt>
+<dd>
+<p>Add &#34;Acked-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer’s name and email. This
+option may be provided multiple times.</p>
+</div>
+</dd>
+<dt class="hdlist1">--review[=&lt;value&gt;]</dt>
+<dd>
+<p>Add &#34;Reviewed-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer’s name and email. This
+option may be provided multiple times.</p>
+</div>
+</dd>
+<dt class="hdlist1">--author=&lt;name-and-email&gt;</dt>
+<dd>
+<p>Set the author &#34;name &lt;email&gt;&#34;</p>
+</dd>
+<dt class="hdlist1">--authname=&lt;name&gt;</dt>
+<dd>
+<p>Set the author name</p>
+</dd>
+<dt class="hdlist1">--authemail=&lt;email&gt;</dt>
+<dd>
+<p>Set the author email</p>
+</dd>
+<dt class="hdlist1">--authdate=&lt;date&gt;</dt>
+<dd>
+<p>Set the date the patch was authored.</p>
+<div class="paragraph">
+<p>Use &#34;now&#34; to use the current time and date.</p>
+</div>
+</dd>
+<dt class="hdlist1">--save-template=&lt;file&gt;</dt>
+<dd>
+<p>Instead of running the command, just write the patch description to FILE,
+and exit. (If FILE is &#34;-&#34;, write to stdout.)</p>
+<div class="paragraph">
+<p>When driving StGit from another program, it may be useful to first call a
+command with <em>--save-template</em>, then let the user edit the message, and then
+call the same command with <em>--file</em>.</p>
+</div>
 </dd>
 </dl>
 </div>

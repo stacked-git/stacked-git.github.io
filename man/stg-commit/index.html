@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-commit - Permanently store the applied patches into the stack base</p>
+<p>stg-commit - Finalize patches to the stack base</p>
 </div>
 </div>
 </div>
@@ -118,10 +118,9 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg commit</em> [options]
-<em>stg commit</em> [options] [--] &lt;patchnames&gt;
-<em>stg commit</em> [options] -n NUM
-<em>stg commit</em> [options] --all</pre>
+<pre class="content"><em>stg commit</em> [OPTIONS] [patch]…​
+<em>stg commit</em> [OPTIONS] -n &lt;number&gt;
+<em>stg commit</em> [OPTIONS] --all</pre>
 </div>
 </div>
 </div>
@@ -129,20 +128,18 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Merge one or more patches into the base of the current stack and
-remove them from the series while advancing the base. This is the
-opposite of <em>stg uncommit</em>. Use this command if you no longer want to
-manage a patch with StGit.</p>
+<p>Finalize one or more patches into the base of the current stack and remove them
+from the series. This is the opposite of <a href="/man/stg-uncommit">stg uncommit</a>. Use this command
+when a patch is completed and no longer needs to be managed with StGit.</p>
 </div>
 <div class="paragraph">
-<p>By default, the bottommost patch is committed. If patch names are
-given, the stack is rearranged so that those patches are at the
-bottom, and then they are committed.</p>
+<p>By default, the bottommost patch is committed. If patch names are given, the
+stack is rearranged so that those patches are at the bottom, and then they are committed.</p>
 </div>
 <div class="paragraph">
-<p>The -n/--number option specifies the number of applied patches to
-commit (counting from the bottom of the stack). If -a/--all is given,
-all applied patches are committed.</p>
+<p>The -n/--number option specifies the number of applied patches to commit
+(counting from the bottom of the stack). If -a/--all is given, all applied
+patches are committed.</p>
 </div>
 </div>
 </div>
@@ -151,19 +148,19 @@ all applied patches are committed.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-n NUMBER</dt>
-<dt class="hdlist1">--number NUMBER</dt>
+<dt class="hdlist1">-n &lt;number&gt;</dt>
+<dt class="hdlist1">--number=&lt;number&gt;</dt>
 <dd>
-<p>Commit the specified number of patches.</p>
+<p>Commit the specified number of applied patches</p>
 </dd>
 <dt class="hdlist1">-a</dt>
 <dt class="hdlist1">--all</dt>
 <dd>
-<p>Commit all applied patches.</p>
+<p>Commit all applied patches</p>
 </dd>
 <dt class="hdlist1">--allow-empty</dt>
 <dd>
-<p>Allow empty patches to be committed.</p>
+<p>Allow empty patches to be committed</p>
 </dd>
 </dl>
 </div>

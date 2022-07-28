@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg export</em> [options] [--] [&lt;patch1&gt;] [&lt;patch2&gt;] [&lt;patch3&gt;..&lt;patch4&gt;]</pre>
+<pre class="content"><em>stg export</em> [OPTIONS] [patch]…​</pre>
 </div>
 </div>
 </div>
@@ -126,26 +126,35 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Export a range of applied patches to a given directory (defaults to
-<em>patches-&lt;branch&gt;</em>) in a standard unified GNU diff format. A template
-file (defaulting to <em>.git/patchexport.tmpl</em> or
-<em>~/.stgit/templates/patchexport.tmpl</em> or
-<em>/usr/share/stgit/templates/patchexport.tmpl</em>) can be used for the
-patch format. The following variables are supported in the template
-file:</p>
+<p>Export a range of patches to a given directory in unified diff format.All
+applied patches are exported by default.</p>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>%(description)s - patch description
-%(shortdescr)s  - the first line of the patch description
-%(longdescr)s   - the rest of the patch description, after the first line
-%(diffstat)s    - the diff statistics
-%(authname)s    - author&#39;s name
-%(authemail)s   - author&#39;s e-mail
-%(authdate)s    - patch creation date
-%(commname)s    - committer&#39;s name
-%(commemail)s   - committer&#39;s e-mail</pre>
+<div class="paragraph">
+<p>Patches are exported to <em>patches-&lt;branch&gt;</em> by default. The --dir option may be
+used to specify a different output directory.</p>
 </div>
+<div class="paragraph">
+<p>The patch file output may be customized via a template file found at
+&#34;$GIT_DIR/patchexport.tmpl&#34;, &#34;~/.stgit/templates/patchexport.tmpl&#34;, or
+&#34;$(prefix)/share/stgit/templates&#34;. The following variables are supported in the
+template file:</p>
+</div>
+<div class="paragraph">
+<p>%(description)s - patch description
+    %(shortdescr)s  - the first line of the
+patch description
+    %(longdescr)s   - the rest of the patch description,
+after the first line
+    %(diffstat)s    - the diff statistics
+    %(authname)s
+   - author name
+    %(authemail)s   - author email
+    %(authdate)s    - patch
+creation date (ISO-8601 format)
+    %(commname)s    - committer name</p>
+</div>
+<div class="paragraph">
+<p>%(commemail)s   - committer email</p>
 </div>
 </div>
 </div>
@@ -154,45 +163,45 @@ file:</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-d DIR</dt>
-<dt class="hdlist1">--dir DIR</dt>
+<dt class="hdlist1">-b &lt;branch&gt;</dt>
+<dt class="hdlist1">--branch=&lt;branch&gt;</dt>
 <dd>
-<p>Export patches to DIR instead of the default.</p>
+<p>Use BRANCH instead of current branch</p>
+</dd>
+<dt class="hdlist1">-d &lt;dir&gt;</dt>
+<dt class="hdlist1">--dir=&lt;dir&gt;</dt>
+<dd>
+<p>Export patches to &lt;dir&gt; instead of the default</p>
 </dd>
 <dt class="hdlist1">-p</dt>
 <dt class="hdlist1">--patch</dt>
 <dd>
-<p>Append .patch to the patch names.</p>
+<p>Suffix patch file names with &#34;.patch&#34;</p>
 </dd>
-<dt class="hdlist1">-e EXTENSION</dt>
-<dt class="hdlist1">--extension EXTENSION</dt>
+<dt class="hdlist1">-e &lt;ext&gt;</dt>
+<dt class="hdlist1">--extension=&lt;ext&gt;</dt>
 <dd>
-<p>Append .EXTENSION to the patch names.</p>
+<p>Suffix patch file names with &#34;.&lt;ext&gt;&#34;</p>
 </dd>
 <dt class="hdlist1">-n</dt>
 <dt class="hdlist1">--numbered</dt>
 <dd>
-<p>Prefix the patch names with order numbers.</p>
+<p>Prefix patch file names with order numbers.</p>
 </dd>
-<dt class="hdlist1">-t FILE</dt>
-<dt class="hdlist1">--template FILE</dt>
+<dt class="hdlist1">-t &lt;file&gt;</dt>
+<dt class="hdlist1">--template=&lt;file&gt;</dt>
 <dd>
-<p>Use FILE as a template.</p>
-</dd>
-<dt class="hdlist1">-b BRANCH</dt>
-<dt class="hdlist1">--branch BRANCH</dt>
-<dd>
-<p>Use BRANCH instead of the default branch.</p>
+<p>Use &lt;file&gt; as template</p>
 </dd>
 <dt class="hdlist1">-s</dt>
 <dt class="hdlist1">--stdout</dt>
 <dd>
-<p>Dump the patches to the standard output.</p>
+<p>Export to stdout instead of directory</p>
 </dd>
-<dt class="hdlist1">-O OPTIONS</dt>
-<dt class="hdlist1">--diff-opts OPTIONS</dt>
+<dt class="hdlist1">-O &lt;options&gt;</dt>
+<dt class="hdlist1">--diff-opts=&lt;options&gt;</dt>
 <dd>
-<p>Extra options to pass to &#34;git diff&#34;.</p>
+<p>Extra options to pass to &#34;git diff&#34;</p>
 </dd>
 </dl>
 </div>

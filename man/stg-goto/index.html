@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-goto - Push or pop patches to the given one</p>
+<p>stg-goto - Go to patch by pushing or popping as necessary</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg goto</em> [options] [--] &lt;patch-name&gt;</pre>
+<pre class="content"><em>stg goto</em> [OPTIONS] &lt;patch&gt;</pre>
 </div>
 </div>
 </div>
@@ -126,8 +126,7 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Push/pop patches to/from the stack until the one given on the command
-line becomes current.</p>
+<p>Go to patch by pushing or popping as necessary</p>
 </div>
 </div>
 </div>
@@ -139,12 +138,12 @@ line becomes current.</p>
 <dt class="hdlist1">-k</dt>
 <dt class="hdlist1">--keep</dt>
 <dd>
-<p>Keep the local changes.</p>
+<p>Keep the local changes</p>
 </dd>
 <dt class="hdlist1">-m</dt>
 <dt class="hdlist1">--merged</dt>
 <dd>
-<p>Check for patches merged upstream.</p>
+<p>Check for patches merged upstream</p>
 </dd>
 </dl>
 </div>

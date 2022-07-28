@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-import - Import a GNU diff file as a new patch</p>
+<p>stg-import - Import patches to stack</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,14 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg import</em> [options] [--] [&lt;file&gt;|&lt;url&gt;]</pre>
+<pre class="content"><em>stg import</em> [OPTIONS] &lt;diff-path&gt;
+<em>stg import</em> [OPTIONS] -m [&lt;mail-path&gt;|&lt;Maildir-path&gt;]
+<em>stg import</em> [OPTIONS] -M [&lt;mbox-path&gt;]
+<em>stg import</em> [OPTIONS] -s [&lt;series-path&gt;]
+<em>stg import</em> [OPTIONS] -u &lt;diff-url&gt;
+<em>stg import</em> [OPTIONS] -u -m &lt;mail-url&gt;
+<em>stg import</em> [OPTIONS] -u -M &lt;mbox-url&gt;
+<em>stg import</em> [OPTIONS] -u -s &lt;series-url&gt;</pre>
 </div>
 </div>
 </div>
@@ -126,22 +133,26 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Create a new patch and apply the given GNU diff file (or the standard
-input). By default, the file name is used as the patch name but this
-can be overridden with the <em>--name</em> option. The patch can either be a
-normal file with the description at the top or it can have standard
-mail format, the Subject, From and Date headers being used for
-generating the patch information. The command can also read series and
-mbox files.</p>
+<p>Import patches from various sources to the stack.</p>
 </div>
 <div class="paragraph">
-<p>If a patch does not apply cleanly, the failed diff is written to the
-.stgit-failed.patch file and an empty StGit patch is added to the
-stack.</p>
+<p>The simplest usage is to import a diff/patch file into the stack from a local
+file. By default, the file name is used as the patch name, but this can be
+overridden with --name. The patch can either be a normal file with the
+description at the top, or it can have standard mail format. The &#34;Subject&#34;,
+&#34;From&#34;, and &#34;Date&#34; headers will be used for the imported patch’s author details.</p>
 </div>
 <div class="paragraph">
-<p>The patch description has to be separated from the data with a <em>---</em>
-line.</p>
+<p>Patches may also be imported from a mail file (-m/--mail), an mbox (-M/--mbox),
+or a series (-s/--series). Furthermore, the -u/--url option allows the patches
+source to be fetched from a url instead of from a local file.</p>
+</div>
+<div class="paragraph">
+<p>If a patch does not apply cleanly, the failed diff is written to a
+.stgit-failed.patch file and an empty patch is added to the stack.</p>
+</div>
+<div class="paragraph">
+<p>The patch description must be separated from the diff with a &#34;---&#34; line.</p>
 </div>
 </div>
 </div>
@@ -153,117 +164,127 @@ line.</p>
 <dt class="hdlist1">-m</dt>
 <dt class="hdlist1">--mail</dt>
 <dd>
-<p>Import the patch from a standard e-mail file.</p>
+<p>Import patch from an email file</p>
 </dd>
 <dt class="hdlist1">-M</dt>
 <dt class="hdlist1">--mbox</dt>
 <dd>
-<p>Import a series of patches from an mbox file.</p>
+<p>Import patch series from an mbox file</p>
 </dd>
 <dt class="hdlist1">-s</dt>
 <dt class="hdlist1">--series</dt>
 <dd>
-<p>Import a series of patches from a series file or a tar archive.</p>
+<p>Import patch series from a series file are tar archive.</p>
 </dd>
 <dt class="hdlist1">-u</dt>
 <dt class="hdlist1">--url</dt>
 <dd>
-<p>Import a patch from a URL.</p>
+<p>Retrieve source from a url instead of local file</p>
 </dd>
-<dt class="hdlist1">-n NAME</dt>
-<dt class="hdlist1">--name NAME</dt>
+<dt class="hdlist1">-n &lt;name&gt;</dt>
+<dt class="hdlist1">--name=&lt;name&gt;</dt>
 <dd>
-<p>Use NAME as the patch name.</p>
+<p>Use &lt;name&gt; as the patch name</p>
 </dd>
-<dt class="hdlist1">-p N</dt>
-<dt class="hdlist1">--strip N</dt>
+<dt class="hdlist1">-p &lt;n&gt;</dt>
+<dt class="hdlist1">--strip=&lt;n&gt;</dt>
 <dd>
-<p>Remove N leading slashes from diff paths (default 1).</p>
+<p>Remove &lt;n&gt; leading components from diff paths (default 1)</p>
 </dd>
 <dt class="hdlist1">-t</dt>
 <dt class="hdlist1">--stripname</dt>
 <dd>
-<p>Strip numbering and extension from patch name.</p>
+<p>Strip number and extension from patch name</p>
 </dd>
-<dt class="hdlist1">-C N</dt>
+<dt class="hdlist1">-C &lt;n&gt;</dt>
 <dd>
-<p>Ensure N lines of surrounding context for each change.</p>
+<p>Ensure &lt;n&gt; lines of matching context for each change</p>
 </dd>
 <dt class="hdlist1">-i</dt>
 <dt class="hdlist1">--ignore</dt>
 <dd>
-<p>Ignore the applied patches in the series.</p>
+<p>Ignore the applied patches in the series</p>
 </dd>
 <dt class="hdlist1">--replace</dt>
 <dd>
-<p>Replace the unapplied patches in the series.</p>
+<p>Replace the unapplied patches in the series</p>
 </dd>
-<dt class="hdlist1">-b BASE</dt>
-<dt class="hdlist1">--base BASE</dt>
+<dt class="hdlist1">-b &lt;committish&gt;</dt>
+<dt class="hdlist1">--base=&lt;committish&gt;</dt>
 <dd>
-<p>Use BASE instead of HEAD for file importing.</p>
+<p>Use &lt;committish&gt; instead of HEAD for file importing</p>
 </dd>
 <dt class="hdlist1">--reject</dt>
 <dd>
-<p>Leave the rejected hunks in corresponding *.rej files.</p>
+<p>Leave rejected hunks in &#34;.rej&#34; files</p>
 </dd>
 <dt class="hdlist1">--keep-cr</dt>
 <dd>
-<p>Do not remove &#34;\r&#34; from email lines ending with &#34;\r\n&#34;.</p>
+<p>Do not remove &#34;\r&#34; from email lines ending with &#34;\r\n&#34;</p>
 </dd>
 <dt class="hdlist1">--message-id</dt>
 <dd>
-<p>Create Message-Id trailer in patch description based on the Message-ID email header. This option is applicable when importing with --mail or --mbox. This behavior may also be enabled via the <em>stgit.import.message-id</em> configuration option.</p>
+<p>Create Message-Id trailer in patch description based on the Message-ID
+email header. This option is applicable when importing with --mail or
+--mbox. This behavior may also be enabled via the &#34;stgit.import.message-id&#34;
+configuration option.</p>
 </dd>
 <dt class="hdlist1">-e</dt>
 <dt class="hdlist1">--edit</dt>
 <dd>
-<p>Invoke an editor for the patch description.</p>
+<p>Invoke editor for patch description</p>
 </dd>
 <dt class="hdlist1">-d</dt>
-<dt class="hdlist1">--showdiff</dt>
+<dt class="hdlist1">--diff</dt>
 <dd>
-<p>Show the patch content in the editor buffer.</p>
+<p>Show diff when editing patch description</p>
 </dd>
-<dt class="hdlist1">--author &#34;NAME &lt;EMAIL&gt;&#34;</dt>
+<dt class="hdlist1">--no-verify</dt>
 <dd>
-<p>Set the author details.</p>
+<p>Disable commit-msg hook</p>
 </dd>
-<dt class="hdlist1">--authname NAME</dt>
+<dt class="hdlist1">--signoff[=&lt;value&gt;]</dt>
 <dd>
-<p>Set the author name.</p>
+<p>Add &#34;Signed-off-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer name and email. This option
+may be provided multiple times.</p>
+</div>
 </dd>
-<dt class="hdlist1">--authemail EMAIL</dt>
+<dt class="hdlist1">--ack[=&lt;value&gt;]</dt>
 <dd>
-<p>Set the author email.</p>
+<p>Add &#34;Acked-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer’s name and email. This
+option may be provided multiple times.</p>
+</div>
 </dd>
-<dt class="hdlist1">--authdate DATE</dt>
+<dt class="hdlist1">--review[=&lt;value&gt;]</dt>
 <dd>
-<p>Set the author date.</p>
+<p>Add &#34;Reviewed-by&#34; message trailer.</p>
+<div class="paragraph">
+<p>The value is optional and defaults to the committer’s name and email. This
+option may be provided multiple times.</p>
+</div>
 </dd>
-<dt class="hdlist1">--sign</dt>
+<dt class="hdlist1">--author=&lt;name-and-email&gt;</dt>
 <dd>
-<p>Add a &#34;Signed-off-by:&#34; trailer to the end of the message using the committer name and email for the trailer value.</p>
+<p>Set the author &#34;name &lt;email&gt;&#34;</p>
 </dd>
-<dt class="hdlist1">--sign-by VALUE</dt>
+<dt class="hdlist1">--authname=&lt;name&gt;</dt>
 <dd>
-<p>Add a &#34;Signed-off-by:&#34; trailer with a custom VALUE to the end of the message.</p>
+<p>Set the author name</p>
 </dd>
-<dt class="hdlist1">--ack</dt>
+<dt class="hdlist1">--authemail=&lt;email&gt;</dt>
 <dd>
-<p>Add an &#34;Acked-by:&#34; trailer to the end of the message using the commiter name and email for the trailer value.</p>
+<p>Set the author email</p>
 </dd>
-<dt class="hdlist1">--ack-by VALUE</dt>
+<dt class="hdlist1">--authdate=&lt;date&gt;</dt>
 <dd>
-<p>Add an &#34;Acked-by:&#34; trailer with a custom VALUE to the end of the message.</p>
-</dd>
-<dt class="hdlist1">--review</dt>
-<dd>
-<p>Add a &#34;Reviewed-by:&#34; trailer to the end of the message using the commiter name and email for the trailer value.</p>
-</dd>
-<dt class="hdlist1">--review-by VALUE</dt>
-<dd>
-<p>Add a &#34;Reviewed-by:&#34; trailer with custom VALUE to the end of the message.</p>
+<p>Set the date the patch was authored.</p>
+<div class="paragraph">
+<p>Use &#34;now&#34; to use the current time and date.</p>
+</div>
 </dd>
 </dl>
 </div>

@@ -118,7 +118,8 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg delete</em> [options] [--] &lt;patch1&gt; [&lt;patch2&gt;] [&lt;patch3&gt;..&lt;patch4&gt;]</pre>
+<pre class="content"><em>stg delete</em> [OPTIONS] &lt;patch&gt;…​
+<em>stg delete</em> [OPTIONS] --top</pre>
 </div>
 </div>
 </div>
@@ -126,7 +127,7 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Delete the patches passed as arguments.</p>
+<p>Delete patches</p>
 </div>
 </div>
 </div>
@@ -137,21 +138,22 @@
 <dl>
 <dt class="hdlist1">--spill</dt>
 <dd>
-<p>Delete the patches, but do not touch the index and worktree.
-This only works with applied patches at the top of the stack.
-The effect is to &#34;spill&#34; the patch contents into the index and
-worktree. This can be useful e.g. if you want to split a patch
-into several smaller pieces.</p>
-</dd>
-<dt class="hdlist1">-b BRANCH</dt>
-<dt class="hdlist1">--branch BRANCH</dt>
-<dd>
-<p>Use BRANCH instead of the default branch.</p>
+<p>Delete the patches, but without modifying the index and worktree. This only
+works when deleting applied patches at the top of the stack. The effect is
+to &#34;spill&#34; the patch contents into the index and worktree.</p>
+<div class="paragraph">
+<p>This can be useful for splitting a patch into smaller pieces.</p>
+</div>
 </dd>
 <dt class="hdlist1">-t</dt>
 <dt class="hdlist1">--top</dt>
 <dd>
-<p>Delete top patch.</p>
+<p>Delete topmost patch</p>
+</dd>
+<dt class="hdlist1">-b &lt;branch&gt;</dt>
+<dt class="hdlist1">--branch=&lt;branch&gt;</dt>
+<dd>
+<p>Use BRANCH instead of current branch</p>
 </dd>
 </dl>
 </div>

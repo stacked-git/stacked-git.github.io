@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-clean - Delete the empty patches in the series</p>
+<p>stg-clean - Delete empty patches from the series</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg clean</em></pre>
+<pre class="content"><em>stg clean</em> [OPTIONS]</pre>
 </div>
 </div>
 </div>
@@ -126,9 +126,9 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Delete the empty patches in the whole series or only those applied or
-unapplied. A patch is considered empty if the two commit objects
-representing its boundaries refer to the same tree object.</p>
+<p>Delete the empty patches from the entire series by default, or only empty
+patches from the applied or unapplied patches. A patch is considered empty if
+its tree is the same as its parent.</p>
 </div>
 </div>
 </div>
@@ -137,15 +137,15 @@ representing its boundaries refer to the same tree object.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-a</dt>
+<dt class="hdlist1">-A</dt>
 <dt class="hdlist1">--applied</dt>
 <dd>
-<p>Delete the empty applied patches.</p>
+<p>Delete empty applied patches</p>
 </dd>
-<dt class="hdlist1">-u</dt>
+<dt class="hdlist1">-U</dt>
 <dt class="hdlist1">--unapplied</dt>
 <dd>
-<p>Delete the empty unapplied patches.</p>
+<p>Delete empty unapplied patches</p>
 </dd>
 </dl>
 </div>

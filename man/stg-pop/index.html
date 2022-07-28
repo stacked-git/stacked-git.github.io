@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-pop - Pop one or more patches from the stack</p>
+<p>stg-pop - Pop (unapply) one or more applied patches</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,9 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg pop</em> [options] [--] [&lt;patch1&gt;] [&lt;patch2&gt;] [&lt;patch3&gt;..&lt;patch4&gt;]</pre>
+<pre class="content"><em>stg pop</em> [OPTIONS] [patch]…​
+<em>stg pop</em> [OPTIONS] --all
+<em>stg pop</em> [OPTIONS] -n &lt;number&gt;</pre>
 </div>
 </div>
 </div>
@@ -126,15 +128,16 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Pop the topmost patch or a range of patches from the stack. The
-command fails if there are conflicts or local changes (and --keep was
-not specified).</p>
+<p>Pop (unapply) one or more applied patches.</p>
 </div>
 <div class="paragraph">
-<p>A series of pop and push operations are performed so that only the
-patches passed on the command line are popped from the stack. Some of
-the push operations may fail because of conflicts (&#34;stg undo&#34; would
-revert the last push operation).</p>
+<p>By default, the topmost applied patch is popped.</p>
+</div>
+<div class="paragraph">
+<p>If ranges of patches are specified, pop and push operations are performed such
+that only the patches specified on the command line are unapplied at the end of
+the operation. It is possible for some of these intermediate push operations to
+fail due to conflicts if patches are popped out of last-pushed first-popped order.</p>
 </div>
 </div>
 </div>
@@ -146,25 +149,25 @@ revert the last push operation).</p>
 <dt class="hdlist1">-a</dt>
 <dt class="hdlist1">--all</dt>
 <dd>
-<p>Pop all the applied patches.</p>
+<p>Pop all applied patches</p>
+</dd>
+<dt class="hdlist1">-n &lt;number&gt;</dt>
+<dt class="hdlist1">--number=&lt;number&gt;</dt>
+<dd>
+<p>Pop the specified &lt;number&gt; of patches.</p>
+<div class="paragraph">
+<p>A negative number indicates to pop all but that number of patches</p>
+</div>
 </dd>
 <dt class="hdlist1">-s</dt>
 <dt class="hdlist1">--spill</dt>
 <dd>
-<p>Pop a patch, keeping its modifications in the tree.</p>
-</dd>
-<dt class="hdlist1">-n NUMBER</dt>
-<dt class="hdlist1">--number NUMBER</dt>
-<dd>
-<p>Pop the specified number of patches.</p>
-<div class="paragraph">
-<p>With a negative number, pop all but that many patches.</p>
-</div>
+<p>Keep patches&#39; modifications in working tree after popping</p>
 </dd>
 <dt class="hdlist1">-k</dt>
 <dt class="hdlist1">--keep</dt>
 <dd>
-<p>Keep the local changes.</p>
+<p>Keep the local changes</p>
 </dd>
 </dl>
 </div>

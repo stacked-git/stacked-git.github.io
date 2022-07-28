@@ -118,9 +118,8 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg</em> [--version | --help]
-<em>stg</em> [--help &lt;command&gt; | &lt;command&gt; --help]
-<em>stg</em> &lt;command&gt; [COMMAND OPTIONS] [ARGS]</pre>
+<pre class="content"><em>stg</em> [OPTIONS] &lt;command&gt; […​]
+<em>stg</em> [OPTIONS] &lt;--version|-h|--help&gt;</pre>
 </div>
 </div>
 </div>
@@ -227,6 +226,17 @@ Some commands allow you to specify a patch in another branch of the
 repository; this is done by prefixing the patch name with the branch
 name and a colon (e.g. <code>otherbranch:thatpatch</code>).</p>
 </div>
+<div class="paragraph">
+<p>Commands that take multiple patch arguments may be supplied with patch
+ranges of the form <code>patch1..patchN</code> as an alternative to specifying
+each patch individually. For example, <code>stg delete p0..p4</code> would be
+equivalent to <code>stg delete p0 p1 p2 p3 p4</code>. Patch ranges may be open
+on either or both ends. For example, <code>stg delete ..p2</code> would delete
+the first applied patch up to and including patch <code>p2</code>. Alternatively,
+<code>stg delete p2..</code> would delete patch <code>p2</code> up to and including the
+topmost applied patch. And <code>stg delete ..</code> would delete all applied
+patches.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_specifying_commits">Specifying commits</h3>
@@ -261,13 +271,39 @@ are available for (and documented with) the different subcommands.</p>
 <dl>
 <dt class="hdlist1">--version</dt>
 <dd>
-<p>Prints the StGit version, as well as version of other components
-used, such as Git and Python.</p>
+<p>Print version information</p>
 </dd>
 <dt class="hdlist1">--help</dt>
 <dd>
-<p>Prints the synopsis and a list of all subcommands. If an StGit
-subcommand is given, prints the synposis for that subcommand.</p>
+<p>Print help information.</p>
+</dd>
+<dt class="hdlist1">-C</dt>
+<dd>
+<p>Run as if stg was started in <em>&lt;path&gt;</em> instead of the current working
+directory. When multiple <code>-C</code> options are given, each subsequent
+non-absolute <code>-C &lt;path&gt;</code> is interpreted relative to the preceding
+<code>-C &lt;path&gt;</code>.</p>
+<div class="paragraph">
+<p>This option affects arguments that expect path names or path specs in
+that their interpretations of the path names would be made relative to
+the working directory caused by the <code>-C</code> option.</p>
+</div>
+</dd>
+<dt class="hdlist1">--color &lt;when&gt;</dt>
+<dd>
+<p>Specify when to colorize the output.</p>
+<div class="paragraph">
+<p><code>auto</code> (the default) enables colored output only when outputting to a
+terminal or TTY. The <code>NO_COLOR</code> environment variable is respected.</p>
+</div>
+<div class="paragraph">
+<p><code>always</code> and <code>never</code> unconditionlly enable/disable colored output,
+respectively.</p>
+</div>
+<div class="paragraph">
+<p><code>ansi</code> forces color to be output using ANSI escape sequences, even in
+a Windows console.</p>
+</div>
 </dd>
 </dl>
 </div>
@@ -281,22 +317,104 @@ subcommand is given, prints the synposis for that subcommand.</p>
 type of object they create or change.</p>
 </div>
 <div class="sect2">
-<h3 id="_repository_commands">Repository commands</h3>
+<h3 id="_patch_inspection">Patch Inspection</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><a href="/man/stg-clone">stg clone</a></dt>
+<dt class="hdlist1"><a href="/man/stg-diff">stg diff</a></dt>
 <dd>
-<p>Make a local clone of a remote repository</p>
+<p>Show a diff</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-files">stg files</a></dt>
+<dd>
+<p>Show files modified by a patch</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-id">stg id</a></dt>
 <dd>
-<p>Print the git hash value of a StGit reference</p>
+<p>Print git hash of a StGit revision</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-log">stg log</a></dt>
+<dd>
+<p>Display or optionally clear the stack changelog</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-show">stg show</a></dt>
+<dd>
+<p>Show patch commits</p>
 </dd>
 </dl>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_stack_branch_commands">Stack (branch) commands</h3>
+<h3 id="_patch_manipulation">Patch Manipulation</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="/man/stg-edit">stg edit</a></dt>
+<dd>
+<p>Edit a patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-fold">stg fold</a></dt>
+<dd>
+<p>Fold diff file into the current patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-new">stg new</a></dt>
+<dd>
+<p>Create a new patch at top of the stack</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-refresh">stg refresh</a></dt>
+<dd>
+<p>Incorporate worktree changes into current patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-rename">stg rename</a></dt>
+<dd>
+<p>Rename a patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-spill">stg spill</a></dt>
+<dd>
+<p>Spill changes from the topmost patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-sync">stg sync</a></dt>
+<dd>
+<p>Synchronize patches with a branch or a series</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_stack_inspection">Stack Inspection</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="/man/stg-email">stg email</a></dt>
+<dd>
+<p>Format and send patches as email</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-export">stg export</a></dt>
+<dd>
+<p>Export patches to a directory</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-next">stg next</a></dt>
+<dd>
+<p>Print the name of the next patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-patches">stg patches</a></dt>
+<dd>
+<p>Show patches that modify files</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-prev">stg prev</a></dt>
+<dd>
+<p>Print the name of the previous patch</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-series">stg series</a></dt>
+<dd>
+<p>Display the patch series</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-top">stg top</a></dt>
+<dd>
+<p>Print the name of the top patch</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_stack_manipulation">Stack Manipulation</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><a href="/man/stg-branch">stg branch</a></dt>
@@ -305,11 +423,15 @@ type of object they create or change.</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-clean">stg clean</a></dt>
 <dd>
-<p>Delete the empty patches in the series</p>
+<p>Delete empty patches from the series</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-commit">stg commit</a></dt>
 <dd>
-<p>Permanently store the applied patches into the stack base</p>
+<p>Finalize patches to the stack base</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-delete">stg delete</a></dt>
+<dd>
+<p>Delete patches</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-float">stg float</a></dt>
 <dd>
@@ -317,35 +439,27 @@ type of object they create or change.</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-goto">stg goto</a></dt>
 <dd>
-<p>Push or pop patches to the given one</p>
+<p>Go to patch by pushing or popping as necessary</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-hide">stg hide</a></dt>
 <dd>
-<p>Hide a patch in the series</p>
+<p>Hide patches in the series</p>
+</dd>
+<dt class="hdlist1"><a href="/man/stg-import">stg import</a></dt>
+<dd>
+<p>Import patches to stack</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-init">stg init</a></dt>
 <dd>
-<p>Initialise the current branch for use with StGit</p>
+<p>Initialize a StGit stack on current branch</p>
 </dd>
-<dt class="hdlist1"><a href="/man/stg-log">stg log</a></dt>
+<dt class="hdlist1"><a href="/man/stg-pick">stg pick</a></dt>
 <dd>
-<p>Display or optionally clear the patch changelog</p>
-</dd>
-<dt class="hdlist1"><a href="/man/stg-next">stg next</a></dt>
-<dd>
-<p>Print the name of the next patch</p>
-</dd>
-<dt class="hdlist1"><a href="/man/stg-patches">stg patches</a></dt>
-<dd>
-<p>Show the applied patches modifying a file</p>
+<p>Import a patch from another branch or a commit object</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-pop">stg pop</a></dt>
 <dd>
-<p>Pop one or more patches from the stack</p>
-</dd>
-<dt class="hdlist1"><a href="/man/stg-prev">stg prev</a></dt>
-<dd>
-<p>Print the name of the previous patch</p>
+<p>Pop (unapply) one or more applied patches</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-pull">stg pull</a></dt>
 <dd>
@@ -353,7 +467,7 @@ type of object they create or change.</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-push">stg push</a></dt>
 <dd>
-<p>Push one or more patches onto the stack</p>
+<p>Push (apply) one or more unapplied patches</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-rebase">stg rebase</a></dt>
 <dd>
@@ -365,109 +479,50 @@ type of object they create or change.</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-repair">stg repair</a></dt>
 <dd>
-<p>Fix StGit metadata if branch was modified with git commands</p>
+<p>Repair stack after branch is modified with git commands</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-reset">stg reset</a></dt>
 <dd>
 <p>Reset the patch stack to an earlier state</p>
 </dd>
-<dt class="hdlist1"><a href="/man/stg-series">stg series</a></dt>
-<dd>
-<p>Print the patch series</p>
-</dd>
 <dt class="hdlist1"><a href="/man/stg-sink">stg sink</a></dt>
 <dd>
-<p>Send patches deeper down the stack</p>
+<p>Move patches deeper in the stack</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-squash">stg squash</a></dt>
 <dd>
 <p>Squash two or more patches into one</p>
 </dd>
-<dt class="hdlist1"><a href="/man/stg-top">stg top</a></dt>
-<dd>
-<p>Print the name of the top patch</p>
-</dd>
 <dt class="hdlist1"><a href="/man/stg-uncommit">stg uncommit</a></dt>
 <dd>
-<p>Turn regular git commits into StGit patches</p>
+<p>Convert regular Git commits into StGit patches</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-undo">stg undo</a></dt>
 <dd>
-<p>Undo the last operation</p>
+<p>Undo the last command</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-unhide">stg unhide</a></dt>
 <dd>
-<p>Unhide a hidden patch</p>
+<p>Unhide hidden patches</p>
 </dd>
 </dl>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_patch_commands">Patch commands</h3>
+<h3 id="_administration">Administration</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><a href="/man/stg-delete">stg delete</a></dt>
+<dt class="hdlist1"><a href="/man/stg-completion">stg completion</a></dt>
 <dd>
-<p>Delete patches</p>
+<p>Support for shell completions</p>
 </dd>
-<dt class="hdlist1"><a href="/man/stg-edit">stg edit</a></dt>
+<dt class="hdlist1"><a href="/man/stg-help">stg help</a></dt>
 <dd>
-<p>Edit a patch description or diff</p>
+<p>Print this message or the help of the given subcommand(s)</p>
 </dd>
-<dt class="hdlist1"><a href="/man/stg-export">stg export</a></dt>
+<dt class="hdlist1"><a href="/man/stg-version">stg version</a></dt>
 <dd>
-<p>Export patches to a directory</p>
-</dd>
-<dt class="hdlist1"><a href="/man/stg-files">stg files</a></dt>
-<dd>
-<p>Show the files modified by a patch (or the current patch)</p>
-</dd>
-<dt class="hdlist1"><a href="/man/stg-fold">stg fold</a></dt>
-<dd>
-<p>Integrate a GNU diff patch into the current patch</p>
-</dd>
-<dt class="hdlist1"><a href="/man/stg-import">stg import</a></dt>
-<dd>
-<p>Import a GNU diff file as a new patch</p>
-</dd>
-<dt class="hdlist1"><a href="/man/stg-mail">stg mail</a></dt>
-<dd>
-<p>Send a patch or series of patches by e-mail</p>
-</dd>
-<dt class="hdlist1"><a href="/man/stg-new">stg new</a></dt>
-<dd>
-<p>Create a new, empty patch</p>
-</dd>
-<dt class="hdlist1"><a href="/man/stg-pick">stg pick</a></dt>
-<dd>
-<p>Import a patch from a different branch or a commit object</p>
-</dd>
-<dt class="hdlist1"><a href="/man/stg-refresh">stg refresh</a></dt>
-<dd>
-<p>Generate a new commit for the current patch</p>
-</dd>
-<dt class="hdlist1"><a href="/man/stg-rename">stg rename</a></dt>
-<dd>
-<p>Rename a patch</p>
-</dd>
-<dt class="hdlist1"><a href="/man/stg-show">stg show</a></dt>
-<dd>
-<p>Show the commit corresponding to a patch</p>
-</dd>
-<dt class="hdlist1"><a href="/man/stg-sync">stg sync</a></dt>
-<dd>
-<p>Synchronise patches with a branch or a series</p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_indexworktree_commands">Index/worktree commands</h3>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><a href="/man/stg-diff">stg diff</a></dt>
-<dd>
-<p>Show the tree diff</p>
+<p>Print version information and exit</p>
 </dd>
 </dl>
 </div>
@@ -497,10 +552,10 @@ template files are searched in the following directories:</p>
 <p><code>$GITDIR/</code> (in practice, the <code>.git/</code> directory in your repository)</p>
 </li>
 <li>
-<p><code>$HOME/.stgit/templates/</code></p>
+<p><code>$XDG_CONFIG_HOME/stgit/templates/</code></p>
 </li>
 <li>
-<p><code>/usr/share/stgit/templates/</code></p>
+<p><code>$HOME/.stgit/templates/</code></p>
 </li>
 </ol>
 </div>

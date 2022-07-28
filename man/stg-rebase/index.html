@@ -118,7 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg rebase</em> [options] [--] [new-base-id]</pre>
+<pre class="content"><em>stg rebase</em> [OPTIONS] [committish]</pre>
 </div>
 </div>
 </div>
@@ -126,28 +126,25 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Pop all patches from current stack, move the stack base to the given
-[new-base-id] and push the patches back.</p>
+<p>Pop all patches from the current stack, move the stack base to the given new
+base and push the patches back.</p>
 </div>
 <div class="paragraph">
-<p>If you experience merge conflicts, resolve the problem and continue
-the rebase by executing the following sequence:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>$ git add --update
-$ stg refresh
-$ stg goto top-patch</pre>
-</div>
+<p>Merge conflicts may arise when patches are being pushed-back onto the stack. If
+this occurs, resolve the conflicts and then continue the rebase with the
+following sequence:</p>
 </div>
 <div class="paragraph">
-<p>Or if you want to skip that patch:</p>
+<p>stg add --update
+    stg refresh
+    stg goto top-patch</p>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>$ stg undo --hard
-$ stg push next-patch..top-patch</pre>
+<div class="paragraph">
+<p>Or to skip the conflicting patch:</p>
 </div>
+<div class="paragraph">
+<p>stg undo --hard
+    stg push next-patch..top-patch</p>
 </div>
 </div>
 </div>
@@ -159,24 +156,30 @@ $ stg push next-patch..top-patch</pre>
 <dt class="hdlist1">-i</dt>
 <dt class="hdlist1">--interactive</dt>
 <dd>
-<p>Open an interactive editor to manipulate patches.</p>
+<p>Interactively manipulate patches in editor</p>
 </dd>
 <dt class="hdlist1">-n</dt>
 <dt class="hdlist1">--nopush</dt>
 <dd>
-<p>Do not push the patches back after rebasing.</p>
+<p>Do not push back patches after rebasing</p>
 </dd>
 <dt class="hdlist1">-m</dt>
 <dt class="hdlist1">--merged</dt>
 <dd>
-<p>Check for patches merged upstream.</p>
+<p>Check for patches that may have been merged upstream.</p>
+<div class="paragraph">
+<p>When pushing-back patches, each patch is checked to see if its changes already
+exist in the new stack base. If a patch’s changes are detected to have been
+merged, the patch will still exist in the stack, but become empty after the
+rebase operation.</p>
+</div>
 </dd>
 <dt class="hdlist1">--autostash</dt>
 <dd>
 <p>Automatically create a temporary stash before the operation begins, and
-apply it after the operation ends. This means that you can run rebase on a
-dirty work-tree. However, use with care: the final stash application after a
-successful rebase might result in non-trivial conflicts.</p>
+apply it after the operation completes. This allows a rebase to be
+performed on a dirty work tree. Note however that the final stash
+application may result in non-trivial conflicts.</p>
 </dd>
 </dl>
 </div>

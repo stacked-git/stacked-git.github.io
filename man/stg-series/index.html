@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-series - Print the patch series</p>
+<p>stg-series - Display the patch series</p>
 </div>
 </div>
 </div>
@@ -118,7 +118,10 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg series</em> [options] [--] [&lt;patch-range&gt;]</pre>
+<pre class="content"><em>stg series</em> [OPTIONS] [-A] [-U] [-H]
+<em>stg series</em> [OPTIONS] --all
+<em>stg series</em> [OPTIONS] --short
+<em>stg series</em> [OPTIONS] &lt;patch&gt;…​</pre>
 </div>
 </div>
 </div>
@@ -126,13 +129,13 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Show all the patches in the series, or just those in the given range,
-ordered from top to bottom.</p>
+<p>Show all the patches in the series, or just those in the given range, ordered
+from top to bottom.</p>
 </div>
 <div class="paragraph">
-<p>The applied patches are prefixed with a <code>+</code> (except the current patch,
-which is prefixed with a <code>&gt;</code>), the unapplied patches with a <code>-</code>, and
-the hidden patches with a <code>!</code>.</p>
+<p>The applied patches are prefixed with a <em>+</em> (except the current patch, which is
+prefixed with a <em>&gt;</em>), the unapplied patches with a <em>-</em>, and the hidden patches
+with a <em>!</em>.</p>
 </div>
 <div class="paragraph">
 <p>Empty patches are prefixed with a <em>0</em>.</p>
@@ -144,73 +147,83 @@ the hidden patches with a <code>!</code>.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">-b BRANCH</dt>
-<dt class="hdlist1">--branch BRANCH</dt>
+<dt class="hdlist1">-b &lt;branch&gt;</dt>
+<dt class="hdlist1">--branch=&lt;branch&gt;</dt>
 <dd>
-<p>Use BRANCH instead of the default branch.</p>
+<p>Use BRANCH instead of current branch</p>
 </dd>
 <dt class="hdlist1">-a</dt>
 <dt class="hdlist1">--all</dt>
 <dd>
-<p>Show all patches, including the hidden ones.</p>
-</dd>
-<dt class="hdlist1">-A</dt>
-<dt class="hdlist1">--applied</dt>
-<dd>
-<p>Show the applied patches only.</p>
-</dd>
-<dt class="hdlist1">-U</dt>
-<dt class="hdlist1">--unapplied</dt>
-<dd>
-<p>Show the unapplied patches only.</p>
-</dd>
-<dt class="hdlist1">-H</dt>
-<dt class="hdlist1">--hidden</dt>
-<dd>
-<p>Show the hidden patches only.</p>
-</dd>
-<dt class="hdlist1">-m BRANCH</dt>
-<dt class="hdlist1">--missing BRANCH</dt>
-<dd>
-<p>Show patches in BRANCH missing in current.</p>
-</dd>
-<dt class="hdlist1">-c</dt>
-<dt class="hdlist1">--count</dt>
-<dd>
-<p>Print the number of patches in the series.</p>
-</dd>
-<dt class="hdlist1">-d</dt>
-<dt class="hdlist1">--description</dt>
-<dd>
-<p>Show a short description for each patch.</p>
-</dd>
-<dt class="hdlist1">--no-description</dt>
-<dd>
-<p>Inverse of --description.</p>
-</dd>
-<dt class="hdlist1">--author</dt>
-<dd>
-<p>Show the author name for each patch.</p>
-</dd>
-<dt class="hdlist1">-e</dt>
-<dt class="hdlist1">--empty</dt>
-<dd>
-<p>Before the <code>+</code>, <code>&gt;</code>, <code>-</code>, and <code>!</code> prefixes, print a column
-that contains either <code>0</code> (for empty patches) or a space (for
-non-empty patches).</p>
-</dd>
-<dt class="hdlist1">--showbranch</dt>
-<dd>
-<p>Append the branch name to the listed patches.</p>
-</dd>
-<dt class="hdlist1">--noprefix</dt>
-<dd>
-<p>Do not show the patch status prefix.</p>
+<p>Select all patches, including hidden patches</p>
 </dd>
 <dt class="hdlist1">-s</dt>
 <dt class="hdlist1">--short</dt>
 <dd>
-<p>List just the patches around the topmost patch.</p>
+<p>Select patches around the topmost patch only</p>
+</dd>
+<dt class="hdlist1">-A</dt>
+<dt class="hdlist1">--applied</dt>
+<dd>
+<p>Select the applied patches only</p>
+</dd>
+<dt class="hdlist1">-U</dt>
+<dt class="hdlist1">--unapplied</dt>
+<dd>
+<p>Select the unapplied patches only</p>
+</dd>
+<dt class="hdlist1">-H</dt>
+<dt class="hdlist1">--hidden</dt>
+<dd>
+<p>Select the hidden patches only</p>
+</dd>
+<dt class="hdlist1">-m &lt;branch&gt;</dt>
+<dt class="hdlist1">--missing=&lt;branch&gt;</dt>
+<dd>
+<p>Select patches in &lt;branch&gt; not present in current branch</p>
+</dd>
+<dt class="hdlist1">--author</dt>
+<dd>
+<p>Display author name for each patch</p>
+</dd>
+<dt class="hdlist1">-c</dt>
+<dt class="hdlist1">--count</dt>
+<dd>
+<p>Display the number of selected patches and exit</p>
+</dd>
+<dt class="hdlist1">-i[=&lt;length&gt;]</dt>
+<dt class="hdlist1">--commit-id[=&lt;length&gt;]</dt>
+<dd>
+<p>Display the commit id for each patch.</p>
+<div class="paragraph">
+<p>The optional length indicates how many prefix characters of the commit id to
+display. The default is &#34;full&#34;, which displays the full commit id, but may
+alternatively be specified as a positive integer greater than or equal to 4.</p>
+</div>
+</dd>
+<dt class="hdlist1">-d</dt>
+<dt class="hdlist1">--description</dt>
+<dd>
+<p>Display short description for each patch</p>
+</dd>
+<dt class="hdlist1">--no-description</dt>
+<dd>
+<p>Do not display the patch description</p>
+</dd>
+<dt class="hdlist1">-e</dt>
+<dt class="hdlist1">--empty</dt>
+<dd>
+<p>Before the <em>+</em>, <em>&gt;</em>, <em>-</em>, and <em>!</em> prefixes, print a column that contains
+either <em>0</em> (for empty patches) or a space (for non-empty patches).</p>
+</dd>
+<dt class="hdlist1">-P</dt>
+<dt class="hdlist1">--no-prefix</dt>
+<dd>
+<p>Do not display the patch status prefix</p>
+</dd>
+<dt class="hdlist1">--showbranch</dt>
+<dd>
+<p>Display the branch name with the listed patches</p>
 </dd>
 </dl>
 </div>

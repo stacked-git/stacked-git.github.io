@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html><head>
+    <title>
+         stg-email(1) &ndash;  Stacked Git
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="/css/stgit.css">
+    <link rel="stylesheet" href="/css/chroma.css">
+</head>
+<body>
+        <div><header>
+  
+  <a href="/">
+    <img src="/stgit.svg" alt="Stacked Git logo">
+  </a>
+  
+  <h3><a href="/">Stacked Git</a></h3>
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/changelog/">
+          
+          Changelog
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/man/">
+          
+          Man Pages
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/">
+          
+          Guides
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="/guides/tutorial/">
+          
+          Tutorial
+          
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/">
+          
+          Repository
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/issues">
+          
+          Issue Tracker
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://github.com/stacked-git/stgit/releases">
+          
+          Releases
+          <img src="/github.svg" alt="GitHub logo">
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://groups.google.com/d/forum/stgit">
+          
+          Forum
+          <img src="/ext-link.svg" alt="external link">
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</header>
+<div>
+<main>
+  <h2>
+    <a href="/man/stg-email/">
+      stg-email(1)
+    </a>
+  </h2>
+
+
+
+
+
+
+<div class="sect1">
+<h2 id="_name">NAME</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>stg-email - Format and send patches as email</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="verseblock">
+<pre class="content"><em>stg email format</em> [OPTIONS] &lt;patch&gt;…​ [-- &lt;GIT-OPTIONS&gt;]
+<em>stg email format</em> [OPTIONS] --all [-- &lt;GIT-OPTIONS&gt;]
+<em>stg email send</em> [OPTIONS] &lt;file|directory&gt;…​ [-- &lt;GIT-OPTIONS&gt;]
+<em>stg email send</em> [OPTIONS] &lt;patch&gt;…​ [-- &lt;GIT-OPTIONS&gt;]
+<em>stg email send</em> [OPTIONS] --all [-- &lt;GIT-OPTIONS&gt;]
+<em>stg email send</em> [OPTIONS] --dump-aliases
+<em>stg email help</em> [OPTIONS] [SUBCOMMAND]…​</pre>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Format and send patches as email.</p>
+</div>
+<div class="paragraph">
+<p>A typical workflow is to first generate email files for each patch along with
+an optional cover letter using <code>stg email format</code>. Then, after checking the
+email files&#39; contents, sending the emails using <code>stg email send</code>. This workflow
+may be condensed to one step by specifying patch names to <code>stg email send</code>
+instead of email files.</p>
+</div>
+<div class="paragraph">
+<p>The <code>format</code> and <code>send</code> subcommands are thin wrappers over <code>git format-patch</code>
+and <code>git send-email</code>, respectively. Refer to the linkgit:git-format-patch[1]
+and linkgit:git-send-email[1] manpages for more details about configuration and options.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_commands">COMMANDS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">format</dt>
+<dd>
+<p>Format selected patches as email files, one patch per file. The files are
+formatted to resemble a UNIX mailbox (mbox) and may be sent with the <code>stg
+email send</code> command. The first line of the patch’s commit message is used
+to form the email’s subject with the remainder of the message in the
+email’s body.</p>
+<div class="paragraph">
+<p>The patches to format may be specified as individual patch names or patch
+ranges of the form <em>p0..p3</em>, or --all may be used to format all applied
+patches. Note that the specified patches must be contiguous within the patch series.</p>
+</div>
+<div class="paragraph">
+<p>By default, the email files will be output to the current directory, however
+use of the -o/--output-directory option is recommended since sending the email
+with <code>stg email send &lt;dir&gt;</code> is simpler than specifying all the email files individually.</p>
+</div>
+<div class="paragraph">
+<p>A cover letter template may also be generated by specifying --cover-letter. A
+cover letter is recommended when sending multiple patches. The
+<code>format.coverLetter</code> configuration value may be set true to always generate a
+cover letter or <em>auto</em> to generate a cover letter when formatting more than one patch.</p>
+</div>
+<div class="paragraph">
+<p>Recipients may be specified using the --to and --cc, or setting recipients may
+be deferred to <code>stg email send</code>.</p>
+</div>
+<div class="paragraph">
+<p>Many aspects of the format behavior may be controlled via <code>format.*</code>
+configuration values. Refer to the <a href="https://git-scm.com/docs/git-config">git-config(1)</a> and
+linkgit:git-format-patch[1] man pages for more details.</p>
+</div>
+<div class="paragraph">
+<p><code>stg email format</code> is a wrapper for <code>git format-patch</code>. Additional options for
+<code>git format-patch</code> may be specified on the command line after a <code>--</code> separator.
+See the linkgit:git-format-patch[1] man page.</p>
+</div>
+</dd>
+<dt class="hdlist1">send</dt>
+<dd>
+<p>Send patches as emails.</p>
+<div class="paragraph">
+<p>This is a wrapper for <code>git send-email</code>. Refer to the linkgit:git-send-email[1]
+man page for additional details.</p>
+</div>
+<div class="paragraph">
+<p>The patches to send may be specified as files or directories generated by <code>stg
+email format</code>, or as patch names/ranges as would be supplied to <code>stg email
+format</code>. Specifying a directory will send all files in that directory.</p>
+</div>
+<div class="paragraph">
+<p>The header of the email is configurable via command line options. The user will
+be prompted for any necessary information not specified on the command line or
+in the configuration.</p>
+</div>
+<div class="paragraph">
+<p>Many aspects of the send behavior may be controlled via the <code>sendemail.*</code>
+configuration options. In particular, it is recommended to statically configure
+SMTP details such as <code>sendemail.smtpServer</code>, <code>sendemail.smtpUser</code>, etc. Refer
+to <a href="https://git-scm.com/docs/git-config">git-config(1)</a> and linkgit:git-send-email[1] man pages for more
+detail on all the available configuration options.</p>
+</div>
+<div class="paragraph">
+<p>Additional options for <code>git send-email</code> may be specified on the command line
+after a <code>--</code> separator. See the linkgit:git-send-email[1] man page.</p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="sect2">
+<h3 id="_format_options">FORMAT OPTIONS</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-b &lt;branch&gt;</dt>
+<dt class="hdlist1">--branch=&lt;branch&gt;</dt>
+<dd>
+<p>Use BRANCH instead of current branch</p>
+</dd>
+<dt class="hdlist1">-a</dt>
+<dt class="hdlist1">--all</dt>
+<dd>
+<p>Format all applied patches</p>
+</dd>
+<dt class="hdlist1">-o &lt;dir&gt;</dt>
+<dt class="hdlist1">--output-directory=&lt;dir&gt;</dt>
+<dd>
+<p>Use &lt;dir&gt; to store the output files instead of the current working directory.</p>
+</dd>
+<dt class="hdlist1">--cover-letter</dt>
+<dd>
+<p>In addition to the patches, generate a cover letter file containing the
+branch description, shortlog and the overall diffstat. You can fill in a
+description in the file before sending it out.</p>
+</dd>
+<dt class="hdlist1">-n</dt>
+<dt class="hdlist1">--numbered</dt>
+<dd>
+<p>Use [PATCH n/m] even with a single patch</p>
+</dd>
+<dt class="hdlist1">-N</dt>
+<dt class="hdlist1">--no-numbered</dt>
+<dd>
+<p>Use [PATCH] even with multiple patches</p>
+</dd>
+<dt class="hdlist1">--start-number=&lt;n&gt;</dt>
+<dd>
+<p>Start numbering at &lt;n&gt; instead of 1</p>
+</dd>
+<dt class="hdlist1">-v &lt;n&gt;</dt>
+<dt class="hdlist1">--reroll-count=&lt;n&gt;</dt>
+<dd>
+<p>Mark the series as the &lt;n&gt;-th iteration of the topic. The output filenames
+have &#34;v&lt;n&gt;&#34; prepended to them, and the subject prefix (&#34;PATCH&#34; by default,
+but configurable via the --subject-prefix option) has ` v&lt;N&gt;` appended to
+it. E.g. --reroll-count=4 may produce v4-0001-add-makefile.patch file that
+has &#34;Subject: [PATCH v4 1/20] Add makefile&#34; in it. &lt;N&gt; does not have to be
+an integer (e.g. &#34;--reroll-count=4.4&#34;, or &#34;--reroll-count=4rev2&#34; are
+allowed), but the downside of using such a reroll-count is that the
+range-diff/interdiff with the previous version does not state exactly which
+version the new interation is compared against.</p>
+</dd>
+<dt class="hdlist1">--rfc</dt>
+<dd>
+<p>Alias for --subject-prefix=&#34;RFC PATCH&#34;. RFC means &#34;Request For Comments&#34;;
+use this when sending an experimental patch for discussion rather than application.</p>
+</dd>
+<dt class="hdlist1">--subject-prefix=&lt;prefix&gt;</dt>
+<dd>
+<p>Instead of the standard <code>[PATCH]</code> prefix in the subject line, instead use
+<code>[&lt;prefix&gt;]</code>. This allows for useful naming of a patch series, and can be
+combined with the <code>--numbered</code> option.</p>
+</dd>
+<dt class="hdlist1">--quiet</dt>
+<dd>
+<p>Do not print the names of the generated files</p>
+</dd>
+<dt class="hdlist1">-s</dt>
+<dt class="hdlist1">--signoff</dt>
+<dd>
+<p>Add a Signed-off-by trailer to the commit message, using the committer
+identity of yourself. See the signoff option in <a href="https://git-scm.com/docs/git-commit">git-commit(1)</a> for
+more information.</p>
+</dd>
+<dt class="hdlist1">--numbered-files</dt>
+<dd>
+<p>Output file names will be a simple number sequence without the default
+first line of the commit appended.</p>
+</dd>
+<dt class="hdlist1">--suffix=&lt;suffix&gt;</dt>
+<dd>
+<p>Instead of using <code>.patch</code> as the suffix for generated filenames, use
+specified suffix. A common alternative is <code>--suffix=.txt</code>. Leaving this
+empty will remove the <code>.patch</code> suffix.</p>
+</dd>
+<dt class="hdlist1">-k</dt>
+<dt class="hdlist1">--keep-subject</dt>
+<dd>
+<p>Do not strip/add <code>[PATCH]</code> from the first line of the commit log message.</p>
+</dd>
+<dt class="hdlist1">--no-binary</dt>
+<dd>
+<p>Do not output contents of changes in binary files, instead display a notice
+that those files changed. Patches generated using this option cannot be
+applied properly, but they are still useful for code review.</p>
+</dd>
+<dt class="hdlist1">--zero-commit</dt>
+<dd>
+<p>Output an all-zero hash in each patch’s <code>From</code> header instead of the hash
+of the commit.</p>
+</dd>
+<dt class="hdlist1">--to=&lt;address&gt;</dt>
+<dd>
+<p>Add a <code>To:</code> header to the email headers. This is in addition to any
+configured headers, and may be used multiple times. The negated form
+<code>--no-to</code> discards all <code>To:</code> headers added so far (from config or command line).</p>
+</dd>
+<dt class="hdlist1">--no-to</dt>
+<dd>
+<p>Discard all <code>To:</code> addresses added so far from config or command line.</p>
+</dd>
+<dt class="hdlist1">--cc=&lt;address&gt;</dt>
+<dd>
+<p>Add a <code>Cc:</code> header to the email headers. This is in addition to any
+configured headers, and may be used multiple times. The negated form
+<code>--no-cc</code> discards all <code>Cc:</code> headers added so far (from config or command line).</p>
+</dd>
+<dt class="hdlist1">--no-cc</dt>
+<dd>
+<p>Discard all <code>Cc:</code> addresses added so far from config or command line.</p>
+</dd>
+<dt class="hdlist1">--in-reply-to=&lt;message-id&gt;</dt>
+<dd>
+<p>Make the first mail (or all the mails with <code>--no-thread</code>) appear as a reply
+to the given &lt;message-id&gt;, which avoids breaking threads to provide a new
+patch series.</p>
+</dd>
+<dt class="hdlist1">--add-header=&lt;header&gt;</dt>
+<dd>
+<p>Add an arbitrary header to the email headers. This is in addition to any
+configured headers, and may be used multiple times. For example,
+<code>--add-header=&#34;Organization: git-foo&#34;</code>.</p>
+</dd>
+<dt class="hdlist1">--attach</dt>
+<dd>
+<p>Create multipart/mixed attachment, the first part of which is the commit
+message and the patch itself in the second part, with
+<code>Content-Disposition:</code> attachment.</p>
+</dd>
+<dt class="hdlist1">--inline</dt>
+<dd>
+<p>Create multipart/mixed attachment, the first part of which is the commit
+message and the patch itself in the second part, with <code>Content-Disposition: inline</code>.</p>
+</dd>
+<dt class="hdlist1">--thread[=&lt;style&gt;]</dt>
+<dd>
+<p>Controls addition of <code>In-Reply-To</code> and <code>References</code> headers to make the
+second and subsequent mails appear as replies to the first. Also controls
+generation of the <code>Message-Id</code> header to reference.</p>
+<div class="paragraph">
+<p>The optional &lt;style&gt; argument can be either <code>shallow</code> or <code>deep</code>. <code>shallow</code>
+threading makes every mail a reply to the head of the series, where the head is
+chosen from the cover letter, the <code>--in-reply-to</code>, and the first patch mail, in
+this order. <code>deep</code> threading makes every mail a reply to the previous one.</p>
+</div>
+<div class="paragraph">
+<p>The default is <code>--no-thread</code>, unless the <code>format.thread</code> configuration is set.
+If <code>--thread</code> is specified without a style, it defaults to the style specified
+by <code>format.thread</code> if any, or else <code>shallow</code>.</p>
+</div>
+<div class="paragraph">
+<p>Beware that the default for <code>git send-email</code> is to thread emails itself. If you
+want <code>git format-patch</code> to take care of threading, you will want to ensure that
+threading is disabled for <code>git send-email</code>.</p>
+</div>
+</dd>
+<dt class="hdlist1">--no-thread</dt>
+<dd>
+<p>Disable message threading</p>
+</dd>
+<dt class="hdlist1">--signature=&lt;signature&gt;</dt>
+<dd>
+<p>Add a signature string to each email. The default signature is the git
+version number, or the <code>format.signature</code> configuration value, if
+specified. The signature may be disabled with <code>--no-signature</code></p>
+</dd>
+<dt class="hdlist1">--no-signature</dt>
+<dd>
+<p>Do not add a signature to each email</p>
+</dd>
+<dt class="hdlist1">--signature-file=&lt;file&gt;</dt>
+<dd>
+<p>Like <code>--signature</code> except the signature is read from a file.</p>
+</dd>
+<dt class="hdlist1">--base=&lt;committish&gt;</dt>
+<dd>
+<p>See the BASE TREE INFORMATION section of git-format-patch(1).</p>
+</dd>
+<dt class="hdlist1">--progress</dt>
+<dd>
+<p>Show progress reports on stderr as patches are generated.</p>
+</dd>
+<dt class="hdlist1">--interdiff=&lt;rev&gt;</dt>
+<dd>
+<p>As a reviewer aid, insert an interdiff into the cover letter, or as
+commentary of the lone patch of a 1-patch series, showing the differences
+between the previous version of the patch series and the series currently
+being formatted. &lt;rev&gt; is a single revision naming the tip of the previous
+series which shares a common base with the series being formatted (for
+example <code>git format-patch --cover-letter --interdiff=feature/v1 -3 feature/v2</code>).</p>
+</dd>
+<dt class="hdlist1">--range-diff=&lt;refspec&gt;</dt>
+<dd>
+<p>As a reviewer aid, insert a range-diff (see linkgit:git-range-diff[1)] into
+the cover letter, or as commentary of the lone patch of a single-patch
+series, showing the differences between the previous version of the patch
+series and the series currently being formatted. &lt;refspec&gt; can be a single
+revision naming the tip of the previous series if it shares a common base
+with the series being formatted (for example <code>git format-patch
+--cover-letter --range-diff=feature/v1 -3 feature/v2</code>), or a revision range
+if the two versions of the series are disjoint (for example <code>git
+format-patch --cover-letter --range-diff=feature/v1~3..feature/v1 -3 feature/v2</code>).</p>
+<div class="paragraph">
+<p>Note that diff options passed to the command affect how the primary product of
+<code>format-patch</code> is generated, and they are not passed to the underlying
+<code>range-diff</code> machinery used to generate the cover-letter material (this may
+change in the future).</p>
+</div>
+</dd>
+<dt class="hdlist1">--creation-factor=&lt;n&gt;</dt>
+<dd>
+<p>Used with <code>--range-diff</code>, tweak the heuristic which matches up commits
+between the previous and current series of patches by adjusting the
+creation/deletion cost fudge factor. See linkgit:git-range-diff[1)] for details.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_send_options">SEND OPTIONS</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-b &lt;branch&gt;</dt>
+<dt class="hdlist1">--branch=&lt;branch&gt;</dt>
+<dd>
+<p>Use BRANCH instead of current branch</p>
+</dd>
+<dt class="hdlist1">-a</dt>
+<dt class="hdlist1">--all</dt>
+<dd>
+<p>Send all applied patches</p>
+</dd>
+<dt class="hdlist1">--from=&lt;address&gt;</dt>
+<dd>
+<p>Specify the sender of the emails. If not specified on the command line, the
+value of the sendemail.from configuration option is used. If neither the
+command-line option nor sendemail.from are set, then the user will be
+prompted for the value. The default for the prompt will be the value of
+GIT_AUTHOR_IDENT, or GIT_COMMITTER_IDENT if that is not set, as returned by
+&#34;git var -l&#34;.</p>
+</dd>
+<dt class="hdlist1">--to=&lt;address&gt;</dt>
+<dd>
+<p>Specify the primary recipient of the emails generated. Generally, this will
+be the upstream maintainer of the project involved. Default is the value of
+the sendemail.to configuration value; if that is unspecified, and --to-cmd
+is not specified, this will be prompted for.</p>
+<div class="paragraph">
+<p>This option may be specified multiple times.</p>
+</div>
+</dd>
+<dt class="hdlist1">--cc=&lt;address&gt;</dt>
+<dd>
+<p>Specify a starting &#34;Cc:&#34; value for each email. Default is the value of sendemail.cc.</p>
+<div class="paragraph">
+<p>This option may be specified multiple times.</p>
+</div>
+</dd>
+<dt class="hdlist1">--bcc=&lt;address&gt;</dt>
+<dd>
+<p>Specify a starting &#34;Bcc:&#34; value for each email. Default is the value of sendemail.bcc.</p>
+<div class="paragraph">
+<p>This option may be specified multiple times.</p>
+</div>
+</dd>
+<dt class="hdlist1">--subject=&lt;subject&gt;</dt>
+<dd>
+<p>Specify the initial subject of the email thread. Only necessary if
+--compose is also set. If --compose is not set, this will be prompted for.</p>
+</dd>
+<dt class="hdlist1">--reply-to=&lt;address&gt;</dt>
+<dd>
+<p>Specify the address where replies from recipients should go to. Use this if
+replies to messages should go to another address than what is specified
+with the --from parameter.</p>
+</dd>
+<dt class="hdlist1">--in-reply-to=&lt;id&gt;</dt>
+<dd>
+<p>Make the first mail (or all the mails with --no-thread) appear as a reply
+to the given Message-Id, which avoids breaking threads to provide a new
+patch series. The second and subsequent emails will be sent as replies
+according to the --[no-]chain-reply-to setting.</p>
+<div class="paragraph">
+<p>So for example when --thread and --no-chain-reply-to are specified, the second
+and subsequent patches will be replies to the first one like in the
+illustration below where [PATCH v2 0/3] is in reply to [PATCH 0/2]:</p>
+</div>
+<div class="paragraph">
+<p>[PATCH 0/2] Here is what I did…​
+      [PATCH 1/2] Clean up and tests
+      [PATCH 2/2] Implementation
+      [PATCH v2 0/3] Here is a reroll
+        [PATCH v2 1/3] Clean up
+        [PATCH v2 2/3] New tests
+        [PATCH v2 3/3] Implementation</p>
+</div>
+<div class="paragraph">
+<p>Only necessary if --compose is also set. If --compose is not set, this will be
+prompted for.</p>
+</div>
+</dd>
+<dt class="hdlist1">--compose</dt>
+<dd>
+<p>Invoke a text editor (see GIT_EDITOR in linkgit:git-var[1)] to edit an
+introductory message for the patch series.</p>
+<div class="paragraph">
+<p>When --compose is used, git send-email will use the From, Subject, and
+In-Reply-To headers specified in the message. If the body of the message (what
+you type after the headers and a blank line) only contains blank (or Git:
+prefixed) lines, the summary will not be sent, but From, Subject, and
+In-Reply-To headers will be used unless they are removed.</p>
+</div>
+<div class="paragraph">
+<p>Missing From or In-Reply-To headers will be prompted for.</p>
+</div>
+<div class="paragraph">
+<p>See the CONFIGURATION section of linkgit:git-send-email[1] for sendemail.multiEdit.</p>
+</div>
+</dd>
+<dt class="hdlist1">--identity=&lt;id&gt;</dt>
+<dd>
+<p>A configuration identity. When given, causes values in the
+sendemail.&lt;identity&gt; subsection to take precedence over values in the
+sendemail section. The default identity is the value of sendemail.identity.</p>
+</dd>
+<dt class="hdlist1">--no-thread</dt>
+<dd>
+<p>If threading is enabled, the In-Reply-To and References headers will be
+added to each email sent. Whether each mail refers to the previous email
+(deep threading per <code>git format-patch</code> wording) or to the first email
+(shallow threading) is governed by &#34;--[no-]chain-reply-to&#34;.</p>
+<div class="paragraph">
+<p>If disabled with &#34;--no-thread&#34;, those headers will not be added (unless
+specified with --in-reply-to). Default is the value of the sendemail.thread
+configuration value; if that is unspecified, default to --thread.</p>
+</div>
+<div class="paragraph">
+<p>It is up to the user to ensure that no In-Reply-To header already exists when
+<code>git send-email</code> is asked to add it (especially note that <code>git format-patch</code>
+can be configured to do the threading itself). Failure to do so may not produce
+the expected result in the recipient’s MUA.</p>
+</div>
+</dd>
+<dt class="hdlist1">--confirm=&lt;mode&gt;</dt>
+<dd>
+<p>Confirm just before sending:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>always</em> will always confirm before sending</p>
+</li>
+<li>
+<p><em>never</em> will never confirm before sending</p>
+</li>
+<li>
+<p><em>cc</em> will confirm before sending when send-email has
+automatically added addresses from the patch to the Cc list</p>
+</li>
+<li>
+<p><em>compose</em> will confirm before sending the first message
+when using --compose</p>
+</li>
+<li>
+<p><em>auto</em> is equivalent to cc + compose</p>
+<div class="paragraph">
+<p>Default is the value of sendemail.confirm configuration value; if that is
+unspecified, default to auto unless any of the suppress options have been
+specified, in which case default to compose.</p>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">--quiet</dt>
+<dd>
+<p>Make git-send-email less verbose. One line per email should be all that is output.</p>
+</dd>
+<dt class="hdlist1">--dry-run</dt>
+<dd>
+<p>Do everything except actually send the emails.</p>
+</dd>
+<dt class="hdlist1">--dump-aliases</dt>
+<dd>
+<p>Dump configured aliases and exit</p>
+</dd>
+<dt class="hdlist1">-n</dt>
+<dt class="hdlist1">--numbered</dt>
+<dd>
+<p>Use [PATCH n/m] even with a single patch</p>
+</dd>
+<dt class="hdlist1">-N</dt>
+<dt class="hdlist1">--no-numbered</dt>
+<dd>
+<p>Use [PATCH] even with multiple patches</p>
+</dd>
+<dt class="hdlist1">--start-number=&lt;n&gt;</dt>
+<dd>
+<p>Start numbering at &lt;n&gt; instead of 1</p>
+</dd>
+<dt class="hdlist1">-v &lt;n&gt;</dt>
+<dt class="hdlist1">--reroll-count=&lt;n&gt;</dt>
+<dd>
+<p>Mark the series as the &lt;n&gt;th reroll</p>
+</dd>
+<dt class="hdlist1">--rfc</dt>
+<dd>
+<p>Use [RFC PATCH] instead of [PATCH]</p>
+</dd>
+<dt class="hdlist1">--subject-prefix=&lt;prefix&gt;</dt>
+<dd>
+<p>Use [&lt;prefix&gt;] instead of [PATCH]</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stgit">StGit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Part of the StGit suite - see <a href="/man/stg">stg(1)</a></p>
+</div>
+</div>
+</div>
+
+</main>
+<footer>
+  <small>&copy; 2022 Stacked Git Authors</small>
+</footer>
+</div>
+        </div>
+    </body>
+</html>
