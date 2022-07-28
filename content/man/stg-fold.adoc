@@ -7,42 +7,43 @@ stg-fold(1)
 
 NAME
 ----
-stg-fold - Integrate a GNU diff patch into the current patch
+stg-fold - Fold diff file into the current patch
 
 SYNOPSIS
 --------
 [verse]
-'stg fold' [options] [--] [<file>]
+'stg fold' [OPTIONS] [file]
 
 DESCRIPTION
 -----------
 
-Apply the given GNU diff file (or the standard input) onto the top of
-the current patch. With the '--threeway' option, the patch is applied
-onto the bottom of the current patch and a three-way merge is
-performed with the current top. With the --base option, the patch is
-applied onto the specified base and a three-way merged is performed
-with the current top.
+Fold diff file into the current patch. The given GNU diff file (or standard
+input) is applied onto the current patch.
+
+With the --threeway option, the diff is applied onto the bottom of the current
+patch and a three-way merge is performed with the current top. With the --base
+option, the diff is applied onto the specified base and a three-way merge is
+performed with the current top.
 
 OPTIONS
 -------
 -t::
 --threeway::
-        Perform a three-way merge with the current patch.
+    Perform a three-way merge with the current patch
 
--b BASE::
---base BASE::
-        Use BASE instead of HEAD when applying the patch.
+-b <committish>::
+--base=<committish>::
+    Use <committish> instead of HEAD when applying the patch
 
--p N::
---strip N::
-        Remove N leading slashes from diff paths (default 1).
+-p <n>::
+--strip=<n>::
+    Remove <n> leading components from diff paths (default 1)
 
--C N::
-        Ensure N lines of surrounding context for each change.
+-C <n>::
+    Ensure <n> lines of matching context for each change
 
 --reject::
-        Leave the rejected hunks in corresponding *.rej files.
+    Leave rejected hunks in ".rej" files
 
 StGit
 -----

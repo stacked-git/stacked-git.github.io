@@ -1,98 +1,108 @@
-Repository commands
-~~~~~~~~~~~~~~~~~~~
+Patch Inspection
+~~~~~~~~~~~~~~~~
 
-linkstg:clone[]::
-    Make a local clone of a remote repository
+linkstg:diff[]::
+    Show a diff
+linkstg:files[]::
+    Show files modified by a patch
 linkstg:id[]::
-    Print the git hash value of a StGit reference
+    Print git hash of a StGit revision
+linkstg:log[]::
+    Display or optionally clear the stack changelog
+linkstg:show[]::
+    Show patch commits
 
-Stack (branch) commands
-~~~~~~~~~~~~~~~~~~~~~~~
+Patch Manipulation
+~~~~~~~~~~~~~~~~~~
+
+linkstg:edit[]::
+    Edit a patch
+linkstg:fold[]::
+    Fold diff file into the current patch
+linkstg:new[]::
+    Create a new patch at top of the stack
+linkstg:refresh[]::
+    Incorporate worktree changes into current patch
+linkstg:rename[]::
+    Rename a patch
+linkstg:spill[]::
+    Spill changes from the topmost patch
+linkstg:sync[]::
+    Synchronize patches with a branch or a series
+
+Stack Inspection
+~~~~~~~~~~~~~~~~
+
+linkstg:email[]::
+    Format and send patches as email
+linkstg:export[]::
+    Export patches to a directory
+linkstg:next[]::
+    Print the name of the next patch
+linkstg:patches[]::
+    Show patches that modify files
+linkstg:prev[]::
+    Print the name of the previous patch
+linkstg:series[]::
+    Display the patch series
+linkstg:top[]::
+    Print the name of the top patch
+
+Stack Manipulation
+~~~~~~~~~~~~~~~~~~
 
 linkstg:branch[]::
     Branch operations: switch, list, create, rename, delete, ...
 linkstg:clean[]::
-    Delete the empty patches in the series
+    Delete empty patches from the series
 linkstg:commit[]::
-    Permanently store the applied patches into the stack base
+    Finalize patches to the stack base
+linkstg:delete[]::
+    Delete patches
 linkstg:float[]::
     Push patches to the top, even if applied
 linkstg:goto[]::
-    Push or pop patches to the given one
+    Go to patch by pushing or popping as necessary
 linkstg:hide[]::
-    Hide a patch in the series
+    Hide patches in the series
+linkstg:import[]::
+    Import patches to stack
 linkstg:init[]::
-    Initialise the current branch for use with StGit
-linkstg:log[]::
-    Display or optionally clear the patch changelog
-linkstg:next[]::
-    Print the name of the next patch
-linkstg:patches[]::
-    Show the applied patches modifying a file
+    Initialize a StGit stack on current branch
+linkstg:pick[]::
+    Import a patch from another branch or a commit object
 linkstg:pop[]::
-    Pop one or more patches from the stack
-linkstg:prev[]::
-    Print the name of the previous patch
+    Pop (unapply) one or more applied patches
 linkstg:pull[]::
     Pull changes from a remote repository
 linkstg:push[]::
-    Push one or more patches onto the stack
+    Push (apply) one or more unapplied patches
 linkstg:rebase[]::
     Move the stack base to another point in history
 linkstg:redo[]::
     Undo the last undo operation
 linkstg:repair[]::
-    Fix StGit metadata if branch was modified with git commands
+    Repair stack after branch is modified with git commands
 linkstg:reset[]::
     Reset the patch stack to an earlier state
-linkstg:series[]::
-    Print the patch series
 linkstg:sink[]::
-    Send patches deeper down the stack
+    Move patches deeper in the stack
 linkstg:squash[]::
     Squash two or more patches into one
-linkstg:top[]::
-    Print the name of the top patch
 linkstg:uncommit[]::
-    Turn regular git commits into StGit patches
+    Convert regular Git commits into StGit patches
 linkstg:undo[]::
-    Undo the last operation
+    Undo the last command
 linkstg:unhide[]::
-    Unhide a hidden patch
+    Unhide hidden patches
 
-Patch commands
+Administration
 ~~~~~~~~~~~~~~
 
-linkstg:delete[]::
-    Delete patches
-linkstg:edit[]::
-    Edit a patch description or diff
-linkstg:export[]::
-    Export patches to a directory
-linkstg:files[]::
-    Show the files modified by a patch (or the current patch)
-linkstg:fold[]::
-    Integrate a GNU diff patch into the current patch
-linkstg:import[]::
-    Import a GNU diff file as a new patch
-linkstg:mail[]::
-    Send a patch or series of patches by e-mail
-linkstg:new[]::
-    Create a new, empty patch
-linkstg:pick[]::
-    Import a patch from a different branch or a commit object
-linkstg:refresh[]::
-    Generate a new commit for the current patch
-linkstg:rename[]::
-    Rename a patch
-linkstg:show[]::
-    Show the commit corresponding to a patch
-linkstg:sync[]::
-    Synchronise patches with a branch or a series
-
-Index/worktree commands
-~~~~~~~~~~~~~~~~~~~~~~~
-
-linkstg:diff[]::
-    Show the tree diff
+linkstg:completion[]::
+    Support for shell completions
+linkstg:help[]::
+    Print this message or the help of the given subcommand(s)
+linkstg:version[]::
+    Print version information and exit
 

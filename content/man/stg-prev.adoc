@@ -12,18 +12,21 @@ stg-prev - Print the name of the previous patch
 SYNOPSIS
 --------
 [verse]
-'stg prev' 
+'stg prev' [OPTIONS]
 
 DESCRIPTION
 -----------
 
 Print the name of the previous patch.
 
+The previous patch is the applied patch preceding the current, topmost patch.
+An error message will be printed if not enough patches are applied.
+
 OPTIONS
 -------
--b BRANCH::
---branch BRANCH::
-        Use BRANCH instead of the default branch.
+-b <branch>::
+--branch=<branch>::
+    Use BRANCH instead of current branch
 
 StGit
 -----

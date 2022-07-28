@@ -12,26 +12,25 @@ stg-redo - Undo the last undo operation
 SYNOPSIS
 --------
 [verse]
-'stg redo' 
+'stg redo' [OPTIONS]
 
 DESCRIPTION
 -----------
 
-If the last command was an undo, reset the patch stack to the state it
-had before the undo. Consecutive invocations of "stg redo" will undo
-the effects of consecutive invocations of "stg undo".
+If the last command was an undo, the patch stack state will be reset to its
+state before the undo. Consecutive redos will undo the effects of consecutive
+invocations of "stg undo".
 
-It is an error to run "stg redo" if the last command was not an
-undo.
+It is an error to redo if the last stack-modifying command was not an undo.
 
 OPTIONS
 -------
--n N::
---number N::
-        Undo the last N undos.
+-n <n>::
+--number=<n>::
+    Undo the last <n> undos
 
 --hard::
-        Discard changes in your index/worktree.
+    Discard changes in the index and worktree
 
 StGit
 -----

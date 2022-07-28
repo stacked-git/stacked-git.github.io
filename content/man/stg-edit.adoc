@@ -7,122 +7,101 @@ stg-edit(1)
 
 NAME
 ----
-stg-edit - Edit a patch description or diff
+stg-edit - Edit a patch
 
 SYNOPSIS
 --------
 [verse]
-'stg edit' [options] [--] [<patch>]
+'stg edit' [OPTIONS] [--] [patch]
 
 DESCRIPTION
 -----------
 
-Edit the description and author information of the given patch (or the
-current patch if no patch name was given). With --diff, also edit the
-diff.
+Edit a patch. Various aspects of a patch may be edited, including the message,
+author, patch name, or even the patch's diff.
 
-The editor is invoked with the following contents:
+By default, the topmost patch is edited.
 
-....
-From: A U Thor <author@example.com>
-Date: creation date
+With no options or when '--edit' is specified, the patch details are edited
+interactively. Alternatively, command line options may be used to modify the
+patch non-interactively.
 
-Patch description
-....
-
-If --diff was specified, the diff appears at the bottom, after a
-separator:
-
-....
----
-
-Diff text
-....
-
-Command-line options can be used to modify specific information
-without invoking the editor. (With the --edit option, the editor is
-invoked even if such command-line options are given.)
-
-If the patch diff is edited but does not apply, no changes are made to
-the patch at all. The edited patch is saved to a file which you can
-feed to "stg edit --file", once you have made sure it does apply.
-
-With --set-tree you set the git tree of the patch to the specified
-TREE-ISH without changing the tree of any other patches. When used on
-the top patch, the index and work tree will be updated to match the
-tree.  This low-level option is primarily meant to be used by tools
-built on top of StGit, such as the Emacs mode. See also the --set-tree
-flag of stg push.
+The '--diff' option causes the patch's diff to be appended to the patch
+description when editing interactively. This diff may be edited interactively
+(or just used as a reference when editing the patch's message). The StGit
+attempts to apply the modified diff to the patch's parent tree. If the updated
+diff does not apply, no changes are made to the patch and the edited patch is
+saved to a file which may be corrected and then fed-back into "stg edit --file".
 
 OPTIONS
 -------
--d::
---diff::
-        Edit the patch diff.
-
 -e::
 --edit::
-        Invoke interactive editor.
+    Invoke editor for patch description
 
---sign::
-        Add a "Signed-off-by:" trailer to the end of the message using the committer name and email for the trailer value.
+-d::
+--diff::
+    Show diff when editing patch description
 
---sign-by VALUE::
-        Add a "Signed-off-by:" trailer with a custom VALUE to the end of the message.
+-m <message>::
+--message=<message>::
+    Use message instead of invoking the editor
 
---ack::
-        Add an "Acked-by:" trailer to the end of the message using the commiter name and email for the trailer value.
-
---ack-by VALUE::
-        Add an "Acked-by:" trailer with a custom VALUE to the end of the message.
-
---review::
-        Add a "Reviewed-by:" trailer to the end of the message using the commiter name and email for the trailer value.
-
---review-by VALUE::
-        Add a "Reviewed-by:" trailer with custom VALUE to the end of the message.
-
--m MESSAGE::
---message MESSAGE::
-        Use MESSAGE instead of invoking the editor.
-
--f FILE::
---file FILE::
-        Use the contents of FILE instead of invoking the editor.
-        (If FILE is "-", write to stdout.)
-
---save-template FILE::
-        Instead of running the command, just write the message
-        template to FILE, and exit. (If FILE is "-", write to
-        stdout.)
-+
-When driving StGit from another program, it is often
-useful to first call a command with '--save-template',
-then let the user edit the message, and then call the
-same command with '--file'.
+-f <path>::
+--file=<path>::
+    Use the contents of file instead of invoking the editor. Use "-" to read
+    from stdin.
 
 --no-verify::
-        This option bypasses the commit-msg hook.
+    Disable commit-msg hook
 
---author "NAME <EMAIL>"::
-        Set the author details.
+--signoff[=<value>]::
+    Add "Signed-off-by" message trailer.
++
+The value is optional and defaults to the committer name and email. This option
+may be provided multiple times.
 
---authname NAME::
-        Set the author name.
+--ack[=<value>]::
+    Add "Acked-by" message trailer.
++
+The value is optional and defaults to the committer's name and email. This
+option may be provided multiple times.
 
---authemail EMAIL::
-        Set the author email.
+--review[=<value>]::
+    Add "Reviewed-by" message trailer.
++
+The value is optional and defaults to the committer's name and email. This
+option may be provided multiple times.
 
---authdate DATE::
-        Set the author date.
+--author=<name-and-email>::
+    Set the author "name <email>"
 
--O OPTIONS::
---diff-opts OPTIONS::
-        Extra options to pass to "git diff".
+--authname=<name>::
+    Set the author name
 
--t TREE-ISH::
---set-tree TREE-ISH::
-        Set the git tree of the patch to TREE-ISH.
+--authemail=<email>::
+    Set the author email
+
+--authdate=<date>::
+    Set the date the patch was authored.
++
+Use "now" to use the current time and date.
+
+--save-template=<file>::
+    Instead of running the command, just write the patch description to FILE,
+    and exit. (If FILE is "-", write to stdout.)
++
+When driving StGit from another program, it may be useful to first call a
+command with '--save-template', then let the user edit the message, and then
+call the same command with '--file'.
+
+-t <treeish>::
+--set-tree=<treeish>::
+    With --set-tree the patch's git tree is set to the specified treeish
+    without changing the tree of any other patches. When used on the top patch,
+    the index and work tree will be updated to match the new tree. This
+    low-level option is primarily meant to be used by tools built on top of
+    StGit, such as the Emacs mode. See also the '--set-tree' flag of "stg push".
 
 StGit
 -----

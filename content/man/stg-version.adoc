@@ -1,0 +1,30 @@
++++
+title = "stg-version(1)"
++++
+
+stg-version(1)
+==============
+
+NAME
+----
+stg-version - Print version information and exit
+
+SYNOPSIS
+--------
+[verse]
+'stg version' [OPTIONS]
+
+DESCRIPTION
+-----------
+
+Print version information and exit
+
+OPTIONS
+-------
+-s::
+--short::
+    Show abbreviated version information
+
+StGit
+-----
+Part of the StGit suite - see linkman:stg[1]

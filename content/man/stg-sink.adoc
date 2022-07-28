@@ -7,46 +7,47 @@ stg-sink(1)
 
 NAME
 ----
-stg-sink - Send patches deeper down the stack
+stg-sink - Move patches deeper in the stack
 
 SYNOPSIS
 --------
 [verse]
-'stg sink' [-t <target patch>] [-n] [--] [<patches>]
+'stg sink' [OPTIONS] [patch]...
 
 DESCRIPTION
 -----------
 
-This is the opposite operation of linkstg:float[]: move the specified
-patches down the stack.  It is for example useful to group stable
-patches near the bottom of the stack, where they are less likely to be
-impacted by the push of another patch, and from where they can be more
-easily committed or pushed.
+Move the specified patches down the stack.
 
-If no patch is specified on command-line, the current patch gets sunk.
-By default patches are sunk to the bottom of the stack, but the '--to'
-option allows one to place them under any applied patch.
+If no patch is specified on the command line, the current (topmost) patch is
+sunk. By default, patches are sunk to the bottom of the stack, but the '--to'
+option may be used to place them under any applied patch.
 
-Sinking internally involves popping all patches (or all patches
-including <target patch>), then pushing the patches to sink, and then
-(unless '--nopush' is also given) pushing back into place the
-formerly-applied patches.
+Internally, sinking involves popping all patches to the bottom (or to the
+target patch if '--to' is used), then pushing the patches to sink, and then,
+unless '--nopush' is specified, pushing back any other formerly applied patches.
+
+Sinking may be useful, for example, to group stable patches at the bottom of
+the stack where they less likely to be impacted by the push of another patch,
+and from where they can be more easily committed or pushed to another repository.
+
 
 OPTIONS
 -------
 -n::
 --nopush::
-        Do not push back on the stack the formerly-applied patches.
-        Only the patches to sink are pushed.
+    Do not push any formerly applied patches after sinking. Only the patches to
+    sink are pushed.
 
--t TARGET::
---to TARGET::
-        Specify a target patch to place the patches below, instead of
-        sinking them to the bottom of the stack.
+-t <target>::
+--to=<target>::
+    Sink patches below <target> patch.
++
+Specified patches are placed below <target> instead of at the bottom of the stack.
 
 -k::
 --keep::
-        Keep the local changes.
+    Keep the local changes
 
 StGit
 -----

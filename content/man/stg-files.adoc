@@ -7,34 +7,30 @@ stg-files(1)
 
 NAME
 ----
-stg-files - Show the files modified by a patch (or the current patch)
+stg-files - Show files modified by a patch
 
 SYNOPSIS
 --------
 [verse]
-'stg files' [options] [--] [[<branch>:]<patch>]
+'stg files' [OPTIONS] [revision]
 
 DESCRIPTION
 -----------
 
-List the files modified by the given patch (defaulting to the current
-one). Passing the '--stat' option shows the diff statistics for the
-given patch. Note that this command doesn't show the files modified in
-the working tree and not yet included in the patch by a 'refresh'
-command. Use the 'diff' or 'status' commands for these files.
+Show the files modified by a patch. The files of the topmost patch are shown by
+default. Passing the '--stat' option shows the diff statistics for the given
+patch. Note that this command does not show the files modified in the working
+tree and not yet included in the patch by a 'refresh' command. Use the 'diff'
+or 'status' commands to show these files.
 
 OPTIONS
 -------
 -s::
 --stat::
-        Show the diffstat.
+    Show patch's diffstat
 
 --bare::
-        Bare file names (useful for scripting).
-
--O OPTIONS::
---diff-opts OPTIONS::
-        Extra options to pass to "git diff".
+    Print bare file names. This is useful for scripting.
 
 StGit
 -----

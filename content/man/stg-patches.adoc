@@ -7,34 +7,32 @@ stg-patches(1)
 
 NAME
 ----
-stg-patches - Show the applied patches modifying a file
+stg-patches - Show patches that modify files
 
 SYNOPSIS
 --------
 [verse]
-'stg patches' [options] [--] [<files or dirs>]
+'stg patches' [OPTIONS] [path]...
 
 DESCRIPTION
 -----------
 
-Show the applied patches modifying the given files. Without arguments,
-it shows the patches affected by the local tree modifications. The
-'--diff' option also lists the patch log and the diff for the given
-files.
+Show the applied patches modifying the given paths. Without path arguments, the
+files modified in the working tree are used as the paths.
 
 OPTIONS
 -------
+-b <branch>::
+--branch=<branch>::
+    Use BRANCH instead of current branch
+
 -d::
 --diff::
-        Show the diff for the given files.
+    Show the diff for the given paths
 
--b BRANCH::
---branch BRANCH::
-        Use BRANCH instead of the default branch.
-
--O OPTIONS::
---diff-opts OPTIONS::
-        Extra options to pass to "git diff".
+-O <options>::
+--diff-opts=<options>::
+    Extra options to pass to "git diff"
 
 StGit
 -----

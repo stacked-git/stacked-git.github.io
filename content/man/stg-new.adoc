@@ -7,88 +7,117 @@ stg-new(1)
 
 NAME
 ----
-stg-new - Create a new, empty patch
+stg-new - Create a new patch at top of the stack
 
 SYNOPSIS
 --------
 [verse]
-'stg new' [options] [--] [<name>]
+'stg new' [OPTIONS] [patchname] [-- <path>...]
 
 DESCRIPTION
 -----------
 
-Create a new, empty patch on the current stack. The new patch is
-created on top of the currently applied patches, and is made the new
-top of the stack. Uncommitted changes in the work tree are not
-included in the patch -- that is handled by linkstg:refresh[].
+Create a new, empty patch on the current stack. The new patch is created on top
+of the currently applied patches, and is made the new top of the stack.
+Uncommitted changes in the work tree are not included in the patch -- that is
+handled by stg-refresh.
 
-The given name must be unique in the stack, and may only contain
-alphanumeric characters, dashes and underscores. If no name is given,
-one is generated from the first line of the patch's commit message.
+The given name must be unique in the stack, and may only contain alphanumeric
+characters, dashes and underscores. If no name is given, one is generated from
+the first line of the patch's commit message.
 
-An editor will be launched to edit the commit message to be used for
-the patch, unless the '--message' flag already specified one. The
-'patchdescr.tmpl' template file (if available) is used to pre-fill the
-editor.
+An editor will be launched to edit the commit message to be used for the patch,
+unless the '--message' flag already specified one. The 'patchdescr.tmpl'
+template file (if available) is used to pre-fill the editor.
 
 OPTIONS
 -------
--v::
---verbose::
-        In addition to the names of files that have been changed, also show a
-        diff of staged and unstaged changes.
+-r::
+--refresh::
+    Refresh the new patch with changes from work tree. New patches are empty by
+    default, but with this option the new patch will capture outstanding
+    changes in the work tree as if "stg refresh" was run. Use "--index" to
+    refresh from the index instead of the work tree.
 
---author "NAME <EMAIL>"::
-        Set the author details.
+-i::
+--index::
+    Instead of refreshing the patch with the current contents of the worktree,
+    use the current contents of the index.
 
---authname NAME::
-        Set the author name.
-
---authemail EMAIL::
-        Set the author email.
-
---authdate DATE::
-        Set the author date.
-
--m MESSAGE::
---message MESSAGE::
-        Use MESSAGE instead of invoking the editor.
-
--f FILE::
---file FILE::
-        Use the contents of FILE instead of invoking the editor.
-        (If FILE is "-", write to stdout.)
-
---save-template FILE::
-        Instead of running the command, just write the message
-        template to FILE, and exit. (If FILE is "-", write to
-        stdout.)
+-F::
+--force::
+    Force refresh with staged and unstaged changes.
 +
-When driving StGit from another program, it is often
-useful to first call a command with '--save-template',
-then let the user edit the message, and then call the
-same command with '--file'.
+By default, if there are staged changes in the index along with unstaged
+changes in the work tree, the command will abort. This option forces the
+command to proceed using both the staged and unstaged changes.
 
---sign::
-        Add a "Signed-off-by:" trailer to the end of the message using the committer name and email for the trailer value.
+-s::
+--submodules::
+    Include submodules in patch content
 
---sign-by VALUE::
-        Add a "Signed-off-by:" trailer with a custom VALUE to the end of the message.
+--no-submodules::
+    Exclude submodules in patch content
 
---ack::
-        Add an "Acked-by:" trailer to the end of the message using the commiter name and email for the trailer value.
+-e::
+--edit::
+    Invoke editor for patch description
 
---ack-by VALUE::
-        Add an "Acked-by:" trailer with a custom VALUE to the end of the message.
+-d::
+--diff::
+    Show diff when editing patch description
 
---review::
-        Add a "Reviewed-by:" trailer to the end of the message using the commiter name and email for the trailer value.
+-m <message>::
+--message=<message>::
+    Use message instead of invoking the editor
 
---review-by VALUE::
-        Add a "Reviewed-by:" trailer with custom VALUE to the end of the message.
+-f <path>::
+--file=<path>::
+    Use the contents of file instead of invoking the editor. Use "-" to read
+    from stdin.
 
 --no-verify::
-        This option bypasses the commit-msg hook.
+    Disable commit-msg hook
+
+--signoff[=<value>]::
+    Add "Signed-off-by" message trailer.
++
+The value is optional and defaults to the committer name and email. This option
+may be provided multiple times.
+
+--ack[=<value>]::
+    Add "Acked-by" message trailer.
++
+The value is optional and defaults to the committer's name and email. This
+option may be provided multiple times.
+
+--review[=<value>]::
+    Add "Reviewed-by" message trailer.
++
+The value is optional and defaults to the committer's name and email. This
+option may be provided multiple times.
+
+--author=<name-and-email>::
+    Set the author "name <email>"
+
+--authname=<name>::
+    Set the author name
+
+--authemail=<email>::
+    Set the author email
+
+--authdate=<date>::
+    Set the date the patch was authored.
++
+Use "now" to use the current time and date.
+
+--save-template=<file>::
+    Instead of running the command, just write the patch description to FILE,
+    and exit. (If FILE is "-", write to stdout.)
++
+When driving StGit from another program, it may be useful to first call a
+command with '--save-template', then let the user edit the message, and then
+call the same command with '--file'.
 
 StGit
 -----

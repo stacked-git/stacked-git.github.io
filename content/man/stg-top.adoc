@@ -12,18 +12,21 @@ stg-top - Print the name of the top patch
 SYNOPSIS
 --------
 [verse]
-'stg top' 
+'stg top' [OPTIONS]
 
 DESCRIPTION
 -----------
 
-Print the name of the current (topmost) patch.
+Print the name of the top patch.
+
+The topmost patch is the currently applied patch. An error message will be
+printed if no patches are applied.
 
 OPTIONS
 -------
--b BRANCH::
---branch BRANCH::
-        Use BRANCH instead of the default branch.
+-b <branch>::
+--branch=<branch>::
+    Use BRANCH instead of current branch
 
 StGit
 -----

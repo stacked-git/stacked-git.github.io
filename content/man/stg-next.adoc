@@ -12,18 +12,21 @@ stg-next - Print the name of the next patch
 SYNOPSIS
 --------
 [verse]
-'stg next' 
+'stg next' [OPTIONS]
 
 DESCRIPTION
 -----------
 
 Print the name of the next patch.
 
+The next patch is the unapplied patch that follows the current, topmost patch.
+An error message will be printed if there are no unapplied patches.
+
 OPTIONS
 -------
--b BRANCH::
---branch BRANCH::
-        Use BRANCH instead of the default branch.
+-b <branch>::
+--branch=<branch>::
+    Use BRANCH instead of current branch
 
 StGit
 -----

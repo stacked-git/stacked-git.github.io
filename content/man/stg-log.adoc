@@ -7,51 +7,52 @@ stg-log(1)
 
 NAME
 ----
-stg-log - Display or optionally clear the patch changelog
+stg-log - Display or optionally clear the stack changelog
 
 SYNOPSIS
 --------
 [verse]
-'stg log' [options] [--] [<patches>]
+'stg log' [OPTIONS] [--] [patch]...
+'stg log' --clear
 
 DESCRIPTION
 -----------
 
-List the history of the patch stack: the stack log. If one or more
-patch names are given, limit the list to the log entries that touch
-the named patches.
+Show the history of changes to the stack. If one or more patch names are given,
+only the changes affecting those patches are shown.
 
-"stg undo" and "stg redo" let you step back and forth in the patch
-stack. "stg reset" lets you go directly to any state.
+The "stg undo" and "stg redo" commands may be used to step back and forth
+through historical stack states. The "stg reset" command may be used to reset
+the stack directly to a historic state.
 
-Given the --clear option, the log history will be deleted.
-This may be useful if the tree view has become too cluttered
-to be useful.
+The --clear option may be used to delete the stack's change history. Undo and
+redo are unavailable on a stack without change history. Clearing the stack
+state history cannot be undone.
 
 OPTIONS
 -------
--b BRANCH::
---branch BRANCH::
-        Use BRANCH instead of the default one.
+-b <branch>::
+--branch=<branch>::
+    Use BRANCH instead of current branch
 
 -d::
 --diff::
-        Show the refresh diffs.
+    Show stack state diffs
 
--n NUMBER::
---number NUMBER::
-        Limit the output to NUMBER commits.
+-n <n>::
+--number=<n>::
+    Limit output to <n> commits
 
 -f::
 --full::
-        Show the full commit ids.
+    Show using full commit log format
 
 -g::
 --graphical::
-        Run gitk instead of printing.
+    Run gitk instead of printing to stdout
 
 --clear::
-        Clear the log history.
+    Clear the stack history
 
 StGit
 -----

@@ -7,34 +7,35 @@ stg-diff(1)
 
 NAME
 ----
-stg-diff - Show the tree diff
+stg-diff - Show a diff
 
 SYNOPSIS
 --------
 [verse]
-'stg diff' [options] [--] [<files or dirs>]
+'stg diff' [OPTIONS] [path]...
 
 DESCRIPTION
 -----------
 
-Show the diff (default) or diffstat between the current working copy
-or a tree-ish object and another tree-ish object (defaulting to HEAD).
-File names can also be given to restrict the diff output. The
-tree-ish object has the format accepted by the linkstg:id[] command.
+Show the diff (default) or diffstat between the current working copy or a
+tree-ish object and another tree-ish object (defaulting to HEAD). File names
+can also be given to restrict the diff output. The tree-ish object has the
+format accepted by the linkstg:id[] command.
 
 OPTIONS
 -------
--r rev1[..[rev2]]::
---range rev1[..[rev2]]::
-        Show the diff between revisions.
+-r <revspec>::
+--range=<revspec>::
+    Show diff between specified revisions. Revisions ranges are specified as
+    'rev1[..[rev2]]'. The revisions may be standard Git revision specifiers or patches.
 
 -s::
 --stat::
-        Show the stat instead of the diff.
+    Show the stat instead of the diff
 
--O OPTIONS::
---diff-opts OPTIONS::
-        Extra options to pass to "git diff".
+-O <options>::
+--diff-opts=<options>::
+    Extra options to pass to "git diff"
 
 StGit
 -----

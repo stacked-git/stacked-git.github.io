@@ -7,51 +7,53 @@ stg-uncommit(1)
 
 NAME
 ----
-stg-uncommit - Turn regular git commits into StGit patches
+stg-uncommit - Convert regular Git commits into StGit patches
 
 SYNOPSIS
 --------
 [verse]
-'stg uncommit' [--] <patch-name-1> [<patch-name-2> ...]
-'stg uncommit' -n NUM [--] [<prefix>]
-'stg uncommit' -t <committish> [-x]
+'stg uncommit' <patchname-1> [<patchname-2> ...]
+'stg uncommit' -n number [<patchname-prefix>]
+'stg uncommit' -t <commitish> [-x]
 
 DESCRIPTION
 -----------
 
-Take one or more git commits at the base of the current stack and turn
-them into StGit patches. The new patches are created as applied patches
-at the bottom of the stack. This is the opposite of 'stg commit'.
+Convert one or more Git commits from the base of the current stack into StGit
+patches. The original Git commits are not modified; the StGit stack extends to
+incorporate these commits as the bottommost applied patches. This is the
+opposite of linkstg:commit[].
 
-By default, the number of patches to uncommit is determined by the
-number of patch names provided on the command line. First name is used
-for the first patch to uncommit, i.e. for the newest patch.
+By default, the number of patches to uncommit is determined by the number of
+patch names provided on the command line. The first provided name is used for
+the first patch to uncommit, i.e. for the newest patch.
 
-The -n/--number option specifies the number of patches to uncommit. In
-this case, at most one patch name may be specified. It is used as
-prefix to which the patch number is appended. If no patch names are
-provided on the command line, StGit automatically generates them based
-on the first line of the patch description.
+The -n/--number option specifies the number of patches to uncommit. In this
+case, at most one patch name may be specified. It is used as prefix to which
+the patch number is appended. If no patch names are provided on the command
+line, StGit automatically generates names based on the first lines of the
+commit messages.
 
-The -t/--to option specifies that all commits up to and including the
-given commit should be uncommitted.
+The -t/--to option specifies that all commits up to and including the given
+commit should be uncommitted. The -x/--exclusive option may be used to exclude
+the "to" commit.
 
-Only commits with exactly one parent can be uncommitted; in other
-words, you can't uncommit a merge.
+Only commits with exactly one parent can be uncommitted; in other words, merge
+commits may not be uncommitted.
 
 OPTIONS
 -------
--n NUMBER::
---number NUMBER::
-        Uncommit the specified number of commits.
+-n <number>::
+--number=<number>::
+    Uncommit the specified number of commits
 
--t TO::
---to TO::
-        Uncommit to the specified commit.
+-t <commitish>::
+--to=<commitish>::
+    Uncommit to the specified committish
 
 -x::
 --exclusive::
-        Exclude the commit specified by the --to option.
+    Exclude the commit specified by the --to option
 
 StGit
 -----

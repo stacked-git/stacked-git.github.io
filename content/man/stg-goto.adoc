@@ -7,28 +7,27 @@ stg-goto(1)
 
 NAME
 ----
-stg-goto - Push or pop patches to the given one
+stg-goto - Go to patch by pushing or popping as necessary
 
 SYNOPSIS
 --------
 [verse]
-'stg goto' [options] [--] <patch-name>
+'stg goto' [OPTIONS] <patch>
 
 DESCRIPTION
 -----------
 
-Push/pop patches to/from the stack until the one given on the command
-line becomes current.
+Go to patch by pushing or popping as necessary
 
 OPTIONS
 -------
 -k::
 --keep::
-        Keep the local changes.
+    Keep the local changes
 
 -m::
 --merged::
-        Check for patches merged upstream.
+    Check for patches merged upstream
 
 StGit
 -----

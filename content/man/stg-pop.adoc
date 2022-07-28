@@ -7,44 +7,46 @@ stg-pop(1)
 
 NAME
 ----
-stg-pop - Pop one or more patches from the stack
+stg-pop - Pop (unapply) one or more applied patches
 
 SYNOPSIS
 --------
 [verse]
-'stg pop' [options] [--] [<patch1>] [<patch2>] [<patch3>..<patch4>]
+'stg pop' [OPTIONS] [patch]...
+'stg pop' [OPTIONS] --all
+'stg pop' [OPTIONS] -n <number>
 
 DESCRIPTION
 -----------
 
-Pop the topmost patch or a range of patches from the stack. The
-command fails if there are conflicts or local changes (and --keep was
-not specified).
+Pop (unapply) one or more applied patches.
 
-A series of pop and push operations are performed so that only the
-patches passed on the command line are popped from the stack. Some of
-the push operations may fail because of conflicts ("stg undo" would
-revert the last push operation).
+By default, the topmost applied patch is popped.
+
+If ranges of patches are specified, pop and push operations are performed such
+that only the patches specified on the command line are unapplied at the end of
+the operation. It is possible for some of these intermediate push operations to
+fail due to conflicts if patches are popped out of last-pushed first-popped order.
 
 OPTIONS
 -------
 -a::
 --all::
-        Pop all the applied patches.
+    Pop all applied patches
+
+-n <number>::
+--number=<number>::
+    Pop the specified <number> of patches.
++
+A negative number indicates to pop all but that number of patches
 
 -s::
 --spill::
-        Pop a patch, keeping its modifications in the tree.
-
--n NUMBER::
---number NUMBER::
-        Pop the specified number of patches.
-+
-With a negative number, pop all but that many patches.
+    Keep patches' modifications in working tree after popping
 
 -k::
 --keep::
-        Keep the local changes.
+    Keep the local changes
 
 StGit
 -----

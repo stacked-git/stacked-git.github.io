@@ -7,24 +7,25 @@ stg-unhide(1)
 
 NAME
 ----
-stg-unhide - Unhide a hidden patch
+stg-unhide - Unhide hidden patches
 
 SYNOPSIS
 --------
 [verse]
-'stg unhide' [options] [--] <patch-range>
+'stg unhide' [OPTIONS] <patch>...
 
 DESCRIPTION
 -----------
 
-Unhide a hidden range of patches so that they are shown in the plain
-'stg series' command output.
+Unhide hidden patches in the series.
+
+Hidden patches are no longer shown in the plain 'series' output.
 
 OPTIONS
 -------
--b BRANCH::
---branch BRANCH::
-        Use BRANCH instead of the default branch.
+-b <branch>::
+--branch=<branch>::
+    Use BRANCH instead of current branch
 
 StGit
 -----

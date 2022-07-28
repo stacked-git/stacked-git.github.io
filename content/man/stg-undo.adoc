@@ -7,27 +7,27 @@ stg-undo(1)
 
 NAME
 ----
-stg-undo - Undo the last operation
+stg-undo - Undo the last command
 
 SYNOPSIS
 --------
 [verse]
-'stg undo' 
+'stg undo' [OPTIONS]
 
 DESCRIPTION
 -----------
 
-Reset the patch stack to the previous state. Consecutive invocations
-of "stg undo" will take you ever further into the past.
+Reset the patch stack to the state before the last operation. Consecutive undos
+will go back to yet older stack states.
 
 OPTIONS
 -------
--n N::
---number N::
-        Undo the last N commands.
+-n <n>::
+--number=<n>::
+    Undo the last <n> commands
 
 --hard::
-        Discard changes in your index/worktree.
+    Discard changes in the index and worktree
 
 StGit
 -----

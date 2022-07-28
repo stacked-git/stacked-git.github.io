@@ -7,29 +7,29 @@ stg-clean(1)
 
 NAME
 ----
-stg-clean - Delete the empty patches in the series
+stg-clean - Delete empty patches from the series
 
 SYNOPSIS
 --------
 [verse]
-'stg clean' 
+'stg clean' [OPTIONS]
 
 DESCRIPTION
 -----------
 
-Delete the empty patches in the whole series or only those applied or
-unapplied. A patch is considered empty if the two commit objects
-representing its boundaries refer to the same tree object.
+Delete the empty patches from the entire series by default, or only empty
+patches from the applied or unapplied patches. A patch is considered empty if
+its tree is the same as its parent.
 
 OPTIONS
 -------
--a::
+-A::
 --applied::
-        Delete the empty applied patches.
+    Delete empty applied patches
 
--u::
+-U::
 --unapplied::
-        Delete the empty unapplied patches.
+    Delete empty unapplied patches
 
 StGit
 -----

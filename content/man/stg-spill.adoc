@@ -1,0 +1,40 @@
++++
+title = "stg-spill(1)"
++++
+
+stg-spill(1)
+============
+
+NAME
+----
+stg-spill - Spill changes from the topmost patch
+
+SYNOPSIS
+--------
+[verse]
+'stg spill' [OPTIONS] [path]...
+
+DESCRIPTION
+-----------
+
+Spill changes from the topmost patch. Changes are removed from the patch, but
+remain in the index and worktree.
+
+Spilling a patch may be useful for reselecting the files/hunks to be included
+in the patch.
+
+OPTIONS
+-------
+-a <note>::
+--annotate=<note>::
+    Annotate the patch log entry with note
+
+-r::
+--reset::
+    Also reset the index such that the patch's changes only remain in the
+    worktree. Without this option, the patch's changes will be in both the
+    index and worktree.
+
+StGit
+-----
+Part of the StGit suite - see linkman:stg[1]

@@ -7,24 +7,25 @@ stg-hide(1)
 
 NAME
 ----
-stg-hide - Hide a patch in the series
+stg-hide - Hide patches in the series
 
 SYNOPSIS
 --------
 [verse]
-'stg hide' [options] [--] <patch-range>
+'stg hide' [OPTIONS] <patch>...
 
 DESCRIPTION
 -----------
 
-Hide a range of unapplied patches so that they are no longer shown in
-the plain 'series' command output.
+Hide patches in the series.
+
+Hidden patches are no longer shown in the plain 'series' output.
 
 OPTIONS
 -------
--b BRANCH::
---branch BRANCH::
-        Use BRANCH instead of the default branch.
+-b <branch>::
+--branch=<branch>::
+    Use BRANCH instead of current branch
 
 StGit
 -----

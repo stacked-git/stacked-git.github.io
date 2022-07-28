@@ -1,0 +1,123 @@
++++
+title = "stg-completion(1)"
++++
+
+stg-completion(1)
+=================
+
+NAME
+----
+stg-completion - Support for shell completions
+
+SYNOPSIS
+--------
+[verse]
+'stg completion bash' [OPTIONS]
+'stg completion fish' [OPTIONS]
+'stg completion zsh' [OPTIONS]
+'stg completion list aliases' [OPTIONS]
+'stg completion list commands' [OPTIONS]
+'stg completion list commands-and-aliases' [OPTIONS]
+'stg completion list help' [OPTIONS] [SUBCOMMAND]...
+'stg completion man' [OPTIONS]
+'stg completion help' [OPTIONS] [SUBCOMMAND]...
+
+DESCRIPTION
+-----------
+
+Support completions for bash, fish, and zsh. Also provides 'stg completion
+list' command for dynamically introspecting StGit's commands and aliases.
+
+COMMANDS
+--------
+
+bash::
+    Generate bash completion script
+
+fish::
+    Generate fish shell completion script
+
+zsh::
+    Generate zsh completion script
+
+list aliases::
+    List aliases
+
+list commands::
+    List StGit commands
+
+list commands-and-aliases::
+    List StGit commands and aliases
+
+man::
+    Generate man pages in asciidoc format. The generated asciidoc files may be
+    further processed by asciidoc or asciidoctor to produce roff, html, or
+    other output formats.
++
+One file is generated for each `stg` command. The output directory defaults to
+the current directory, but may be specified with `--output`. The output files
+are named `stg-<command>.txt`.
+
+OPTIONS
+-------
+-o <path>::
+--output=<path>::
+    Output to <path>
+
+BASH OPTIONS
+~~~~~~~~~~~~
+-o <path>::
+--output=<path>::
+    Output completion script to <path>
+
+FISH OPTIONS
+~~~~~~~~~~~~
+-o <path>::
+--output=<path>::
+    Output completion script to <path>
+
+ZSH OPTIONS
+~~~~~~~~~~~
+-o <path>::
+--output=<path>::
+    Output completion script to <path>
+
+LIST ALIASES OPTIONS
+~~~~~~~~~~~~~~~~~~~~
+--show-expansion::
+    Show alias expansion
+
+--style=(name-only|asciidoc|fish|zsh)::
+    Choose output format style
+
+-o <path>::
+--output=<path>::
+    Output to <path>
+
+LIST COMMANDS OPTIONS
+~~~~~~~~~~~~~~~~~~~~~
+--style=(name-only|asciidoc|fish|zsh)::
+    Choose output format style
+
+-o <path>::
+--output=<path>::
+    Output to <path>
+
+LIST COMMANDS-AND-ALIASES OPTIONS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--style=(name-only|asciidoc|fish|zsh)::
+    Choose output format style
+
+-o <path>::
+--output=<path>::
+    Output to <path>
+
+MAN OPTIONS
+~~~~~~~~~~~
+-o <dir>::
+--output=<dir>::
+    Output man pages to <dir>
+
+StGit
+-----
+Part of the StGit suite - see linkman:stg[1]

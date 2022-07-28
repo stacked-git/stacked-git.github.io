@@ -13,9 +13,8 @@ stg - Manage stacks of patches using the Git content tracker
 SYNOPSIS
 --------
 [verse]
-'stg' [--version | --help]
-'stg' [--help <command> | <command> --help]
-'stg' <command> [COMMAND OPTIONS] [ARGS]
+'stg' [OPTIONS] <command> [...]
+'stg' [OPTIONS] \<--version|-h|--help>
 
 DESCRIPTION
 -----------
@@ -101,6 +100,16 @@ Some commands allow you to specify a patch in another branch of the
 repository; this is done by prefixing the patch name with the branch
 name and a colon (e.g. +otherbranch:thatpatch+).
 
+Commands that take multiple patch arguments may be supplied with patch
+ranges of the form +patch1..patchN+ as an alternative to specifying
+each patch individually. For example, `stg delete p0..p4` would be
+equivalent to `stg delete p0 p1 p2 p3 p4`. Patch ranges may be open
+on either or both ends. For example, `stg delete ..p2` would delete
+the first applied patch up to and including patch `p2`. Alternatively,
+`stg delete p2..` would delete patch `p2` up to and including the
+topmost applied patch. And `stg delete ..` would delete all applied
+patches.
+
 Specifying commits
 ~~~~~~~~~~~~~~~~~~
 
@@ -125,12 +134,32 @@ The following generic option flags are available. Additional options
 are available for (and documented with) the different subcommands.
 
 --version::
-  Prints the StGit version, as well as version of other components
-  used, such as Git and Python.
+  Print version information
 
 --help::
-  Prints the synopsis and a list of all subcommands. If an StGit
-  subcommand is given, prints the synposis for that subcommand.
+  Print help information.
+
+-C::
+  Run as if stg was started in '<path>' instead of the current working
+  directory. When multiple `-C` options are given, each subsequent
+  non-absolute `-C <path>` is interpreted relative to the preceding
+  `-C <path>`.
++
+This option affects arguments that expect path names or path specs in
+that their interpretations of the path names would be made relative to
+the working directory caused by the `-C` option.
+
+--color <when>::
+  Specify when to colorize the output.
++
+`auto` (the default) enables colored output only when outputting to a
+terminal or TTY. The `NO_COLOR` environment variable is respected.
++
+`always` and `never` unconditionlly enable/disable colored output,
+respectively.
++
+`ansi` forces color to be output using ANSI escape sequences, even in
+a Windows console.
 
 STGIT COMMANDS
 --------------
@@ -160,5 +189,5 @@ useful default texts to be edited by the user. These +<name>.tmpl+
 template files are searched in the following directories:
 
   . +$GITDIR/+ (in practice, the +.git/+ directory in your repository)
+  . +$XDG_CONFIG_HOME/stgit/templates/+
   . +$HOME/.stgit/templates/+
-  . +/usr/share/stgit/templates/+

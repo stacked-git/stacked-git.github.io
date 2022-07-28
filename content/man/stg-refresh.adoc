@@ -7,131 +7,121 @@ stg-refresh(1)
 
 NAME
 ----
-stg-refresh - Generate a new commit for the current patch
+stg-refresh - Incorporate worktree changes into current patch
 
 SYNOPSIS
 --------
 [verse]
-'stg refresh' [options] [--] [<files or dirs>]
+'stg refresh' [OPTIONS] [--] [path]...
 
 DESCRIPTION
 -----------
 
-Include the latest work tree and index changes in the current patch.
-This command generates a new git commit object for the patch; the old
-commit is no longer visible.
+Include the latest work tree and index changes in the current patch. This
+command generates a new git commit object for the patch; the old commit is no
+longer visible.
 
 Refresh will warn if the index is dirty, and require use of either the
 '--index' or '--force' options to override this check. This is to prevent
 accidental full refresh when only some changes were staged using git add
 interative mode.
 
-You may optionally list one or more files or directories relative to
-the current working directory; if you do, only matching files will be
-updated.
+You may optionally list one or more files or directories relative to the
+current working directory; if you do, only matching files will be updated.
 
-Behind the scenes, stg refresh first creates a new temporary patch
-with your updates, and then merges that patch into the patch you asked
-to have refreshed. If you asked to refresh a patch other than the
-topmost patch, there can be conflicts; in that case, the temporary
-patch will be left for you to take care of, for example with stg
-squash.
+Behind the scenes, stg refresh first creates a new temporary patch with your
+updates, and then merges that patch into the patch you asked to have refreshed.
+If you asked to refresh a patch other than the topmost patch, there can be
+conflicts; in that case, the temporary patch will be left for you to take care
+of, for example with stg squash.
 
-The creation of the temporary patch is recorded in a separate entry in
-the patch stack log; this means that one undo step will undo the merge
-between the other patch and the temp patch, and two undo steps will
-additionally get rid of the temp patch.
-
-Additionally, the '--spill' option resets the topmost patch, emptying
-the patch while leaving the patch's changes intact in the worktree.
+The creation of the temporary patch is recorded in a separate entry in the
+patch stack log; this means that one undo step will undo the merge between the
+other patch and the temp patch, and two undo steps will additionally get rid of
+the temp patch.
 
 OPTIONS
 -------
 -u::
 --update::
-        Only update the current patch files.
+    Only update the current patch files
 
 -i::
 --index::
-        Instead of setting the patch top to the current contents of
-        the worktree, set it to the current contents of the index.
+    Instead of setting the patch top to the current contents of the worktree,
+    set it to the current contents of the index.
 
 -F::
 --force::
-        Instead of warning the user when some work has already been staged
-        (such as with git add interactive mode) force a full refresh.
+    Instead of warning the user when some work has already been staged (such as
+    with git add interactive mode) force a full refresh.
 
--p PATCH::
---patch PATCH::
-        Refresh (applied) PATCH instead of the top patch.
+-p <patch>::
+--patch=<patch>::
+    Refresh (applied) <patch> instead of the top patch
 
--e::
---edit::
-        Invoke an editor for the patch description.
-
--d::
---diff::
-        Show diff when editing patch description.
-
--a NOTE::
---annotate NOTE::
-        Annotate the patch log entry.
+-a <note>::
+--annotate=<note>::
+    Annotate the patch log entry with <note>
 
 -s::
 --submodules::
-        Include submodules when refreshing patch contents.
+    Include submodules in patch content
 
 --no-submodules::
-        Exclude submodules when refreshing patch contents.
+    Exclude submodules in patch content
 
---spill::
-        Spill patch content to worktree and index, erasing patch content..
+-e::
+--edit::
+    Invoke editor for patch description
 
--m MESSAGE::
---message MESSAGE::
-        Use MESSAGE instead of invoking the editor.
+-d::
+--diff::
+    Show diff when editing patch description
 
--f FILE::
---file FILE::
-        Use the contents of FILE instead of invoking the editor.
-        (If FILE is "-", write to stdout.)
+-m <message>::
+--message=<message>::
+    Use message instead of invoking the editor
+
+-f <path>::
+--file=<path>::
+    Use the contents of file instead of invoking the editor. Use "-" to read
+    from stdin.
 
 --no-verify::
-        This option bypasses the commit-msg hook.
+    Disable commit-msg hook
 
---sign::
-        Add a "Signed-off-by:" trailer to the end of the message using the committer name and email for the trailer value.
+--signoff[=<value>]::
+    Add "Signed-off-by" message trailer.
++
+The value is optional and defaults to the committer name and email. This option
+may be provided multiple times.
 
---sign-by VALUE::
-        Add a "Signed-off-by:" trailer with a custom VALUE to the end of the message.
+--ack[=<value>]::
+    Add "Acked-by" message trailer.
++
+The value is optional and defaults to the committer's name and email. This
+option may be provided multiple times.
 
---ack::
-        Add an "Acked-by:" trailer to the end of the message using the commiter name and email for the trailer value.
+--review[=<value>]::
+    Add "Reviewed-by" message trailer.
++
+The value is optional and defaults to the committer's name and email. This
+option may be provided multiple times.
 
---ack-by VALUE::
-        Add an "Acked-by:" trailer with a custom VALUE to the end of the message.
+--author=<name-and-email>::
+    Set the author "name <email>"
 
---review::
-        Add a "Reviewed-by:" trailer to the end of the message using the commiter name and email for the trailer value.
+--authname=<name>::
+    Set the author name
 
---review-by VALUE::
-        Add a "Reviewed-by:" trailer with custom VALUE to the end of the message.
+--authemail=<email>::
+    Set the author email
 
---author "NAME <EMAIL>"::
-        Set the author details.
-
---authname NAME::
-        Set the author name.
-
---authemail EMAIL::
-        Set the author email.
-
---authdate DATE::
-        Set the author date.
-
--O OPTIONS::
---diff-opts OPTIONS::
-        Extra options to pass to "git diff".
+--authdate=<date>::
+    Set the date the patch was authored.
++
+Use "now" to use the current time and date.
 
 StGit
 -----
