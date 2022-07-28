@@ -442,6 +442,6 @@ ul.man-list > li:nth-last-child(n+10) ~ * {
     margin-top: var(--s2);
 }
 
-.dlist dd > p {
+.dlist dt ~ dd {
     padding-left: 3em;
 }
