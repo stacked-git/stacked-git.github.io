@@ -35,6 +35,12 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2022-08-05: [StGit v2.0.0-beta.2][v2.0.0-beta.2] has been released.
+
+This second beta release of StGit 2.0 improves a couple use cases related
+to patch spilling (`stg pop --spill` and `stg spill`) as well as updating
+and reducing StGit's dependencies.
+
 ### 2022-07-28: [StGit v2.0.0-beta.1][v2.0.0-beta.1] has been released.
 
 This is the first beta release of StGit 2.0. This is a reimplementation
