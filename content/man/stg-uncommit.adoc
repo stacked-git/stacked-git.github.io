@@ -14,7 +14,7 @@ SYNOPSIS
 [verse]
 'stg uncommit' <patchname-1> [<patchname-2> ...]
 'stg uncommit' -n number [<patchname-prefix>]
-'stg uncommit' -t <commitish> [-x]
+'stg uncommit' -t <committish> [-x]
 
 DESCRIPTION
 -----------
@@ -47,8 +47,8 @@ OPTIONS
 --number=<number>::
     Uncommit the specified number of commits
 
--t <commitish>::
---to=<commitish>::
+-t <committish>::
+--to=<committish>::
     Uncommit to the specified committish
 
 -x::

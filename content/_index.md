@@ -35,6 +35,13 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2022-08-28: [StGit v2.0.0-beta.3][v2.0.0-beta.3] has been released.
+
+This third, and likely last, beta release of StGit 2.0 improves StGit's
+compatibility with sparse checkouts and further improves the Makefiles
+which should hopefully help downstream packagers. Several other minor
+bug fixes are also included in this release.
+
 ### 2022-08-05: [StGit v2.0.0-beta.2][v2.0.0-beta.2] has been released.
 
 This second beta release of StGit 2.0 improves a couple use cases related
@@ -66,15 +73,11 @@ patches by default.
 
 See the [changelog](changelog/) for all the details on this release.
 
-### 2021-09-26: [StGit v1.3][v1.3] has been released.
-
-This is a hot fix release that repairs a crash regression when using
-the `stgit.autosign` configuration option.
-
+[v2.0.0-beta.3]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0-beta.3
+[v2.0.0-beta.2]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0-beta.2
 [v2.0.0-beta.1]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0-beta.1
 [v1.5]: https://github.com/stacked-git/stgit/releases/tag/v1.5
 [v1.4]: https://github.com/stacked-git/stgit/releases/tag/v1.4
-[v1.3]: https://github.com/stacked-git/stgit/releases/tag/v1.3
 
 ## Why Stacked Git?
 
