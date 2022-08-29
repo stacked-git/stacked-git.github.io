@@ -493,7 +493,7 @@ StGit Part of the StGit suite - see linkman:stg[1]</description>
       
       <guid>http://stacked-git.github.io/man/stg-uncommit/</guid>
       <description>NAME stg-uncommit - Convert regular Git commits into StGit patches
-SYNOPSIS stg uncommit &amp;lt;patchname-1&amp;gt; [&amp;lt;patchname-2&amp;gt; …​] stg uncommit -n number [&amp;lt;patchname-prefix&amp;gt;] stg uncommit -t &amp;lt;commitish&amp;gt; [-x] DESCRIPTION Convert one or more Git commits from the base of the current stack into StGit patches. The original Git commits are not modified; the StGit stack extends to incorporate these commits as the bottommost applied patches. This is the opposite of linkstg:commit[].</description>
+SYNOPSIS stg uncommit &amp;lt;patchname-1&amp;gt; [&amp;lt;patchname-2&amp;gt; …​] stg uncommit -n number [&amp;lt;patchname-prefix&amp;gt;] stg uncommit -t &amp;lt;committish&amp;gt; [-x] DESCRIPTION Convert one or more Git commits from the base of the current stack into StGit patches. The original Git commits are not modified; the StGit stack extends to incorporate these commits as the bottommost applied patches. This is the opposite of linkstg:commit[].</description>
     </item>
     
     <item>
