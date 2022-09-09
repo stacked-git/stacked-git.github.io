@@ -35,6 +35,24 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2022-09-02: StGit Extension for Visual Studio Code 0.9.0
+
+How cool is this, Samuel Rydh has implemented a StGit extension for
+Visual Studio Code! In Samuel's words:
+
+> The extension is closely modelled on the corresponding StGit mode for
+> Emacs, which I have been using for years.
+>
+> There is a bit of learning curve to use the extension since it is
+> heavily reliant on operations bound to keyboard shortcuts. The main
+> audience is really Emacs users that have started to use VSCode.
+
+See the [extension in the VSCode marketplace][marketplace] or checkout
+[the repository on GitHub][vscode-stgit].
+
+[vscode-stgit]: https://github.com/srydh/vscode-stgit
+[marketplace]: https://marketplace.visualstudio.com/items?itemName=samuelrydh.stgit
+
 ### 2022-08-28: [StGit v2.0.0-beta.3][v2.0.0-beta.3] has been released.
 
 This third, and likely last, beta release of StGit 2.0 improves StGit's
