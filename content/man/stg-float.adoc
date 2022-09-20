@@ -12,7 +12,8 @@ stg-float - Push patches to the top, even if applied
 SYNOPSIS
 --------
 [verse]
-'stg float' [OPTIONS] [patch]...
+'stg float' [OPTIONS] <patch>...
+'stg float' [OPTIONS] \<-s|--series> <file>
 
 DESCRIPTION
 -----------
