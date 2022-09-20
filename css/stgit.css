@@ -7,10 +7,10 @@
     /* --font-mono:    Lucida Sans Typewriter, Lucida Console, monaco, Bitstream Vera Sans Mono, monospace; */
     /* --font-special: Optima, Candara, Calibri; */
 
-    --color-dark: #050505;
+    --color-dark: #1a1a1a;
     --color-darkish: #404040;
-    --color-lightish: #e6e6e6;
-    --color-light: #fafafa;
+    --color-lightish: #e6e2e6;
+    --color-light: #f0f0f0;
     --color-mid: grey;
 
     --color-subtle: #2d1650;
@@ -37,6 +37,7 @@
     --line-height: var(--ratio);
     --line-height-small: calc(0.8 * var(--ratio));
 
+    --border-skinny: 0.25em;
     --border-thin: var(--s-5);
     --border-thick: var(--s-2);
 
@@ -51,7 +52,7 @@
     :root {
         --color-link: #aa87de;
         --color-hover: #5a2ca0;
-        --color-lightish: #202020;
+        --color-lightish: #282428;
         --color-darkish: #e6e6e6;
         background-color: var(--color-dark);
         color: var(--color-darkish);
@@ -133,6 +134,11 @@ main > ul {
     padding-left: 2em;
 }
 
+ul > li > ul {
+    margin-top: var(--s-3);
+    padding-left: 2em;
+}
+
 main > * + * {
     margin-top: var(--s3);
 }
@@ -171,15 +177,15 @@ main > * {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    max-width: 35rem;
+    max-width: 50rem;
 }
 
 /* docs-header */
 body > div > header {
-    flex-basis: 15rem;
+    flex-basis: 10rem;
     flex-grow: 1;
     position: relative;
-    outline: var(--border-thin) solid var(--color-mid);
+    outline: var(--border-skinny) solid var(--color-mid);
     padding-top: var(--s3);
 }
 
