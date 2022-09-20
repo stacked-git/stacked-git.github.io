@@ -134,6 +134,11 @@ main > ul {
     padding-left: 2em;
 }
 
+ul > li > ul {
+    margin-top: var(--s-3);
+    padding-left: 2em;
+}
+
 main > * + * {
     margin-top: var(--s3);
 }
