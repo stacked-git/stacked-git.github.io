@@ -68,9 +68,6 @@ This initializes the StGit stack metadata for the current branch. To
 have StGit patches on another branch, `stg init` must be run again
 on that branch.
 
-> **NOTE** As a shortcut, [`stg clone`](/man/stg-clone) will perform a
-> `git clone` followed by `stg init`.
-
 ## Patches
 
 ### Create a Patch
@@ -100,7 +97,7 @@ text editor.
 ```
 $ $EDITOR setup.py
 $ stg status
-M stgit/setup.py
+ M README.md
 ```
 
 To update a patch with changes from the working tree, [`stg
@@ -114,22 +111,22 @@ And voilà -- the patch is no longer empty:
 
 ```
 $ stg show
-commit 3de32068c600d40d8af2a9cf1f1c762570ae9610
+commit d443f7e2d1099d07b37de02ec483691521e3c330 (HEAD -> master, refs/patches/master/my-first-patch)
 Author: Audrey U. Thor <author@example.com>
-Date:   Sat Oct 4 16:10:54 2008 +0200
+Date:   Tue Sep 20 13:56:33 2022 -0400
 
     Tis but a patch
 
-diff --git a/setup.py b/setup.py
-index 808cd7fa9..9bdad1f86 100755
---- a/setup.py
-+++ b/setup.py
-@@ -1,5 +1,6 @@
- #!/usr/bin/env python
- # -*- coding: utf-8 -*-
-+"""My first patch!"""
-
- from distutils.core import setup
+diff --git a/README.md b/README.md
+index c8a0894ac..0ef993493 100644
+--- a/README.md
++++ b/README.md
+@@ -81,3 +81,5 @@ to StGit.
+ StGit is maintained by Catalin Marinas and Peter Grayson.
+ 
+ For a complete list of StGit's authors, see [AUTHORS.md](AUTHORS.md).
++
++This is my first patch!
 ```
 
 Since the patch is also a regular Git commit, it can be seen by regular
@@ -143,7 +140,7 @@ feature of StGit that a patch can be created independent of the working
 tree state.
 
 ```
-$ echo 'Audrey U. Thor' > AUTHORS
+$ echo '- Audrey U. Thor' >> AUTHORS.md
 $ stg new credit --message 'Give me some credit'
 $ stg refresh
 ```
@@ -152,11 +149,15 @@ $ stg refresh
 > new`](/man/stg-new) to give the patch a message without invoking an
 > editor.
 
+> **NOTE** Use the `--refresh` (`-r`) option to [`stg
+> new`](/man/stg-new) to both create a new patch and refresh it in one
+> step.
+
 The stack now contains two patches:
 
 ```
 $ stg series --description
-+ my-first-patch # This is my first patch
++ my-first-patch # Tis but a patch
 > credit         # Give me some credit
 ```
 [`stg series`](/man/stg-series) lists the patches from bottom to top;
@@ -164,8 +165,8 @@ $ stg series --description
 topmost, patch.
 
 Further changes to the topmost patch can be made by just editing files
-in the working tree running `stg refresh` to capture those changes in
-the topmost patch.
+in the working tree and running `stg refresh` to capture those changes
+in the topmost patch.
 
 But how to change `my-first-patch`? The simplest way is to
 [pop](/man/stg-pop) the `credit` patch. Doing so will make
@@ -173,11 +174,10 @@ But how to change `my-first-patch`? The simplest way is to
 
 ```
 $ stg pop credit
-Checking for changes in the working directory ... done
-Popping patch "credit" ... done
-Now at patch "my-first-patch"
+- credit
+> my-first-patch
 $ stg series --description
-> my-first-patch # This is my first patch
+> my-first-patch # Tis but a patch
 - credit         # Give me some credit
 ```
 
@@ -188,17 +188,15 @@ topmost again. And running [`stg refresh`](/man/stg-refresh) will update
 The minus sign (`-`) in front of `credit` in the `stg series` output
 indicates that the `credit` patch is 'unapplied', which means that the
 changes embodied in the `credit` patch are not currently applied to the
-work tree. Unapplied patches are also not seen in the regular Git
-history as seen by `git log` or `gitk`.
+work tree. Unapplied patches are not seen in the regular Git history as
+seen by `git log` or `gitk`.
 
 An unapplied patch is reapplied and made the topmost patch using [`stg
 push`](/man/stg-push):
 
 ```
 $ stg push credit
-Checking for changes in the working directory ... done
-Fast-forwarded patch "credit"
-Now at patch "credit"
+> credit
 ```
 
 > **NOTE** [`stg push`](/man/stg-push) and [`stg pop`](/man/stg-pop) may
@@ -211,20 +209,31 @@ Now at patch "credit"
 By default `stg refresh` captures changes from the work tree into the
 topmost applied patch, however when working with multiple patches it is
 often the case that a change in the work tree should be captured by an
-already applied patch. The `--patch` option may be used with `stg
+already applied patch. The `--patch` (`-p`) option may be used with `stg
 refresh` to do just that.
 
 ```
 $ stg series
 + my-first-patch
 > credit
-$ $EDITOR setup.py
+```
+
+```
+$ $EDITOR README.md
 $ stg refresh --patch my-first-patch
-Popped refresh-temp -- credit
-Pushing patch "refresh-temp" ... done
-Pushing patch "credit" ... done
-Now at patch "credit"
-$ stg status
+> refresh-temp (new)
+- credit..refresh-temp
+> refresh-temp
+- refresh-temp
+# refresh-temp
+& my-first-patch
+> credit
+```
+
+```
+$ stg series
++ my-first-patch
+> credit
 ```
 
 After the above refresh operation, the topmost patch remains `credit`,
@@ -262,10 +271,10 @@ modified when refreshing by using `stg refresh --edit`.
 > message.
 
 > **NOTE** The commit message of any patch in the stack may be modified
-> at any time using `stg edit <patchname>`. StGit **does not** need to
-> apply (push) a patch in order to modify it's commit message, so
-> editing patches' commit messages can be done without risk of
-> encountering a merge conflict.
+> at any time using `stg edit <patchname>`. A patch **does not** need to
+> be applied (pushed) in order to modify its commit message, so editing
+> patches' commit messages may be done without risk of encountering a
+> merge conflict.
 
 
 ### Renaming Patches
@@ -277,7 +286,7 @@ Use [stg rename](/man/stg-rename) to rename a patch.
 ## Conflicts
 
 Like with regular Git, there are various times in the normal use of
-StGit when *conflicts* can occur. With regular Git commands, a conflict
+StGit when *conflicts* may occur. With regular Git commands, a conflict
 may occur during [merge](https://git-scm.com/docs/git-merge),
 [rebase](https://git-scm.com/docs/git-rebase), or
 [pull](https://git-scm.com/docs/git-rebase). With StGit, conflicts may
@@ -285,11 +294,13 @@ occur when applying or reordering a patch using one of the following
 commands:
 
 - [`stg push`](/man/stg-push)
+- [`stg goto`](/man/stg-goto)
 - [`stg pick`](/man/stg-pick)
 - [`stg float`](/man/stg-float)
 - [`stg sink`](/man/stg-sink)
 - [`stg pull`](/man/stg-pull)
 - [`stg rebase`](/man/stg-rebase)
+- [`stg refresh --patch`](/man/stg-refresh)
 
 Normally, when re-pushing a patch after popping it and making a change
 to another patch, StGit is able to re-push the patch without conflict.
@@ -341,9 +352,8 @@ the same lines of a file. This is when a conflict may arise.
 
 ```
 $ stg pop
-Checking for changes in the working directory ... done
-Popping patch "first" ... done
-Now at patch "second"
+- first
+> second
 $ echo 'another change' >> a.txt
 $ stg refresh
 ```
@@ -353,10 +363,9 @@ when attempting to apply both patches at once?
 
 ```
 $ stg push
-Pushing patch "first" ... done (conflict)
-Error: 1 merge conflict(s)
-       CONFLICT (content): Merge conflict in a.txt
-Now at patch "first"
+> first (conflict)
+error: Merge conflicts
+UU a.txt
 ```
 
 StGit indicates that when it pushed `first` on top of `second` that
@@ -377,7 +386,7 @@ hunks within the file.
 
 When conflicts occur, there are two general options for how to respond:
 
-1. Undo the command caused the conflict(s).
+1. Undo the command that caused the conflict(s).
 2. Resolve the conflicts.
 
 ### Undo
@@ -387,7 +396,7 @@ StGit stack and work tree.
 
 ```
 $ stg undo --hard
-Now at patch "second"
+> second
 ```
 
 > **NOTE** The `--hard` flag for `stg undo` is required when there are
@@ -517,9 +526,7 @@ revised:
 
 ```
 $ stg uncommit --number 6
-Uncommitting 6 patches ...
-  Now at patch "more-snarfle-cache"
-done
+> more-snarfle-cache
 $ stg series --description
 + improve-the-snarfle-cache      # Improve the snarfle cache
 + remove-debug-printout          # Remove debug printout
@@ -561,8 +568,8 @@ A number of possible history revisions are possible at this point:
 > the choice will have to be made to either [`undo`](/man/stg-undo) or
 > resolve the conflicts.
 
-Once the history in the StGit stack satisfactorily revised, the patches
-can be converted back into regular Git commits:
+Once the history in the StGit stack is satisfactorily revised, the
+patches can be converted back into regular Git commits:
 
 ```
 $ stg commit --all
@@ -608,19 +615,23 @@ eventually getting them accepted into an upstream repository.
 #### Getting patches upstream
 
 Two StGit commands useful for sharing patches in an email-based workflow
-are [`stg mail`](/man/stg-mail) and [`stg export`](/man/stg-export).
+are [`stg email`](/man/stg-email) and [`stg export`](/man/stg-export).
 
-- [`stg mail`](/man/stg-mail) sends an email containing one or more
-  patches from a StGit stack.
+- [`stg email`](/man/stg-email) has two subcommands, `format` and `send`
+  that may be used to format and send emails containing patches from a
+  StGit stack.
 - [`stg export`](/man/stg-export) exports patches from a StGit stack to
   a filesystem directory, one text file per patch. This may be useful if
   patches need to be transported by something other than email.
 
 > **NOTE** Git has its own capability for sending commits via email:
-> [`git send-email`](https://git-scm.com/docs/git-send-email). Since
-> StGit patches are Git commits, [`git
-> send-email`](https://git-scm.com/docs/git-send-email) may be a better
-> choice for sending patches via email than `stg mail`.
+> [`git send-email`][git-send-email]. `stg
+> email send` is a wrapper of `git send-email` and as such, respects the
+> its configuration (i.e. `sendemail.*` and `format.*`) and exposes its
+> most used command line options. The key difference is that `stg email
+> send` understands patch names from the StGit stack. Since StGit
+> patches are Git commits, `git send-email` may be used directly for
+> sending patches via email.
 
 > **NOTE** For exporting a single patch [`stg show`](/man/stg-show) may
 > be used instead of `stg export`.
@@ -628,33 +639,38 @@ are [`stg mail`](/man/stg-mail) and [`stg export`](/man/stg-export).
 Mailing a patch is as easy as this:
 
 ```
-$ stg mail --to recipient@example.com <patches>
+$ stg email send --to recipient@example.com <patches>
 ```
 
 One or more patches may be listed on the command line. Each patch will
 be sent as a separate email, with the first line of the commit message
 used as the email's subject.
 
-> **NOTE** [`stg mail`](/man/stg-mail) uses the `sendmail` program to
-> send the emails. If `sendmail` is not properly set up, the
-> `--smtp-server` option may alternatively be provided to `stg mail`
-> to use an SMTP server instead of invoking `sendmail`.
+> **NOTE** [`stg email send`](/man/stg-email) relies on Git being
+> properly configured to send email, e.g. via SMTP. See the
+> documentation for [`git send-email`][git-send-email] and the [Git
+> book's section on contributing to a project over
+> email][project-over-email] for more detail on how to configure Git for
+> sending email.
+
+[git-send-email]: https://git-scm.com/docs/git-send-email
+[project-over-email]: https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_project_over_email
 
 There are many command-line options to control exactly how patch emails
 are sent, as well as user-modifiable message templates. The [man
-page](/man/stg-mail) has all the details, but two worth mentioning here
+page](/man/stg-email) has all the details, but two worth mentioning here
 are:
 
-- `--edit-cover` opens an editor for writing an introductory message.
-  All patch emails are then sent as replies to this "cover message".
-  Using a cover message is advised whenever sending more than one patch
-  in order to give reviewers a quick overview of the patches.
+- `--compose` opens an editor for writing an introductory message. All
+  patch emails are then sent as replies to this "cover message". Using
+  a cover message is advised whenever sending more than one patch in
+  order to give reviewers a quick overview of the patches.
 
-- `--edit-patches` enables editing each patch before it is sent. Any
-  part of the patch email may be modified, but it is not advised to edit
-  the diff itself since that will only affect the outgoing email and not
-  the underlying patch in the StGit stack. What `--edit-patches` is
-  useful for, however, is to add notes for the patch recipients:
+- `--annotate` enables editing each patch before it is sent. Any part of
+  the patch email may be modified, but it is not advised to edit the
+  diff itself since that will only affect the outgoing email and not the
+  underlying patch in the StGit stack. What `--annotate` is useful for,
+  however, is to add notes for the patch recipients:
 
 ```
 From: Audrey U. Thor <author@example.com>
@@ -670,22 +686,17 @@ commit message. If there is anything you want the patch
 recipients to see, but that should not be recorded in
 the history if the patch is accepted, write it here.
 
- stgit/main.py |    1 +
+ README.md |    1 +
  1 files changed, 1 insertions(+), 0 deletions(-)
 
 
-diff --git a/stgit/main.py b/stgit/main.py
+diff --git a/README.md b/README.md
 index e324179..6398958 100644
---- a/stgit/main.py
-+++ b/stgit/main.py
-@@ -171,6 +171,7 @@ def _main():
-     sys.exit(ret or utils.STGIT_SUCCESS)
+--- a/README.md
++++ b/README.md
+@@ -171,6 +171,7 @@
 
- def main():
-+    print 'My first patch!'
-     try:
-         _main()
-     finally:
++My first patch!
 ```
 
 
@@ -862,10 +873,10 @@ $ stg import --mail my-mail
 ```
 
 The email should be in standard Git mail format (which is what [stg
-mail](/man/stg-mail) produces)---that is, with the patch in-line in the
-mail, not attached. The authorship info is taken from the mail headers,
-and the commit message is read from the 'Subject:' header and the mail
-body.
+email format](/man/stg-email) produces)---that is, with the patch
+in-line in the mail, not attached. The authorship info is taken from the
+mail headers, and the commit message is read from the 'Subject:' header
+and the mail body.
 
 If no filename is provided, `stg import --mail` will read from stdin.
 Thus a mail reader may be configured to pipe email contents into `stg
