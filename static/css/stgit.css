@@ -7,10 +7,10 @@
     /* --font-mono:    Lucida Sans Typewriter, Lucida Console, monaco, Bitstream Vera Sans Mono, monospace; */
     /* --font-special: Optima, Candara, Calibri; */
 
-    --color-dark: #050505;
+    --color-dark: #1a1a1a;
     --color-darkish: #404040;
-    --color-lightish: #e6e6e6;
-    --color-light: #fafafa;
+    --color-lightish: #e6e2e6;
+    --color-light: #f0f0f0;
     --color-mid: grey;
 
     --color-subtle: #2d1650;
@@ -51,7 +51,7 @@
     :root {
         --color-link: #aa87de;
         --color-hover: #5a2ca0;
-        --color-lightish: #202020;
+        --color-lightish: #282428;
         --color-darkish: #e6e6e6;
         background-color: var(--color-dark);
         color: var(--color-darkish);
