@@ -51,7 +51,7 @@ message.
 
 ```sh
 $ stg new -m "Improve greeting" hello-patch
-Now at patch "hello-patch"
+> hello-patch (new)
 ```
 
 With the first patch created, we can take a look at the patch stack
@@ -71,7 +71,11 @@ To do this, we use `stg refresh`:
 $ stg status
  M hi.txt
 $ stg refresh
-Now at patch "hello-patch"
+> refresh-temp (new)
+- refresh-temp
+# refresh-temp
+& hello-patch
+> hello-patch
 $ stg status
 ```
 
@@ -104,13 +108,17 @@ Let's add another patch to improve the goodbye.
 
 ```sh
 $ stg new -m "goodbye" goodbye-patch
-Now at patch "goodbye-patch"
+> goodbye-patch
 $ stg series
 + hello-patch
 > goodbye-patch
 $ echo "Farewell, cruel world." > bye.txt
 $ stg refresh
-Now at patch "goodbye-patch"
+> refresh-temp (new)
+- refresh-temp
+# refresh-temp
+& hello-patch
+> hello-patch
 ```
 
 These patches are looking good\...except the greeting is missing
@@ -119,14 +127,17 @@ changes, and return to the prior patch using `stg pop` and `stg push`:
 
 ```sh
 $ stg pop
-Popped goodbye-patch
-Now at patch "hello-patch"
+- goodbye-patch
+> hello-patch
 $ echo "Hello, world." > hi.txt
 $ stg refresh
-Now at patch "hello-patch"
+> refresh-temp (new)
+- refresh-temp
+# refresh-temp
+& hello-patch
+> hello-patch
 $ stg push
-Pushing patch "goodbye-patch" ... done
-Now at patch "goodbye-patch"
+> goodbye-patch
 ```
 
 We want to make sure to have quality commit messages before we call
