@@ -137,7 +137,7 @@ we will be prompted to enter a message interactively using <code>$EDITOR</code>.
 be revised the using <code>stg edit</code>. So for now, we use a short and simple
 message.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ stg new -m <span class="s2">&#34;Improve greeting&#34;</span> hello-patch
-</span></span><span class="line"><span class="cl">Now at patch <span class="s2">&#34;hello-patch&#34;</span>
+</span></span><span class="line"><span class="cl">&gt; hello-patch <span class="o">(</span>new<span class="o">)</span>
 </span></span></code></pre></div><p>With the first patch created, we can take a look at the patch stack
 using the <code>stg series</code> command:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ stg series
@@ -149,7 +149,11 @@ To do this, we use <code>stg refresh</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ stg status
 </span></span><span class="line"><span class="cl"> M hi.txt
 </span></span><span class="line"><span class="cl">$ stg refresh
-</span></span><span class="line"><span class="cl">Now at patch <span class="s2">&#34;hello-patch&#34;</span>
+</span></span><span class="line"><span class="cl">&gt; refresh-temp <span class="o">(</span>new<span class="o">)</span>
+</span></span><span class="line"><span class="cl">- refresh-temp
+</span></span><span class="line"><span class="cl"><span class="c1"># refresh-temp</span>
+</span></span><span class="line"><span class="cl"><span class="p">&amp;</span> hello-patch
+</span></span><span class="line"><span class="cl">&gt; hello-patch
 </span></span><span class="line"><span class="cl">$ stg status
 </span></span></code></pre></div><p>We can see the contents of a patch using <code>stg show</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ stg show hello-patch
@@ -170,25 +174,32 @@ To do this, we use <code>stg refresh</code>:</p>
 <p>StGit is most useful when working on more than one patch concurrently.
 Let&rsquo;s add another patch to improve the goodbye.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ stg new -m <span class="s2">&#34;goodbye&#34;</span> goodbye-patch
-</span></span><span class="line"><span class="cl">Now at patch <span class="s2">&#34;goodbye-patch&#34;</span>
+</span></span><span class="line"><span class="cl">&gt; goodbye-patch
 </span></span><span class="line"><span class="cl">$ stg series
 </span></span><span class="line"><span class="cl">+ hello-patch
 </span></span><span class="line"><span class="cl">&gt; goodbye-patch
 </span></span><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="s2">&#34;Farewell, cruel world.&#34;</span> &gt; bye.txt
 </span></span><span class="line"><span class="cl">$ stg refresh
-</span></span><span class="line"><span class="cl">Now at patch <span class="s2">&#34;goodbye-patch&#34;</span>
+</span></span><span class="line"><span class="cl">&gt; refresh-temp <span class="o">(</span>new<span class="o">)</span>
+</span></span><span class="line"><span class="cl">- refresh-temp
+</span></span><span class="line"><span class="cl"><span class="c1"># refresh-temp</span>
+</span></span><span class="line"><span class="cl"><span class="p">&amp;</span> hello-patch
+</span></span><span class="line"><span class="cl">&gt; hello-patch
 </span></span></code></pre></div><p>These patches are looking good...except the greeting is missing
 punctuation! With StGit, we can easily revisit an earlier patch, make
 changes, and return to the prior patch using <code>stg pop</code> and <code>stg push</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ stg pop
-</span></span><span class="line"><span class="cl">Popped goodbye-patch
-</span></span><span class="line"><span class="cl">Now at patch <span class="s2">&#34;hello-patch&#34;</span>
+</span></span><span class="line"><span class="cl">- goodbye-patch
+</span></span><span class="line"><span class="cl">&gt; hello-patch
 </span></span><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="s2">&#34;Hello, world.&#34;</span> &gt; hi.txt
 </span></span><span class="line"><span class="cl">$ stg refresh
-</span></span><span class="line"><span class="cl">Now at patch <span class="s2">&#34;hello-patch&#34;</span>
+</span></span><span class="line"><span class="cl">&gt; refresh-temp <span class="o">(</span>new<span class="o">)</span>
+</span></span><span class="line"><span class="cl">- refresh-temp
+</span></span><span class="line"><span class="cl"><span class="c1"># refresh-temp</span>
+</span></span><span class="line"><span class="cl"><span class="p">&amp;</span> hello-patch
+</span></span><span class="line"><span class="cl">&gt; hello-patch
 </span></span><span class="line"><span class="cl">$ stg push
-</span></span><span class="line"><span class="cl">Pushing patch <span class="s2">&#34;goodbye-patch&#34;</span> ... <span class="k">done</span>
-</span></span><span class="line"><span class="cl">Now at patch <span class="s2">&#34;goodbye-patch&#34;</span>
+</span></span><span class="line"><span class="cl">&gt; goodbye-patch
 </span></span></code></pre></div><p>We want to make sure to have quality commit messages before we call
 these patches complete. Let&rsquo;s update the top patch (<code>goodbye-patch</code>)
 with an improved commit message using <code>stg edit</code>:</p>
