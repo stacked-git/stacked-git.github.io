@@ -17,7 +17,7 @@ SYNOPSIS
 DESCRIPTION
 -----------
 
-Export a range of patches to a given directory in unified diff format.All
+Export a range of patches to a given directory in unified diff format. All
 applied patches are exported by default.
 
 Patches are exported to 'patches-<branch>' by default. The --dir option may be
@@ -28,20 +28,15 @@ The patch file output may be customized via a template file found at
 "$(prefix)/share/stgit/templates". The following variables are supported in the
 template file:
 
-%(description)s - patch description
-    %(shortdescr)s  - the first line of the
-patch description
-    %(longdescr)s   - the rest of the patch description,
-after the first line
+    %(description)s - patch description
+    %(shortdescr)s  - the first line of the patch description
+    %(longdescr)s   - the rest of the patch description, after the first line
     %(diffstat)s    - the diff statistics
-    %(authname)s
-   - author name
+    %(authname)s    - author name
     %(authemail)s   - author email
-    %(authdate)s    - patch
-creation date (ISO-8601 format)
+    %(authdate)s    - patch creation date (ISO-8601 format)
     %(commname)s    - committer name
-   
-%(commemail)s   - committer email
+    %(commemail)s   - committer email
 
 OPTIONS
 -------

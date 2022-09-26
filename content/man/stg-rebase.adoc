@@ -24,13 +24,13 @@ Merge conflicts may arise when patches are being pushed-back onto the stack. If
 this occurs, resolve the conflicts and then continue the rebase with the
 following sequence:
 
-stg add --update
+    stg add --update
     stg refresh
     stg goto top-patch
 
 Or to skip the conflicting patch:
 
-stg undo --hard
+    stg undo --hard
     stg push next-patch..top-patch
 
 

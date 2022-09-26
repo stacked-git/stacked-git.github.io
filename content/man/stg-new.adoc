@@ -22,9 +22,16 @@ of the currently applied patches, and is made the new top of the stack.
 Uncommitted changes in the work tree are not included in the patch -- that is
 handled by stg-refresh.
 
-The given name must be unique in the stack, and may only contain alphanumeric
-characters, dashes and underscores. If no name is given, one is generated from
-the first line of the patch's commit message.
+The given patch name must be unique in the stack. If no name is given, one is
+generated from the first line of the patch's commit message.
+
+Patch names follow the rules for Git references with the additional constraint
+that patch names may not contain the '/' character. See
+linkgit:git-check-ref-format[1] for details.
+
+Patch names may start with a leading '-'. When specifying such a patch name on
+the command line, the leading '-' may be escaped with a single backslash as in
+'\-patch-name' to disambiguate the patch name from command line options.
 
 An editor will be launched to edit the commit message to be used for the patch,
 unless the '--message' flag already specified one. The 'patchdescr.tmpl'

@@ -331,7 +331,7 @@ So for example when --thread and --no-chain-reply-to are specified, the second
 and subsequent patches will be replies to the first one like in the
 illustration below where [PATCH v2 0/3] is in reply to [PATCH 0/2]:
 +
-[PATCH 0/2] Here is what I did...
+    [PATCH 0/2] Here is what I did...
       [PATCH 1/2] Clean up and tests
       [PATCH 2/2] Implementation
       [PATCH v2 0/3] Here is a reroll
@@ -380,19 +380,21 @@ can be configured to do the threading itself). Failure to do so may not produce
 the expected result in the recipient’s MUA.
 
 --confirm=<mode>::
-    Confirm just before sending:
-+
-•   'always' will always confirm before sending
-•   'never' will never confirm before sending
-•   'cc' will confirm before sending when send-email has 
-    automatically added addresses from the patch to the Cc list
-•   'compose' will confirm before sending the first message 
-    when using --compose
-•   'auto' is equivalent to cc + compose
+    Confirm just before sending.
 +
 Default is the value of sendemail.confirm configuration value; if that is
 unspecified, default to auto unless any of the suppress options have been
 specified, in which case default to compose.
++
+Confirmation modes:
++
+  - 'always' will always confirm before sending
+  - 'never' will never confirm before sending
+  - 'cc' will confirm before sending when send-email has
+    automatically added addresses from the patch to the Cc list
+  - 'compose' will confirm before sending the first message
+    when using --compose
+  - 'auto' is equivalent to cc + compose
 
 --quiet::
     Make git-send-email less verbose. One line per email should be all that is output.

@@ -21,16 +21,15 @@ Squash two or more patches, creating one patch with their combined changes.
 
 The squash process, at a high level:
 
-1. Pop all the given patches, plus any other patches on top of them.
+  1. Pop all the given patches, plus any other patches on top of them.
 
-2. Push the given patches in the order they were given on the command line.
-This establishes a tree containing the combined changes from the given patches.
+  2. Push the given patches in the order they were given on the command line. This establishes a tree containing the combined changes from the given patches.
 
-3. Replace given patches with a new, squashed patch.
+  3. Replace given patches with a new, squashed patch.
 
-4. Allow the user to interactively edit the commit message of the new, squashed patch.
+  4. Allow the user to interactively edit the commit message of the new, squashed patch.
 
-5. Push other patches that were popped in step (1), if any.
+  5. Push other patches that were popped in step (1), if any.
 
 Conflicts can occur whenever a patch is pushed; this is, in steps (2) and (5).
 If conflicts occur, the squash command will halt such that the conflicts may be
