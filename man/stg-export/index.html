@@ -126,7 +126,7 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Export a range of patches to a given directory in unified diff format.All
+<p>Export a range of patches to a given directory in unified diff format. All
 applied patches are exported by default.</p>
 </div>
 <div class="paragraph">
@@ -139,22 +139,18 @@ used to specify a different output directory.</p>
 &#34;$(prefix)/share/stgit/templates&#34;. The following variables are supported in the
 template file:</p>
 </div>
-<div class="paragraph">
-<p>%(description)s - patch description
-    %(shortdescr)s  - the first line of the
-patch description
-    %(longdescr)s   - the rest of the patch description,
-after the first line
-    %(diffstat)s    - the diff statistics
-    %(authname)s
-   - author name
-    %(authemail)s   - author email
-    %(authdate)s    - patch
-creation date (ISO-8601 format)
-    %(commname)s    - committer name</p>
+<div class="literalblock">
+<div class="content">
+<pre>%(description)s - patch description
+%(shortdescr)s  - the first line of the patch description
+%(longdescr)s   - the rest of the patch description, after the first line
+%(diffstat)s    - the diff statistics
+%(authname)s    - author name
+%(authemail)s   - author email
+%(authdate)s    - patch creation date (ISO-8601 format)
+%(commname)s    - committer name
+%(commemail)s   - committer email</pre>
 </div>
-<div class="paragraph">
-<p>%(commemail)s   - committer email</p>
 </div>
 </div>
 </div>

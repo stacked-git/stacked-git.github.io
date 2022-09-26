@@ -134,17 +134,21 @@ base and push the patches back.</p>
 this occurs, resolve the conflicts and then continue the rebase with the
 following sequence:</p>
 </div>
-<div class="paragraph">
-<p>stg add --update
-    stg refresh
-    stg goto top-patch</p>
+<div class="literalblock">
+<div class="content">
+<pre>stg add --update
+stg refresh
+stg goto top-patch</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Or to skip the conflicting patch:</p>
 </div>
-<div class="paragraph">
-<p>stg undo --hard
-    stg push next-patch..top-patch</p>
+<div class="literalblock">
+<div class="content">
+<pre>stg undo --hard
+stg push next-patch..top-patch</pre>
+</div>
 </div>
 </div>
 </div>

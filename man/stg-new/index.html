@@ -132,9 +132,18 @@ Uncommitted changes in the work tree are not included in the patch — that 
 handled by stg-refresh.</p>
 </div>
 <div class="paragraph">
-<p>The given name must be unique in the stack, and may only contain alphanumeric
-characters, dashes and underscores. If no name is given, one is generated from
-the first line of the patch’s commit message.</p>
+<p>The given patch name must be unique in the stack. If no name is given, one is
+generated from the first line of the patch’s commit message.</p>
+</div>
+<div class="paragraph">
+<p>Patch names follow the rules for Git references with the additional constraint
+that patch names may not contain the <em>/</em> character. See
+linkgit:git-check-ref-format[1] for details.</p>
+</div>
+<div class="paragraph">
+<p>Patch names may start with a leading <em>-</em>. When specifying such a patch name on
+the command line, the leading <em>-</em> may be escaped with a single backslash as in
+<em>\-patch-name</em> to disambiguate the patch name from command line options.</p>
 </div>
 <div class="paragraph">
 <p>An editor will be launched to edit the commit message to be used for the patch,
