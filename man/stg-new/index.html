@@ -118,7 +118,8 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg new</em> [OPTIONS] [patchname] [-- &lt;path&gt;…​]</pre>
+<pre class="content"><em>stg new</em> [OPTIONS] [patchname] [-- &lt;path&gt;…​]
+<em>stg new</em> [OPTIONS] [--name &lt;patchname&gt;] [-- &lt;path&gt;…​]</pre>
 </div>
 </div>
 </div>
@@ -157,6 +158,12 @@ template file (if available) is used to pre-fill the editor.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
+<dt class="hdlist1">-n &lt;name&gt;</dt>
+<dt class="hdlist1">--name=&lt;name&gt;</dt>
+<dd>
+<p>Alternative to the [patchname] argument for specifying the name of the new
+patch. This option allows the patch name to start with an unescaped leading <em>-</em>.</p>
+</dd>
 <dt class="hdlist1">-r</dt>
 <dt class="hdlist1">--refresh</dt>
 <dd>

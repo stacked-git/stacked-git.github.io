@@ -118,13 +118,15 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg email format</em> [OPTIONS] &lt;patch&gt;…​ [-- &lt;GIT-OPTIONS&gt;]
-<em>stg email format</em> [OPTIONS] --all [-- &lt;GIT-OPTIONS&gt;]
-<em>stg email send</em> [OPTIONS] &lt;file|directory&gt;…​ [-- &lt;GIT-OPTIONS&gt;]
-<em>stg email send</em> [OPTIONS] &lt;patch&gt;…​ [-- &lt;GIT-OPTIONS&gt;]
-<em>stg email send</em> [OPTIONS] --all [-- &lt;GIT-OPTIONS&gt;]
-<em>stg email send</em> [OPTIONS] --dump-aliases
-<em>stg email help</em> [OPTIONS] [SUBCOMMAND]…​</pre>
+<pre class="content"><em>stg email format</em> [OPTIONS] &lt;patch&gt;…​
+<em>stg email format</em> [OPTIONS] --all
+<em>stg email send</em> [OPTIONS] &lt;file|directory&gt;…​
+<em>stg email send</em> [OPTIONS] &lt;patch&gt;…​
+<em>stg email send</em> [OPTIONS] --all
+<em>stg email send</em> --dump-aliases
+<em>stg email help format</em>
+<em>stg email help send</em>
+<em>stg email help help</em></pre>
 </div>
 </div>
 </div>
@@ -235,6 +237,11 @@ after a <code>--</code> separator. See the linkgit:git-send-email[1] man page.</
 <dt class="hdlist1">--all</dt>
 <dd>
 <p>Format all applied patches</p>
+</dd>
+<dt class="hdlist1">-G &lt;git-options&gt;</dt>
+<dt class="hdlist1">--git-opts=&lt;git-options&gt;</dt>
+<dd>
+<p>Extra options to pass to &#34;git format-patch&#34;</p>
 </dd>
 <dt class="hdlist1">-o &lt;dir&gt;</dt>
 <dt class="hdlist1">--output-directory=&lt;dir&gt;</dt>
@@ -463,6 +470,11 @@ creation/deletion cost fudge factor. See linkgit:git-range-diff[1)] for details.
 <dt class="hdlist1">--all</dt>
 <dd>
 <p>Send all applied patches</p>
+</dd>
+<dt class="hdlist1">-G &lt;git-options&gt;</dt>
+<dt class="hdlist1">--git-opts=&lt;git-options&gt;</dt>
+<dd>
+<p>Extra options to pass to &#34;git send-email&#34;</p>
 </dd>
 <dt class="hdlist1">--from=&lt;address&gt;</dt>
 <dd>

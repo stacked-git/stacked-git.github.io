@@ -48,7 +48,7 @@ By default, the bottommost patch is committed.</description>
       
       <guid>http://stacked-git.github.io/man/stg-completion/</guid>
       <description>NAME stg-completion - Support for shell completions
-SYNOPSIS stg completion bash [OPTIONS] stg completion fish [OPTIONS] stg completion zsh [OPTIONS] stg completion list aliases [OPTIONS] stg completion list commands [OPTIONS] stg completion list commands-and-aliases [OPTIONS] stg completion list help [OPTIONS] [SUBCOMMAND]…​ stg completion man [OPTIONS] stg completion help [OPTIONS] [SUBCOMMAND]…​ DESCRIPTION Support completions for bash, fish, and zsh. Also provides stg completion list command for dynamically introspecting StGit’s commands and aliases.</description>
+SYNOPSIS stg completion bash [OPTIONS] stg completion fish [OPTIONS] stg completion zsh [OPTIONS] stg completion list aliases [OPTIONS] stg completion list commands [OPTIONS] stg completion list commands-and-aliases [OPTIONS] stg completion list help aliases stg completion list help commands stg completion list help commands-and-aliases stg completion list help help stg completion man [OPTIONS] stg completion help bash stg completion help fish stg completion help zsh stg completion help list aliases stg completion help list commands stg completion help list commands-and-aliases stg completion help man stg completion help help DESCRIPTION Support completions for bash, fish, and zsh.</description>
     </item>
     
     <item>
@@ -82,7 +82,7 @@ OPTIONS -r &amp;lt;revspec&amp;gt; --range=&amp;lt;revspec&amp;gt; Show diff bet
       
       <guid>http://stacked-git.github.io/man/stg-edit/</guid>
       <description>NAME stg-edit - Edit a patch
-SYNOPSIS stg edit [OPTIONS] [--] [patch] DESCRIPTION Edit a patch. Various aspects of a patch may be edited, including the message, author, patch name, or even the patch’s diff.
+SYNOPSIS stg edit [OPTIONS] [patch] DESCRIPTION Edit a patch. Various aspects of a patch may be edited, including the message, author, patch name, or even the patch’s diff.
 By default, the topmost patch is edited.
 With no options or when --edit is specified, the patch details are edited interactively. Alternatively, command line options may be used to modify the patch non-interactively.
 The --diff option causes the patch’s diff to be appended to the patch description when editing interactively.</description>
@@ -95,7 +95,7 @@ The --diff option causes the patch’s diff to be appended to the patch descript
       
       <guid>http://stacked-git.github.io/man/stg-email/</guid>
       <description>NAME stg-email - Format and send patches as email
-SYNOPSIS stg email format [OPTIONS] &amp;lt;patch&amp;gt;…​ [-- &amp;lt;GIT-OPTIONS&amp;gt;] stg email format [OPTIONS] --all [-- &amp;lt;GIT-OPTIONS&amp;gt;] stg email send [OPTIONS] &amp;lt;file|directory&amp;gt;…​ [-- &amp;lt;GIT-OPTIONS&amp;gt;] stg email send [OPTIONS] &amp;lt;patch&amp;gt;…​ [-- &amp;lt;GIT-OPTIONS&amp;gt;] stg email send [OPTIONS] --all [-- &amp;lt;GIT-OPTIONS&amp;gt;] stg email send [OPTIONS] --dump-aliases stg email help [OPTIONS] [SUBCOMMAND]…​ DESCRIPTION Format and send patches as email.
+SYNOPSIS stg email format [OPTIONS] &amp;lt;patch&amp;gt;…​ stg email format [OPTIONS] --all stg email send [OPTIONS] &amp;lt;file|directory&amp;gt;…​ stg email send [OPTIONS] &amp;lt;patch&amp;gt;…​ stg email send [OPTIONS] --all stg email send --dump-aliases stg email help format stg email help send stg email help help DESCRIPTION Format and send patches as email.
 A typical workflow is to first generate email files for each patch along with an optional cover letter using stg email format.</description>
     </item>
     
@@ -163,8 +163,7 @@ StGit Part of the StGit suite - see linkman:stg[1]</description>
       
       <guid>http://stacked-git.github.io/man/stg-help/</guid>
       <description>NAME stg-help - Print this message or the help of the given subcommand(s)
-SYNOPSIS stg help [OPTIONS] [SUBCOMMAND]…​ DESCRIPTION Print this message or the help of the given subcommand(s)
-StGit Part of the StGit suite - see linkman:stg[1]</description>
+SYNOPSIS stg help branch --list stg help branch --create stg help branch --clone stg help branch --rename stg help branch --protect stg help branch --unprotect stg help branch --delete stg help branch --cleanup stg help branch --describe stg help clean stg help commit stg help completion bash stg help completion fish stg help completion zsh stg help completion list aliases stg help completion list commands stg help completion list commands-and-aliases stg help completion man stg help delete stg help diff stg help edit stg help email format stg help email send stg help export stg help files stg help float stg help fold stg help goto stg help hide stg help id stg help import stg help init stg help log stg help new stg help next stg help patches stg help pick stg help pop stg help prev stg help pull stg help push stg help rebase stg help redo stg help refresh stg help rename stg help repair stg help reset stg help series stg help show stg help sink stg help spill stg help squash stg help sync stg help top stg help uncommit stg help undo stg help unhide stg help version stg help help DESCRIPTION Print this message or the help of the given subcommand(s)</description>
     </item>
     
     <item>
@@ -231,8 +230,7 @@ The &amp;#34;stg undo&amp;#34; and &amp;#34;stg redo&amp;#34; commands may be us
       
       <guid>http://stacked-git.github.io/man/stg-new/</guid>
       <description>NAME stg-new - Create a new patch at top of the stack
-SYNOPSIS stg new [OPTIONS] [patchname] [-- &amp;lt;path&amp;gt;…​] DESCRIPTION Create a new, empty patch on the current stack. The new patch is created on top of the currently applied patches, and is made the new top of the stack. Uncommitted changes in the work tree are not included in the patch — that is handled by stg-refresh.
-The given patch name must be unique in the stack.</description>
+SYNOPSIS stg new [OPTIONS] [patchname] [-- &amp;lt;path&amp;gt;…​] stg new [OPTIONS] [--name &amp;lt;patchname&amp;gt;] [-- &amp;lt;path&amp;gt;…​] DESCRIPTION Create a new, empty patch on the current stack. The new patch is created on top of the currently applied patches, and is made the new top of the stack. Uncommitted changes in the work tree are not included in the patch — that is handled by stg-refresh.</description>
     </item>
     
     <item>
@@ -353,7 +351,7 @@ OPTIONS -n &amp;lt;n&amp;gt; --number=&amp;lt;n&amp;gt; Undo the last &amp;lt;n&
       
       <guid>http://stacked-git.github.io/man/stg-refresh/</guid>
       <description>NAME stg-refresh - Incorporate worktree changes into current patch
-SYNOPSIS stg refresh [OPTIONS] [--] [path]…​ DESCRIPTION Include the latest work tree and index changes in the current patch. This command generates a new git commit object for the patch; the old commit is no longer visible.
+SYNOPSIS stg refresh [OPTIONS] [path]…​ DESCRIPTION Include the latest work tree and index changes in the current patch. This command generates a new git commit object for the patch; the old commit is no longer visible.
 Refresh will warn if the index is dirty, and require use of either the --index or --force options to override this check. This is to prevent accidental full refresh when only some changes were staged using git add interative mode.</description>
     </item>
     
@@ -398,7 +396,7 @@ The state is specified with a commit id from the stack log, which may be viewed 
       
       <guid>http://stacked-git.github.io/man/stg-series/</guid>
       <description>NAME stg-series - Display the patch series
-SYNOPSIS stg series [OPTIONS] [-A] [-U] [-H] stg series [OPTIONS] --all stg series [OPTIONS] --short stg series [OPTIONS] &amp;lt;patch&amp;gt;…​ DESCRIPTION Show all the patches in the series, or just those in the given range, ordered from top to bottom.
+SYNOPSIS stg series [OPTIONS] [-A] [-U] [-H] stg series [OPTIONS] --all stg series [OPTIONS] --short stg series [OPTIONS] [patch]…​ DESCRIPTION Show all the patches in the series, or just those in the given range, ordered from top to bottom.
 The applied patches are prefixed with a + (except the current patch, which is prefixed with a &amp;gt;), the unapplied patches with a -, and the hidden patches with a !</description>
     </item>
     
@@ -409,9 +407,8 @@ The applied patches are prefixed with a + (except the current patch, which is pr
       
       <guid>http://stacked-git.github.io/man/stg-show/</guid>
       <description>NAME stg-show - Show patch commits
-SYNOPSIS stg show [OPTIONS] [patch-or-rev]…​ [-- &amp;lt;path&amp;gt;…​] stg show [OPTIONS] [-A] [-U] [-H] [-- &amp;lt;path&amp;gt;…​] DESCRIPTION Show the commit log and diff corresponding to the given patches. The topmost patch is shown by default, or HEAD if no patches are applied. The output is similar to linkgit:git-show[1].
-OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use BRANCH instead of current branch
--s --stat Show a diffstat summary instead of the full diff</description>
+SYNOPSIS stg show [OPTIONS] [patch-or-rev]…​ [-- &amp;lt;path&amp;gt;…​] stg show [OPTIONS] [--patch &amp;lt;patch-or-rev&amp;gt;]…​ [-- &amp;lt;path&amp;gt;…​] stg show [OPTIONS] [-A] [-U] [-H] [-- &amp;lt;path&amp;gt;…​] DESCRIPTION Show the commit log and diff corresponding to the given patches. The topmost patch is shown by default, or HEAD if no patches are applied. The output is similar to linkgit:git-show[1].
+OPTIONS -p &amp;lt;patch-or-rev&amp;gt; --patch=&amp;lt;patch-or-rev&amp;gt; Patch or revision to show</description>
     </item>
     
     <item>
@@ -530,7 +527,7 @@ StGit Part of the StGit suite - see linkman:stg[1]</description>
       
       <guid>http://stacked-git.github.io/man/stg/</guid>
       <description>NAME stg - Manage stacks of patches using the Git content tracker
-SYNOPSIS stg [OPTIONS] &amp;lt;command&amp;gt; […​] stg [OPTIONS] &amp;lt;--version|-h|--help&amp;gt; DESCRIPTION StGit (Stacked Git) is an application that provides a convenient way to maintain a patch stack on top of a Git branch:
+SYNOPSIS stg [OPTIONS] &amp;lt;command&amp;gt; […​] stg [OPTIONS] &amp;lt;-h|--help&amp;gt; stg --version DESCRIPTION StGit (Stacked Git) is an application that provides a convenient way to maintain a patch stack on top of a Git branch:
 The topmost (most recent) commits of a branch are given names. Such a named commit is called a patch.
 After making changes to the worktree, you can incorporate the changes into an existing patch; this is called refreshing.</description>
     </item>

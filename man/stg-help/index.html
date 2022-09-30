@@ -118,7 +118,65 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg help</em> [OPTIONS] [SUBCOMMAND]…​</pre>
+<pre class="content"><em>stg help branch --list</em>
+<em>stg help branch --create</em>
+<em>stg help branch --clone</em>
+<em>stg help branch --rename</em>
+<em>stg help branch --protect</em>
+<em>stg help branch --unprotect</em>
+<em>stg help branch --delete</em>
+<em>stg help branch --cleanup</em>
+<em>stg help branch --describe</em>
+<em>stg help clean</em>
+<em>stg help commit</em>
+<em>stg help completion bash</em>
+<em>stg help completion fish</em>
+<em>stg help completion zsh</em>
+<em>stg help completion list aliases</em>
+<em>stg help completion list commands</em>
+<em>stg help completion list commands-and-aliases</em>
+<em>stg help completion man</em>
+<em>stg help delete</em>
+<em>stg help diff</em>
+<em>stg help edit</em>
+<em>stg help email format</em>
+<em>stg help email send</em>
+<em>stg help export</em>
+<em>stg help files</em>
+<em>stg help float</em>
+<em>stg help fold</em>
+<em>stg help goto</em>
+<em>stg help hide</em>
+<em>stg help id</em>
+<em>stg help import</em>
+<em>stg help init</em>
+<em>stg help log</em>
+<em>stg help new</em>
+<em>stg help next</em>
+<em>stg help patches</em>
+<em>stg help pick</em>
+<em>stg help pop</em>
+<em>stg help prev</em>
+<em>stg help pull</em>
+<em>stg help push</em>
+<em>stg help rebase</em>
+<em>stg help redo</em>
+<em>stg help refresh</em>
+<em>stg help rename</em>
+<em>stg help repair</em>
+<em>stg help reset</em>
+<em>stg help series</em>
+<em>stg help show</em>
+<em>stg help sink</em>
+<em>stg help spill</em>
+<em>stg help squash</em>
+<em>stg help sync</em>
+<em>stg help top</em>
+<em>stg help uncommit</em>
+<em>stg help undo</em>
+<em>stg help unhide</em>
+<em>stg help version</em>
+<em>stg help help</em></pre>
 </div>
 </div>
 </div>
@@ -127,6 +185,247 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Print this message or the help of the given subcommand(s)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_commands">COMMANDS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">branch --list</dt>
+<dd>
+<p>List branches in this repository</p>
+</dd>
+<dt class="hdlist1">branch --create</dt>
+<dd>
+<p>Create and switch to a new branch</p>
+</dd>
+<dt class="hdlist1">branch --clone</dt>
+<dd>
+<p>Clone the contents of the current branch</p>
+</dd>
+<dt class="hdlist1">branch --rename</dt>
+<dd>
+<p>Rename an existing branch</p>
+</dd>
+<dt class="hdlist1">branch --protect</dt>
+<dd>
+<p>Prevent StGit from modifying a branch</p>
+</dd>
+<dt class="hdlist1">branch --unprotect</dt>
+<dd>
+<p>Allow StGit to modify a previously protected branch</p>
+</dd>
+<dt class="hdlist1">branch --delete</dt>
+<dd>
+<p>Delete a branch</p>
+</dd>
+<dt class="hdlist1">branch --cleanup</dt>
+<dd>
+<p>Remove StGit patch stack from branch</p>
+</dd>
+<dt class="hdlist1">branch --describe</dt>
+<dd>
+<p>Set the branch description</p>
+</dd>
+<dt class="hdlist1">clean</dt>
+<dd>
+<p>Delete empty patches from the series</p>
+</dd>
+<dt class="hdlist1">commit</dt>
+<dd>
+<p>Finalize patches to the stack base</p>
+</dd>
+<dt class="hdlist1">completion bash</dt>
+<dd>
+<p>Generate bash completion script</p>
+</dd>
+<dt class="hdlist1">completion fish</dt>
+<dd>
+<p>Generate fish shell completion script</p>
+</dd>
+<dt class="hdlist1">completion zsh</dt>
+<dd>
+<p>Generate zsh completion script</p>
+</dd>
+<dt class="hdlist1">completion list aliases</dt>
+<dd>
+<p>List aliases</p>
+</dd>
+<dt class="hdlist1">completion list commands</dt>
+<dd>
+<p>List StGit commands</p>
+</dd>
+<dt class="hdlist1">completion list commands-and-aliases</dt>
+<dd>
+<p>List StGit commands and aliases</p>
+</dd>
+<dt class="hdlist1">completion man</dt>
+<dd>
+<p>Generate asciidoc man pages</p>
+</dd>
+<dt class="hdlist1">delete</dt>
+<dd>
+<p>Delete patches</p>
+</dd>
+<dt class="hdlist1">diff</dt>
+<dd>
+<p>Show a diff</p>
+</dd>
+<dt class="hdlist1">edit</dt>
+<dd>
+<p>Edit a patch</p>
+</dd>
+<dt class="hdlist1">email format</dt>
+<dd>
+<p>Format patches as email files</p>
+</dd>
+<dt class="hdlist1">email send</dt>
+<dd>
+<p>Send patches as emails</p>
+</dd>
+<dt class="hdlist1">export</dt>
+<dd>
+<p>Export patches to a directory</p>
+</dd>
+<dt class="hdlist1">files</dt>
+<dd>
+<p>Show files modified by a patch</p>
+</dd>
+<dt class="hdlist1">float</dt>
+<dd>
+<p>Push patches to the top, even if applied</p>
+</dd>
+<dt class="hdlist1">fold</dt>
+<dd>
+<p>Fold diff file into the current patch</p>
+</dd>
+<dt class="hdlist1">goto</dt>
+<dd>
+<p>Go to patch by pushing or popping as necessary</p>
+</dd>
+<dt class="hdlist1">hide</dt>
+<dd>
+<p>Hide patches in the series</p>
+</dd>
+<dt class="hdlist1">id</dt>
+<dd>
+<p>Print git hash of a StGit revision</p>
+</dd>
+<dt class="hdlist1">import</dt>
+<dd>
+<p>Import patches to stack</p>
+</dd>
+<dt class="hdlist1">init</dt>
+<dd>
+<p>Initialize a StGit stack on current branch</p>
+</dd>
+<dt class="hdlist1">log</dt>
+<dd>
+<p>Display or optionally clear the stack changelog</p>
+</dd>
+<dt class="hdlist1">new</dt>
+<dd>
+<p>Create a new patch at top of the stack</p>
+</dd>
+<dt class="hdlist1">next</dt>
+<dd>
+<p>Print the name of the next patch</p>
+</dd>
+<dt class="hdlist1">patches</dt>
+<dd>
+<p>Show patches that modify files</p>
+</dd>
+<dt class="hdlist1">pick</dt>
+<dd>
+<p>Import a patch from another branch or a commit object</p>
+</dd>
+<dt class="hdlist1">pop</dt>
+<dd>
+<p>Pop (unapply) one or more applied patches</p>
+</dd>
+<dt class="hdlist1">prev</dt>
+<dd>
+<p>Print the name of the previous patch</p>
+</dd>
+<dt class="hdlist1">pull</dt>
+<dd>
+<p>Pull changes from a remote repository</p>
+</dd>
+<dt class="hdlist1">push</dt>
+<dd>
+<p>Push (apply) one or more unapplied patches</p>
+</dd>
+<dt class="hdlist1">rebase</dt>
+<dd>
+<p>Move the stack base to another point in history</p>
+</dd>
+<dt class="hdlist1">redo</dt>
+<dd>
+<p>Undo the last undo operation</p>
+</dd>
+<dt class="hdlist1">refresh</dt>
+<dd>
+<p>Incorporate worktree changes into current patch</p>
+</dd>
+<dt class="hdlist1">rename</dt>
+<dd>
+<p>Rename a patch</p>
+</dd>
+<dt class="hdlist1">repair</dt>
+<dd>
+<p>Repair stack after branch is modified with git commands</p>
+</dd>
+<dt class="hdlist1">reset</dt>
+<dd>
+<p>Reset the patch stack to an earlier state</p>
+</dd>
+<dt class="hdlist1">series</dt>
+<dd>
+<p>Display the patch series</p>
+</dd>
+<dt class="hdlist1">show</dt>
+<dd>
+<p>Show patch commits</p>
+</dd>
+<dt class="hdlist1">sink</dt>
+<dd>
+<p>Move patches deeper in the stack</p>
+</dd>
+<dt class="hdlist1">spill</dt>
+<dd>
+<p>Spill changes from the topmost patch</p>
+</dd>
+<dt class="hdlist1">squash</dt>
+<dd>
+<p>Squash two or more patches into one</p>
+</dd>
+<dt class="hdlist1">sync</dt>
+<dd>
+<p>Synchronize patches with a branch or a series</p>
+</dd>
+<dt class="hdlist1">top</dt>
+<dd>
+<p>Print the name of the top patch</p>
+</dd>
+<dt class="hdlist1">uncommit</dt>
+<dd>
+<p>Convert regular Git commits into StGit patches</p>
+</dd>
+<dt class="hdlist1">undo</dt>
+<dd>
+<p>Undo the last command</p>
+</dd>
+<dt class="hdlist1">unhide</dt>
+<dd>
+<p>Unhide hidden patches</p>
+</dd>
+<dt class="hdlist1">version</dt>
+<dd>
+<p>Print version information and exit</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
