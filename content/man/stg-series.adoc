@@ -15,7 +15,7 @@ SYNOPSIS
 'stg series' [OPTIONS] [-A] [-U] [-H]
 'stg series' [OPTIONS] --all
 'stg series' [OPTIONS] --short
-'stg series' [OPTIONS] <patch>...
+'stg series' [OPTIONS] [patch]...
 
 DESCRIPTION
 -----------

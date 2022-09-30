@@ -35,6 +35,15 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2022-09-30: [StGit v2.0.0-rc.1][v2.0.0-rc.1] has been released.
+
+This first 2.0 release candidate brings a new look to the online help thanks to
+updating to clap 4.0. Further compatibility improvements with sparse checkouts
+and multiple worktrees comes from the update to `git2` 0.15.0. And several
+changes were made to support patch names starting with '-'.
+
+See the [changelog](changelog/) for all the details on this release.
+
 ### 2022-09-02: StGit Extension for Visual Studio Code 0.9.0
 
 How cool is this, Samuel Rydh has implemented a StGit extension for
@@ -83,19 +92,11 @@ Thanks to everyone who submitted a PR or reported an issue!
 
 See the [changelog](changelog/) for all the details on this release.
 
-### 2021-10-27: [StGit v1.4][v1.4] has been released.
-
-This is mostly a bugfix release with a couple minor features affecting
-importing patches from mail and `stg commit` no longer committing empty
-patches by default.
-
-See the [changelog](changelog/) for all the details on this release.
-
+[v2.0.0-rc.1]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0-rc.1
 [v2.0.0-beta.3]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0-beta.3
 [v2.0.0-beta.2]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0-beta.2
 [v2.0.0-beta.1]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0-beta.1
 [v1.5]: https://github.com/stacked-git/stgit/releases/tag/v1.5
-[v1.4]: https://github.com/stacked-git/stgit/releases/tag/v1.4
 
 ## Why Stacked Git?
 

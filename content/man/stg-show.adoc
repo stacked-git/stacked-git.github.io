@@ -13,6 +13,7 @@ SYNOPSIS
 --------
 [verse]
 'stg show' [OPTIONS] [patch-or-rev]... [-- <path>...]
+'stg show' [OPTIONS] [--patch <patch-or-rev>]... [-- <path>...]
 'stg show' [OPTIONS] [-A] [-U] [-H] [-- <path>...]
 
 DESCRIPTION
@@ -25,6 +26,10 @@ similar to linkgit:git-show[1].
 
 OPTIONS
 -------
+-p <patch-or-rev>::
+--patch=<patch-or-rev>::
+    Patch or revision to show
+
 -b <branch>::
 --branch=<branch>::
     Use BRANCH instead of current branch

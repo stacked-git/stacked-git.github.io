@@ -12,12 +12,247 @@ stg-help - Print this message or the help of the given subcommand(s)
 SYNOPSIS
 --------
 [verse]
-'stg help' [OPTIONS] [SUBCOMMAND]...
+'stg help branch --list'
+'stg help branch --create'
+'stg help branch --clone'
+'stg help branch --rename'
+'stg help branch --protect'
+'stg help branch --unprotect'
+'stg help branch --delete'
+'stg help branch --cleanup'
+'stg help branch --describe'
+'stg help clean'
+'stg help commit'
+'stg help completion bash'
+'stg help completion fish'
+'stg help completion zsh'
+'stg help completion list aliases'
+'stg help completion list commands'
+'stg help completion list commands-and-aliases'
+'stg help completion man'
+'stg help delete'
+'stg help diff'
+'stg help edit'
+'stg help email format'
+'stg help email send'
+'stg help export'
+'stg help files'
+'stg help float'
+'stg help fold'
+'stg help goto'
+'stg help hide'
+'stg help id'
+'stg help import'
+'stg help init'
+'stg help log'
+'stg help new'
+'stg help next'
+'stg help patches'
+'stg help pick'
+'stg help pop'
+'stg help prev'
+'stg help pull'
+'stg help push'
+'stg help rebase'
+'stg help redo'
+'stg help refresh'
+'stg help rename'
+'stg help repair'
+'stg help reset'
+'stg help series'
+'stg help show'
+'stg help sink'
+'stg help spill'
+'stg help squash'
+'stg help sync'
+'stg help top'
+'stg help uncommit'
+'stg help undo'
+'stg help unhide'
+'stg help version'
+'stg help help'
 
 DESCRIPTION
 -----------
 
 Print this message or the help of the given subcommand(s)
+
+COMMANDS
+--------
+
+branch --list::
+    List branches in this repository
+
+branch --create::
+    Create and switch to a new branch
+
+branch --clone::
+    Clone the contents of the current branch
+
+branch --rename::
+    Rename an existing branch
+
+branch --protect::
+    Prevent StGit from modifying a branch
+
+branch --unprotect::
+    Allow StGit to modify a previously protected branch
+
+branch --delete::
+    Delete a branch
+
+branch --cleanup::
+    Remove StGit patch stack from branch
+
+branch --describe::
+    Set the branch description
+
+clean::
+    Delete empty patches from the series
+
+commit::
+    Finalize patches to the stack base
+
+completion bash::
+    Generate bash completion script
+
+completion fish::
+    Generate fish shell completion script
+
+completion zsh::
+    Generate zsh completion script
+
+completion list aliases::
+    List aliases
+
+completion list commands::
+    List StGit commands
+
+completion list commands-and-aliases::
+    List StGit commands and aliases
+
+completion man::
+    Generate asciidoc man pages
+
+delete::
+    Delete patches
+
+diff::
+    Show a diff
+
+edit::
+    Edit a patch
+
+email format::
+    Format patches as email files
+
+email send::
+    Send patches as emails
+
+export::
+    Export patches to a directory
+
+files::
+    Show files modified by a patch
+
+float::
+    Push patches to the top, even if applied
+
+fold::
+    Fold diff file into the current patch
+
+goto::
+    Go to patch by pushing or popping as necessary
+
+hide::
+    Hide patches in the series
+
+id::
+    Print git hash of a StGit revision
+
+import::
+    Import patches to stack
+
+init::
+    Initialize a StGit stack on current branch
+
+log::
+    Display or optionally clear the stack changelog
+
+new::
+    Create a new patch at top of the stack
+
+next::
+    Print the name of the next patch
+
+patches::
+    Show patches that modify files
+
+pick::
+    Import a patch from another branch or a commit object
+
+pop::
+    Pop (unapply) one or more applied patches
+
+prev::
+    Print the name of the previous patch
+
+pull::
+    Pull changes from a remote repository
+
+push::
+    Push (apply) one or more unapplied patches
+
+rebase::
+    Move the stack base to another point in history
+
+redo::
+    Undo the last undo operation
+
+refresh::
+    Incorporate worktree changes into current patch
+
+rename::
+    Rename a patch
+
+repair::
+    Repair stack after branch is modified with git commands
+
+reset::
+    Reset the patch stack to an earlier state
+
+series::
+    Display the patch series
+
+show::
+    Show patch commits
+
+sink::
+    Move patches deeper in the stack
+
+spill::
+    Spill changes from the topmost patch
+
+squash::
+    Squash two or more patches into one
+
+sync::
+    Synchronize patches with a branch or a series
+
+top::
+    Print the name of the top patch
+
+uncommit::
+    Convert regular Git commits into StGit patches
+
+undo::
+    Undo the last command
+
+unhide::
+    Unhide hidden patches
+
+version::
+    Print version information and exit
 
 StGit
 -----

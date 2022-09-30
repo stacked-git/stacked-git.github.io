@@ -12,7 +12,7 @@ stg-edit - Edit a patch
 SYNOPSIS
 --------
 [verse]
-'stg edit' [OPTIONS] [--] [patch]
+'stg edit' [OPTIONS] [patch]
 
 DESCRIPTION
 -----------

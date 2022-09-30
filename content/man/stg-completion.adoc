@@ -18,9 +18,19 @@ SYNOPSIS
 'stg completion list aliases' [OPTIONS]
 'stg completion list commands' [OPTIONS]
 'stg completion list commands-and-aliases' [OPTIONS]
-'stg completion list help' [OPTIONS] [SUBCOMMAND]...
+'stg completion list help aliases'
+'stg completion list help commands'
+'stg completion list help commands-and-aliases'
+'stg completion list help help'
 'stg completion man' [OPTIONS]
-'stg completion help' [OPTIONS] [SUBCOMMAND]...
+'stg completion help bash'
+'stg completion help fish'
+'stg completion help zsh'
+'stg completion help list aliases'
+'stg completion help list commands'
+'stg completion help list commands-and-aliases'
+'stg completion help man'
+'stg completion help help'
 
 DESCRIPTION
 -----------

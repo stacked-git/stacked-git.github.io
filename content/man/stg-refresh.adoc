@@ -12,7 +12,7 @@ stg-refresh - Incorporate worktree changes into current patch
 SYNOPSIS
 --------
 [verse]
-'stg refresh' [OPTIONS] [--] [path]...
+'stg refresh' [OPTIONS] [path]...
 
 DESCRIPTION
 -----------

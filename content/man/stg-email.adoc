@@ -12,13 +12,15 @@ stg-email - Format and send patches as email
 SYNOPSIS
 --------
 [verse]
-'stg email format' [OPTIONS] <patch>... [-- <GIT-OPTIONS>]
-'stg email format' [OPTIONS] --all [-- <GIT-OPTIONS>]
-'stg email send' [OPTIONS] <file|directory>... [-- <GIT-OPTIONS>]
-'stg email send' [OPTIONS] <patch>... [-- <GIT-OPTIONS>]
-'stg email send' [OPTIONS] --all [-- <GIT-OPTIONS>]
-'stg email send' [OPTIONS] --dump-aliases
-'stg email help' [OPTIONS] [SUBCOMMAND]...
+'stg email format' [OPTIONS] <patch>...
+'stg email format' [OPTIONS] --all
+'stg email send' [OPTIONS] <file|directory>...
+'stg email send' [OPTIONS] <patch>...
+'stg email send' [OPTIONS] --all
+'stg email send' --dump-aliases
+'stg email help format'
+'stg email help send'
+'stg email help help'
 
 DESCRIPTION
 -----------
@@ -101,6 +103,10 @@ FORMAT OPTIONS
 -a::
 --all::
     Format all applied patches
+
+-G <git-options>::
+--git-opts=<git-options>::
+    Extra options to pass to "git format-patch"
 
 -o <dir>::
 --output-directory=<dir>::
@@ -285,6 +291,10 @@ SEND OPTIONS
 -a::
 --all::
     Send all applied patches
+
+-G <git-options>::
+--git-opts=<git-options>::
+    Extra options to pass to "git send-email"
 
 --from=<address>::
     Specify the sender of the emails. If not specified on the command line, the
