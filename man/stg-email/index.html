@@ -187,11 +187,6 @@ be deferred to <code>stg email send</code>.</p>
 configuration values. Refer to the <a href="https://git-scm.com/docs/git-config">git-config(1)</a> and
 linkgit:git-format-patch[1] man pages for more details.</p>
 </div>
-<div class="paragraph">
-<p><code>stg email format</code> is a wrapper for <code>git format-patch</code>. Additional options for
-<code>git format-patch</code> may be specified on the command line after a <code>--</code> separator.
-See the linkgit:git-format-patch[1] man page.</p>
-</div>
 </dd>
 <dt class="hdlist1">send</dt>
 <dd>
@@ -217,10 +212,6 @@ SMTP details such as <code>sendemail.smtpServer</code>, <code>sendemail.smtpUser
 to <a href="https://git-scm.com/docs/git-config">git-config(1)</a> and linkgit:git-send-email[1] man pages for more
 detail on all the available configuration options.</p>
 </div>
-<div class="paragraph">
-<p>Additional options for <code>git send-email</code> may be specified on the command line
-after a <code>--</code> separator. See the linkgit:git-send-email[1] man page.</p>
-</div>
 </dd>
 </dl>
 </div>
@@ -238,10 +229,14 @@ after a <code>--</code> separator. See the linkgit:git-send-email[1] man page.</
 <dd>
 <p>Format all applied patches</p>
 </dd>
-<dt class="hdlist1">-G &lt;git-options&gt;</dt>
-<dt class="hdlist1">--git-opts=&lt;git-options&gt;</dt>
+<dt class="hdlist1">-G &lt;option&gt;</dt>
+<dt class="hdlist1">--git-opt=&lt;option&gt;</dt>
 <dd>
-<p>Extra options to pass to &#34;git format-patch&#34;</p>
+<p>Pass additional &lt;option&gt; to &#34;git format-patch&#34;.</p>
+<div class="paragraph">
+<p>See the linkgit:git-format-patch[1] man page. This option may be specified
+multiple times.</p>
+</div>
 </dd>
 <dt class="hdlist1">-o &lt;dir&gt;</dt>
 <dt class="hdlist1">--output-directory=&lt;dir&gt;</dt>
@@ -471,10 +466,14 @@ creation/deletion cost fudge factor. See linkgit:git-range-diff[1)] for details.
 <dd>
 <p>Send all applied patches</p>
 </dd>
-<dt class="hdlist1">-G &lt;git-options&gt;</dt>
-<dt class="hdlist1">--git-opts=&lt;git-options&gt;</dt>
+<dt class="hdlist1">-G &lt;option&gt;</dt>
+<dt class="hdlist1">--git-opt=&lt;option&gt;</dt>
 <dd>
-<p>Extra options to pass to &#34;git send-email&#34;</p>
+<p>Pass additional &lt;option&gt; to &#34;git send-email&#34;.</p>
+<div class="paragraph">
+<p>See the linkgit:git-send-email[1] man page. This option may be specified
+multiple times.</p>
+</div>
 </dd>
 <dt class="hdlist1">--from=&lt;address&gt;</dt>
 <dd>

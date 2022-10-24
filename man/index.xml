@@ -256,8 +256,8 @@ StGit Part of the StGit suite - see linkman:stg[1]</description>
 SYNOPSIS stg patches [OPTIONS] [path]…​ DESCRIPTION Show the applied patches modifying the given paths. Without path arguments, the files modified in the working tree are used as the paths.
 OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use BRANCH instead of current branch
 -d --diff Show the diff for the given paths
--O &amp;lt;options&amp;gt; --diff-opts=&amp;lt;options&amp;gt; Extra options to pass to &amp;#34;git diff&amp;#34;
-StGit Part of the StGit suite - see linkman:stg[1]</description>
+-O &amp;lt;option&amp;gt; --diff-opt=&amp;lt;option&amp;gt; Pass additional &amp;lt;option&amp;gt; to &amp;#34;git diff&amp;#34;.
+See the linkgit:git-diff[1] man page.</description>
     </item>
     
     <item>
