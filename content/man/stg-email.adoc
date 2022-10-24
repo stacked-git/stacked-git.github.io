@@ -66,10 +66,6 @@ be deferred to `stg email send`.
 Many aspects of the format behavior may be controlled via `format.*`
 configuration values. Refer to the linkgit:git-config[1] and
 linkgit:git-format-patch[1] man pages for more details.
-+
-`stg email format` is a wrapper for `git format-patch`. Additional options for
-`git format-patch` may be specified on the command line after a `--` separator.
-See the linkgit:git-format-patch[1] man page.
 
 send::
     Send patches as emails.
@@ -90,9 +86,6 @@ configuration options. In particular, it is recommended to statically configure
 SMTP details such as `sendemail.smtpServer`, `sendemail.smtpUser`, etc. Refer
 to linkgit:git-config[1] and linkgit:git-send-email[1] man pages for more
 detail on all the available configuration options.
-+
-Additional options for `git send-email` may be specified on the command line
-after a `--` separator. See the linkgit:git-send-email[1] man page.
 
 FORMAT OPTIONS
 ~~~~~~~~~~~~~~
@@ -104,9 +97,12 @@ FORMAT OPTIONS
 --all::
     Format all applied patches
 
--G <git-options>::
---git-opts=<git-options>::
-    Extra options to pass to "git format-patch"
+-G <option>::
+--git-opt=<option>::
+    Pass additional <option> to "git format-patch".
++
+See the linkgit:git-format-patch[1] man page. This option may be specified
+multiple times.
 
 -o <dir>::
 --output-directory=<dir>::
@@ -292,9 +288,12 @@ SEND OPTIONS
 --all::
     Send all applied patches
 
--G <git-options>::
---git-opts=<git-options>::
-    Extra options to pass to "git send-email"
+-G <option>::
+--git-opt=<option>::
+    Pass additional <option> to "git send-email".
++
+See the linkgit:git-send-email[1] man page. This option may be specified
+multiple times.
 
 --from=<address>::
     Specify the sender of the emails. If not specified on the command line, the

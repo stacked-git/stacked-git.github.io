@@ -33,9 +33,11 @@ OPTIONS
 --stat::
     Show the stat instead of the diff
 
--O <options>::
---diff-opts=<options>::
-    Extra options to pass to "git diff"
+-O <option>::
+--diff-opt=<option>::
+    Pass additional <option> to "git diff".
++
+See the linkgit:git-diff[1] man page. This option may be specified multiple times.
 
 StGit
 -----

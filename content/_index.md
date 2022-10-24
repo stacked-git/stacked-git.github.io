@@ -35,6 +35,17 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2022-10-23: [StGit v2.0.0-rc.2][v2.0.0-rc.2] has been released.
+
+This second 2.0 release candidate repairs several bugs and refines how
+git options are passed-through in `stg diff`, `stg show`, and `stg
+email` commands.
+
+This will likely be the final release candidate before the 2.0.0
+release.
+
+See the [changelog](changelog/) for all the details on this release.
+
 ### 2022-09-30: [StGit v2.0.0-rc.1][v2.0.0-rc.1] has been released.
 
 This first 2.0 release candidate brings a new look to the online help thanks to
@@ -92,10 +103,10 @@ Thanks to everyone who submitted a PR or reported an issue!
 
 See the [changelog](changelog/) for all the details on this release.
 
+[v2.0.0-rc.2]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0-rc.1
 [v2.0.0-rc.1]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0-rc.1
 [v2.0.0-beta.3]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0-beta.3
 [v2.0.0-beta.2]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0-beta.2
-[v2.0.0-beta.1]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0-beta.1
 [v1.5]: https://github.com/stacked-git/stgit/releases/tag/v1.5
 
 ## Why Stacked Git?
