@@ -129,6 +129,32 @@ the StGit patches into other repositories using standard Git
 functionality.</p>
 <p>StGit is licensed under the GNU General Public License, version 2.</p>
 <h2 id="news">News</h2>
+<h3 id="2022-11-06-stgit-v200v200-has-been-released">2022-11-06: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.0">StGit v2.0.0</a> has been released.</h3>
+<p>This major release of StGit brings improved performance, several new
+features, and many refinements compared to StGit 1.x. It is recommended
+that all StGit users upgrade to 2.0.0.</p>
+<p>Many thanks to all the StGit users who took the time and effort to try
+out the many alpha, beta, and release candidate releases leading up to
+this final 2.0.0 release. Lots of issues, big and small, were worked out
+from this effort to make this a high-confidence release.</p>
+<p>The <a href="changelog/">changelog</a> has the details of the many changes, but
+some highlights include:</p>
+<ul>
+<li>Performance improvements across the board. This is largely due to
+StGit 2.0.0 being reimplemented in <a href="https://www.rust-lang.org/">Rust</a>, thus eliminating
+many overheads inherent to the Python interpreter, but also due to
+direct accessing the git repository&rsquo;s object database using
+<a href="https://libgit2.org/">libgit2</a> instead of always using <code>git</code> subprocesses.</li>
+<li>Refined output and improved error messages. Commands generally produce
+more terse output. Stack modifying operations (<code>push</code>, <code>pop</code>,
+<code>refresh</code>, etc.) use color and sigils to display their outcomes.</li>
+<li><code>stg email format</code> and <code>stg email send</code> replace <code>stg mail</code>. The new
+commands lean on the battle-hardened <code>git format-patch</code> and <code>git send-email</code> commands, making StGit&rsquo;s email capabilities more robust
+and more standard.</li>
+<li>StGit aliases now behave like Git aliases.</li>
+<li><code>stg refresh</code> gains the <code>-r</code>/<code>--refresh</code> option, which allows a new
+patch to be created and record changes with one command.</li>
+</ul>
 <h3 id="2022-10-23-stgit-v200-rc2v200-rc2-has-been-released">2022-10-23: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.0-rc.1">StGit v2.0.0-rc.2</a> has been released.</h3>
 <p>This second 2.0 release candidate repairs several bugs and refines how
 git options are passed-through in <code>stg diff</code>, <code>stg show</code>, and <code>stg email</code> commands.</p>
@@ -153,21 +179,6 @@ audience is really Emacs users that have started to use VSCode.</p>
 </blockquote>
 <p>See the <a href="https://marketplace.visualstudio.com/items?itemName=samuelrydh.stgit">extension in the VSCode marketplace</a> or checkout
 <a href="https://github.com/srydh/vscode-stgit">the repository on GitHub</a>.</p>
-<h3 id="2022-08-28-stgit-v200-beta3v200-beta3-has-been-released">2022-08-28: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.0-beta.3">StGit v2.0.0-beta.3</a> has been released.</h3>
-<p>This third, and likely last, beta release of StGit 2.0 improves StGit&rsquo;s
-compatibility with sparse checkouts and further improves the Makefiles
-which should hopefully help downstream packagers. Several other minor
-bug fixes are also included in this release.</p>
-<h3 id="2022-08-05-stgit-v200-beta2v200-beta2-has-been-released">2022-08-05: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.0-beta.2">StGit v2.0.0-beta.2</a> has been released.</h3>
-<p>This second beta release of StGit 2.0 improves a couple use cases related
-to patch spilling (<code>stg pop --spill</code> and <code>stg spill</code>) as well as updating
-and reducing StGit&rsquo;s dependencies.</p>
-<h3 id="2022-07-28-stgit-v200-beta1v200-beta1-has-been-released">2022-07-28: [StGit v2.0.0-beta.1][v2.0.0-beta.1] has been released.</h3>
-<p>This is the first beta release of StGit 2.0. This is a reimplementation
-of Stacked Git in Rust. In addition to significant performance
-improvements, StGit 2.0 contains a number of new features, fixes, and
-refinements compared to StGit 1.x.</p>
-<p>See the <a href="changelog/">changelog</a> for all the details on this release.</p>
 <h3 id="2022-01-28-stgit-v15v15-has-been-released">2022-01-28: <a href="https://github.com/stacked-git/stgit/releases/tag/v1.5">StGit v1.5</a> has been released.</h3>
 <p>Several pesky bugs repaired along with some other minor improvements.</p>
 <p>Thanks to everyone who submitted a PR or reported an issue!</p>
