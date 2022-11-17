@@ -35,6 +35,11 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2022-11-17: [StGit v2.0.2][v2.0.2] has been released.
+
+This release further improves support for sparse checkout with partial
+clone and worktrees. A few documentation improvements are also included.
+
 ### 2022-11-07: [StGit v2.0.1][v2.0.1] has been released.
 
 This bugfix release addresses pathological documentation build
@@ -119,6 +124,7 @@ Thanks to everyone who submitted a PR or reported an issue!
 
 See the [changelog](changelog/) for all the details on this release.
 
+[v2.0.2]: https://github.com/stacked-git/stgit/releases/tag/v2.0.2
 [v2.0.1]: https://github.com/stacked-git/stgit/releases/tag/v2.0.1
 [v2.0.0]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0
 [v2.0.0-rc.2]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0-rc.1

@@ -19,7 +19,7 @@ DESCRIPTION
 
 If the last command was an undo, the patch stack state will be reset to its
 state before the undo. Consecutive redos will undo the effects of consecutive
-invocations of "stg undo".
+invocations of linkstg:undo[].
 
 It is an error to redo if the last stack-modifying command was not an undo.
 

@@ -21,11 +21,11 @@ DESCRIPTION
 Show the history of changes to the stack. If one or more patch names are given,
 only the changes affecting those patches are shown.
 
-The "stg undo" and "stg redo" commands may be used to step back and forth
-through historical stack states. The "stg reset" command may be used to reset
-the stack directly to a historic state.
+The linkstg:undo[] and linkstg:redo[] commands may be used to step back and
+forth through historical stack states. The linkstg:reset[] command may be used
+to reset the stack directly to a historic state.
 
-The --clear option may be used to delete the stack's change history. Undo and
+The '--clear' option may be used to delete the stack's change history. Undo and
 redo are unavailable on a stack without change history. Clearing the stack
 state history cannot be undone.
 

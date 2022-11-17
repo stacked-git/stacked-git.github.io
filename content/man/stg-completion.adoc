@@ -65,7 +65,7 @@ man::
     other output formats.
 +
 One file is generated for each `stg` command. The output directory defaults to
-the current directory, but may be specified with `--output`. The output files
+the current directory, but may be specified with '--output'. The output files
 are named `stg-<command>.txt`.
 
 OPTIONS

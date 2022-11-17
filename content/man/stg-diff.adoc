@@ -35,7 +35,7 @@ OPTIONS
 
 -O <option>::
 --diff-opt=<option>::
-    Pass additional <option> to "git diff".
+    Pass additional <option> to `git diff`.
 +
 See the linkgit:git-diff[1] man page. This option may be specified multiple times.
 

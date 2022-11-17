@@ -53,7 +53,7 @@ OPTIONS
 
 -x::
 --exclusive::
-    Exclude the commit specified by the --to option
+    Exclude the commit specified by the '--to' option
 
 StGit
 -----

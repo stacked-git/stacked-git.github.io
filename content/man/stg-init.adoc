@@ -17,7 +17,17 @@ SYNOPSIS
 DESCRIPTION
 -----------
 
-Initialize a StGit stack on current branch
+Initialize a StGit stack on the current branch.
+
+A branch must be initialized with a StGit stack before patches may be created
+with linkstg:new[], imported with linkstg:import[], or picked with linkstg:pick[].
+
+The branch and its git repository must already exist and contain at least one
+commit before initializing a StGit stack. Branches created with `stg branch
+--create` are automatically initialized.
+
+StGit stack metadata can be deinitialized from a branch using `stg branch
+--cleanup`. See linkstg:branch[] for more details.
 
 StGit
 -----
