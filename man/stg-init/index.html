@@ -126,7 +126,20 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Initialize a StGit stack on current branch</p>
+<p>Initialize a StGit stack on the current branch.</p>
+</div>
+<div class="paragraph">
+<p>A branch must be initialized with a StGit stack before patches may be created
+with <a href="/man/stg-new">stg new</a>, imported with <a href="/man/stg-import">stg import</a>, or picked with <a href="/man/stg-pick">stg pick</a>.</p>
+</div>
+<div class="paragraph">
+<p>The branch and its git repository must already exist and contain at least one
+commit before initializing a StGit stack. Branches created with <code>stg branch
+--create</code> are automatically initialized.</p>
+</div>
+<div class="paragraph">
+<p>StGit stack metadata can be deinitialized from a branch using <code>stg branch
+--cleanup</code>. See <a href="/man/stg-branch">stg branch</a> for more details.</p>
 </div>
 </div>
 </div>

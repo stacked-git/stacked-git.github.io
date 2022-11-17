@@ -164,9 +164,9 @@ patch stack. The new branch will be based on the current HEAD, by default,
 unless an optional committish provided for the base.</p>
 <div class="paragraph">
 <p>StGit attempts to detect the branch from which the new branch forked, as well
-as the remote repository of that parent branch such that &#34;stg pull&#34; will pull
-from the correct remote branch. A warning will be printed if the parrent branch
-cannot be determined.</p>
+as the remote repository of that parent branch such that <a href="/man/stg-pull">stg pull</a> will
+pull from the correct remote branch. A warning will be printed if the parent
+branch cannot be determined.</p>
 </div>
 </dd>
 <dt class="hdlist1">--clone</dt>
@@ -195,7 +195,7 @@ branch. The parent information of the new branch is copied from the current bran
 <p>Delete a branch.</p>
 <div class="paragraph">
 <p>The branch will not be deleted if there are any patches remaining unless the
---force option is provided.</p>
+<em>--force</em> option is provided.</p>
 </div>
 <div class="paragraph">
 <p>A protected branch may not be deleted; it must be unprotected first.</p>
@@ -204,12 +204,12 @@ branch. The parent information of the new branch is copied from the current bran
 <dt class="hdlist1">--cleanup</dt>
 <dd>
 <p>Remove StGit patch stack from branch. The operation will be refused if any
-patches remain, unless the --force option is provided.</p>
+patches remain, unless the <em>--force</em> option is provided.</p>
 <div class="paragraph">
 <p>A protected branch will not be cleaned up; it must be unprotected first.</p>
 </div>
 <div class="paragraph">
-<p>A cleaned up branch may be reinitialized using &#34;stg init&#34;.</p>
+<p>A cleaned up branch may be reinitialized using <a href="/man/stg-init">stg init</a>.</p>
 </div>
 </dd>
 <dt class="hdlist1">--describe</dt>

@@ -127,39 +127,39 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>If a branch with a StGit stack is modified with certain git commands such as
-commit, pull, merge, or rebase, the StGit stack metadata will become
-inconsistent with the branch state. There are a few options for resolving this
-kind of situation:</p>
+<a href="https://git-scm.com/docs/git-commit">git-commit(1)</a>, <a href="https://git-scm.com/docs/git-pull">git-pull(1)</a>, <a href="https://git-scm.com/docs/git-merge">git-merge(1)</a>, or
+<a href="https://git-scm.com/docs/git-rebase">git-rebase(1)</a>, the StGit stack metadata will become inconsistent with
+the branch state. There are a few options for resolving this kind of situation:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Use &#34;stg undo&#34; to undo the effect of the git commands. Or similarly use &#34;stg
-reset&#34; to reset the stack/branch to any previous stack state.</p>
+<p>Use <a href="/man/stg-undo">stg undo</a> to undo the effect of the git commands. Or similarly use
+<a href="/man/stg-reset">stg reset</a> to reset the stack/branch to any previous stack state.</p>
 </li>
 <li>
-<p>Use &#34;stg repair&#34;. This will repair the StGit stack metadata to accommodate
+<p>Use <code>stg repair</code>. This will repair the StGit stack metadata to accommodate
 the modifications to the branch made by the git commands. Specifically, it will
 do the following:</p>
 <div class="ulist">
 <ul>
 <li>
 <p>If regular git commits were made on top of the stack of StGit patches (i.e.
-by using plain &#34;git commit&#34;), &#34;stg repair&#34; will convert those commits to StGit
+by using plain <code>git commit</code>), <code>stg repair</code> will convert those commits to StGit
 patches, preserving their content.</p>
 </li>
 <li>
 <p>However, merge commits cannot become patches. So if a merge was committed on
-top of the stack, &#34;stg repair&#34; will mark all patches below the merge commit as
+top of the stack, <code>stg repair</code> will mark all patches below the merge commit as
 unapplied, since they are no longer reachable. An alternative when this is not
-the desired behavior is to use &#34;stg undo&#34; to first get rid of the offending
-merge and then run &#34;stg repair&#34; again.</p>
+the desired behavior is to use <code>stg undo</code> to first get rid of the offending
+merge and then run <code>stg repair</code> again.</p>
 </li>
 <li>
 <p>The applied patches are supposed to be precisely those that are reachable
-from the branch head. If, for example, &#34;git reset&#34; was used to move the head,
-some applied patches may no longer be reachable and some unapplied patches may
-have become reachable. In this case, &#34;stg repair&#34; will correct the
+from the branch head. If, for example, <a href="https://git-scm.com/docs/git-reset">git-reset(1)</a> was used to move
+the head, some applied patches may no longer be reachable and some unapplied
+patches may have become reachable. In this case, <code>stg repair</code> will correct the
 applied/unapplied state of such patches.</p>
 </li>
 </ul>
@@ -168,10 +168,10 @@ applied/unapplied state of such patches.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>&#34;stg repair&#34; will repair these inconsistencies reliably, so there are valid
-workflows where git commands are used followed by &#34;stg repair&#34;. For example,
+<p><code>stg repair</code> will repair these inconsistencies reliably, so there are valid
+workflows where git commands are used followed by <code>stg repair</code>. For example,
 new patches can be created by first making commits with a graphical commit tool
-and then running &#34;stg repair&#34; to convert those commits into patches.</p>
+and then running <code>stg repair</code> to convert those commits into patches.</p>
 </div>
 </div>
 </div>

@@ -219,8 +219,9 @@ The simplest usage is to import a diff/patch file into the stack from a local fi
       
       <guid>http://stacked-git.github.io/man/stg-init/</guid>
       <description>NAME stg-init - Initialize a StGit stack on current branch
-SYNOPSIS stg init [OPTIONS] DESCRIPTION Initialize a StGit stack on current branch
-StGit Part of the StGit suite - see linkman:stg[1]</description>
+SYNOPSIS stg init [OPTIONS] DESCRIPTION Initialize a StGit stack on the current branch.
+A branch must be initialized with a StGit stack before patches may be created with linkstg:new[], imported with linkstg:import[], or picked with linkstg:pick[].
+The branch and its git repository must already exist and contain at least one commit before initializing a StGit stack. Branches created with stg branch --create are automatically initialized.</description>
     </item>
     
     <item>
@@ -231,7 +232,7 @@ StGit Part of the StGit suite - see linkman:stg[1]</description>
       <guid>http://stacked-git.github.io/man/stg-log/</guid>
       <description>NAME stg-log - Display or optionally clear the stack changelog
 SYNOPSIS stg log [OPTIONS] [--] [patch]…​ stg log --clear DESCRIPTION Show the history of changes to the stack. If one or more patch names are given, only the changes affecting those patches are shown.
-The &amp;#34;stg undo&amp;#34; and &amp;#34;stg redo&amp;#34; commands may be used to step back and forth through historical stack states. The &amp;#34;stg reset&amp;#34; command may be used to reset the stack directly to a historic state.</description>
+The linkstg:undo[] and linkstg:redo[] commands may be used to step back and forth through historical stack states. The linkstg:reset[] command may be used to reset the stack directly to a historic state.</description>
     </item>
     
     <item>
@@ -267,7 +268,7 @@ StGit Part of the StGit suite - see linkman:stg[1]</description>
 SYNOPSIS stg patches [OPTIONS] [path]…​ DESCRIPTION Show the applied patches modifying the given paths. Without path arguments, the files modified in the working tree are used as the paths.
 OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use BRANCH instead of current branch
 -d --diff Show the diff for the given paths
--O &amp;lt;option&amp;gt; --diff-opt=&amp;lt;option&amp;gt; Pass additional &amp;lt;option&amp;gt; to &amp;#34;git diff&amp;#34;.
+-O &amp;lt;option&amp;gt; --diff-opt=&amp;lt;option&amp;gt; Pass additional &amp;lt;option&amp;gt; to git diff.
 See the linkgit:git-diff[1] man page.</description>
     </item>
     
@@ -350,9 +351,10 @@ stg add --update stg refresh stg goto top-patch Or to skip the conflicting patch
       
       <guid>http://stacked-git.github.io/man/stg-redo/</guid>
       <description>NAME stg-redo - Undo the last undo operation
-SYNOPSIS stg redo [OPTIONS] DESCRIPTION If the last command was an undo, the patch stack state will be reset to its state before the undo. Consecutive redos will undo the effects of consecutive invocations of &amp;#34;stg undo&amp;#34;.
+SYNOPSIS stg redo [OPTIONS] DESCRIPTION If the last command was an undo, the patch stack state will be reset to its state before the undo. Consecutive redos will undo the effects of consecutive invocations of linkstg:undo[].
 It is an error to redo if the last stack-modifying command was not an undo.
-OPTIONS -n &amp;lt;n&amp;gt; --number=&amp;lt;n&amp;gt; Undo the last &amp;lt;n&amp;gt; undos</description>
+OPTIONS -n &amp;lt;n&amp;gt; --number=&amp;lt;n&amp;gt; Undo the last &amp;lt;n&amp;gt; undos
+--hard Discard changes in the index and worktree</description>
     </item>
     
     <item>
@@ -385,8 +387,8 @@ StGit Part of the StGit suite - see linkman:stg[1]</description>
       
       <guid>http://stacked-git.github.io/man/stg-repair/</guid>
       <description>NAME stg-repair - Repair stack after branch is modified with git commands
-SYNOPSIS stg repair [OPTIONS] DESCRIPTION If a branch with a StGit stack is modified with certain git commands such as commit, pull, merge, or rebase, the StGit stack metadata will become inconsistent with the branch state. There are a few options for resolving this kind of situation:
-Use &amp;#34;stg undo&amp;#34; to undo the effect of the git commands.</description>
+SYNOPSIS stg repair [OPTIONS] DESCRIPTION If a branch with a StGit stack is modified with certain git commands such as linkgit:git-commit[1], linkgit:git-pull[1], linkgit:git-merge[1], or linkgit:git-rebase[1], the StGit stack metadata will become inconsistent with the branch state. There are a few options for resolving this kind of situation:
+Use linkstg:undo[] to undo the effect of the git commands. Or similarly use linkstg:reset[] to reset the stack/branch to any previous stack state.</description>
     </item>
     
     <item>
@@ -397,7 +399,7 @@ Use &amp;#34;stg undo&amp;#34; to undo the effect of the git commands.</descript
       <guid>http://stacked-git.github.io/man/stg-reset/</guid>
       <description>NAME stg-reset - Reset the patch stack to an earlier state
 SYNOPSIS stg reset [--hard] [&amp;lt;committish&amp;gt; [&amp;lt;patchname&amp;gt;…​]] stg reset --hard DESCRIPTION Reset the patch stack to an earlier state. If no state is specified, reset only the changes in the worktree.
-The state is specified with a commit id from the stack log, which may be viewed with &amp;#34;stg log&amp;#34;. Patch name arguments may optionally be provided to limit which patches are reset.</description>
+The state is specified with a commit id from the stack log, which may be viewed with linkstg:log[]. Patch name arguments may optionally be provided to limit which patches are reset.</description>
     </item>
     
     <item>
