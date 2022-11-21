@@ -135,7 +135,7 @@ multiple times.
     integer (e.g. '--reroll-count=4.4', or '--reroll-count=4rev2' are allowed),
     but the downside of using such a reroll-count is that the
     range-diff/interdiff with the previous version does not state exactly which
-    version the new interation is compared against.
+    version the new iteration is compared against.
 
 --rfc::
     Alias for '--subject-prefix="RFC PATCH"'. RFC means "Request For Comments";

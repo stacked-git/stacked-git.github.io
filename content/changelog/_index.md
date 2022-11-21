@@ -4,6 +4,17 @@ title = 'StGit Changelog'
 
 # Changelog
 
+## [2.0.3] 2022-11-21
+
+## Changed
+- chore: Update Cargo.lock with latest dependencies.
+
+## Fixed
+- fix: improved git version parsing on MacOS
+- fix: StGit-specific branch config handling
+- docs: fixed many typos
+
+
 ## [2.0.2] 2022-11-17
 
 ## Changed
@@ -111,7 +122,7 @@ title = 'StGit Changelog'
   `$XDG_CONFIG_HOME/stgit/templates/` and `$HOME/.stgit/templates`. This
   search strategy is consistent with how git looks for the global config
   file.
-- The new `--signoff` patch edit option supercedes the deprecated
+- The new `--signoff` patch edit option supersedes the deprecated
   `--sign` and `--sign-by` options. `--signoff` without its optional
   value does the same thing as `--sign`, while `--signoff=<value>` does
   the same thing as `--sign-by=<value>`.
@@ -182,7 +193,7 @@ title = 'StGit Changelog'
 - Avoid case insensitive patch name collisions. On operating systems
   with case-insensitive paths, patch names that only differ by case lead
   to patch reference collisions. StGit now ensures that patch names are
-  distinct under case insensitive comparisions.
+  distinct under case insensitive comparisons.
 - `stg pull` and `stg rebase` record updated stack state instead of
   deferring until the next stack-modifying command to do so.
 
@@ -217,7 +228,7 @@ title = 'StGit Changelog'
 - Repair check for modifications to stack by external tools.
 - `stg pull` and `stg rebase` record updated stack state instead of
   deferring until the next stack-modifying command to do so.
-- Improve patch appliction with `git apply --3way` when pushing` (#225)
+- Improve patch application with `git apply --3way` when pushing` (#225)
 - Zsh completion for `--diff-opt` accommodates multiple occurrences
 
 
@@ -344,7 +355,7 @@ title = 'StGit Changelog'
 - Bash completions for shell aliases now fallback to filename
   completions (#191).
 - Help options listings now ensure --color and --help are shown last.
-- Various zsh completion improvments:
+- Various zsh completion improvements:
   - Add descriptions for --color values
   - Complete -O/--diff-opts values (using `git diff-tree --git-completion-helper`)
   - Comprehend `stg -C <dir>` options
@@ -403,7 +414,7 @@ title = 'StGit Changelog'
 - Avoid case insensitive patch name collisions. On operating systems
   with case-insensitive paths, patch names that only differ by case lead
   to patch reference collisions. StGit now ensures that patch names are
-  distinct under case insensitive comparisions.
+  distinct under case insensitive comparisons.
 - Add missing `-t` short option for `--set-tree` for `stg edit`.
 - Add missing `-k` short option for `--keep`.
 
@@ -490,7 +501,7 @@ title = 'StGit Changelog'
 - `stg show` diff can now be limited to certain paths by specifying path
   limits on the command line.
 - `stg show` diff output respects the `--color` option.
-- The new `--signoff` patch edit option supercedes the deprecated
+- The new `--signoff` patch edit option supersedes the deprecated
   `--sign` and `--sign-by` options. `--signoff` without its optional
   value does the same thing as `--sign`, while `--signoff=<value>` does
   the same thing as `--sign-by=<value>`.
@@ -831,7 +842,7 @@ title = 'StGit Changelog'
 - `stg diff --range` detects some invalid values (e.g. `-r ..`).
 - Date parsing is now more portable, only use platform specific `date`
   as last parsing option. Affects, e.g., `stg refresh --authdate`.
-- Repaired seach path for templates to avoid looking in Python
+- Repaired search path for templates to avoid looking in Python
   site-packages directory.
 - Ensure stdout and stderr are flushed. Rarely affected `stg diff`.
 - `stg repair` will now fail if extra command line arguments are
