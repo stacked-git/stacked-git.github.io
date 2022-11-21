@@ -365,7 +365,7 @@ OPTIONS -n &amp;lt;n&amp;gt; --number=&amp;lt;n&amp;gt; Undo the last &amp;lt;n&
       <guid>http://stacked-git.github.io/man/stg-refresh/</guid>
       <description>NAME stg-refresh - Incorporate worktree changes into current patch
 SYNOPSIS stg refresh [OPTIONS] [path]…​ DESCRIPTION Include the latest work tree and index changes in the current patch. This command generates a new git commit object for the patch; the old commit is no longer visible.
-Refresh will warn if the index is dirty, and require use of either the --index or --force options to override this check. This is to prevent accidental full refresh when only some changes were staged using git add interative mode.</description>
+Refresh will warn if the index is dirty, and require use of either the --index or --force options to override this check. This is to prevent accidental full refresh when only some changes were staged using git add interactive mode.</description>
     </item>
     
     <item>

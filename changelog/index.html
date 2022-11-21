@@ -102,8 +102,19 @@
   
   
   
-<h2 id="202-2022-11-17"><a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.2">[2.0.2] 2022-11-17</a></h2>
+<h2 id="203-2022-11-21"><a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.3">[2.0.3] 2022-11-21</a></h2>
 <h2 id="changed">Changed</h2>
+<ul>
+<li>chore: Update Cargo.lock with latest dependencies.</li>
+</ul>
+<h2 id="fixed">Fixed</h2>
+<ul>
+<li>fix: improved git version parsing on MacOS</li>
+<li>fix: StGit-specific branch config handling</li>
+<li>docs: fixed many typos</li>
+</ul>
+<h2 id="202-2022-11-17"><a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.2">[2.0.2] 2022-11-17</a></h2>
+<h2 id="changed-1">Changed</h2>
 <ul>
 <li>chore: Update Cargo.lock with latest dependencies.</li>
 <li>docs(init): Add long help for <code>stg init</code>.</li>
@@ -113,17 +124,17 @@
 <li>feat: Enable basic support for <code>extensions.worktreeconfig</code> to unblock
 sparse checkout with partial clone (<a href="https://github.com/stacked-git/stgit/issues/195">#195</a>).</li>
 </ul>
-<h2 id="fixed">Fixed</h2>
+<h2 id="fixed-1">Fixed</h2>
 <ul>
 <li>docs: More inter-command links</li>
 <li>docs: Normalize quoting</li>
 </ul>
 <h2 id="201-2022-11-07"><a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.1">[2.0.1] 2022-11-07</a></h2>
-<h3 id="changed-1">Changed</h3>
+<h3 id="changed-2">Changed</h3>
 <ul>
 <li>chore: Update to clap 4.0.22</li>
 </ul>
-<h3 id="fixed-1">Fixed</h3>
+<h3 id="fixed-2">Fixed</h3>
 <ul>
 <li>docs(readme): Clarify static versus dynamic linking (<a href="https://github.com/stacked-git/stgit/issues/230">#230</a>)</li>
 <li>build: Improve Documentation build performance (<a href="https://github.com/stacked-git/stgit/issues/229">#229</a>)</li>
@@ -171,7 +182,7 @@ specifying path limits on the command line.</li>
 <li>Added <code>install-all</code> target to top-level Makefile that installs the
 executable, man pages, html pages, and shell completions.</li>
 </ul>
-<h3 id="changed-2">Changed</h3>
+<h3 id="changed-3">Changed</h3>
 <ul>
 <li>StGit is now implemented entirely in Rust instead of Python.</li>
 <li>StGit is generally much faster; many commands are up to 4x faster.
@@ -211,7 +222,7 @@ for template files in .git/, also look in
 <code>$XDG_CONFIG_HOME/stgit/templates/</code> and <code>$HOME/.stgit/templates</code>. This
 search strategy is consistent with how git looks for the global config
 file.</li>
-<li>The new <code>--signoff</code> patch edit option supercedes the deprecated
+<li>The new <code>--signoff</code> patch edit option supersedes the deprecated
 <code>--sign</code> and <code>--sign-by</code> options. <code>--signoff</code> without its optional
 value does the same thing as <code>--sign</code>, while <code>--signoff=&lt;value&gt;</code> does
 the same thing as <code>--sign-by=&lt;value&gt;</code>.</li>
@@ -273,7 +284,7 @@ including <code>-d/--diff</code>. Previously only a few message-related options
 were available.</li>
 <li><code>stg version</code> now displays copyright and license statements.</li>
 </ul>
-<h3 id="fixed-2">Fixed</h3>
+<h3 id="fixed-3">Fixed</h3>
 <ul>
 <li><code>stg branch --create</code> inherits the current branch&rsquo;s remote branch
 configuration, if available. The Python implementation had an apparent
@@ -282,16 +293,16 @@ creating from the current branch.</li>
 <li>Avoid case insensitive patch name collisions. On operating systems
 with case-insensitive paths, patch names that only differ by case lead
 to patch reference collisions. StGit now ensures that patch names are
-distinct under case insensitive comparisions.</li>
+distinct under case insensitive comparisons.</li>
 <li><code>stg pull</code> and <code>stg rebase</code> record updated stack state instead of
 deferring until the next stack-modifying command to do so.</li>
 </ul>
 <h3 id="changed-since-200-rc2">Changed since 2.0.0-rc.2</h3>
-<h4 id="changed-3">Changed</h4>
+<h4 id="changed-4">Changed</h4>
 <ul>
 <li>chore: Update Cargo.lock</li>
 </ul>
-<h4 id="fixed-3">Fixed</h4>
+<h4 id="fixed-4">Fixed</h4>
 <ul>
 <li>fix(zsh): Repair broken completion of &ndash;git-opt</li>
 <li>fix(zsh): Add missing <code>stg email send --branch</code></li>
@@ -300,7 +311,7 @@ deferring until the next stack-modifying command to do so.</li>
 <li>fix: Do not use 3way for merged checks</li>
 </ul>
 <h2 id="200-rc2-2022-10-23"><a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.0-rc.2">[2.0.0-rc.2] 2022-10-23</a></h2>
-<h3 id="changed-4">Changed</h3>
+<h3 id="changed-5">Changed</h3>
 <ul>
 <li>The <code>--diff-opts</code> option is renamed to <code>--diff-opt</code>. <code>--diff-opts</code>
 remains available as an alias.</li>
@@ -313,12 +324,12 @@ occurrence. This allows git options with spaces in their values.</li>
 <li>Zsh completion for <code>--diff-opt</code> and <code>--git-opt</code> leverage the
 full-featured git completion capability.</li>
 </ul>
-<h3 id="fixed-4">Fixed</h3>
+<h3 id="fixed-5">Fixed</h3>
 <ul>
 <li>Repair check for modifications to stack by external tools.</li>
 <li><code>stg pull</code> and <code>stg rebase</code> record updated stack state instead of
 deferring until the next stack-modifying command to do so.</li>
-<li>Improve patch appliction with <code>git apply --3way</code> when pushing` (<a href="https://github.com/stacked-git/stgit/issues/225">#225</a>)</li>
+<li>Improve patch application with <code>git apply --3way</code> when pushing` (<a href="https://github.com/stacked-git/stgit/issues/225">#225</a>)</li>
 <li>Zsh completion for <code>--diff-opt</code> accommodates multiple occurrences</li>
 </ul>
 <h2 id="200-rc1-2022-09-30"><a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.0-rc.1">[2.0.0-rc.1] 2022-09-30</a></h2>
@@ -330,7 +341,7 @@ ranges (<a href="https://github.com/stacked-git/stgit/issues/216">#216</a>).</li
 <li>Added <code>-n</code>/<code>--name</code> option to <code>stg new</code> as alternative way to specify new
 patch name (<a href="https://github.com/stacked-git/stgit/issues/216">#216</a>).</li>
 </ul>
-<h3 id="changed-5">Changed</h3>
+<h3 id="changed-6">Changed</h3>
 <ul>
 <li>Update <code>git2</code> to 0.15.0, which may further help compatibility with
 sparse checkouts and multiple worktrees (<a href="https://github.com/stacked-git/stgit/issues/195">#195</a>).</li>
@@ -350,7 +361,7 @@ additional options to <code>git format-patch</code> and <code>git send-email</co
 placed after a <code>--</code> separator (<a href="https://github.com/stacked-git/stgit/issues/216">#216</a>).</li>
 <li>Update top-level usage help for <code>stg</code>.</li>
 </ul>
-<h3 id="fixed-5">Fixed</h3>
+<h3 id="fixed-6">Fixed</h3>
 <ul>
 <li>Various errors that may occur when executing a stack transaction are
 now handled more robustly such that the changes from the transaction
@@ -369,7 +380,7 @@ a consistent state (<a href="https://github.com/stacked-git/stgit/issues/205">#2
 <ul>
 <li>Add install targets for <code>contrib/</code> directory.</li>
 </ul>
-<h3 id="changed-6">Changed</h3>
+<h3 id="changed-7">Changed</h3>
 <ul>
 <li>Use <code>git</code> executable instead of <code>libgit2</code> for all status and index
 operations to improve compatibility with sparse index checkouts
@@ -380,7 +391,7 @@ operations to improve compatibility with sparse index checkouts
 diff.</li>
 <li>Updated transient dependencies in Cargo.lock.</li>
 </ul>
-<h3 id="fixed-6">Fixed</h3>
+<h3 id="fixed-7">Fixed</h3>
 <ul>
 <li>Repair <code>stg branch --describe</code> panic when run without arguments</li>
 <li>Repair zsh completions for <code>git branch</code></li>
@@ -389,7 +400,7 @@ diff.</li>
 <li>Repair <code>make install</code> to not install cargo tracking files.</li>
 </ul>
 <h2 id="200-beta2-2022-08-05"><a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.0-beta.2">[2.0.0-beta.2] 2022-08-05</a></h2>
-<h3 id="changed-7">Changed</h3>
+<h3 id="changed-8">Changed</h3>
 <ul>
 <li>Improved error when push conflicts with untracked files (<a href="https://github.com/stacked-git/stgit/issues/193">#193</a>)</li>
 <li>Removed a few transitive dependencies by turning-off features in bstr
@@ -397,7 +408,7 @@ and chrono.</li>
 <li>Update Cargo.lock with latest dependencies</li>
 <li>Update to clap 3.2 and only use non-deprecated interfaces</li>
 </ul>
-<h3 id="fixed-7">Fixed</h3>
+<h3 id="fixed-8">Fixed</h3>
 <ul>
 <li>Repair <code>stg spill</code> when spilling newly added files and using path
 limits.</li>
@@ -415,7 +426,7 @@ was needed for feature parity with the Python implementation.</li>
 <li>Added <code>install-all</code> target to top-level Makefile that installs the
 executable, man pages, html pages, and shell completions.</li>
 </ul>
-<h3 id="changed-8">Changed</h3>
+<h3 id="changed-9">Changed</h3>
 <ul>
 <li>Additional template search paths were added. In addition to looking
 for template files in .git/, also look in
@@ -428,7 +439,7 @@ Rust implementation.</li>
 <li>Updated Cargo.lock with latest versions of dependencies.</li>
 <li>Release checklist is updated for Rust implementation.</li>
 </ul>
-<h3 id="fixed-8">Fixed</h3>
+<h3 id="fixed-9">Fixed</h3>
 <ul>
 <li>Minor typo fixes in help strings</li>
 <li>Improved documentation for top-level <code>stg</code> options.</li>
@@ -444,12 +455,12 @@ to generate patch emails and optional cover letter in mbox format.</li>
 emails, either from files generated by <code>stg email format</code> or by
 specifying patches directly.</li>
 </ul>
-<h3 id="changed-9">Changed</h3>
+<h3 id="changed-10">Changed</h3>
 <ul>
 <li>Bash completions for shell aliases now fallback to filename
 completions (<a href="https://github.com/stacked-git/stgit/issues/191">#191</a>).</li>
 <li>Help options listings now ensure &ndash;color and &ndash;help are shown last.</li>
-<li>Various zsh completion improvments:
+<li>Various zsh completion improvements:
 <ul>
 <li>Add descriptions for &ndash;color values</li>
 <li>Complete -O/&ndash;diff-opts values (using <code>git diff-tree --git-completion-helper</code>)</li>
@@ -470,7 +481,7 @@ argument</li>
 </ul>
 </li>
 </ul>
-<h3 id="fixed-9">Fixed</h3>
+<h3 id="fixed-10">Fixed</h3>
 <ul>
 <li>Compatibility with git versions prior to 2.35.0 is repaired by
 avoiding using <code>git apply --allow-empty</code> (<a href="https://github.com/stacked-git/stgit/issues/192">#192</a>).</li>
@@ -494,7 +505,7 @@ was in the Python implementation.</li>
 <li><code>stg completion list</code> shows StGit commands and aliases and is used at
 completion-time by shell completion scripts.</li>
 </ul>
-<h3 id="changed-10">Changed</h3>
+<h3 id="changed-11">Changed</h3>
 <ul>
 <li>The <code>-O/--diff-opts</code> flag now allows both multiple space separated
 opts in one value as well as multiple occurrences of <code>-O/--diff-opts</code>
@@ -503,7 +514,7 @@ implementation.</li>
 <li><code>stg series</code> help output splits options into a few sections.</li>
 <li>Dependencies are updated to more recent versions in Cargo.lock.</li>
 </ul>
-<h3 id="fixed-10">Fixed</h3>
+<h3 id="fixed-11">Fixed</h3>
 <ul>
 <li><code>stg edit --set-tree</code> no longer causes the interactive editor to be
 implicitly invoked.</li>
@@ -512,7 +523,7 @@ targets.</li>
 <li>Avoid case insensitive patch name collisions. On operating systems
 with case-insensitive paths, patch names that only differ by case lead
 to patch reference collisions. StGit now ensures that patch names are
-distinct under case insensitive comparisions.</li>
+distinct under case insensitive comparisons.</li>
 <li>Add missing <code>-t</code> short option for <code>--set-tree</code> for <code>stg edit</code>.</li>
 <li>Add missing <code>-k</code> short option for <code>--keep</code>.</li>
 </ul>
@@ -539,7 +550,7 @@ one step. The <code>-i/--index</code>, <code>-F/--force</code>, <code>-s/--submo
 <li><code>stg id</code> now accepts the <code>-b/--branch</code> option.</li>
 <li><code>stg spill</code> replaces <code>stg refresh --spill</code>.</li>
 </ul>
-<h3 id="changed-11">Changed</h3>
+<h3 id="changed-12">Changed</h3>
 <ul>
 <li>StGit aliases are now more like Git aliases. Normal aliases refer to
 StGit subcommands, but aliases prefixed with &lsquo;!&rsquo; are shell aliases
@@ -599,7 +610,7 @@ subset of the series.</li>
 <li><code>stg show</code> diff can now be limited to certain paths by specifying path
 limits on the command line.</li>
 <li><code>stg show</code> diff output respects the <code>--color</code> option.</li>
-<li>The new <code>--signoff</code> patch edit option supercedes the deprecated
+<li>The new <code>--signoff</code> patch edit option supersedes the deprecated
 <code>--sign</code> and <code>--sign-by</code> options. <code>--signoff</code> without its optional
 value does the same thing as <code>--sign</code>, while <code>--signoff=&lt;value&gt;</code> does
 the same thing as <code>--sign-by=&lt;value&gt;</code>.</li>
@@ -607,7 +618,7 @@ the same thing as <code>--sign-by=&lt;value&gt;</code>.</li>
 including <code>-d/--diff</code>. Previously only a few message-related options
 were available.</li>
 </ul>
-<h3 id="fixed-11">Fixed</h3>
+<h3 id="fixed-12">Fixed</h3>
 <ul>
 <li><code>stg branch --create</code> inherits the current branch&rsquo;s remote branch
 configuration, if available. The Python implementation had an apparent
@@ -621,14 +632,14 @@ creating from the current branch.</li>
 <li>Add Makefile targets for installing shell completions</li>
 <li><code>stg rebase --interactive</code> learns &lsquo;hide&rsquo; instruction</li>
 </ul>
-<h3 id="changed-12">Changed</h3>
+<h3 id="changed-13">Changed</h3>
 <ul>
 <li>Picked patch names are preserved when possible (<a href="https://github.com/stacked-git/stgit/issues/175">#175</a>)</li>
 <li>Replace <code>--unapplied</code> option with <code>--noapply</code> for <code>stg pick</code> (<a href="https://github.com/stacked-git/stgit/issues/174">#174</a>)</li>
 <li><code>stg pick --noapply</code> no longer reverses patch order (<a href="https://github.com/stacked-git/stgit/issues/174">#174</a>)</li>
 <li>Use <code>stg version</code> uses <code>sys.executable</code> to get Python version.</li>
 </ul>
-<h3 id="fixed-12">Fixed</h3>
+<h3 id="fixed-13">Fixed</h3>
 <ul>
 <li>Repair <code>stg repair</code> with amended first patch (<a href="https://github.com/stacked-git/stgit/issues/163">#163</a>)</li>
 <li>Repair corner cases where invalid patchnames could be generated by
@@ -656,7 +667,7 @@ description (<a href="https://github.com/stacked-git/stgit/issues/42">#42</a>)</
 <li>The new &lsquo;stgit.import.message-id&rsquo; config option also enables the
 Message-Id trailer (<a href="https://github.com/stacked-git/stgit/issues/42">#42</a>)</li>
 </ul>
-<h3 id="changed-13">Changed</h3>
+<h3 id="changed-14">Changed</h3>
 <ul>
 <li><code>stg import</code> no longer creates &ldquo;Message-Id&rdquo; trailer by default when
 importing patches from email (<a href="https://github.com/stacked-git/stgit/issues/42">#42</a>)</li>
@@ -668,7 +679,7 @@ importing patches from email (<a href="https://github.com/stacked-git/stgit/issu
 returns an int return code in most cases instead of calling
 sys.exit(), thus making main() a bit easier to use as an API.</li>
 </ul>
-<h3 id="fixed-13">Fixed</h3>
+<h3 id="fixed-14">Fixed</h3>
 <ul>
 <li>Repair stack upgrade with <code>stg branch --list</code> (<a href="https://github.com/stacked-git/stgit/issues/155">#155</a>)</li>
 <li>Repair crash in <code>stg squash</code> with out of order patches and no name
@@ -679,8 +690,8 @@ specified (<a href="https://github.com/stacked-git/stgit/issues/157">#157</a>)</
 <h2 id="13-2021-09-26"><a href="https://github.com/stacked-git/stgit/releases/tag/v1.3">[1.3] 2021-09-26</a></h2>
 <h3 id="removed-5">Removed</h3>
 <h3 id="added-10">Added</h3>
-<h3 id="changed-14">Changed</h3>
-<h3 id="fixed-14">Fixed</h3>
+<h3 id="changed-15">Changed</h3>
+<h3 id="fixed-15">Fixed</h3>
 <ul>
 <li>Repair crash regression when using <code>stgit.autosign</code></li>
 </ul>
@@ -712,7 +723,7 @@ resolution (<a href="https://github.com/stacked-git/stgit/issues/144">#144</a>)<
 <code>--ack-by</code>, and <code>--review-by</code> options which allow those respective
 trailers&rsquo; values to be specified by the user on the command line (<a href="https://github.com/stacked-git/stgit/issues/92">#92</a>)</li>
 </ul>
-<h3 id="changed-15">Changed</h3>
+<h3 id="changed-16">Changed</h3>
 <ul>
 <li>Stack metadata version 5; stack metadata is moved from
 <code>refs/heads/&lt;branch&gt;.stgit</code> to <code>refs/stacks/&lt;branch&gt;</code> and the stack
@@ -740,7 +751,7 @@ patch names in certain contexts</li>
 <li><code>stg import</code> now extracts the <code>Message-ID</code> email header into the patch
 message (<a href="https://github.com/stacked-git/stgit/issues/42">#42</a>)</li>
 </ul>
-<h3 id="fixed-15">Fixed</h3>
+<h3 id="fixed-16">Fixed</h3>
 <ul>
 <li>Repair crash when attempting to export empty patch (<a href="https://github.com/stacked-git/stgit/issues/112">#112</a>)</li>
 <li>Exact command name matches are unambiguous (<a href="https://github.com/stacked-git/stgit/issues/110">#110</a>)</li>
@@ -769,13 +780,13 @@ previously it would delete your commit message. (<a href="https://github.com/sta
 <li>Support <code>core.hooksPath</code> in git config</li>
 <li>Add <code>-C</code> option for <code>stg import</code> and <code>stg fold</code> (<a href="https://github.com/stacked-git/stgit/issues/18">#18</a>)</li>
 </ul>
-<h3 id="changed-16">Changed</h3>
+<h3 id="changed-17">Changed</h3>
 <ul>
 <li>Allow importing mail and series from urls (<a href="https://github.com/stacked-git/stgit/issues/94">#94</a>)</li>
 <li><code>stg refresh --edit</code> may also use <code>--diff</code> and <code>--diff-opts</code> (<a href="https://github.com/stacked-git/stgit/issues/98">#98</a>)</li>
 <li><code>stg goto</code> allows sha1 of a patch instead of patch name (<a href="https://github.com/stacked-git/stgit/issues/93">#93</a>)</li>
 </ul>
-<h3 id="fixed-16">Fixed</h3>
+<h3 id="fixed-17">Fixed</h3>
 <ul>
 <li>Repair hang in <code>stg pull -m</code>, <code>stg goto -m</code>, and <code>stg push -m</code></li>
 <li>Repair <code>stg mail</code> to show diffstat of whole series (<a href="https://github.com/stacked-git/stgit/issues/104">#104</a>)</li>
@@ -796,7 +807,7 @@ previously it would delete your commit message. (<a href="https://github.com/sta
 <li>Add stgit.series.description config option (<a href="https://github.com/stacked-git/stgit/issues/88">#88</a>)</li>
 <li>Official support for Python versions up to 3.9</li>
 </ul>
-<h3 id="changed-17">Changed</h3>
+<h3 id="changed-18">Changed</h3>
 <ul>
 <li>Stack metadata format 4. All metadata now kept in Git objects; no more
 stack state files in .git/patches. <strong>A one-way auto-upgrade to format
@@ -806,7 +817,7 @@ branch.</strong></li>
 <li><code>contrib/stgbashprompt.sh</code> is no longer executable</li>
 <li>Internal docstrings now use reStructuredText instead of Epytext</li>
 </ul>
-<h3 id="fixed-17">Fixed</h3>
+<h3 id="fixed-18">Fixed</h3>
 <ul>
 <li>Importing large patches is much, much faster (<a href="https://github.com/stacked-git/stgit/issues/66">#66</a>)</li>
 <li>Other performance improvements when dealing with large patches</li>
@@ -837,7 +848,7 @@ release</li>
 <li>Add <code>--expose</code> option for <code>stg pick</code> to allow picked commit message to
 be customized</li>
 </ul>
-<h3 id="changed-18">Changed</h3>
+<h3 id="changed-19">Changed</h3>
 <ul>
 <li>Limit mail diffstat to 72 columns</li>
 <li>Added pyproject.toml file for black configuration</li>
@@ -846,7 +857,7 @@ be customized</li>
 <li>Replaced RELEASENOTES with this CHANGELOG.md</li>
 <li>Replaces Documentation/SubmittingPatches with CONTRIBUTING.md</li>
 </ul>
-<h3 id="fixed-18">Fixed</h3>
+<h3 id="fixed-19">Fixed</h3>
 <ul>
 <li>Repair MANIFEST.in and generated source dist</li>
 <li>Repair importing mail with &ldquo;: &quot; (colon space) in subject</li>
@@ -883,7 +894,7 @@ release</li>
 <ul>
 <li><code>stg import</code> has new &ndash;keep-cr option, like <code>git mailsplit</code></li>
 </ul>
-<h3 id="changed-19">Changed</h3>
+<h3 id="changed-20">Changed</h3>
 <ul>
 <li><code>stg new</code> now includes patch name in log message</li>
 <li><code>stg branch --rename</code> can now rename the current branch</li>
@@ -899,7 +910,7 @@ consistent with <code>stg push</code></li>
 <li>Many additional tests and test improvements</li>
 <li>All stgit commands now use &ldquo;new&rdquo; git library infrastructure</li>
 </ul>
-<h3 id="fixed-19">Fixed</h3>
+<h3 id="fixed-20">Fixed</h3>
 <ul>
 <li><code>stg branch --create</code> inherits remote correctly from parent committish</li>
 <li>Patch names are checked earlier to avoid inconsistent stack states</li>
@@ -908,11 +919,11 @@ consistent with <code>stg push</code></li>
 git repo</li>
 </ul>
 <h2 id="021---2019-10-28"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.21">[0.21] - 2019-10-28</a></h2>
-<h3 id="changed-20">Changed</h3>
+<h3 id="changed-21">Changed</h3>
 <ul>
 <li>Faster handling of large patches (<a href="https://github.com/stacked-git/stgit/issues/44">#44</a>)</li>
 </ul>
-<h3 id="fixed-20">Fixed</h3>
+<h3 id="fixed-21">Fixed</h3>
 <ul>
 <li>Build reproducibility repairs (Thanks reproducible-builds.org team!)</li>
 <li>Python can now be run with optimizations (<code>python -O</code>)</li>
@@ -931,7 +942,7 @@ creating new commits.</li>
 <li><code>stg mail --domain</code> option overrides the host&rsquo;s domain in the message
 ID.</li>
 </ul>
-<h3 id="changed-21">Changed</h3>
+<h3 id="changed-22">Changed</h3>
 <ul>
 <li>Branch protection metadata now captured in config instead of
 .git/patches/<!-- raw HTML omitted -->protect file. This updates stgit&rsquo;s metadata
@@ -944,7 +955,7 @@ more isatty() test (<a href="https://github.com/stacked-git/stgit/issues/35">#35
 <li>Converted to &ldquo;new&rdquo; lib infrastructure: <code>show</code>, <code>patches</code>, <code>diff</code>,
 <code>pick</code>, <code>pull</code>, <code>rebase</code>, and <code>fold</code>.</li>
 </ul>
-<h3 id="fixed-21">Fixed</h3>
+<h3 id="fixed-22">Fixed</h3>
 <ul>
 <li><code>stg show</code> detects conflicting &ndash;applied and &ndash;unapplied options.</li>
 <li><code>stg show --stat</code> now shows commit headers.</li>
@@ -953,7 +964,7 @@ diff.</li>
 <li><code>stg diff --range</code> detects some invalid values (e.g. <code>-r ..</code>).</li>
 <li>Date parsing is now more portable, only use platform specific <code>date</code>
 as last parsing option. Affects, e.g., <code>stg refresh --authdate</code>.</li>
-<li>Repaired seach path for templates to avoid looking in Python
+<li>Repaired search path for templates to avoid looking in Python
 site-packages directory.</li>
 <li>Ensure stdout and stderr are flushed. Rarely affected <code>stg diff</code>.</li>
 <li><code>stg repair</code> will now fail if extra command line arguments are
@@ -977,7 +988,7 @@ regular commit object.</li>
 <li>Fail faster when patch name has slash (&rsquo;/&rsquo;) (<a href="https://github.com/stacked-git/stgit/issues/24">#24</a>).</li>
 </ul>
 <h2 id="019-2018-11-05"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.19">[0.19] 2018-11-05</a></h2>
-<h3 id="changed-22">Changed</h3>
+<h3 id="changed-23">Changed</h3>
 <ul>
 <li>Python 3 support. StGit supports Python 2.6, 2.7, 3.3, 3.4, 3.5, 3.6,
 and 3.7. PyPy interpreters are also supported.</li>
@@ -989,7 +1000,7 @@ Submodules are also not included by default when refreshing a patch.</li>
 support.</li>
 <li>Many new test cases were added.</li>
 </ul>
-<h3 id="fixed-22">Fixed</h3>
+<h3 id="fixed-23">Fixed</h3>
 <ul>
 <li>Repair handling of emails with utf-8 bodies containing latin-1
 characters. Also correctly decode email headers containing quoted
@@ -1009,22 +1020,22 @@ on the content of the [mail &ldquo;alias&rdquo;] section of Git configuration</l
 <li><code>stg pop --spill</code> functionality to allow popping a patch from the
 stack while keeping its modification in the tree</li>
 </ul>
-<h3 id="changed-23">Changed</h3>
+<h3 id="changed-24">Changed</h3>
 <ul>
 <li>Project page details updated (gna.org has been shut down)</li>
 </ul>
-<h3 id="fixed-23">Fixed</h3>
+<h3 id="fixed-24">Fixed</h3>
 <ul>
 <li>Various fixes and test coverage improvements</li>
 </ul>
 <h2 id="0171-2013-09-30"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.17.1">[0.17.1] 2013-09-30</a></h2>
-<h3 id="changed-24">Changed</h3>
+<h3 id="changed-25">Changed</h3>
 <ul>
 <li>Test suite improvements.</li>
 <li>Print tracebacks to stderr.</li>
 <li>Run test suite in parallel.</li>
 </ul>
-<h3 id="fixed-24">Fixed</h3>
+<h3 id="fixed-25">Fixed</h3>
 <ul>
 <li>Fix dirty index errors when resolving conflicts.</li>
 <li>Fix &ndash;authdate date parsing.</li>
@@ -1037,12 +1048,12 @@ stack while keeping its modification in the tree</li>
 other branch.</li>
 <li>Support for sending patches both as attachment and inline.</li>
 </ul>
-<h3 id="changed-25">Changed</h3>
+<h3 id="changed-26">Changed</h3>
 <ul>
 <li><code>stg mail</code> no longer filters explicitly added <code>--cc</code> sender address.</li>
 <li><code>stg refresh</code> warns when index is dirty.</li>
 </ul>
-<h3 id="fixed-25">Fixed</h3>
+<h3 id="fixed-26">Fixed</h3>
 <ul>
 <li>Fix for parsing the commit header correctly.</li>
 <li>Several <code>stgit.el</code> (Emacs mode) improvements.</li>
@@ -1065,7 +1076,7 @@ given branch.</li>
 <li><code>stg mail</code> can use <code>git send-email</code> directly.</li>
 <li>Vim syntax highlighting for StGit commit messages.</li>
 </ul>
-<h3 id="fixed-26">Fixed</h3>
+<h3 id="fixed-27">Fixed</h3>
 <ul>
 <li>Several improvements to the Emacs mode (stgit.el).</li>
 <li>Many bug-fixes.</li>
@@ -1109,7 +1120,7 @@ It displays the patch stack in an Emacs buffer, and can handle all
 common StGit tasks.</li>
 <li>Man pages and an improved tutorial.</li>
 </ul>
-<h3 id="changed-26">Changed</h3>
+<h3 id="changed-27">Changed</h3>
 <ul>
 <li>Improved bash tab-completion, automatically generated from the stg
 command definitions.</li>
