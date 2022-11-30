@@ -10,7 +10,7 @@
 {{ $c := $c | replaceRE "\\blinkstg:([a-z]+)\\[\\]" "<a href=\"/man/stg-$1\">stg $1</a>" }}
 {{ $c := $c | replaceRE "\\blinkstgsub:([a-z]+)\\[\\]" "<a href=\"/man/stg-$1\">$1</a>" }}
 {{ $c := $c | replaceRE "<a href=\"stg\">1</a>" "<a href=\"/man/stg\">stg(1)</a>" }}
-{{ $c := $c | replaceRE "\\blinkgit:(git(?:-?\\w*)?)\\[(\\d)\\]" "<a href=\"https://git-scm.com/docs/$1\">$1($2)</a>" }}
+{{ $c := $c | replaceRE "\\blinkgit:(git(?:-?[\\w-]*)?)\\[(\\d)\\]" "<a href=\"https://git-scm.com/docs/$1\">$1($2)</a>" }}
 {{ $c | safeHTML }}
 </main>
 {{ end }}
