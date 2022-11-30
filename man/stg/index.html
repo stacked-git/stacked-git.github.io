@@ -534,8 +534,177 @@ type of object they create or change.</p>
 <h2 id="_configuration_mechanism">CONFIGURATION MECHANISM</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>StGit uses the same configuration mechanism as Git. See <a href="https://git-scm.com/docs/git">git(7)</a>
+<p>StGit uses the same configuration mechanism as Git. See <a href="https://git-scm.com/docs/git-config">git-config(1)</a>
 for more details.</p>
+</div>
+<div class="sect2">
+<h3 id="_variables">Variables</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">branch.&lt;name&gt;.stgit.autostash</dt>
+<dt class="hdlist1">branch.&lt;name&gt;.stgit.fetchcmd</dt>
+<dt class="hdlist1">branch.&lt;name&gt;.stgit.pull-policy</dt>
+<dt class="hdlist1">branch.&lt;name&gt;.stgit.pullcmd</dt>
+<dt class="hdlist1">branch.&lt;name&gt;.stgit.rebasecmd</dt>
+<dd>
+<p>Branch-specific configuration values. These take precedence over the corresponding
+non-branch specific configuration values (see below).</p>
+</dd>
+<dt class="hdlist1">branch.&lt;name&gt;.stgit.parentbranch</dt>
+<dd>
+<p>Specifies the parent branch of a branch with a StGit stack. This value is set by
+<a href="/man/stg-branch">stg branch</a> when creating or cloning branches, and not typically set by the user.
+The parent branch is used by <a href="/man/stg-pull">stg pull</a> when <em>stgit.pull-policy</em> is either
+<em>rebase</em> or <em>fetch-rebase</em> to determine the target of the rebase.</p>
+</dd>
+<dt class="hdlist1">stgit.alias.*</dt>
+<dd>
+<p>Command aliases for <em>stg</em>. For example, after defining <code>stgit.alias.list = series -d</code>,
+running <code>stg list</code> is equivalent to <code>stg series -d</code>. Arguments are split by spaces and
+the usual shell quoting and escaping is supported. A quote pair or backslash may be
+used to quote them.</p>
+<div class="paragraph">
+<p>If the alias expansion is prefixed with an exclamation point (<code>!</code>), it will be treated
+as a shell command. For example, defining <code>stgit.alias.outgoing = !git log @{u}</code>,
+running <code>stg outgoing</code> is equivalent to running the shell command <code>git log @{u}</code>. Note
+that shell commands will be executed from the top-level directory of the working tree,
+which may not necessarily be the current directory. <code>GIT_PREFIX</code> is set as returned by
+running <code>git rev-parse --show-prefix</code> from the original current directory. See
+linkgit:git-rev-parse[1].</p>
+</div>
+<div class="paragraph">
+<p>Aliases that would hide existing StGit commands are ignored.</p>
+</div>
+</dd>
+<dt class="hdlist1">stgit.autoimerge</dt>
+<dd>
+<p>When set to <em>true</em>, if conflicts occur when pushing a patch, <a href="https://git-scm.com/docs/git-mergetool">git-mergetool(1)</a>
+is automatically run to attempt to resolve the conflicts.</p>
+</dd>
+<dt class="hdlist1">stgit.autosign</dt>
+<dd>
+<p>Automatically add &#34;Signed-off-by:&#34; trailer to commit messages for new patches created
+with <a href="/man/stg-new">stg new</a> or lingstg:import[].</p>
+</dd>
+<dt class="hdlist1">stgit.autostash</dt>
+<dd>
+<p>When running <a href="/man/stg-rebase">stg rebase</a>, if any modified files are found in the working tree, a
+temporary stash is created with <a href="https://git-scm.com/docs/git-stash">git-stash(1)</a> before the operation begins and
+is applied after the operation completes.</p>
+</dd>
+<dt class="hdlist1">stgit.diff-opts</dt>
+<dd>
+<p>Options to pass-through to <code>git diff-tree</code> for <a href="/man/stg-diff">stg diff</a>, <a href="/man/stg-export">stg export</a>,
+<a href="/man/stg-patches">stg patches</a>, and <a href="/man/stg-show">stg show</a>. Multiple space-separated options may be
+specified. See linkgit:git-diff-tree[1] for information about the various available
+options.</p>
+</dd>
+<dt class="hdlist1">stgit.edit.verbose</dt>
+<dd>
+<p>When set to <em>true</em>, the patch’s diff will be shown when interactively editing a patch
+description with, for example, <a href="/man/stg-edit">stg edit</a>.</p>
+</dd>
+<dt class="hdlist1">stgit.editor</dt>
+<dd>
+<p>Commands such as <a href="/man/stg-edit">stg edit</a> and <a href="/man/stg-new">stg new</a> open an editor to edit the patch
+description and commit message. The editor set by this variable is launched when the
+<em>GIT_EDITOR</em> environment variable is not set. This variable takes precedence over the
+<code>core.editor</code> configuration variable as well as the <em>VISUAL</em> and <em>EDITOR</em> environment
+variables.</p>
+</dd>
+<dt class="hdlist1">stgit.fetchcmd</dt>
+<dd>
+<p>The command specified by this variable will be run by <a href="/man/stg-pull">stg pull</a> to fetch from the
+remote repository when <em>stgit.pull-policy</em> is <em>fetch-rebase</em>. When not set, the
+default command is <code>git fetch</code>.</p>
+</dd>
+<dt class="hdlist1">stgit.gpgsign</dt>
+<dd>
+<p>A boolean to specify whether StGit stack metadata commits should be GPG signed. When
+not set, the value of <em>commit.gpgsign</em> is used. If neither <em>stgit.gpgsign</em> or
+<em>commit.gpgsign</em> are set, then stack metadata commits will not be signed.</p>
+<div class="paragraph">
+<p>N.B. Set <em>commit.gpgsign</em> to determine whether patches themselves are GPG signed. See
+<a href="https://git-scm.com/docs/git-config">git-config(1)</a> for more information about <em>commit.gpgsign</em>.</p>
+</div>
+</dd>
+<dt class="hdlist1">stgit.import.message-id</dt>
+<dd>
+<p>When set to <em>true</em>, create <em>Message-Id:</em> trailer in the patch description of patches
+imported from email using <a href="/man/stg-import">stg import</a>.</p>
+</dd>
+<dt class="hdlist1">stgit.keepoptimized</dt>
+<dd>
+<p>When set to <em>true</em>, after pulling changes with <a href="/man/stg-pull">stg pull</a>, the repository’s object
+database will be optimized by running <a href="https://git-scm.com/docs/git-repack">git-repack(1)</a>.</p>
+</dd>
+<dt class="hdlist1">stgit.namelength</dt>
+<dd>
+<p>An integer used to determine the maximum length, in characters, of automatically
+generated patch names. The default value is <em>30</em>. This option does not affect
+user-specified patch names. Setting to a value less than or equal to <em>0</em> will allow
+automatically generated patch names of unlimited length.</p>
+<div class="paragraph">
+<p>Automatically generated patch names are truncated at word boundaries less than or equal
+to the value of <em>stgit.namelength</em>. As a result, patch names will typically not be
+truncated at exactly this number of characters. It is also possible for automatically
+generated patch names to be longer than this value if a work boundary cannot be found
+within this bound, or if additional characters need to be added to the patch name to
+make it unique.</p>
+</div>
+</dd>
+<dt class="hdlist1">stgit.pick.expose-format</dt>
+<dd>
+<p>Format of the commit message for patches picked using the <em>--expose</em> option with
+<a href="/man/stg-pick">stg pick</a>. The value of this option is as may be specified to the <em>--pretty</em>
+option of <a href="https://git-scm.com/docs/git-show">git-show(1)</a>. The default is <em>format:%B%n(imported from commit %H)</em>.</p>
+</dd>
+<dt class="hdlist1">stgit.pull-policy</dt>
+<dd>
+<p>Policy used by <a href="/man/stg-pull">stg pull</a> for pulling changes from a remote repository. Valid
+values include:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>pull</code>, the default, uses <a href="https://git-scm.com/docs/git-pull">git-pull(1)</a> or <em>stgit.pullcmd</em>, if set, to pull
+changes from the remote repository.</p>
+</li>
+<li>
+<p><code>rebase</code> uses <a href="https://git-scm.com/docs/git-reset">git-reset(1)</a> or <em>stgit.rebasecmd</em>, if set, to rebase the patch
+stack before reapplying patches.</p>
+</li>
+<li>
+<p><code>fetch-rebase</code> first fetches commits from the remote repository using
+<a href="https://git-scm.com/docs/git-fetch">git-fetch(1)</a> or <em>stgit.fetchcmd</em>, if set, before performing the rebase as
+described above.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">stgit.pullcmd</dt>
+<dd>
+<p>The command to be run by <a href="/man/stg-pull">stg pull</a> to pull changes from the remote repository
+when <em>stgit.pull-policy</em> is <em>pull</em> (the default). The default value is <code>git pull</code>.</p>
+</dd>
+<dt class="hdlist1">stgit.rebasecmd</dt>
+<dd>
+<p>The command to be run by <a href="/man/stg-pull">stg pull</a> to set the new stack base when
+<em>stgit.pull-policy</em> is either <em>rebase</em> or <em>fetch-rebase</em>. The default is <code>git reset
+--hard</code>.</p>
+</dd>
+<dt class="hdlist1">stgit.refreshsubmodules</dt>
+<dd>
+<p>A boolean to specify whether <a href="/man/stg-refresh">stg refresh</a> includes submodules in patch content.
+This value may be overridden by the <em>--submodules</em> or <em>--no-submodules</em> option to
+<a href="/man/stg-refresh">stg refresh</a>. By default, submodule content is not included in patch content.</p>
+</dd>
+<dt class="hdlist1">stgit.shortnr</dt>
+<dd>
+<p>The number of patches listed by <a href="/man/stg-series">stg series</a> when the <em>-s</em>/<em>--short</em> option is
+specified. Defaults to <em>5</em>.</p>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 </div>
