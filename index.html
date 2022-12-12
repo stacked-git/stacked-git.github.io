@@ -129,6 +129,20 @@ the StGit patches into other repositories using standard Git
 functionality.</p>
 <p>StGit is licensed under the GNU General Public License, version 2.</p>
 <h2 id="news">News</h2>
+<h3 id="2022-12-12-stgit-v210v210-has-been-released">2022-12-12: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.1.0">StGit v2.1.0</a> has been released.</h3>
+<p>This minor release introduces several long-awaited features, including
+some potentially breaking changes.</p>
+<p>The main breaking feature is relaxed stack initialization. Instead of
+needing to explicitly initialize a StGit stack on a branch, patch
+creating commands such as <code>stg new</code> and <code>stg import</code> will automatically
+initialize the stack, if needed. Most other commands that previously
+required an initialized stack will now operate as if there is an empty
+stack if the stack is not yet initialized.</p>
+<p>Another potentially breaking change is that the <code>stgit.gpgsign</code>
+configuration variable is now independent of <code>commit.gpgsign</code>. I.e. to
+have signed stack metadata commits, <code>stgit.gpgsign</code> must be set to
+<code>true</code>.</p>
+<p>See the <a href="changelog/">changelog</a> for all the details on this release.</p>
 <h3 id="2022-11-30-stgit-v204v204-has-been-released">2022-11-30: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.4">StGit v2.0.4</a> has been released.</h3>
 <p>This release makes some repairs to aliases, including documenting
 aliases along with all other StGit configuration variables.</p>

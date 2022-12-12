@@ -164,7 +164,8 @@ With the --threeway option, the diff is applied onto the bottom of the current p
 SYNOPSIS stg goto [OPTIONS] &amp;lt;patch&amp;gt; DESCRIPTION Go to patch by pushing or popping as necessary
 OPTIONS -k --keep Keep the local changes
 -m --merged Check for patches merged upstream
-StGit Part of the StGit suite - see linkman:stg[1]</description>
+--committer-date-is-author-date Instead of using the current time as the committer date, use the author date of the commit as the committer date.
+--conflicts[=&amp;lt;policy&amp;gt;] Either &amp;#34;allow&amp;#34; or &amp;#34;disallow&amp;#34; pushing a patch with conflicts.</description>
     </item>
     
     <item>

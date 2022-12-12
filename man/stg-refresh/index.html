@@ -177,6 +177,23 @@ set it to the current contents of the index.</p>
 <p>Instead of warning the user when some work has already been staged (such as
 with git add interactive mode) force a full refresh.</p>
 </dd>
+<dt class="hdlist1">--conflicts[=&lt;policy&gt;]</dt>
+<dd>
+<p>Either &#34;allow&#34; or &#34;disallow&#34; pushing a patch with conflicts.</p>
+<div class="paragraph">
+<p>Using <code>--conflicts=allow</code> (or just <code>--conflicts</code>) allows pushing a patch that
+may result in unresolved merge conflicts. The patch will be pushed and files
+with conflicts will be left with conflict markers to be resolved manually; or
+the operation undone with <code>stg undo --hard</code>. This is the default behavior and
+also corresponds to the &#34;stgit.push.allow-conflicts&#34; variable being set to &#34;true&#34;.</p>
+</div>
+<div class="paragraph">
+<p>Using <code>--conflicts=disallow</code> disallows pushing any patch that would result in
+merge conflicts. The operation will stop on the last patch that can be pushed
+without conflicts. This behavior can be configured by setting
+&#34;stgit.push.allow-conflicts&#34; to &#34;false&#34;.</p>
+</div>
+</dd>
 <dt class="hdlist1">-p &lt;patch&gt;</dt>
 <dt class="hdlist1">--patch=&lt;patch&gt;</dt>
 <dd>
@@ -263,6 +280,11 @@ option may be provided multiple times.</p>
 <div class="paragraph">
 <p>Use &#34;now&#34; to use the current time and date.</p>
 </div>
+</dd>
+<dt class="hdlist1">--committer-date-is-author-date</dt>
+<dd>
+<p>Instead of using the current time as the committer date, use the author
+date of the commit as the committer date.</p>
 </dd>
 </dl>
 </div>

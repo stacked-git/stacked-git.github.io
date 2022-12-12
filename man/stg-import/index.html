@@ -191,6 +191,11 @@ source to be fetched from a url instead of from a local file.</p>
 <dd>
 <p>Remove &lt;n&gt; leading components from diff paths (default 1)</p>
 </dd>
+<dt class="hdlist1">--directory=&lt;root&gt;</dt>
+<dd>
+<p>Prepend &lt;root&gt; to all filenames. If a &#34;-p&#34; argument is also passed, it is
+applied before prepending the new root.</p>
+</dd>
 <dt class="hdlist1">-t</dt>
 <dt class="hdlist1">--stripname</dt>
 <dd>
@@ -199,6 +204,12 @@ source to be fetched from a url instead of from a local file.</p>
 <dt class="hdlist1">-C &lt;n&gt;</dt>
 <dd>
 <p>Ensure &lt;n&gt; lines of matching context for each change</p>
+</dd>
+<dt class="hdlist1">-3</dt>
+<dt class="hdlist1">--3way</dt>
+<dd>
+<p>Attempt 3-way merge if the patch records the identity of blobs it is
+supposed to apply to and those blobs are available locally.</p>
 </dd>
 <dt class="hdlist1">-i</dt>
 <dt class="hdlist1">--ignore</dt>
@@ -285,6 +296,11 @@ option may be provided multiple times.</p>
 <div class="paragraph">
 <p>Use &#34;now&#34; to use the current time and date.</p>
 </div>
+</dd>
+<dt class="hdlist1">--committer-date-is-author-date</dt>
+<dd>
+<p>Instead of using the current time as the committer date, use the author
+date of the commit as the committer date.</p>
 </dd>
 </dl>
 </div>

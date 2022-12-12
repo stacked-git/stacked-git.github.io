@@ -620,12 +620,10 @@ default command is <code>git fetch</code>.</p>
 </dd>
 <dt class="hdlist1">stgit.gpgsign</dt>
 <dd>
-<p>A boolean to specify whether StGit stack metadata commits should be GPG signed. When
-not set, the value of <em>commit.gpgsign</em> is used. If neither <em>stgit.gpgsign</em> or
-<em>commit.gpgsign</em> are set, then stack metadata commits will not be signed.</p>
+<p>A boolean to specify whether StGit stack metadata commits should be GPG signed.</p>
 <div class="paragraph">
-<p>N.B. Set <em>commit.gpgsign</em> to determine whether patches themselves are GPG signed. See
-<a href="https://git-scm.com/docs/git-config">git-config(1)</a> for more information about <em>commit.gpgsign</em>.</p>
+<p>N.B. Set <em>commit.gpgsign</em> to determine whether patch commits themselves are GPG signed.
+See <a href="https://git-scm.com/docs/git-config">git-config(1)</a> for more information about <em>commit.gpgsign</em>.</p>
 </div>
 </dd>
 <dt class="hdlist1">stgit.import.message-id</dt>
@@ -685,6 +683,25 @@ described above.</p>
 <dd>
 <p>The command to be run by <a href="/man/stg-pull">stg pull</a> to pull changes from the remote repository
 when <em>stgit.pull-policy</em> is <em>pull</em> (the default). The default value is <code>git pull</code>.</p>
+</dd>
+<dt class="hdlist1">stgit.push.allow-conflicts</dt>
+<dd>
+<p>A boolean to specify whether <a href="/man/stg-push">stg push</a> and other commands that push patches will
+push patches that may result in merge conflicts. The default is <em>true</em>, which means
+that a patch with conflicts will be pushed and if the conflicts cannot be
+automatically resolved, the operation will stop and with the conflicts left to be
+resolved manually.</p>
+<div class="paragraph">
+<p>When set to <em>false</em>, a patch that would have merge conflicts will not be pushed, thus
+leaving the stack on the last patch that could be pushed without conflicts.</p>
+</div>
+<div class="paragraph">
+<p>This configuration variable may be overridden on the command line with either
+<code>--conflicts[=allow]</code> or <code>--conflicts=disallow</code>.</p>
+</div>
+<div class="paragraph">
+<p>N.B.: <em>stgit.autoimerge</em> only has an affect when push conflicts are allowed.</p>
+</div>
 </dd>
 <dt class="hdlist1">stgit.rebasecmd</dt>
 <dd>

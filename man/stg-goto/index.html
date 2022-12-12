@@ -145,6 +145,28 @@
 <dd>
 <p>Check for patches merged upstream</p>
 </dd>
+<dt class="hdlist1">--committer-date-is-author-date</dt>
+<dd>
+<p>Instead of using the current time as the committer date, use the author
+date of the commit as the committer date.</p>
+</dd>
+<dt class="hdlist1">--conflicts[=&lt;policy&gt;]</dt>
+<dd>
+<p>Either &#34;allow&#34; or &#34;disallow&#34; pushing a patch with conflicts.</p>
+<div class="paragraph">
+<p>Using <code>--conflicts=allow</code> (or just <code>--conflicts</code>) allows pushing a patch that
+may result in unresolved merge conflicts. The patch will be pushed and files
+with conflicts will be left with conflict markers to be resolved manually; or
+the operation undone with <code>stg undo --hard</code>. This is the default behavior and
+also corresponds to the &#34;stgit.push.allow-conflicts&#34; variable being set to &#34;true&#34;.</p>
+</div>
+<div class="paragraph">
+<p>Using <code>--conflicts=disallow</code> disallows pushing any patch that would result in
+merge conflicts. The operation will stop on the last patch that can be pushed
+without conflicts. This behavior can be configured by setting
+&#34;stgit.push.allow-conflicts&#34; to &#34;false&#34;.</p>
+</div>
+</dd>
 </dl>
 </div>
 </div>
