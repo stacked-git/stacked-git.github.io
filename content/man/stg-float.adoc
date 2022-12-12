@@ -38,6 +38,10 @@ OPTIONS
 --keep::
     Keep the local changes
 
+--committer-date-is-author-date::
+    Instead of using the current time as the committer date, use the author
+    date of the commit as the committer date.
+
 StGit
 -----
 Part of the StGit suite - see linkman:stg[1]

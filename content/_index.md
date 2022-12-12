@@ -35,6 +35,25 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2022-12-12: [StGit v2.1.0][v2.1.0] has been released.
+
+This minor release introduces several long-awaited features, including
+some potentially breaking changes.
+
+The main breaking feature is relaxed stack initialization. Instead of
+needing to explicitly initialize a StGit stack on a branch, patch
+creating commands such as `stg new` and `stg import` will automatically
+initialize the stack, if needed. Most other commands that previously
+required an initialized stack will now operate as if there is an empty
+stack if the stack is not yet initialized.
+
+Another potentially breaking change is that the `stgit.gpgsign`
+configuration variable is now independent of `commit.gpgsign`. I.e. to
+have signed stack metadata commits, `stgit.gpgsign` must be set to
+`true`.
+
+See the [changelog](changelog/) for all the details on this release.
+
 ### 2022-11-30: [StGit v2.0.4][v2.0.4] has been released.
 
 This release makes some repairs to aliases, including documenting
@@ -114,6 +133,7 @@ Thanks to everyone who submitted a PR or reported an issue!
 
 See the [changelog](changelog/) for all the details on this release.
 
+[v2.1.0]: https://github.com/stacked-git/stgit/releases/tag/v2.1.0
 [v2.0.4]: https://github.com/stacked-git/stgit/releases/tag/v2.0.4
 [v2.0.3]: https://github.com/stacked-git/stgit/releases/tag/v2.0.3
 [v2.0.2]: https://github.com/stacked-git/stgit/releases/tag/v2.0.2

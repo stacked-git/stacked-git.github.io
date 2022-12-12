@@ -53,11 +53,29 @@ exist in the new stack base. If a patch's changes are detected to have been
 merged, the patch will still exist in the stack, but become empty after the
 rebase operation.
 
+--committer-date-is-author-date::
+    Instead of using the current time as the committer date, use the author
+    date of the commit as the committer date.
+
 --autostash::
     Automatically create a temporary stash before the operation begins, and
     apply it after the operation completes. This allows a rebase to be
     performed on a dirty work tree. Note however that the final stash
     application may result in non-trivial conflicts.
+
+--conflicts[=<policy>]::
+    Either "allow" or "disallow" pushing a patch with conflicts.
++
+Using `--conflicts=allow` (or just `--conflicts`) allows pushing a patch that
+may result in unresolved merge conflicts. The patch will be pushed and files
+with conflicts will be left with conflict markers to be resolved manually; or
+the operation undone with `stg undo --hard`. This is the default behavior and
+also corresponds to the "stgit.push.allow-conflicts" variable being set to "true".
++
+Using `--conflicts=disallow` disallows pushing any patch that would result in
+merge conflicts. The operation will stop on the last patch that can be pushed
+without conflicts. This behavior can be configured by setting
+"stgit.push.allow-conflicts" to "false".
 
 StGit
 -----

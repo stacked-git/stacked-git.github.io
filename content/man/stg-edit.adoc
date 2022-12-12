@@ -87,6 +87,10 @@ option may be provided multiple times.
 +
 Use "now" to use the current time and date.
 
+--committer-date-is-author-date::
+    Instead of using the current time as the committer date, use the author
+    date of the commit as the committer date.
+
 --save-template=<file>::
     Instead of running the command, just write the patch description to FILE,
     and exit. (If FILE is "-", write to stdout.)

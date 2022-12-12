@@ -56,6 +56,20 @@ OPTIONS
     Instead of warning the user when some work has already been staged (such as
     with git add interactive mode) force a full refresh.
 
+--conflicts[=<policy>]::
+    Either "allow" or "disallow" pushing a patch with conflicts.
++
+Using `--conflicts=allow` (or just `--conflicts`) allows pushing a patch that
+may result in unresolved merge conflicts. The patch will be pushed and files
+with conflicts will be left with conflict markers to be resolved manually; or
+the operation undone with `stg undo --hard`. This is the default behavior and
+also corresponds to the "stgit.push.allow-conflicts" variable being set to "true".
++
+Using `--conflicts=disallow` disallows pushing any patch that would result in
+merge conflicts. The operation will stop on the last patch that can be pushed
+without conflicts. This behavior can be configured by setting
+"stgit.push.allow-conflicts" to "false".
+
 -p <patch>::
 --patch=<patch>::
     Refresh (applied) <patch> instead of the top patch
@@ -122,6 +136,10 @@ option may be provided multiple times.
     Set the date the patch was authored.
 +
 Use "now" to use the current time and date.
+
+--committer-date-is-author-date::
+    Instead of using the current time as the committer date, use the author
+    date of the commit as the committer date.
 
 StGit
 -----

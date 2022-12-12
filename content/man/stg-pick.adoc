@@ -57,6 +57,10 @@ OPTIONS
 --parent=<committish>::
     Use <committish> as parent
 
+--committer-date-is-author-date::
+    Instead of using the current time as the committer date, use the author
+    date of the commit as the committer date.
+
 --fold::
     Fold the commit object into the current patch
 

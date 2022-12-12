@@ -67,12 +67,21 @@ OPTIONS
 --strip=<n>::
     Remove <n> leading components from diff paths (default 1)
 
+--directory=<root>::
+    Prepend <root> to all filenames. If a "-p" argument is also passed, it is
+    applied before prepending the new root.
+
 -t::
 --stripname::
     Strip number and extension from patch name
 
 -C <n>::
     Ensure <n> lines of matching context for each change
+
+-3::
+--3way::
+    Attempt 3-way merge if the patch records the identity of blobs it is
+    supposed to apply to and those blobs are available locally.
 
 -i::
 --ignore::
@@ -139,6 +148,10 @@ option may be provided multiple times.
     Set the date the patch was authored.
 +
 Use "now" to use the current time and date.
+
+--committer-date-is-author-date::
+    Instead of using the current time as the committer date, use the author
+    date of the commit as the committer date.
 
 StGit
 -----

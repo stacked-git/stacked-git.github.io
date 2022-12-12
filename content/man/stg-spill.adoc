@@ -35,6 +35,10 @@ OPTIONS
     worktree. Without this option, the patch's changes will be in both the
     index and worktree.
 
+--committer-date-is-author-date::
+    Instead of using the current time as the committer date, use the author
+    date of the commit as the committer date.
+
 StGit
 -----
 Part of the StGit suite - see linkman:stg[1]

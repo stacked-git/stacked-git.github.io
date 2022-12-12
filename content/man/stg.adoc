@@ -251,12 +251,10 @@ stgit.fetchcmd::
   default command is `git fetch`.
 
 stgit.gpgsign::
-  A boolean to specify whether StGit stack metadata commits should be GPG signed. When
-  not set, the value of 'commit.gpgsign' is used. If neither 'stgit.gpgsign' or
-  'commit.gpgsign' are set, then stack metadata commits will not be signed.
+  A boolean to specify whether StGit stack metadata commits should be GPG signed.
 +
-N.B. Set 'commit.gpgsign' to determine whether patches themselves are GPG signed. See
-linkgit:git-config[1] for more information about 'commit.gpgsign'.
+N.B. Set 'commit.gpgsign' to determine whether patch commits themselves are GPG signed.
+See linkgit:git-config[1] for more information about 'commit.gpgsign'.
 
 stgit.import.message-id::
   When set to 'true', create 'Message-Id:' trailer in the patch description of patches
@@ -299,6 +297,21 @@ stgit.pull-policy::
 stgit.pullcmd::
   The command to be run by linkstg:pull[] to pull changes from the remote repository
   when 'stgit.pull-policy' is 'pull' (the default). The default value is `git pull`.
+
+stgit.push.allow-conflicts::
+  A boolean to specify whether linkstg:push[] and other commands that push patches will
+  push patches that may result in merge conflicts. The default is 'true', which means
+  that a patch with conflicts will be pushed and if the conflicts cannot be
+  automatically resolved, the operation will stop and with the conflicts left to be
+  resolved manually.
++
+When set to 'false', a patch that would have merge conflicts will not be pushed, thus
+leaving the stack on the last patch that could be pushed without conflicts.
++
+This configuration variable may be overridden on the command line with either
+`--conflicts[=allow]` or `--conflicts=disallow`.
++
+N.B.: 'stgit.autoimerge' only has an affect when push conflicts are allowed.
 
 stgit.rebasecmd::
   The command to be run by linkstg:pull[] to set the new stack base when
