@@ -95,7 +95,7 @@ to make a modification to a file in the working tree using a regular
 text editor.
 
 ```
-$ $EDITOR setup.py
+$ $EDITOR README.md
 $ stg status
  M README.md
 ```
