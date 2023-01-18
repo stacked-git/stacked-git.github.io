@@ -35,6 +35,12 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2023-01-16: Blog Post: [How I Keep Using Stacked Git at $WORK][stgit-at-work2]
+
+[This blog post][stgit-at-work2] from lthms describes their
+single-branch workflow using StGit and is a follow-on to their [first
+blog post about StGit][stgit-at-work].
+
 ### 2022-12-12: [StGit v2.1.0][v2.1.0] has been released.
 
 This minor release introduces several long-awaited features, including
@@ -133,6 +139,8 @@ Thanks to everyone who submitted a PR or reported an issue!
 
 See the [changelog](changelog/) for all the details on this release.
 
+[stgit-at-work2]: https://soap.coffee/~lthms/opinions/StackedGit2.html
+[stgit-at-work]: https://soap.coffee/~lthms/opinions/StackedGit.html
 [v2.1.0]: https://github.com/stacked-git/stgit/releases/tag/v2.1.0
 [v2.0.4]: https://github.com/stacked-git/stgit/releases/tag/v2.0.4
 [v2.0.3]: https://github.com/stacked-git/stgit/releases/tag/v2.0.3
