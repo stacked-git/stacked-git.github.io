@@ -13,7 +13,7 @@ title = "Stacked Git"
 The [`stg`](man/stg) command line tool provides commands to quickly and
 safely manage a stack of patches.
 
-- Apply and unapplied patches from the stack using
+- Apply and unapply patches from the stack using
   [`push`](man/stg-push), [`pop`](man/stg-pop), and
   [`goto`](man/stg-goto).
 - Incorporate changes from the working tree into a patch and edit patch
