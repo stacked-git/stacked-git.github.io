@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-init - Initialize a StGit stack on current branch</p>
+<p>stg-init - Initialize a StGit stack on a branch</p>
 </div>
 </div>
 </div>
@@ -126,20 +126,41 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Initialize a StGit stack on the current branch.</p>
+<p>Initialize a StGit stack on a branch.</p>
 </div>
 <div class="paragraph">
-<p>A branch must be initialized with a StGit stack before patches may be created
-with <a href="/man/stg-new">stg new</a>, imported with <a href="/man/stg-import">stg import</a>, or picked with <a href="/man/stg-pick">stg pick</a>.</p>
+<p>Initializing a branch with a StGit stack commits initial, empty stack state for
+the branch to the repository. Theses stack metadata commits are tracked by the
+<code>refs/stacks/&lt;branch&gt;</code> reference. Updated stack state is committed by each
+StGit command that modifies the stack. StGit users do not have to do anything
+with the <code>refs/stacks/&lt;branch&gt;</code> ref directly.</p>
 </div>
 <div class="paragraph">
-<p>The branch and its git repository must already exist and contain at least one
-commit before initializing a StGit stack. Branches created with <code>stg branch
---create</code> are automatically initialized.</p>
+<p>Some StGit commands, such as <code>stg new</code> and <code>stg uncommit</code>, will automatically
+initialize the stack, so it is often not necessary to explicitly initialize the
+stack on a branch. Also, branches created with <code>stg branch --create</code> are
+automatically initialized.</p>
+</div>
+<div class="paragraph">
+<p>The branch must already exist and point to a commit before initializing a StGit stack.</p>
 </div>
 <div class="paragraph">
 <p>StGit stack metadata can be deinitialized from a branch using <code>stg branch
 --cleanup</code>. See <a href="/man/stg-branch">stg branch</a> for more details.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">-b &lt;branch&gt;</dt>
+<dt class="hdlist1">--branch=&lt;branch&gt;</dt>
+<dd>
+<p>Use &lt;branch&gt; instead of current branch</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>

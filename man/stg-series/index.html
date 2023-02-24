@@ -130,15 +130,20 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Show all the patches in the series, or just those in the given range, ordered
-from top to bottom.</p>
+from bottom to top.</p>
 </div>
 <div class="paragraph">
-<p>The applied patches are prefixed with a <em>+</em> (except the current patch, which is
-prefixed with a <em>&gt;</em>), the unapplied patches with a <em>-</em>, and the hidden patches
-with a <em>!</em>.</p>
+<p>The topmost applied patch is prefixed with <em>&gt;</em>. All other applied patches are
+prefixed with <em>+</em>. Unapplied patches are prefixed with <em>-</em> and hidden patches
+with <em>!</em>.</p>
 </div>
 <div class="paragraph">
-<p>Empty patches are prefixed with a <em>0</em>.</p>
+<p>The --reverse option may be used to reverse the order in which patches are
+displayed. The reversed order is more stack-like, with the base of the stack
+appearing at the bottom of of the display.</p>
+</div>
+<div class="paragraph">
+<p>Empty patches are prefixed with a <em>*</em> when the --empty option is used.</p>
 </div>
 </div>
 </div>
@@ -150,17 +155,17 @@ with a <em>!</em>.</p>
 <dt class="hdlist1">-b &lt;branch&gt;</dt>
 <dt class="hdlist1">--branch=&lt;branch&gt;</dt>
 <dd>
-<p>Use BRANCH instead of current branch</p>
+<p>Use &lt;branch&gt; instead of current branch</p>
 </dd>
 <dt class="hdlist1">-a</dt>
 <dt class="hdlist1">--all</dt>
 <dd>
 <p>Select all patches, including hidden patches</p>
 </dd>
-<dt class="hdlist1">-s</dt>
-<dt class="hdlist1">--short</dt>
+<dt class="hdlist1">-s[=&lt;n&gt;]</dt>
+<dt class="hdlist1">--short[=&lt;n&gt;]</dt>
 <dd>
-<p>Select patches around the topmost patch only</p>
+<p>Select &lt;n&gt; patches around the topmost patch only</p>
 </dd>
 <dt class="hdlist1">-A</dt>
 <dt class="hdlist1">--applied</dt>
@@ -206,10 +211,6 @@ alternatively be specified as a positive integer greater than or equal to 4.</p>
 <dd>
 <p>Display short description for each patch</p>
 </dd>
-<dt class="hdlist1">--no-description</dt>
-<dd>
-<p>Do not display the patch description</p>
-</dd>
 <dt class="hdlist1">-e</dt>
 <dt class="hdlist1">--empty</dt>
 <dd>
@@ -220,6 +221,30 @@ either <em>0</em> (for empty patches) or a space (for non-empty patches).</p>
 <dt class="hdlist1">--no-prefix</dt>
 <dd>
 <p>Do not display the patch status prefix</p>
+</dd>
+<dt class="hdlist1">-I</dt>
+<dt class="hdlist1">--indices</dt>
+<dd>
+<p>Display absolute patch indicies</p>
+</dd>
+<dt class="hdlist1">-O</dt>
+<dt class="hdlist1">--offsets</dt>
+<dd>
+<p>Display relative offsets from topmost patch or from the stack base if no
+patches are applied.</p>
+</dd>
+<dt class="hdlist1">-r</dt>
+<dt class="hdlist1">--reverse</dt>
+<dd>
+<p>Display patches in reverse order.</p>
+<div class="paragraph">
+<p>This causes the stack to be displayed &#34;right-side up&#34;. By default, patches are
+printed in order from bottom to top; i.e. the first patch in the stack is
+printed first and the last patch is printed last. Thus with the default
+ordering, the stack is displayed upside down. Reversing the order flips the
+stack such that the bottom of the stack is spatially at the top of the display,
+which may be more intuitive.</p>
+</div>
 </dd>
 <dt class="hdlist1">--showbranch</dt>
 <dd>

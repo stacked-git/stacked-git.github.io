@@ -144,6 +144,13 @@
 <div class="paragraph">
 <p>With a single argument, switch to the named branch.</p>
 </div>
+<div class="paragraph">
+<p>StGit supports specifying a branch using the <code>@{-&lt;n&gt;}</code> syntax supported by git,
+including <code>-</code> as a synonym for <code>@{-1}</code>. Thus <code>stg branch -</code> may be used to
+switch to the last checked-out HEAD. Note that <code>@{-&lt;n&gt;}</code> refers to the &lt;n&gt;th
+last HEAD, which is not necessarily a local branch. Using an <code>@{-&lt;n&gt;}</code> value
+that refers to anything but a local branch will result in an error.</p>
+</div>
 </div>
 </div>
 <div class="sect1">

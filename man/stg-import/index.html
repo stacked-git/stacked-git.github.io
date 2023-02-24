@@ -121,11 +121,11 @@
 <pre class="content"><em>stg import</em> [OPTIONS] &lt;diff-path&gt;
 <em>stg import</em> [OPTIONS] -m [&lt;mail-path&gt;|&lt;Maildir-path&gt;]
 <em>stg import</em> [OPTIONS] -M [&lt;mbox-path&gt;]
-<em>stg import</em> [OPTIONS] -s [&lt;series-path&gt;]
+<em>stg import</em> [OPTIONS] -S [&lt;series-path&gt;]
 <em>stg import</em> [OPTIONS] -u &lt;diff-url&gt;
 <em>stg import</em> [OPTIONS] -u -m &lt;mail-url&gt;
 <em>stg import</em> [OPTIONS] -u -M &lt;mbox-url&gt;
-<em>stg import</em> [OPTIONS] -u -s &lt;series-url&gt;</pre>
+<em>stg import</em> [OPTIONS] -u -S &lt;series-url&gt;</pre>
 </div>
 </div>
 </div>
@@ -144,7 +144,7 @@ description at the top, or it can have standard mail format. The &#34;Subject&#3
 </div>
 <div class="paragraph">
 <p>Patches may also be imported from a mail file (-m/--mail), an mbox (-M/--mbox),
-or a series (-s/--series). Furthermore, the -u/--url option allows the patches
+or a series (-S/--series). Furthermore, the -u/--url option allows the patches
 source to be fetched from a url instead of from a local file.</p>
 </div>
 <div class="paragraph">
@@ -171,7 +171,7 @@ source to be fetched from a url instead of from a local file.</p>
 <dd>
 <p>Import patch series from an mbox file</p>
 </dd>
-<dt class="hdlist1">-s</dt>
+<dt class="hdlist1">-S</dt>
 <dt class="hdlist1">--series</dt>
 <dd>
 <p>Import patch series from a series file are tar archive.</p>
@@ -254,6 +254,7 @@ email header. This option is applicable when importing with <em>--mail</em> or
 <dd>
 <p>Disable commit-msg hook</p>
 </dd>
+<dt class="hdlist1">-s[=&lt;value&gt;]</dt>
 <dt class="hdlist1">--signoff[=&lt;value&gt;]</dt>
 <dd>
 <p>Add &#34;Signed-off-by&#34; message trailer.</p>

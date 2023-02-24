@@ -187,7 +187,7 @@ SYNOPSIS stg help branch --list stg help branch --create stg help branch --clone
       <description>NAME stg-hide - Hide patches in the series
 SYNOPSIS stg hide [OPTIONS] &amp;lt;patch&amp;gt;…​ DESCRIPTION Hide patches in the series.
 Hidden patches are no longer shown in the plain series output.
-OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use BRANCH instead of current branch
+OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use &amp;lt;branch&amp;gt; instead of current branch
 StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     
@@ -209,7 +209,7 @@ In addition to standard Git revision specifiers (revspecs), patches may be speci
       
       <guid>http://stacked-git.github.io/man/stg-import/</guid>
       <description>NAME stg-import - Import patches to stack
-SYNOPSIS stg import [OPTIONS] &amp;lt;diff-path&amp;gt; stg import [OPTIONS] -m [&amp;lt;mail-path&amp;gt;|&amp;lt;Maildir-path&amp;gt;] stg import [OPTIONS] -M [&amp;lt;mbox-path&amp;gt;] stg import [OPTIONS] -s [&amp;lt;series-path&amp;gt;] stg import [OPTIONS] -u &amp;lt;diff-url&amp;gt; stg import [OPTIONS] -u -m &amp;lt;mail-url&amp;gt; stg import [OPTIONS] -u -M &amp;lt;mbox-url&amp;gt; stg import [OPTIONS] -u -s &amp;lt;series-url&amp;gt; DESCRIPTION Import patches from various sources to the stack.
+SYNOPSIS stg import [OPTIONS] &amp;lt;diff-path&amp;gt; stg import [OPTIONS] -m [&amp;lt;mail-path&amp;gt;|&amp;lt;Maildir-path&amp;gt;] stg import [OPTIONS] -M [&amp;lt;mbox-path&amp;gt;] stg import [OPTIONS] -S [&amp;lt;series-path&amp;gt;] stg import [OPTIONS] -u &amp;lt;diff-url&amp;gt; stg import [OPTIONS] -u -m &amp;lt;mail-url&amp;gt; stg import [OPTIONS] -u -M &amp;lt;mbox-url&amp;gt; stg import [OPTIONS] -u -S &amp;lt;series-url&amp;gt; DESCRIPTION Import patches from various sources to the stack.
 The simplest usage is to import a diff/patch file into the stack from a local file.</description>
     </item>
     
@@ -219,10 +219,9 @@ The simplest usage is to import a diff/patch file into the stack from a local fi
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://stacked-git.github.io/man/stg-init/</guid>
-      <description>NAME stg-init - Initialize a StGit stack on current branch
-SYNOPSIS stg init [OPTIONS] DESCRIPTION Initialize a StGit stack on the current branch.
-A branch must be initialized with a StGit stack before patches may be created with linkstg:new[], imported with linkstg:import[], or picked with linkstg:pick[].
-The branch and its git repository must already exist and contain at least one commit before initializing a StGit stack. Branches created with stg branch --create are automatically initialized.</description>
+      <description>NAME stg-init - Initialize a StGit stack on a branch
+SYNOPSIS stg init [OPTIONS] DESCRIPTION Initialize a StGit stack on a branch.
+Initializing a branch with a StGit stack commits initial, empty stack state for the branch to the repository. Theses stack metadata commits are tracked by the refs/stacks/&amp;lt;branch&amp;gt; reference. Updated stack state is committed by each StGit command that modifies the stack. StGit users do not have to do anything with the refs/stacks/&amp;lt;branch&amp;gt; ref directly.</description>
     </item>
     
     <item>
@@ -255,7 +254,7 @@ SYNOPSIS stg new [OPTIONS] [patchname] [-- &amp;lt;path&amp;gt;…​] stg new [
       <description>NAME stg-next - Print the name of the next patch
 SYNOPSIS stg next [OPTIONS] DESCRIPTION Print the name of the next patch.
 The next patch is the unapplied patch that follows the current, topmost patch. An error message will be printed if there are no unapplied patches.
-OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use BRANCH instead of current branch
+OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use &amp;lt;branch&amp;gt; instead of current branch
 StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     
@@ -267,7 +266,7 @@ StGit Part of the StGit suite - see linkman:stg[1]</description>
       <guid>http://stacked-git.github.io/man/stg-patches/</guid>
       <description>NAME stg-patches - Show patches that modify files
 SYNOPSIS stg patches [OPTIONS] [path]…​ DESCRIPTION Show the applied patches modifying the given paths. Without path arguments, the files modified in the working tree are used as the paths.
-OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use BRANCH instead of current branch
+OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use &amp;lt;branch&amp;gt; instead of current branch
 -d --diff Show the diff for the given paths
 -O &amp;lt;option&amp;gt; --diff-opt=&amp;lt;option&amp;gt; Pass additional &amp;lt;option&amp;gt; to git diff.
 See the linkgit:git-diff[1] man page.</description>
@@ -305,7 +304,7 @@ If ranges of patches are specified, pop and push operations are performed such t
       <description>NAME stg-prev - Print the name of the previous patch
 SYNOPSIS stg prev [OPTIONS] DESCRIPTION Print the name of the previous patch.
 The previous patch is the applied patch preceding the current, topmost patch. An error message will be printed if not enough patches are applied.
-OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use BRANCH instead of current branch
+OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use &amp;lt;branch&amp;gt; instead of current branch
 StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     
@@ -376,8 +375,8 @@ Refresh will warn if the index is dirty, and require use of either the --index o
       
       <guid>http://stacked-git.github.io/man/stg-rename/</guid>
       <description>NAME stg-rename - Rename a patch
-SYNOPSIS stg rename [OPTIONS] [old-patch] &amp;lt;new-patch&amp;gt; DESCRIPTION Rename [oldpatch] to &amp;lt;newpatch&amp;gt;. If [oldpatch] is not given, the topmost patch will be renamed.
-OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use BRANCH instead of current branch
+SYNOPSIS stg rename [OPTIONS] [old-patch] &amp;lt;new-patch&amp;gt; DESCRIPTION Rename [old-patch] to &amp;lt;new-patch&amp;gt;. If [old-patch] is not given, the topmost patch will be renamed.
+OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use &amp;lt;branch&amp;gt; instead of current branch
 StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     
@@ -410,8 +409,8 @@ The state is specified with a commit id from the stack log, which may be viewed 
       
       <guid>http://stacked-git.github.io/man/stg-series/</guid>
       <description>NAME stg-series - Display the patch series
-SYNOPSIS stg series [OPTIONS] [-A] [-U] [-H] stg series [OPTIONS] --all stg series [OPTIONS] --short stg series [OPTIONS] [patch]…​ DESCRIPTION Show all the patches in the series, or just those in the given range, ordered from top to bottom.
-The applied patches are prefixed with a + (except the current patch, which is prefixed with a &amp;gt;), the unapplied patches with a -, and the hidden patches with a !</description>
+SYNOPSIS stg series [OPTIONS] [-A] [-U] [-H] stg series [OPTIONS] --all stg series [OPTIONS] --short stg series [OPTIONS] [patch]…​ DESCRIPTION Show all the patches in the series, or just those in the given range, ordered from bottom to top.
+The topmost applied patch is prefixed with &amp;gt;. All other applied patches are prefixed with +. Unapplied patches are prefixed with - and hidden patches with !</description>
     </item>
     
     <item>
@@ -482,7 +481,7 @@ SYNOPSIS stg sync &amp;lt;--ref-branch=BRANCH|--series=SERIES&amp;gt; [&amp;lt;p
       <description>NAME stg-top - Print the name of the top patch
 SYNOPSIS stg top [OPTIONS] DESCRIPTION Print the name of the top patch.
 The topmost patch is the currently applied patch. An error message will be printed if no patches are applied.
-OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use BRANCH instead of current branch
+OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use &amp;lt;branch&amp;gt; instead of current branch
 StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     
@@ -518,7 +517,7 @@ StGit Part of the StGit suite - see linkman:stg[1]</description>
       <description>NAME stg-unhide - Unhide hidden patches
 SYNOPSIS stg unhide [OPTIONS] &amp;lt;patch&amp;gt;…​ DESCRIPTION Unhide hidden patches in the series.
 Hidden patches are no longer shown in the plain series output.
-OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use BRANCH instead of current branch
+OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use &amp;lt;branch&amp;gt; instead of current branch
 StGit Part of the StGit suite - see linkman:stg[1]</description>
     </item>
     

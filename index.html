@@ -129,6 +129,51 @@ the StGit patches into other repositories using standard Git
 functionality.</p>
 <p>StGit is licensed under the GNU General Public License, version 2.</p>
 <h2 id="news">News</h2>
+<h3 id="2023-02-24-stgit-v220v220-has-been-released">2023-02-24: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.2.0">StGit v2.2.0</a> has been released.</h3>
+<p>This release contains several quality of life features, including new
+options for specifying patches and branches on the command line. And
+improved performance.</p>
+<h4 id="patch-locator-syntax">Patch Locator Syntax</h4>
+<p>In addition to being able to specify patches by name, StGit now supports
+several new alternatives for specifying patches:</p>
+<ul>
+<li>By relative offset from the topmost patch, e.g. <code>-1</code>, <code>+3</code>, or <code>~2</code>.</li>
+<li>By their absolute index in the stack, e.g. <code>0</code> or <code>12</code>.</li>
+<li>By offset from another patch, e.g. <code>some-patch~</code> or <code>some-patch+2</code>.</li>
+<li>By relative offset from the last visible patch, e.g. <code>^</code> or <code>^2</code>.</li>
+</ul>
+<p>The new patch locator syntax is detailed in the <a href="man/stg"><code>stg</code></a> man
+page.</p>
+<h4 id="new-options-for-stg-series">New Options for <code>stg series</code></h4>
+<p>To complement the new patch locator syntax, new <code>-O</code>/<code>--offsets</code> and
+<code>-I/--indices</code> options display each patch&rsquo;s relative offset from top and
+absolute index, respectively.</p>
+<p>The new <code>-r</code>/<code>--reverse</code> option allows the stack to be shown top-side
+up. This may produce a more intuitive view of the stack for some StGit
+users. Consider adding a <code>stack</code> alias using this option, for example
+with <code>git config --global stgit.alias.stack 'series -rOP'</code>.</p>
+<p>Speaking of aliases, now each of the &ldquo;Display Options&rdquo; for <code>stg series</code>
+have a <code>--no-xxx</code> variant. These can be helpful for masking options used
+in series aliases. For example, the <code>stack</code> offset suggested above could
+be run as <code>stg stack --no-offsets</code> to disable display of offsets.</p>
+<p>Finally, the <code>--short</code> option now takes an optional integer value to
+specify the number of patches to show.</p>
+<h4 id="branch-locators">Branch Locators</h4>
+<p>StGit now supports specifying a branch using the same <code>@{-&lt;n&gt;}</code> syntax
+supported by <code>git</code>. This enables, for example, switching to the
+previously checked-out branch with <code>stg branch @{-1}</code> or just <code>stg branch -</code>
+(where <code>-</code> is synonymous with <code>@{-1}</code>).</p>
+<h4 id="command-line-options">Command Line Options</h4>
+<p>The <code>--signoff</code> option now has a short variant <code>-s</code>. This is a breaking
+change. The <code>--submodules</code> no longer has a <code>-s</code> short option. Similarly,
+the <code>--series</code> options for <code>stg import</code>, <code>stg float</code>, and <code>stg sync</code> now
+use <code>-S</code> instead of <code>-s</code> for their short variants.</p>
+<h4 id="gitoxide">Gitoxide</h4>
+<p>StGit now uses <a href="https://github.com/Byron/gitoxide">Gitoxide</a> (gix crate) instead of libgit2 (git2
+crate) as its git access library. In addition to being a pure-Rust
+dependency, gitoxide has considerably less startup overhead (4x) than
+git2. This has a big impact on the latency of StGit commands.</p>
+<p>See the <a href="changelog/">changelog</a> for more details on this release.</p>
 <h3 id="2023-01-16-blog-post-how-i-keep-using-stacked-git-at-workstgit-at-work2">2023-01-16: Blog Post: <a href="https://soap.coffee/~lthms/opinions/StackedGit2.html">How I Keep Using Stacked Git at $WORK</a></h3>
 <p><a href="https://soap.coffee/~lthms/opinions/StackedGit2.html">This blog post</a> from lthms describes their
 single-branch workflow using StGit and is a follow-on to their <a href="https://soap.coffee/~lthms/opinions/StackedGit.html">first
@@ -199,10 +244,6 @@ audience is really Emacs users that have started to use VSCode.</p>
 </blockquote>
 <p>See the <a href="https://marketplace.visualstudio.com/items?itemName=samuelrydh.stgit">extension in the VSCode marketplace</a> or checkout
 <a href="https://github.com/srydh/vscode-stgit">the repository on GitHub</a>.</p>
-<h3 id="2022-01-28-stgit-v15v15-has-been-released">2022-01-28: <a href="https://github.com/stacked-git/stgit/releases/tag/v1.5">StGit v1.5</a> has been released.</h3>
-<p>Several pesky bugs repaired along with some other minor improvements.</p>
-<p>Thanks to everyone who submitted a PR or reported an issue!</p>
-<p>See the <a href="changelog/">changelog</a> for all the details on this release.</p>
 <h2 id="why-stacked-git">Why Stacked Git?</h2>
 <p>The <em>stack of patches</em> model is a natural way to maintain a clean Git
 history while working on several changes concurrently. A stack-oriented

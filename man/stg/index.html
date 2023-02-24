@@ -217,13 +217,15 @@ Git commits into StGit patches after the fact — and
 <div class="sect2">
 <h3 id="_specifying_patches">Specifying patches</h3>
 <div class="paragraph">
-<p>Many StGit commands take references to StGit patches as arguments.
-Patches in the stack are identified with short names, each of which
-must be unique in the stack.</p>
+<p>Most StGit commands have patch arguments. Patches in the stack may
+be specified in a variety of ways. A patch in the current branch may
+simply referred to by its name, or, alternatively, be located by a
+relative offset from the topmost patch (e.g. <code>+3</code>), as an
+absolute index into the stack (e.g. <code>7</code>), or as an offset from the
+last visible patch (e.g. <code>^1</code>).</p>
 </div>
 <div class="paragraph">
-<p>Patches in the current branch are simply referred to by their name.
-Some commands allow you to specify a patch in another branch of the
+<p>Some commands allow you to specify a patch in another branch of the
 repository; this is done by prefixing the patch name with the branch
 name and a colon (e.g. <code>otherbranch:thatpatch</code>).</p>
 </div>
@@ -238,21 +240,81 @@ the first applied patch up to and including patch <code>p2</code>. Alternatively
 topmost applied patch. And <code>stg delete ..</code> would delete all applied
 patches.</p>
 </div>
+<div class="paragraph">
+<p>The complete syntax for locating patches follows:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em>&lt;patchname&gt;</em>, e.g. <em>patch</em></dt>
+<dd>
+<p>The name of a patch.</p>
+</dd>
+<dt class="hdlist1"><em>@</em></dt>
+<dd>
+<p>Refers to the topmost applied patch, or the base of the stack if no
+patches are applied.</p>
+</dd>
+<dt class="hdlist1"><em>[&lt;patchname&gt;]~[&lt;n&gt;]</em>, e.g. <em>~2</em>, <em>patch~</em>, <em>patch~3</em></dt>
+<dd>
+<p>The &lt;n&gt;th previous patch from the named patch. If &lt;patchname&gt; is not
+supplied, <em>@</em> is implied. A single <em>~</em> represents the first
+previous patch. Multiple <em>~</em> may be specified, e.g.
+<em>patch~~~</em> is the same as <em>patch~3</em>. This is
+similar to git’s revision syntax where <em>&lt;rev&gt;~[&lt;n&gt;]</em> means the &lt;n&gt;th
+ancestor commit from &lt;rev&gt; following first parents.</p>
+</dd>
+<dt class="hdlist1"><em>[&lt;patchname&gt;]+[&lt;n&gt;]</em>, e.g. <em>+</em>, <em>+3</em>, <em>patch+</em>, <em>patch+3</em></dt>
+<dd>
+<p>The &lt;n&gt;th next patch from the named patch. If &lt;patchname&gt; is not
+supplied, <em>@</em> is implied. A single <em>+</em> represents the next
+patch in the series. Multiple <em>+</em> may be specified, e.g.
+<em>patch+++</em> is the same as <em>patch+3</em>.</p>
+</dd>
+<dt class="hdlist1"><em>-[&lt;n&gt;]</em>, e.g. <em>-3</em>, <em>-</em></dt>
+<dd>
+<p>References the &lt;n&gt;th previously applied patch. This is similar to
+<em>~&lt;n&gt;</em>, except it is only valid without a patch name prefix. Note
+that certain commands with other options taking numeric values may
+require escaping <em>-</em> with <em>\-</em>, e.g. <em>\-10</em>.</p>
+</dd>
+<dt class="hdlist1"><em>&lt;n&gt;</em>, e.g. <em>3</em></dt>
+<dd>
+<p>The patch at absolute index &lt;n&gt; in the stack. This is a zero-based
+index, so <em>0</em> refers to the bottommost patch in the stack.</p>
+</dd>
+<dt class="hdlist1"><em>^[&lt;n&gt;]</em>, e.g. <em>^</em>, <em>^3</em></dt>
+<dd>
+<p>The patch at offset &lt;n&gt; from the last visible patch in the stack.
+This is a zero-based offset, so <em>^0</em> refers to the last
+visible patch in the stack, which is equivalent to just
+<em>^</em>. Negative values of &lt;n&gt; are allowed and refer to hidden
+patches which are after the last visible patch in the stack.</p>
+</dd>
+<dt class="hdlist1"><em>{base}+[&lt;n&gt;]</em>, e.g. <em>{base}+</em>, <em>{base}+3</em></dt>
+<dd>
+<p>The patch at offset &lt;n&gt; from the stack’s base commit. Since the
+stack base is not a commit, a positive offset is required.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Take note that numeric patch locations of the form <em>&lt;n&gt;</em>, <em>-&lt;n&gt;</em>, and
+<em>+&lt;n&gt;</em>, e.g. <em>3</em>, <em>-3</em>, or <em>+3</em> are also valid patch names. I.e. it is
+possible (but not recommended) to name a patch, for example, &#34;-3&#34;. In
+the case where a patch name could also be interpreted as a numeric
+index or offset, the literal patch name will take precidence when
+resolving the patch location.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_specifying_commits">Specifying commits</h3>
 <div class="paragraph">
 <p>Some StGit commands take Git commits as arguments. StGit accepts all
-commit expressions that Git does; and in addition, a patch name
-(optionally prefixed by a branch name and a colon) is allowed in this
-context. The usual Git modifiers ^ and ~ are also allowed;
-e.g., <code>abranch:apatch~2</code> is the grandparent of the commit that is the
-patch <code>apatch</code> on branch <code>abranch</code>.</p>
-</div>
-<div class="paragraph">
-<p>Instead of a patch name, you can say <code>{base}</code> to refer to the
-stack base (the commit just below the bottommost patch); so,
-<code>abranch:{base}</code> is the base of the stack in branch <code>abranch</code>.</p>
+revision specifications that Git does (see <a href="https://git-scm.com/docs/gitrevisions">gitrevisions(7)</a>);
+and additionally, the patch specifiers from above. The usual Git
+modifiers, including ^, are also allowed; e.g.
+<code>some-branch:a-patch^^</code> refers to the grandparent of the commit that
+is patch <code>a-patch</code> on branch <code>some-branch</code>.</p>
 </div>
 <div class="paragraph">
 <p>If you need to pass a given StGit reference to a Git command,
@@ -452,7 +514,7 @@ type of object they create or change.</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-init">stg init</a></dt>
 <dd>
-<p>Initialize a StGit stack on current branch</p>
+<p>Initialize a StGit stack on a branch</p>
 </dd>
 <dt class="hdlist1"><a href="/man/stg-pick">stg pick</a></dt>
 <dd>
