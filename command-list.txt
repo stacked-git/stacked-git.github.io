@@ -68,7 +68,7 @@ linkstg:hide[]::
 linkstg:import[]::
     Import patches to stack
 linkstg:init[]::
-    Initialize a StGit stack on current branch
+    Initialize a StGit stack on a branch
 linkstg:pick[]::
     Import a patch from another branch or a commit object
 linkstg:pop[]::

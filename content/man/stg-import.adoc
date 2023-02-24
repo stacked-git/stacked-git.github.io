@@ -15,11 +15,11 @@ SYNOPSIS
 'stg import' [OPTIONS] <diff-path>
 'stg import' [OPTIONS] -m [<mail-path>|<Maildir-path>]
 'stg import' [OPTIONS] -M [<mbox-path>]
-'stg import' [OPTIONS] -s [<series-path>]
+'stg import' [OPTIONS] -S [<series-path>]
 'stg import' [OPTIONS] -u <diff-url>
 'stg import' [OPTIONS] -u -m <mail-url>
 'stg import' [OPTIONS] -u -M <mbox-url>
-'stg import' [OPTIONS] -u -s <series-url>
+'stg import' [OPTIONS] -u -S <series-url>
 
 DESCRIPTION
 -----------
@@ -33,7 +33,7 @@ description at the top, or it can have standard mail format. The "Subject",
 "From", and "Date" headers will be used for the imported patch's author details.
 
 Patches may also be imported from a mail file (-m/--mail), an mbox (-M/--mbox),
-or a series (-s/--series). Furthermore, the -u/--url option allows the patches
+or a series (-S/--series). Furthermore, the -u/--url option allows the patches
 source to be fetched from a url instead of from a local file.
 
 If a patch does not apply cleanly, the failed diff is written to a
@@ -51,7 +51,7 @@ OPTIONS
 --mbox::
     Import patch series from an mbox file
 
--s::
+-S::
 --series::
     Import patch series from a series file are tar archive.
 
@@ -117,6 +117,7 @@ OPTIONS
 --no-verify::
     Disable commit-msg hook
 
+-s[=<value>]::
 --signoff[=<value>]::
     Add "Signed-off-by" message trailer.
 +

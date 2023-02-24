@@ -30,7 +30,7 @@ OPTIONS
 --noapply::
     Reorder patches without reapplying any patches
 
--s <file>::
+-S <file>::
 --series=<file>::
     Rearrange according to a series <file>
 

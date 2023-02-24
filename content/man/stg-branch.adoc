@@ -33,6 +33,12 @@ With no arguments, the current branch is printed to stdout.
 
 With a single argument, switch to the named branch.
 
+StGit supports specifying a branch using the `@{-<n>}` syntax supported by git,
+including `-` as a synonym for `@{-1}`. Thus `stg branch -` may be used to
+switch to the last checked-out HEAD. Note that `@{-<n>}` refers to the <n>th
+last HEAD, which is not necessarily a local branch. Using an `@{-<n>}` value
+that refers to anything but a local branch will result in an error.
+
 COMMANDS
 --------
 

@@ -7,7 +7,7 @@ stg-init(1)
 
 NAME
 ----
-stg-init - Initialize a StGit stack on current branch
+stg-init - Initialize a StGit stack on a branch
 
 SYNOPSIS
 --------
@@ -17,17 +17,29 @@ SYNOPSIS
 DESCRIPTION
 -----------
 
-Initialize a StGit stack on the current branch.
+Initialize a StGit stack on a branch.
 
-A branch must be initialized with a StGit stack before patches may be created
-with linkstg:new[], imported with linkstg:import[], or picked with linkstg:pick[].
+Initializing a branch with a StGit stack commits initial, empty stack state for
+the branch to the repository. Theses stack metadata commits are tracked by the
+`refs/stacks/<branch>` reference. Updated stack state is committed by each
+StGit command that modifies the stack. StGit users do not have to do anything
+with the `refs/stacks/<branch>` ref directly.
 
-The branch and its git repository must already exist and contain at least one
-commit before initializing a StGit stack. Branches created with `stg branch
---create` are automatically initialized.
+Some StGit commands, such as `stg new` and `stg uncommit`, will automatically
+initialize the stack, so it is often not necessary to explicitly initialize the
+stack on a branch. Also, branches created with `stg branch --create` are
+automatically initialized.
+
+The branch must already exist and point to a commit before initializing a StGit stack.
 
 StGit stack metadata can be deinitialized from a branch using `stg branch
 --cleanup`. See linkstg:branch[] for more details.
+
+OPTIONS
+-------
+-b <branch>::
+--branch=<branch>::
+    Use <branch> instead of current branch
 
 StGit
 -----

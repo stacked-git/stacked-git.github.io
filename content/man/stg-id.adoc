@@ -28,7 +28,7 @@ OPTIONS
 -------
 -b <branch>::
 --branch=<branch>::
-    Use BRANCH instead of current branch
+    Use <branch> instead of current branch
 
 StGit
 -----

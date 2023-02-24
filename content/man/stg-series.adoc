@@ -21,27 +21,31 @@ DESCRIPTION
 -----------
 
 Show all the patches in the series, or just those in the given range, ordered
-from top to bottom.
+from bottom to top.
 
-The applied patches are prefixed with a '+' (except the current patch, which is
-prefixed with a '>'), the unapplied patches with a '-', and the hidden patches
-with a '!'.
+The topmost applied patch is prefixed with '>'. All other applied patches are
+prefixed with '+'. Unapplied patches are prefixed with '-' and hidden patches
+with '!'.
 
-Empty patches are prefixed with a '0'.
+The --reverse option may be used to reverse the order in which patches are
+displayed. The reversed order is more stack-like, with the base of the stack
+appearing at the bottom of of the display.
+
+Empty patches are prefixed with a '*' when the --empty option is used.
 
 OPTIONS
 -------
 -b <branch>::
 --branch=<branch>::
-    Use BRANCH instead of current branch
+    Use <branch> instead of current branch
 
 -a::
 --all::
     Select all patches, including hidden patches
 
--s::
---short::
-    Select patches around the topmost patch only
+-s[=<n>]::
+--short[=<n>]::
+    Select <n> patches around the topmost patch only
 
 -A::
 --applied::
@@ -78,9 +82,6 @@ alternatively be specified as a positive integer greater than or equal to 4.
 --description::
     Display short description for each patch
 
---no-description::
-    Do not display the patch description
-
 -e::
 --empty::
     Before the '+', '>', '-', and '!' prefixes, print a column that contains
@@ -89,6 +90,26 @@ alternatively be specified as a positive integer greater than or equal to 4.
 -P::
 --no-prefix::
     Do not display the patch status prefix
+
+-I::
+--indices::
+    Display absolute patch indicies
+
+-O::
+--offsets::
+    Display relative offsets from topmost patch or from the stack base if no
+    patches are applied.
+
+-r::
+--reverse::
+    Display patches in reverse order.
++
+This causes the stack to be displayed "right-side up". By default, patches are
+printed in order from bottom to top; i.e. the first patch in the stack is
+printed first and the last patch is printed last. Thus with the default
+ordering, the stack is displayed upside down. Reversing the order flips the
+stack such that the bottom of the stack is spatially at the top of the display,
+which may be more intuitive.
 
 --showbranch::
     Display the branch name with the listed patches

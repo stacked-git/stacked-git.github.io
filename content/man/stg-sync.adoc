@@ -32,7 +32,7 @@ OPTIONS
 --ref-branch=<branch>::
     Synchronize patches with <branch>
 
--s <series>::
+-S <series>::
 --series=<series>::
     Synchronize patches with <series>
 

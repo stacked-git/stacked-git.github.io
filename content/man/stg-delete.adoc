@@ -35,7 +35,7 @@ This can be useful for splitting a patch into smaller pieces.
 
 -b <branch>::
 --branch=<branch>::
-    Use BRANCH instead of current branch
+    Use <branch> instead of current branch
 
 --conflicts[=<policy>]::
     Either "allow" or "disallow" pushing a patch with conflicts.

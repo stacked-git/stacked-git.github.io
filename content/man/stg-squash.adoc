@@ -61,6 +61,7 @@ OPTIONS
 --no-verify::
     Disable commit-msg hook
 
+-s[=<value>]::
 --signoff[=<value>]::
     Add "Signed-off-by" message trailer.
 +

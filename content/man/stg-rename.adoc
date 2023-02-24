@@ -17,14 +17,14 @@ SYNOPSIS
 DESCRIPTION
 -----------
 
-Rename [oldpatch] to <newpatch>. If [oldpatch] is not given, the topmost patch
-will be renamed.
+Rename [old-patch] to <new-patch>. If [old-patch] is not given, the topmost
+patch will be renamed.
 
 OPTIONS
 -------
 -b <branch>::
 --branch=<branch>::
-    Use BRANCH instead of current branch
+    Use <branch> instead of current branch
 
 StGit
 -----

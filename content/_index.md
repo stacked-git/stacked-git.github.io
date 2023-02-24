@@ -35,6 +35,68 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2023-02-24: [StGit v2.2.0][v2.2.0] has been released.
+
+This release contains several quality of life features, including new
+options for specifying patches and branches on the command line. And
+improved performance.
+
+#### Patch Locator Syntax
+
+In addition to being able to specify patches by name, StGit now supports
+several new alternatives for specifying patches:
+
+- By relative offset from the topmost patch, e.g. `-1`, `+3`, or `~2`.
+- By their absolute index in the stack, e.g. `0` or `12`.
+- By offset from another patch, e.g. `some-patch~` or `some-patch+2`.
+- By relative offset from the last visible patch, e.g. `^` or `^2`.
+
+The new patch locator syntax is detailed in the [`stg`](man/stg) man
+page.
+
+#### New Options for `stg series`
+
+To complement the new patch locator syntax, new `-O`/`--offsets` and
+`-I/--indices` options display each patch's relative offset from top and
+absolute index, respectively.
+
+The new `-r`/`--reverse` option allows the stack to be shown top-side
+up. This may produce a more intuitive view of the stack for some StGit
+users. Consider adding a `stack` alias using this option, for example
+with `git config --global stgit.alias.stack 'series -rOP'`.
+
+Speaking of aliases, now each of the "Display Options" for `stg series`
+have a `--no-xxx` variant. These can be helpful for masking options used
+in series aliases. For example, the `stack` offset suggested above could
+be run as `stg stack --no-offsets` to disable display of offsets.
+
+Finally, the `--short` option now takes an optional integer value to
+specify the number of patches to show.
+
+#### Branch Locators
+
+StGit now supports specifying a branch using the same `@{-<n>}` syntax
+supported by `git`. This enables, for example, switching to the
+previously checked-out branch with `stg branch @{-1}` or just `stg branch -`
+(where `-` is synonymous with `@{-1}`).
+
+#### Command Line Options
+
+The `--signoff` option now has a short variant `-s`. This is a breaking
+change. The `--submodules` no longer has a `-s` short option. Similarly,
+the `--series` options for `stg import`, `stg float`, and `stg sync` now
+use `-S` instead of `-s` for their short variants.
+
+#### Gitoxide
+
+StGit now uses [Gitoxide][gitoxide] (gix crate) instead of libgit2 (git2
+crate) as its git access library. In addition to being a pure-Rust
+dependency, gitoxide has considerably less startup overhead (4x) than
+git2. This has a big impact on the latency of StGit commands.
+
+See the [changelog](changelog/) for more details on this release.
+
+
 ### 2023-01-16: Blog Post: [How I Keep Using Stacked Git at $WORK][stgit-at-work2]
 
 [This blog post][stgit-at-work2] from lthms describes their
@@ -131,25 +193,18 @@ See the [extension in the VSCode marketplace][marketplace] or checkout
 [vscode-stgit]: https://github.com/srydh/vscode-stgit
 [marketplace]: https://marketplace.visualstudio.com/items?itemName=samuelrydh.stgit
 
-### 2022-01-28: [StGit v1.5][v1.5] has been released.
-
-Several pesky bugs repaired along with some other minor improvements.
-
-Thanks to everyone who submitted a PR or reported an issue!
-
-See the [changelog](changelog/) for all the details on this release.
-
 [stgit-at-work2]: https://soap.coffee/~lthms/opinions/StackedGit2.html
 [stgit-at-work]: https://soap.coffee/~lthms/opinions/StackedGit.html
+[v2.2.0]: https://github.com/stacked-git/stgit/releases/tag/v2.2.0
 [v2.1.0]: https://github.com/stacked-git/stgit/releases/tag/v2.1.0
 [v2.0.4]: https://github.com/stacked-git/stgit/releases/tag/v2.0.4
 [v2.0.3]: https://github.com/stacked-git/stgit/releases/tag/v2.0.3
 [v2.0.2]: https://github.com/stacked-git/stgit/releases/tag/v2.0.2
 [v2.0.1]: https://github.com/stacked-git/stgit/releases/tag/v2.0.1
 [v2.0.0]: https://github.com/stacked-git/stgit/releases/tag/v2.0.0
-[v1.5]: https://github.com/stacked-git/stgit/releases/tag/v1.5
 [rust-lang]: https://www.rust-lang.org/
 [libgit2]: https://libgit2.org/
+[gitoxide]: https://github.com/Byron/gitoxide
 
 ## Why Stacked Git?
 

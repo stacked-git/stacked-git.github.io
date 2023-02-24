@@ -65,7 +65,6 @@ By default, if there are staged changes in the index along with unstaged
 changes in the work tree, the command will abort. This option forces the
 command to proceed using both the staged and unstaged changes.
 
--s::
 --submodules::
     Include submodules in patch content
 
@@ -92,6 +91,7 @@ command to proceed using both the staged and unstaged changes.
 --no-verify::
     Disable commit-msg hook
 
+-s[=<value>]::
 --signoff[=<value>]::
     Add "Signed-off-by" message trailer.
 +
