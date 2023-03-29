@@ -123,6 +123,15 @@ h2 { font-size: var(--s3); }
 h3 { font-size: var(--s2); }
 h4 { font-size: var(--s1); }
 
+main > h2 {
+    background: var(--color-lightish);
+    padding-top: 0.5em;
+    padding-bottom: 0.25em;
+    padding-left: 0.25em;
+}
+main > h3 {
+    text-decoration: underline;
+}
 
 .sect1 ul,
 aside > ol,
