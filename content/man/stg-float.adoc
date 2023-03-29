@@ -13,7 +13,7 @@ SYNOPSIS
 --------
 [verse]
 'stg float' [OPTIONS] <patch>...
-'stg float' [OPTIONS] \<-s|--series> <file>
+'stg float' [OPTIONS] \<-S|--series> <file>
 
 DESCRIPTION
 -----------

@@ -35,6 +35,14 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2023-03-29: [StGit v2.2.1][v2.2.1] has been released.
+
+This bugfix release addresses regressions with running StGit in linked
+worktrees and with hooks not working when running from a subdirectory of
+the work dir. Several other minor issues are also repaired.
+
+See the [changelog](changelog/) for all the details on this release.
+
 ### 2023-02-24: [StGit v2.2.0][v2.2.0] has been released.
 
 This release contains several quality of life features, including new
@@ -195,6 +203,7 @@ See the [extension in the VSCode marketplace][marketplace] or checkout
 
 [stgit-at-work2]: https://soap.coffee/~lthms/opinions/StackedGit2.html
 [stgit-at-work]: https://soap.coffee/~lthms/opinions/StackedGit.html
+[v2.2.1]: https://github.com/stacked-git/stgit/releases/tag/v2.2.1
 [v2.2.0]: https://github.com/stacked-git/stgit/releases/tag/v2.2.0
 [v2.1.0]: https://github.com/stacked-git/stgit/releases/tag/v2.1.0
 [v2.0.4]: https://github.com/stacked-git/stgit/releases/tag/v2.0.4
