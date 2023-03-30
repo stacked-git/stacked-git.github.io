@@ -194,6 +194,10 @@ body > div > header {
     position: fixed;
     height: 100%;
   }
+
+	body > div > div {
+		margin-left: 12rem;
+	}
 }
 
 body > div > header > a > img {
