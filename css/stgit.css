@@ -199,15 +199,15 @@ body > div > header {
 }
 
 @media (min-width: 768px) {
-  body > div > header {
-    position: fixed;
-    height: 100%;
-  }
+    body > div > header {
+        position: fixed;
+        height: 100%;
+    }
 
-  body > div > div {
-    margin-left: 12rem;
-  }
-
+    body > div > div {
+        /* A little more than flex-basis of body > div > header */
+        margin-left: 12rem;
+    }
 }
 
 body > div > header > a > img {
