@@ -198,6 +198,18 @@ body > div > header {
     padding-top: var(--s3);
 }
 
+@media (min-width: 768px) {
+  body > div > header {
+    position: fixed;
+    height: 100%;
+  }
+
+  body > div > div {
+    margin-left: 12rem;
+  }
+
+}
+
 body > div > header > a > img {
     width: 33%;
 }
