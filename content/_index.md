@@ -35,6 +35,10 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2023-04-26: [StGit v2.2.3][v2.2.3] has been released.
+
+StGit is repaired to work on Windows once more.
+
 ### 2023-04-01: [StGit v2.2.2][v2.2.2] has been released.
 
 This release addresses a bug that broke rebasing to a ref containing a
@@ -208,6 +212,7 @@ See the [extension in the VSCode marketplace][marketplace] or checkout
 
 [stgit-at-work2]: https://soap.coffee/~lthms/opinions/StackedGit2.html
 [stgit-at-work]: https://soap.coffee/~lthms/opinions/StackedGit.html
+[v2.2.3]: https://github.com/stacked-git/stgit/releases/tag/v2.2.3
 [v2.2.2]: https://github.com/stacked-git/stgit/releases/tag/v2.2.2
 [v2.2.1]: https://github.com/stacked-git/stgit/releases/tag/v2.2.1
 [v2.2.0]: https://github.com/stacked-git/stgit/releases/tag/v2.2.0
