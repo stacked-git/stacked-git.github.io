@@ -14,7 +14,7 @@
       <guid>http://stacked-git.github.io/guides/emacs-stgit-mode/</guid>
       <description>StGit comes with an Emacs mode, stgit-mode, supporting Emacs versions 22 and later.
 To start using it, add the stgit/contrib directory to your Emacs load-path and run (require &#39;stgit). For example, you can add the following to your .emacs file:
-(add-to-list &amp;#39;load-path &amp;#34;/path/to/stgit/contrib&amp;#34;) (require &amp;#39;stgit) Start stgit-mode using M-x stgit and select the directory where the source code you want to use StGit on can be found. If StGit has not been initialized in this directory yet, you will need to run +M-x stgit-init+ before you continue.</description>
+(add-to-list &amp;#39;load-path &amp;#34;/path/to/stgit/contrib&amp;#34;) (require &amp;#39;stgit) Start stgit-mode using M-x stgit and select the directory where the source code you want to use StGit on can be found. If StGit has not been initialized in this directory yet, you will need to run M-x stgit-init before you continue.</description>
     </item>
     
     <item>
