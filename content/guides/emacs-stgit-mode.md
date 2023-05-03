@@ -16,7 +16,7 @@ following to your `.emacs` file:
 
 Start `stgit-mode` using `M-x stgit` and select the directory where the
 source code you want to use StGit on can be found. If StGit has not been
-initialized in this directory yet, you will need to run +M-x stgit-init+
+initialized in this directory yet, you will need to run `M-x stgit-init`
 before you continue.
 
 The `stgit-mode` buffer (usually named `*stgit*`) has the following
