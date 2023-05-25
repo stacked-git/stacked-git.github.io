@@ -35,6 +35,24 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2023-05-25: [Stgit v2.3.0][v2.3.0] has been released.
+
+The headline feature for this release is prebuilt StGit packages for
+various platforms. Unofficial deb and rpm packages containing a
+statically linked `stg` executable should help solve the problem of how
+to deploy a modern version of StGit on distributions using deb and rpm
+packages. And a shiny new msi package makes StGit natively deployable on
+Windows without requiring users to build it themselves.
+
+This release gets a minor bump because the `import-compressed` feature
+has been removed in favor of always-on support for importing compressed
+patches and tarball series. Part of this change was switching from the
+bzip2 crate, which depends on the system libbz2, to the pure-Rust
+bzip2-rs crate which allows for static linking when not using the
+`import-url` feature.
+
+This release also contains a few more bugfixes to `stg import`.
+
 ### 2023-05-15: [StGit v2.2.4][v2.2.4] has been released.
 
 StGit regained the ability to upgrade from stacks created by very old
@@ -222,6 +240,7 @@ See the [extension in the VSCode marketplace][marketplace] or checkout
 
 [stgit-at-work2]: https://soap.coffee/~lthms/opinions/StackedGit2.html
 [stgit-at-work]: https://soap.coffee/~lthms/opinions/StackedGit.html
+[v2.3.0]: https://github.com/stacked-git/stgit/releases/tag/v2.3.0
 [v2.2.4]: https://github.com/stacked-git/stgit/releases/tag/v2.2.4
 [v2.2.3]: https://github.com/stacked-git/stgit/releases/tag/v2.2.3
 [v2.2.2]: https://github.com/stacked-git/stgit/releases/tag/v2.2.2
@@ -251,30 +270,44 @@ safely create, push, pop, refresh, and reorder patches.
 
 ### Dependencies
 
-StGit is written in pure Python with no third-party Python dependencies.
-StGit currently supports Python version 3.5 through 3.9. The last
-version of StGit to support Python 2 was [v0.23][v0.23].
-
-StGit interoperates closely with Git and does most of its work by
+StGit interoperates closely with Git and does much of its work by
 running `git` commands. Git 2.2.0 or newer is required.
+
+StGit was originally implemented in Python, but as of version 2.0.0,
+StGit is implemented in [Rust](https://www.rust-lang.org/). See
+[INSTALL.md][gh-install] for more details on StGit's source and runtime
+dependencies.
 
 ### Package Repositories
 
-Recent versions of StGit are available via many package repositories
-such as [HomeBrew][pkg-homebrew] and for many Linux distributions
-including: [Alpine][pkg-alpine], [Arch][pkg-arch], [Fedora][pkg-fedora],
-[Nix][pkg-nix] and [Ubuntu][pkg-ubuntu].
+Recent versions of StGit are available in several package repositories
+such as [HomeBrew][pkg-homebrew] and [MacPorts][pkg-macports] for MacOS
+and for the [Arch][pkg-arch] and [Gentoo][pkg-gentoo] Linux
+distributions.
 
 More details about StGit packages availability for various operating
 systems can be [found on repology][repology].
 
 [pkg-homebrew]: https://formulae.brew.sh/formula/stgit
-[pkg-alpine]: https://pkgs.alpinelinux.org/packages?name=stgit
+[pkg-macports]: https://ports.macports.org/port/stgit/
 [pkg-arch]: https://aur.archlinux.org/packages/stgit
-[pkg-fedora]: https://src.fedoraproject.org/rpms/stgit
-[pkg-nix]: https://nixos.org/nixos/packages.html?attr=gitAndTools.stgit
-[pkg-ubuntu]: https://packages.ubuntu.com/source/focal/stgit
+[pkg-gentoo]: //https://packages.gentoo.org/packages/dev-vcs/stgit
 [repology]: https://repology.org/project/stgit/versions
+
+### Prebuilt Packages
+
+Prebuilt deb, rpm, and msi packages are provided by the StGit project.
+Packages for the latest release may be found [here][gh-latest].
+
+Note that the Linux deb and rpm packages are unofficial. The upstream
+Debian and RedHat/Fedora projects currently only publish outdated
+versions of StGit (see [repology][repology]). These unofficial packages
+are meant to be a stop-gap until official StGit packages are provided by
+downstream distributions.
+
+The Linux deb and rpm packages are statically linked use musl libc to
+maximize compatibility. They should hopefully work on a wide range of
+deb and rpm based distributions.
 
 ### Source Installation
 
