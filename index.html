@@ -129,6 +129,20 @@ the StGit patches into other repositories using standard Git
 functionality.</p>
 <p>StGit is licensed under the GNU General Public License, version 2.</p>
 <h2 id="news">News</h2>
+<h3 id="2023-05-25-stgit-v230v230-has-been-released">2023-05-25: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.3.0">Stgit v2.3.0</a> has been released.</h3>
+<p>The headline feature for this release is prebuilt StGit packages for
+various platforms. Unofficial deb and rpm packages containing a
+statically linked <code>stg</code> executable should help solve the problem of how
+to deploy a modern version of StGit on distributions using deb and rpm
+packages. And a shiny new msi package makes StGit natively deployable on
+Windows without requiring users to build it themselves.</p>
+<p>This release gets a minor bump because the <code>import-compressed</code> feature
+has been removed in favor of always-on support for importing compressed
+patches and tarball series. Part of this change was switching from the
+bzip2 crate, which depends on the system libbz2, to the pure-Rust
+bzip2-rs crate which allows for static linking when not using the
+<code>import-url</code> feature.</p>
+<p>This release also contains a few more bugfixes to <code>stg import</code>.</p>
 <h3 id="2023-05-15-stgit-v224v224-has-been-released">2023-05-15: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.2.4">StGit v2.2.4</a> has been released.</h3>
 <p>StGit regained the ability to upgrade from stacks created by very old
 versions of StGit. This includes, for example, stacks created with StGit
@@ -270,18 +284,30 @@ involving rebase, branches, amended commits, and stashes.</p>
 safely create, push, pop, refresh, and reorder patches.</p>
 <h2 id="installation">Installation</h2>
 <h3 id="dependencies">Dependencies</h3>
-<p>StGit is written in pure Python with no third-party Python dependencies.
-StGit currently supports Python version 3.5 through 3.9. The last
-version of StGit to support Python 2 was [v0.23][v0.23].</p>
-<p>StGit interoperates closely with Git and does most of its work by
+<p>StGit interoperates closely with Git and does much of its work by
 running <code>git</code> commands. Git 2.2.0 or newer is required.</p>
+<p>StGit was originally implemented in Python, but as of version 2.0.0,
+StGit is implemented in <a href="https://www.rust-lang.org/">Rust</a>. See
+<a href="https://github.com/stacked-git/stgit/blob/master/INSTALL.md">INSTALL.md</a> for more details on StGit&rsquo;s source and runtime
+dependencies.</p>
 <h3 id="package-repositories">Package Repositories</h3>
-<p>Recent versions of StGit are available via many package repositories
-such as <a href="https://formulae.brew.sh/formula/stgit">HomeBrew</a> and for many Linux distributions
-including: <a href="https://pkgs.alpinelinux.org/packages?name=stgit">Alpine</a>, <a href="https://aur.archlinux.org/packages/stgit">Arch</a>, <a href="https://src.fedoraproject.org/rpms/stgit">Fedora</a>,
-<a href="https://nixos.org/nixos/packages.html?attr=gitAndTools.stgit">Nix</a> and <a href="https://packages.ubuntu.com/source/focal/stgit">Ubuntu</a>.</p>
+<p>Recent versions of StGit are available in several package repositories
+such as <a href="https://formulae.brew.sh/formula/stgit">HomeBrew</a> and <a href="https://ports.macports.org/port/stgit/">MacPorts</a> for MacOS
+and for the <a href="https://aur.archlinux.org/packages/stgit">Arch</a> and <a href="//https://packages.gentoo.org/packages/dev-vcs/stgit">Gentoo</a> Linux
+distributions.</p>
 <p>More details about StGit packages availability for various operating
 systems can be <a href="https://repology.org/project/stgit/versions">found on repology</a>.</p>
+<h3 id="prebuilt-packages">Prebuilt Packages</h3>
+<p>Prebuilt deb, rpm, and msi packages are provided by the StGit project.
+Packages for the latest release may be found <a href="https://github.com/stacked-git/stgit/releases/latest">here</a>.</p>
+<p>Note that the Linux deb and rpm packages are unofficial. The upstream
+Debian and RedHat/Fedora projects currently only publish outdated
+versions of StGit (see <a href="https://repology.org/project/stgit/versions">repology</a>). These unofficial packages
+are meant to be a stop-gap until official StGit packages are provided by
+downstream distributions.</p>
+<p>The Linux deb and rpm packages are statically linked use musl libc to
+maximize compatibility. They should hopefully work on a wide range of
+deb and rpm based distributions.</p>
 <h3 id="source-installation">Source Installation</h3>
 <p>StGit may also be installed from source. Download the <a href="https://github.com/stacked-git/stgit/releases/latest">latest
 release</a> or clone from the <a href="https://github.com/stacked-git/stgit">StGit repository on
