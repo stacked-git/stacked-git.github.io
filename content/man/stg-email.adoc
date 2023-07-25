@@ -215,7 +215,7 @@ multiple times.
 --thread[=<style>]::
     Controls addition of `In-Reply-To` and `References` headers to make the
     second and subsequent mails appear as replies to the first. Also controls
-    generation of the `Message-Id` header to reference.
+    generation of the `Message-ID` header to reference.
 +
 The optional <style> argument can be either `shallow` or `deep`. `shallow`
 threading makes every mail a reply to the head of the series, where the head is
@@ -333,7 +333,7 @@ This option may be specified multiple times.
 
 --in-reply-to=<id>::
     Make the first mail (or all the mails with '--no-thread') appear as a reply
-    to the given Message-Id, which avoids breaking threads to provide a new
+    to the given Message-ID, which avoids breaking threads to provide a new
     patch series. The second and subsequent emails will be sent as replies
     according to the '--[no-]chain-reply-to' setting.
 +
