@@ -373,7 +373,7 @@ message and the patch itself in the second part, with <code>Content-Disposition:
 <dd>
 <p>Controls addition of <code>In-Reply-To</code> and <code>References</code> headers to make the
 second and subsequent mails appear as replies to the first. Also controls
-generation of the <code>Message-Id</code> header to reference.</p>
+generation of the <code>Message-ID</code> header to reference.</p>
 <div class="paragraph">
 <p>The optional &lt;style&gt; argument can be either <code>shallow</code> or <code>deep</code>. <code>shallow</code>
 threading makes every mail a reply to the head of the series, where the head is
@@ -523,7 +523,7 @@ with the <em>--from</em> parameter.</p>
 <dt class="hdlist1">--in-reply-to=&lt;id&gt;</dt>
 <dd>
 <p>Make the first mail (or all the mails with <em>--no-thread</em>) appear as a reply
-to the given Message-Id, which avoids breaking threads to provide a new
+to the given Message-ID, which avoids breaking threads to provide a new
 patch series. The second and subsequent emails will be sent as replies
 according to the <em>--[no-]chain-reply-to</em> setting.</p>
 <div class="paragraph">
