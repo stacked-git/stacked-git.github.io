@@ -62,6 +62,11 @@ bzip2-rs crate which allows for static linking when not using the
 
 This release also contains a few more bugfixes to `stg import`.
 
+[v2.3.2]: https://github.com/stacked-git/stgit/releases/tag/v2.3.2
+[v2.3.1]: https://github.com/stacked-git/stgit/releases/tag/v2.3.1
+[v2.3.0]: https://github.com/stacked-git/stgit/releases/tag/v2.3.0
+
+{{< details "More StGit News..." >}}
 ### 2023-05-15: [StGit v2.2.4][v2.2.4] has been released.
 
 StGit regained the ability to upgrade from stacks created by very old
@@ -249,9 +254,6 @@ See the [extension in the VSCode marketplace][marketplace] or checkout
 
 [stgit-at-work2]: https://soap.coffee/~lthms/opinions/StackedGit2.html
 [stgit-at-work]: https://soap.coffee/~lthms/opinions/StackedGit.html
-[v2.3.2]: https://github.com/stacked-git/stgit/releases/tag/v2.3.2
-[v2.3.1]: https://github.com/stacked-git/stgit/releases/tag/v2.3.1
-[v2.3.0]: https://github.com/stacked-git/stgit/releases/tag/v2.3.0
 [v2.2.4]: https://github.com/stacked-git/stgit/releases/tag/v2.2.4
 [v2.2.3]: https://github.com/stacked-git/stgit/releases/tag/v2.2.3
 [v2.2.2]: https://github.com/stacked-git/stgit/releases/tag/v2.2.2
@@ -266,6 +268,8 @@ See the [extension in the VSCode marketplace][marketplace] or checkout
 [rust-lang]: https://www.rust-lang.org/
 [libgit2]: https://libgit2.org/
 [gitoxide]: https://github.com/Byron/gitoxide
+
+{{< /details >}}
 
 ## Why Stacked Git?
 
