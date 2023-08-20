@@ -35,6 +35,11 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2023-08-19: [StGit v2.3.2][v2.3.2] has been released.
+
+This release contains some improvements to `stg uncommit` along with
+updated dependencies.
+
 ### 2023-07-25: [StGit v2.3.1][v2.3.1] has been released.
 
 This release contains a few minor bug fixes and updated dependencies.
@@ -244,6 +249,7 @@ See the [extension in the VSCode marketplace][marketplace] or checkout
 
 [stgit-at-work2]: https://soap.coffee/~lthms/opinions/StackedGit2.html
 [stgit-at-work]: https://soap.coffee/~lthms/opinions/StackedGit.html
+[v2.3.2]: https://github.com/stacked-git/stgit/releases/tag/v2.3.2
 [v2.3.1]: https://github.com/stacked-git/stgit/releases/tag/v2.3.1
 [v2.3.0]: https://github.com/stacked-git/stgit/releases/tag/v2.3.0
 [v2.2.4]: https://github.com/stacked-git/stgit/releases/tag/v2.2.4
