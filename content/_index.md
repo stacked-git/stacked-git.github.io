@@ -5,7 +5,7 @@ title = "Stacked Git"
 > Stacked Git, **StGit** for short, is an application for managing Git
 > commits as a stack of patches.
 >
-> With a *patch stack* workflow, multiple patches can be developed
+> With a _patch stack_ workflow, multiple patches can be developed
 > concurrently and efficiently, with each patch focused on a single
 > concern, resulting in both a clean Git commit history and improved
 > productivity.
@@ -23,7 +23,7 @@ safely manage a stack of patches.
   [`delete`](man/stg-delete), and [`clean`](man/stg-clean).
 - See information about the stack or individual patches using
   [`series`](man/stg-series) and [`show`](man/stg-show).
-- Migrate patches to regular commits and *vice versa* using
+- Migrate patches to regular commits and _vice versa_ using
   [`commit`](man/stg-commit) and [`uncommit`](man/stg-uncommit).
 
 Patch-stack management operations are performed using Git commands and
@@ -34,6 +34,10 @@ functionality.
 StGit is licensed under the GNU General Public License, version 2.
 
 ## News
+
+### 2023-10-04: [StGit v2.3.3][v2.3.3] has been released.
+
+Fixes to zsh completions along with MacOS portability improvements.
 
 ### 2023-08-19: [StGit v2.3.2][v2.3.2] has been released.
 
@@ -62,11 +66,13 @@ bzip2-rs crate which allows for static linking when not using the
 
 This release also contains a few more bugfixes to `stg import`.
 
+[v2.3.3]: https://github.com/stacked-git/stgit/releases/tag/v2.3.3
 [v2.3.2]: https://github.com/stacked-git/stgit/releases/tag/v2.3.2
 [v2.3.1]: https://github.com/stacked-git/stgit/releases/tag/v2.3.1
 [v2.3.0]: https://github.com/stacked-git/stgit/releases/tag/v2.3.0
 
 {{< details "More StGit News..." >}}
+
 ### 2023-05-15: [StGit v2.2.4][v2.2.4] has been released.
 
 StGit regained the ability to upgrade from stacks created by very old
@@ -155,7 +161,6 @@ git2. This has a big impact on the latency of StGit commands.
 
 See the [changelog](changelog/) for more details on this release.
 
-
 ### 2023-01-16: Blog Post: [How I Keep Using Stacked Git at $WORK][stgit-at-work2]
 
 [This blog post][stgit-at-work2] from lthms describes their
@@ -227,9 +232,9 @@ some highlights include:
   more terse output. Stack modifying operations (`push`, `pop`,
   `refresh`, etc.) use color and sigils to display their outcomes.
 - `stg email format` and `stg email send` replace `stg mail`. The new
-  commands lean on the battle-hardened `git format-patch` and `git
-  send-email` commands, making StGit's email capabilities more robust
-  and more standard.
+  commands lean on the battle-hardened `git format-patch` and
+  `git send-email` commands, making StGit's email capabilities more
+  robust and more standard.
 - StGit aliases now behave like Git aliases.
 - `stg refresh` gains the `-r`/`--refresh` option, which allows a new
   patch to be created and record changes with one command.
@@ -251,7 +256,6 @@ See the [extension in the VSCode marketplace][marketplace] or checkout
 
 [vscode-stgit]: https://github.com/srydh/vscode-stgit
 [marketplace]: https://marketplace.visualstudio.com/items?itemName=samuelrydh.stgit
-
 [stgit-at-work2]: https://soap.coffee/~lthms/opinions/StackedGit2.html
 [stgit-at-work]: https://soap.coffee/~lthms/opinions/StackedGit.html
 [v2.2.4]: https://github.com/stacked-git/stgit/releases/tag/v2.2.4
@@ -273,7 +277,7 @@ See the [extension in the VSCode marketplace][marketplace] or checkout
 
 ## Why Stacked Git?
 
-The *stack of patches* model is a natural way to maintain a clean Git
+The _stack of patches_ model is a natural way to maintain a clean Git
 history while working on several changes concurrently. A stack-oriented
 workflow using StGit can compliment, or even replace, many Git workflows
 involving rebase, branches, amended commits, and stashes.
