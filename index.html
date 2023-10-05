@@ -129,6 +129,8 @@ the StGit patches into other repositories using standard Git
 functionality.</p>
 <p>StGit is licensed under the GNU General Public License, version 2.</p>
 <h2 id="news">News</h2>
+<h3 id="2023-10-04-stgit-v233v233-has-been-released">2023-10-04: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.3.3">StGit v2.3.3</a> has been released.</h3>
+<p>Fixes to zsh completions along with MacOS portability improvements.</p>
 <h3 id="2023-08-19-stgit-v232v232-has-been-released">2023-08-19: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.3.2">StGit v2.3.2</a> has been released.</h3>
 <p>This release contains some improvements to <code>stg uncommit</code> along with
 updated dependencies.</p>
@@ -264,8 +266,9 @@ direct accessing the git repository&rsquo;s object database using
 more terse output. Stack modifying operations (<code>push</code>, <code>pop</code>,
 <code>refresh</code>, etc.) use color and sigils to display their outcomes.</li>
 <li><code>stg email format</code> and <code>stg email send</code> replace <code>stg mail</code>. The new
-commands lean on the battle-hardened <code>git format-patch</code> and <code>git send-email</code> commands, making StGit&rsquo;s email capabilities more robust
-and more standard.</li>
+commands lean on the battle-hardened <code>git format-patch</code> and
+<code>git send-email</code> commands, making StGit&rsquo;s email capabilities more
+robust and more standard.</li>
 <li>StGit aliases now behave like Git aliases.</li>
 <li><code>stg refresh</code> gains the <code>-r</code>/<code>--refresh</code> option, which allows a new
 patch to be created and record changes with one command.</li>
