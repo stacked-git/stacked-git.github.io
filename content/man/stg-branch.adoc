@@ -16,11 +16,11 @@ SYNOPSIS
 'stg branch' [--merge] <branch>
 'stg branch' {--list,-l}
 'stg branch' {--create,-c} <new-branch> [committish]
-'stg branch' --clone [new-branch]
+'stg branch' {--clone,-C} [new-branch]
 'stg branch' {--rename,-r} [old-name] <new-name>
 'stg branch' {--protect,-p} [branch]
 'stg branch' {--unprotect,-u} [branch]
-'stg branch' --delete [--force] <branch>
+'stg branch' {--delete,-D} [--force] <branch>
 'stg branch' --cleanup [--force] [branch]
 'stg branch' {--describe,-d} <description> [branch]
 

@@ -20,12 +20,14 @@ DESCRIPTION
 Move the specified patches down the stack.
 
 If no patch is specified on the command line, the current (topmost) patch is
-sunk. By default, patches are sunk to the bottom of the stack, but the '--to'
-option may be used to place them under any applied patch.
+sunk. By default, patches are sunk to the bottom of the stack, but the
+'--above' or '--below' (alias '--to') options may be used to place them above
+or below any applied patch.
 
 Internally, sinking involves popping all patches to the bottom (or to the
-target patch if '--to' is used), then pushing the patches to sink, and then,
-unless '--nopush' is specified, pushing back any other formerly applied patches.
+target patch if '--above' or '--below' is used), then pushing the patches to
+sink, and then, unless '--nopush' is specified, pushing back any other formerly
+applied patches.
 
 Sinking may be useful, for example, to group stable patches at the bottom of
 the stack where they less likely to be impacted by the push of another patch,
@@ -40,10 +42,17 @@ OPTIONS
     sink are pushed.
 
 -t <target>::
+--below=<target>::
 --to=<target>::
     Sink patches below <target> patch.
 +
 Specified patches are placed below <target> instead of at the bottom of the stack.
+
+-T <target>::
+--above=<target>::
+    Sink patches above <target> patch.
++
+Specified patches are placed above <target> instead of at the bottom of the stack.
 
 -k::
 --keep::

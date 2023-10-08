@@ -12,7 +12,9 @@ stg-delete - Delete patches
 SYNOPSIS
 --------
 [verse]
-'stg delete' [OPTIONS] <patch>...
+'stg delete' [OPTIONS] [<patch>...]
+'stg delete' [OPTIONS] [-A] [-U] [-H]
+'stg delete' [OPTIONS] --all
 'stg delete' [OPTIONS] --top
 
 DESCRIPTION
@@ -22,16 +24,32 @@ Delete patches
 
 OPTIONS
 -------
+-a::
+--all::
+    Delete all patches
+
+-A::
+--applied::
+    Delete the applied patches
+
+-U::
+--unapplied::
+    Delete the unapplied patches
+
+-H::
+--hidden::
+    Delete the hidden patches
+
+-t::
+--top::
+    Delete topmost patch
+
 --spill::
     Delete the patches, but without modifying the index and worktree. This only
     works when deleting applied patches at the top of the stack. The effect is
     to "spill" the patch contents into the index and worktree.
 +
 This can be useful for splitting a patch into smaller pieces.
-
--t::
---top::
-    Delete topmost patch
 
 -b <branch>::
 --branch=<branch>::
