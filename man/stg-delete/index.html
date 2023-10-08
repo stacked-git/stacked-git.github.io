@@ -118,7 +118,9 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg delete</em> [OPTIONS] &lt;patch&gt;…​
+<pre class="content"><em>stg delete</em> [OPTIONS] [&lt;patch&gt;…​]
+<em>stg delete</em> [OPTIONS] [-A] [-U] [-H]
+<em>stg delete</em> [OPTIONS] --all
 <em>stg delete</em> [OPTIONS] --top</pre>
 </div>
 </div>
@@ -136,6 +138,31 @@
 <div class="sectionbody">
 <div class="dlist">
 <dl>
+<dt class="hdlist1">-a</dt>
+<dt class="hdlist1">--all</dt>
+<dd>
+<p>Delete all patches</p>
+</dd>
+<dt class="hdlist1">-A</dt>
+<dt class="hdlist1">--applied</dt>
+<dd>
+<p>Delete the applied patches</p>
+</dd>
+<dt class="hdlist1">-U</dt>
+<dt class="hdlist1">--unapplied</dt>
+<dd>
+<p>Delete the unapplied patches</p>
+</dd>
+<dt class="hdlist1">-H</dt>
+<dt class="hdlist1">--hidden</dt>
+<dd>
+<p>Delete the hidden patches</p>
+</dd>
+<dt class="hdlist1">-t</dt>
+<dt class="hdlist1">--top</dt>
+<dd>
+<p>Delete topmost patch</p>
+</dd>
 <dt class="hdlist1">--spill</dt>
 <dd>
 <p>Delete the patches, but without modifying the index and worktree. This only
@@ -144,11 +171,6 @@ to &#34;spill&#34; the patch contents into the index and worktree.</p>
 <div class="paragraph">
 <p>This can be useful for splitting a patch into smaller pieces.</p>
 </div>
-</dd>
-<dt class="hdlist1">-t</dt>
-<dt class="hdlist1">--top</dt>
-<dd>
-<p>Delete topmost patch</p>
 </dd>
 <dt class="hdlist1">-b &lt;branch&gt;</dt>
 <dt class="hdlist1">--branch=&lt;branch&gt;</dt>

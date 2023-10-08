@@ -102,6 +102,13 @@
   
   
   
+<h2 id="240-2024-10-08">2.4.0 2024-10-08</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li>feat(delete): &ndash;all -A -U -H options</li>
+<li>feat(sink): -T/&ndash;above option</li>
+<li>feat(branch): short opts for clone and delete</li>
+</ul>
 <h2 id="233-2023-10-04">2.3.3 2023-10-04</h2>
 <h3 id="fixed">Fixed</h3>
 <ul>
@@ -142,7 +149,7 @@
 <ul>
 <li>import-compressed is always enabled, no longer a feature</li>
 </ul>
-<h3 id="added">Added</h3>
+<h3 id="added-1">Added</h3>
 <ul>
 <li>unofficial deb and rpm packages</li>
 <li>msi package for Windows</li>
@@ -158,7 +165,7 @@
 <li>update dependencies</li>
 </ul>
 <h2 id="224-2023-05-15"><a href="https://github.com/stacked-git/stgit/releases/tag/v2.2.4">[2.2.4] 2023-05-15</a></h2>
-<h3 id="added-1">Added</h3>
+<h3 id="added-2">Added</h3>
 <ul>
 <li>feat: Upgrade from ancient stack state formats (<a href="https://github.com/stacked-git/stgit/issues/235">#235</a>)</li>
 </ul>
@@ -215,7 +222,7 @@
 <li>feat!: remove short -s option for &ndash;submodules</li>
 <li>fix!: patch name cannot be {base} or @</li>
 </ul>
-<h3 id="added-2">Added</h3>
+<h3 id="added-3">Added</h3>
 <ul>
 <li>feat: patch locator syntax</li>
 <li>feat: locate branches using @{-N} syntax</li>
@@ -248,7 +255,7 @@
 <li>docs: normalized spelling for &ndash;branch value</li>
 </ul>
 <h2 id="210-2022-12-12"><a href="https://github.com/stacked-git/stgit/releases/tag/v2.1.0">[2.1.0] 2022-12-12</a></h2>
-<h3 id="added-3">Added</h3>
+<h3 id="added-4">Added</h3>
 <ul>
 <li>feat: Configurable push conflict policy (<a href="https://github.com/stacked-git/stgit/issues/60">#60</a>)</li>
 <li>feat: Add &ndash;committer-date-is-author-date option (<a href="https://github.com/stacked-git/stgit/issues/47">#47</a>)</li>
@@ -302,7 +309,7 @@
 <li>chore: Update Cargo.lock with latest dependencies.</li>
 <li>docs(init): Add long help for <code>stg init</code>.</li>
 </ul>
-<h3 id="added-4">Added</h3>
+<h3 id="added-5">Added</h3>
 <ul>
 <li>feat: Enable basic support for <code>extensions.worktreeconfig</code> to unblock
 sparse checkout with partial clone (<a href="https://github.com/stacked-git/stgit/issues/195">#195</a>).</li>
@@ -335,7 +342,7 @@ the diff to no long be applicable.</li>
 marginal value since it only had a possible side effect when <code>--stat</code>
 was being used.</li>
 </ul>
-<h3 id="added-5">Added</h3>
+<h3 id="added-6">Added</h3>
 <ul>
 <li><code>stg id</code> now accepts the <code>-b/--branch</code> option.</li>
 <li><code>stg completion</code> command provides runtime support for shell
@@ -516,7 +523,7 @@ deferring until the next stack-modifying command to do so.</li>
 <li>Zsh completion for <code>--diff-opt</code> accommodates multiple occurrences</li>
 </ul>
 <h2 id="200-rc1-2022-09-30"><a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.0-rc.1">[2.0.0-rc.1] 2022-09-30</a></h2>
-<h3 id="added-6">Added</h3>
+<h3 id="added-7">Added</h3>
 <ul>
 <li>Added <code>--annotate</code> flag to <code>stg email send</code>.</li>
 <li>Added <code>-p</code>/<code>--patch</code> option to <code>stg show</code> as alternative way to select patch
@@ -559,7 +566,7 @@ a consistent state (<a href="https://github.com/stacked-git/stgit/issues/205">#2
 <li>Zsh completion for <code>stg files</code> incorrectly included -O/&ndash;diff-opts.</li>
 </ul>
 <h2 id="200-beta3-2022-08-28"><a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.0-beta.3">[2.0.0-beta.3] 2022-08-28</a></h2>
-<h3 id="added-7">Added</h3>
+<h3 id="added-8">Added</h3>
 <ul>
 <li>Add install targets for <code>contrib/</code> directory.</li>
 </ul>
@@ -601,7 +608,7 @@ limits.</li>
 <ul>
 <li>Removed Python implementation of StGit.</li>
 </ul>
-<h3 id="added-8">Added</h3>
+<h3 id="added-9">Added</h3>
 <ul>
 <li>Man page generation in asciidoc format with <code>stg completion man</code>. This
 was needed for feature parity with the Python implementation.</li>
@@ -630,7 +637,7 @@ Rust implementation.</li>
 patch by name when there are no unapplied patches.</li>
 </ul>
 <h2 id="200-alpha2-2022-07-07"><a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.0-alpha.2">[2.0.0-alpha.2] 2022-07-07</a></h2>
-<h3 id="added-9">Added</h3>
+<h3 id="added-10">Added</h3>
 <ul>
 <li><code>stg email format</code> wraps <code>git format-patch</code> and provides a mechanism
 to generate patch emails and optional cover letter in mbox format.</li>
@@ -671,7 +678,7 @@ avoiding using <code>git apply --allow-empty</code> (<a href="https://github.com
 <li>Fish completions for -O/&ndash;diff-opts are repaired</li>
 </ul>
 <h2 id="200-alpha1-2022-06-17"><a href="https://github.com/stacked-git/stgit/releases/tag/v2.0.0-alpha.1">[2.0.0-alpha.1] 2022-06-17</a></h2>
-<h3 id="added-10">Added</h3>
+<h3 id="added-11">Added</h3>
 <ul>
 <li><code>stg series</code> gains the <code>-i/--commit-id</code> option to display patches&rsquo;
 commit ids.</li>
@@ -724,7 +731,7 @@ and <code>stg init</code> instead.</li>
 <li><code>stg mail</code> is removed, but will be re-added or replaced prior to the
 2.0.0 release.</li>
 </ul>
-<h3 id="added-11">Added</h3>
+<h3 id="added-12">Added</h3>
 <ul>
 <li><code>stg new --refresh</code> allows a new patch to be refreshed with changes in
 one step. The <code>-i/--index</code>, <code>-F/--force</code>, <code>-s/--submodules</code>, and
@@ -810,7 +817,7 @@ creating from the current branch.</li>
 </ul>
 <h2 id="15-2022-01-28"><a href="https://github.com/stacked-git/stgit/releases/tag/v1.5">[1.5] 2022-01-28</a></h2>
 <h3 id="removed-5">Removed</h3>
-<h3 id="added-12">Added</h3>
+<h3 id="added-13">Added</h3>
 <ul>
 <li>Add Makefile targets for installing shell completions</li>
 <li><code>stg rebase --interactive</code> learns &lsquo;hide&rsquo; instruction</li>
@@ -842,7 +849,7 @@ will be removed in a future StGit release</li>
 <li>Python 3.6, which will be EOL 2021-12-23, support is deprecated and
 will be removed in a future StGit release</li>
 </ul>
-<h3 id="added-13">Added</h3>
+<h3 id="added-14">Added</h3>
 <ul>
 <li>The new <code>stg import --message-id</code> option causes the Message-ID from
 imported emails to be included as the Message-Id trailer in the patch
@@ -872,7 +879,7 @@ specified (<a href="https://github.com/stacked-git/stgit/issues/157">#157</a>)</
 </ul>
 <h2 id="13-2021-09-26"><a href="https://github.com/stacked-git/stgit/releases/tag/v1.3">[1.3] 2021-09-26</a></h2>
 <h3 id="removed-7">Removed</h3>
-<h3 id="added-14">Added</h3>
+<h3 id="added-15">Added</h3>
 <h3 id="changed-25">Changed</h3>
 <h3 id="fixed-26">Fixed</h3>
 <ul>
@@ -887,7 +894,7 @@ will be removed in a future StGit release</li>
 <li>Python 3.6, which will be EOL 2021-12-23, support is deprecated and
 will be removed in a future StGit release</li>
 </ul>
-<h3 id="added-15">Added</h3>
+<h3 id="added-16">Added</h3>
 <ul>
 <li><code>stg rebase </code> learns <code>--interactive</code>; easily re-order, edit, squash,
 fixup, or delete patches via your editor</li>
@@ -957,7 +964,7 @@ previously it would delete your commit message. (<a href="https://github.com/sta
 </ul>
 <h2 id="11-2021-04-30"><a href="https://github.com/stacked-git/stgit/releases/tag/v1.1">[1.1] 2021-04-30</a></h2>
 <h3 id="removed-9">Removed</h3>
-<h3 id="added-16">Added</h3>
+<h3 id="added-17">Added</h3>
 <ul>
 <li>StGit GPG-signs patches when <code>commit.gpgsign</code> is set (<a href="https://github.com/stacked-git/stgit/issues/12">#12</a>)</li>
 <li>Support <code>core.hooksPath</code> in git config</li>
@@ -983,7 +990,7 @@ previously it would delete your commit message. (<a href="https://github.com/sta
 <li>Removed contrib scripts: <code>stg-swallow</code>, <code>stg-fold-files-from</code>,
 <code>stg-dispatch</code>, <code>stg-whatchanged</code>, and <code>stg-show-old</code></li>
 </ul>
-<h3 id="added-17">Added</h3>
+<h3 id="added-18">Added</h3>
 <ul>
 <li>The pre-commit hook is now run for <code>stg refresh</code></li>
 <li>New <code>--spill</code> option for <code>stg refresh</code></li>
@@ -1025,7 +1032,7 @@ deprecated, but supported for one last release</li>
 <li>Python 2.x support is deprecated and will be removed in a future
 release</li>
 </ul>
-<h3 id="added-18">Added</h3>
+<h3 id="added-19">Added</h3>
 <ul>
 <li>Support html5 output of docs from asciidoc</li>
 <li>Add <code>--expose</code> option for <code>stg pick</code> to allow picked commit message to
@@ -1073,7 +1080,7 @@ release</li>
 <li><code>stg publish</code> is deprecated and will be removed in the next StGit
 release</li>
 </ul>
-<h3 id="added-19">Added</h3>
+<h3 id="added-20">Added</h3>
 <ul>
 <li><code>stg import</code> has new &ndash;keep-cr option, like <code>git mailsplit</code></li>
 </ul>
@@ -1114,7 +1121,7 @@ git repo</li>
 <li>Improved command line option parsing for <code>stg log</code></li>
 </ul>
 <h2 id="020---2019-10-04"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.20">[0.20] - 2019-10-04</a></h2>
-<h3 id="added-20">Added</h3>
+<h3 id="added-21">Added</h3>
 <ul>
 <li><code>stg patches -d</code> can now output colored diffs.</li>
 <li><code>stg publish --overwrite</code> allows branch to be overwritten instead of
@@ -1191,7 +1198,7 @@ encoded words.</li>
 <li>StGit&rsquo;s version is now correct/available in the release archive.</li>
 </ul>
 <h2 id="018-2017-08-14"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.18">[0.18] 2017-08-14</a></h2>
-<h3 id="added-21">Added</h3>
+<h3 id="added-22">Added</h3>
 <ul>
 <li><code>commit-msg</code> hook support for easier integration with Gerrit, allowing
 a Change-Id line to be inserted in the commit message</li>
@@ -1224,7 +1231,7 @@ stack while keeping its modification in the tree</li>
 <li>Fix &ndash;authdate date parsing.</li>
 </ul>
 <h2 id="017-2013-06-27"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.17">[0.17] 2013-06-27</a></h2>
-<h3 id="added-22">Added</h3>
+<h3 id="added-23">Added</h3>
 <ul>
 <li><code>stg delete --top</code> option for deleting the top patch.</li>
 <li><code>stg branch --merge</code> option for merging the work tree changes into the
@@ -1245,7 +1252,7 @@ other branch.</li>
 <li>Email template fixes.</li>
 </ul>
 <h2 id="016-2012-01-09"><a href="https://github.com/stacked-git/stgit/releases/tag/v0.16">[0.16] 2012-01-09</a></h2>
-<h3 id="added-23">Added</h3>
+<h3 id="added-24">Added</h3>
 <ul>
 <li>UI adjustments to better match the Git commands.
 <ul>
@@ -1270,7 +1277,7 @@ given branch.</li>
 <li>The commands &ldquo;stg add&rdquo;, &ldquo;stg rm&rdquo;, &ldquo;stg cp&rdquo;, and &ldquo;stg resolved&rdquo; were
 removed, since there are corresponding Git equivalents.</li>
 </ul>
-<h3 id="added-24">Added</h3>
+<h3 id="added-25">Added</h3>
 <ul>
 <li>New core infrastructure for repository operations, including:
 <ul>

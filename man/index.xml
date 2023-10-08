@@ -13,7 +13,7 @@
       
       <guid>http://stacked-git.github.io/man/stg-branch/</guid>
       <description>NAME stg-branch - Branch operations: switch, list, create, rename, delete, …​
-SYNOPSIS stg branch stg branch [--merge] &amp;lt;branch&amp;gt; stg branch {--list,-l} stg branch {--create,-c} &amp;lt;new-branch&amp;gt; [committish] stg branch --clone [new-branch] stg branch {--rename,-r} [old-name] &amp;lt;new-name&amp;gt; stg branch {--protect,-p} [branch] stg branch {--unprotect,-u} [branch] stg branch --delete [--force] &amp;lt;branch&amp;gt; stg branch --cleanup [--force] [branch] stg branch {--describe,-d} &amp;lt;description&amp;gt; [branch] DESCRIPTION Create, clone, switch, rename, or delete StGit-enabled branches.
+SYNOPSIS stg branch stg branch [--merge] &amp;lt;branch&amp;gt; stg branch {--list,-l} stg branch {--create,-c} &amp;lt;new-branch&amp;gt; [committish] stg branch {--clone,-C} [new-branch] stg branch {--rename,-r} [old-name] &amp;lt;new-name&amp;gt; stg branch {--protect,-p} [branch] stg branch {--unprotect,-u} [branch] stg branch {--delete,-D} [--force] &amp;lt;branch&amp;gt; stg branch --cleanup [--force] [branch] stg branch {--describe,-d} &amp;lt;description&amp;gt; [branch] DESCRIPTION Create, clone, switch, rename, or delete StGit-enabled branches.
 With no arguments, the current branch is printed to stdout.</description>
     </item>
     
@@ -58,10 +58,13 @@ SYNOPSIS stg completion bash [OPTIONS] stg completion fish [OPTIONS] stg complet
       
       <guid>http://stacked-git.github.io/man/stg-delete/</guid>
       <description>NAME stg-delete - Delete patches
-SYNOPSIS stg delete [OPTIONS] &amp;lt;patch&amp;gt;…​ stg delete [OPTIONS] --top DESCRIPTION Delete patches
-OPTIONS --spill Delete the patches, but without modifying the index and worktree. This only works when deleting applied patches at the top of the stack. The effect is to &amp;#34;spill&amp;#34; the patch contents into the index and worktree.
-This can be useful for splitting a patch into smaller pieces.
--t --top Delete topmost patch</description>
+SYNOPSIS stg delete [OPTIONS] [&amp;lt;patch&amp;gt;…​] stg delete [OPTIONS] [-A] [-U] [-H] stg delete [OPTIONS] --all stg delete [OPTIONS] --top DESCRIPTION Delete patches
+OPTIONS -a --all Delete all patches
+-A --applied Delete the applied patches
+-U --unapplied Delete the unapplied patches
+-H --hidden Delete the hidden patches
+-t --top Delete topmost patch
+--spill Delete the patches, but without modifying the index and worktree. This only works when deleting applied patches at the top of the stack.</description>
     </item>
     
     <item>
@@ -421,8 +424,8 @@ OPTIONS -p &amp;lt;patch-or-rev&amp;gt; --patch=&amp;lt;patch-or-rev&amp;gt; Pat
       <guid>http://stacked-git.github.io/man/stg-sink/</guid>
       <description>NAME stg-sink - Move patches deeper in the stack
 SYNOPSIS stg sink [OPTIONS] [patch]…​ DESCRIPTION Move the specified patches down the stack.
-If no patch is specified on the command line, the current (topmost) patch is sunk. By default, patches are sunk to the bottom of the stack, but the --to option may be used to place them under any applied patch.
-Internally, sinking involves popping all patches to the bottom (or to the target patch if --to is used), then pushing the patches to sink, and then, unless --nopush is specified, pushing back any other formerly applied patches.</description>
+If no patch is specified on the command line, the current (topmost) patch is sunk. By default, patches are sunk to the bottom of the stack, but the --above or --below (alias --to) options may be used to place them above or below any applied patch.
+Internally, sinking involves popping all patches to the bottom (or to the target patch if --above or --below is used), then pushing the patches to sink, and then, unless --nopush is specified, pushing back any other formerly applied patches.</description>
     </item>
     
     <item>
