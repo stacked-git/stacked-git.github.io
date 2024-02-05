@@ -205,6 +205,11 @@ branch. The parent information of the new branch is copied from the current bran
 <em>--force</em> option is provided.</p>
 </div>
 <div class="paragraph">
+<p>If the current branch is selected for deletion, its parent branch must be
+configured and the worktree must be clean. The parent branch will be
+checked-out after the current branch is deleted.</p>
+</div>
+<div class="paragraph">
 <p>A protected branch may not be deleted; it must be unprotected first.</p>
 </div>
 </dd>
@@ -273,7 +278,7 @@ patches remain, unless the <em>--force</em> option is provided.</p>
 
 </main>
 <footer>
-  <small>&copy; 2023 Stacked Git Authors</small>
+  <small>&copy; 2024 Stacked Git Authors</small>
 </footer>
 </div>
         </div>
