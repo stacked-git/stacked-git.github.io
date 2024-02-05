@@ -79,6 +79,10 @@ branch. The parent information of the new branch is copied from the current bran
 The branch will not be deleted if there are any patches remaining unless the
 '--force' option is provided.
 +
+If the current branch is selected for deletion, its parent branch must be
+configured and the worktree must be clean. The parent branch will be
+checked-out after the current branch is deleted.
++
 A protected branch may not be deleted; it must be unprotected first.
 
 --cleanup::

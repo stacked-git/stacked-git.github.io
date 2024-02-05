@@ -4,7 +4,47 @@ title = 'StGit Changelog'
 
 # Changelog
 
-## 2.4.0 2024-10-08
+## 2.4.3 2024-02-04
+
+### Added
+- feat(branch): allow delete of current branch
+
+### Fixed
+- fix(branch): delete branch config with branch
+- fix: use gix-command for interactive edit (#407)
+- fix: improved interactive editor diagnostics
+- chore: update gix to 0.58.0 (#407)
+- docs: fix dates in changelog
+
+### Changed
+- refactor(branch): use gix to rename config section
+- refactor: use gix to remove stgit branch config
+- refactor: use gix-command for hooks
+- refactor: use non-deprecated indexmap methods
+- ci: update cargo-generate-rpm to 0.14.0
+- ci: update to upload-artifact@v4
+- ci: restore use of IO::Pty in MacOS build
+
+
+## 2.4.2 2023-12-26
+
+### Changed
+- feat(pop): allow unescaped negative patch offsets
+- feat(show): allow unescaped negative patch offsets
+- chore: update dependencies
+
+
+## 2.4.1 2023-12-10
+
+### Fixed
+- fix(zsh): short -r opt for `stg series`
+
+### Changed
+- chore: update gix to 0.56.0
+- chore: update transient dependencies
+
+
+## 2.4.0 2023-10-08
 
 ### Added
 - feat(delete): --all -A -U -H options

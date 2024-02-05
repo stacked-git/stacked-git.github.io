@@ -35,6 +35,13 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2024-02-04: [StGit v2.4.3][v2.4.3] has been released.
+
+Fixes finding global config and running an interactive editor on
+Windows.
+
+Also enables `stg branch --delete` to operate on the current branch.
+
 ### 2023-10-08: [StGit v2.4.0][v2.4.0] has been released.
 
 This release adds some new command line options to `stg branch`, `stg
@@ -71,6 +78,7 @@ bzip2-rs crate which allows for static linking when not using the
 
 This release also contains a few more bugfixes to `stg import`.
 
+[v2.4.3]: https://github.com/stacked-git/stgit/releases/tag/v2.4.3
 [v2.4.0]: https://github.com/stacked-git/stgit/releases/tag/v2.4.0
 [v2.3.3]: https://github.com/stacked-git/stgit/releases/tag/v2.3.3
 [v2.3.2]: https://github.com/stacked-git/stgit/releases/tag/v2.3.2
