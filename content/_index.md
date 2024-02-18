@@ -35,6 +35,10 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2024-02-18: [StGit v2.4.5][v2.4.5] has been released.
+
+### 2024-02-11: [StGit v2.4.4][v2.4.4] has been released.
+
 ### 2024-02-04: [StGit v2.4.3][v2.4.3] has been released.
 
 Fixes finding global config and running an interactive editor on
@@ -78,6 +82,8 @@ bzip2-rs crate which allows for static linking when not using the
 
 This release also contains a few more bugfixes to `stg import`.
 
+[v2.4.5]: https://github.com/stacked-git/stgit/releases/tag/v2.4.5
+[v2.4.4]: https://github.com/stacked-git/stgit/releases/tag/v2.4.4
 [v2.4.3]: https://github.com/stacked-git/stgit/releases/tag/v2.4.3
 [v2.4.0]: https://github.com/stacked-git/stgit/releases/tag/v2.4.0
 [v2.3.3]: https://github.com/stacked-git/stgit/releases/tag/v2.3.3
@@ -316,7 +322,8 @@ dependencies.
 Recent versions of StGit are available in several package repositories
 such as [HomeBrew][pkg-homebrew] and [MacPorts][pkg-macports] for MacOS
 and for the [Arch][pkg-arch] and [Gentoo][pkg-gentoo] Linux
-distributions.
+distributions. StGit is also available via [crates.io][pkg-crate],
+[guix][pkg-guix], and [nix][pkg-nix].
 
 More details about StGit packages availability for various operating
 systems can be [found on repology][repology].
@@ -324,7 +331,10 @@ systems can be [found on repology][repology].
 [pkg-homebrew]: https://formulae.brew.sh/formula/stgit
 [pkg-macports]: https://ports.macports.org/port/stgit/
 [pkg-arch]: https://aur.archlinux.org/packages/stgit
-[pkg-gentoo]: //https://packages.gentoo.org/packages/dev-vcs/stgit
+[pkg-gentoo]: https://packages.gentoo.org/packages/dev-vcs/stgit
+[pkg-crate]: https://crates.io/crates/stgit
+[pkg-guix]: https://packages.guix.gnu.org/packages/stgit/
+[pkg-nix]: https://search.nixos.org/packages?type=packages&query=stgit
 [repology]: https://repology.org/project/stgit/versions
 
 ### Prebuilt Packages

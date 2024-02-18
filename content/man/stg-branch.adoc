@@ -20,7 +20,7 @@ SYNOPSIS
 'stg branch' {--rename,-r} [old-name] <new-name>
 'stg branch' {--protect,-p} [branch]
 'stg branch' {--unprotect,-u} [branch]
-'stg branch' {--delete,-D} [--force] <branch>
+'stg branch' {--delete,-D} [--force] [branch]
 'stg branch' --cleanup [--force] [branch]
 'stg branch' {--describe,-d} <description> [branch]
 
