@@ -24,7 +24,7 @@ To start using it, add the stgit/contrib directory to your Emacs load-path and r
       
       <guid>http://stacked-git.github.io/man/stg-branch/</guid>
       <description>NAME stg-branch - Branch operations: switch, list, create, rename, delete, …​
-SYNOPSIS stg branch stg branch [--merge] &amp;lt;branch&amp;gt; stg branch {--list,-l} stg branch {--create,-c} &amp;lt;new-branch&amp;gt; [committish] stg branch {--clone,-C} [new-branch] stg branch {--rename,-r} [old-name] &amp;lt;new-name&amp;gt; stg branch {--protect,-p} [branch] stg branch {--unprotect,-u} [branch] stg branch {--delete,-D} [--force] &amp;lt;branch&amp;gt; stg branch --cleanup [--force] [branch] stg branch {--describe,-d} &amp;lt;description&amp;gt; [branch] DESCRIPTION Create, clone, switch, rename, or delete StGit-enabled branches.
+SYNOPSIS stg branch stg branch [--merge] &amp;lt;branch&amp;gt; stg branch {--list,-l} stg branch {--create,-c} &amp;lt;new-branch&amp;gt; [committish] stg branch {--clone,-C} [new-branch] stg branch {--rename,-r} [old-name] &amp;lt;new-name&amp;gt; stg branch {--protect,-p} [branch] stg branch {--unprotect,-u} [branch] stg branch {--delete,-D} [--force] [branch] stg branch --cleanup [--force] [branch] stg branch {--describe,-d} &amp;lt;description&amp;gt; [branch] DESCRIPTION Create, clone, switch, rename, or delete StGit-enabled branches.
 With no arguments, the current branch is printed to stdout.</description>
     </item>
     
