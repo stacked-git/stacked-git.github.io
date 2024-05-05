@@ -408,9 +408,8 @@ contribute to StGit.
 
 ### Mailing List
 
-For questions or discussion, please send email to [the StGit mailing
-list](stgit@googlegroups.com). Or use the [Google Groups web
-interface][gg-forum].
+For questions or discussion, please post to [StGit's discussions
+page][gh-discussions] on GitHub.
 
 ## Historical
 
@@ -438,9 +437,9 @@ Paolo "Blaisorblade" Giarrusso for their great contribution to the
 development of StGit. Many thanks to [all the people who contributed
 patches][gh-authors], ideas or reported bugs.
 
-[gg-forum]: https://groups.google.com/d/forum/stgit
 [gh-authors]: https://github.com/stacked-git/stgit/blob/master/AUTHORS.md
 [gh-contributing]: https://github.com/stacked-git/stgit/blob/master/CONTRIBUTING.md
+[gh-discussions]: https://github.com/stacked-git/stgit/discussions
 [gh-install]: https://github.com/stacked-git/stgit/blob/master/INSTALL.md
 [gh-issues]: https://github.com/stacked-git/stgit/issues
 [gh-latest]: https://github.com/stacked-git/stgit/releases/latest
