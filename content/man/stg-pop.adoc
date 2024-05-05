@@ -42,7 +42,7 @@ A negative number indicates to pop all but that number of patches
 
 -s::
 --spill::
-    Keep patches' modifications in working tree after popping
+    Keep patches' modifications in index and worktree after popping
 
 -k::
 --keep::
