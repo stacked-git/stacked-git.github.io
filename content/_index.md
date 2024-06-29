@@ -371,7 +371,7 @@ git clone https://github.com/stacked-git/stgit.git
 To install from source, choose a `prefix` and:
 
 ```sh
-make prefix=/usr/local install install-doc
+make prefix=/usr/local install
 ```
 
 For more information about installation, see [the INSTALL.md
