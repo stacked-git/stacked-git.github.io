@@ -46,7 +46,7 @@ Like `git commit`, if we do not provide a message on the command line,
 we will be prompted to enter a message interactively using `$EDITOR`.
 
 A nice thing about StGit patches is that their commit message can easily
-be revised the using `stg edit`. So for now, we use a short and simple
+be revised using `stg edit`. So for now, we use a short and simple
 message.
 
 ```sh
