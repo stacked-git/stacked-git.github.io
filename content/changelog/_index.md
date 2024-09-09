@@ -4,6 +4,14 @@ title = 'StGit Changelog'
 
 # Changelog
 
+## 2.4.12 2024-09-08
+
+### Changed
+
+- feat(push): revert overzealous modified status
+- updated dependencies
+
+
 ## 2.4.11 2024-08-25
 
 ### Fixed
