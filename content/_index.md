@@ -35,6 +35,11 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2025-01-01: [StGit v2.5.0][v2.5.0] has been released.
+
+This includes the new `stg name` command as well as the ability for `stg
+rebase` to be run without arguments.
+
 ### 2024-08-17: [StGit v2.4.10][v2.4.10] has been released.
 
 ### 2024-05-05: [StGit v2.4.7][v2.4.7] has been released.
@@ -88,6 +93,7 @@ bzip2-rs crate which allows for static linking when not using the
 
 This release also contains a few more bugfixes to `stg import`.
 
+[v2.5.0]: https://github.com/stacked-git/stgit/releases/tag/v2.5.0
 [v2.4.10]: https://github.com/stacked-git/stgit/releases/tag/v2.4.10
 [v2.4.9]: https://github.com/stacked-git/stgit/releases/tag/v2.4.9
 [v2.4.8]: https://github.com/stacked-git/stgit/releases/tag/v2.4.8

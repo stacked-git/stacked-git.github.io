@@ -45,6 +45,7 @@ SYNOPSIS
 'stg help import'
 'stg help init'
 'stg help log'
+'stg help name'
 'stg help new'
 'stg help next'
 'stg help patches'
@@ -178,6 +179,9 @@ init::
 
 log::
     Display or optionally clear the stack changelog
+
+name::
+    Print patch name of a StGit revision
 
 new::
     Create a new patch at top of the stack

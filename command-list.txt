@@ -9,6 +9,8 @@ linkstg:id[]::
     Print git hash of a StGit revision
 linkstg:log[]::
     Display or optionally clear the stack changelog
+linkstg:name[]::
+    Print patch name of a StGit revision
 linkstg:show[]::
     Show patch commits
 

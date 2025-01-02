@@ -1,0 +1,36 @@
++++
+title = "stg-name(1)"
++++
+
+stg-name(1)
+===========
+
+NAME
+----
+stg-name - Print patch name of a StGit revision
+
+SYNOPSIS
+--------
+[verse]
+'stg name' [OPTIONS] [revision]
+
+DESCRIPTION
+-----------
+
+Print the patch name of a StGit revision.
+
+Try to get the name of the patch in the current branch as specified by a StGit
+revision. Revisions can be specified in the all the forms accepted by "stg id" command.
+
+OPTIONS
+-------
+-b <branch>::
+--branch=<branch>::
+    Use <branch> instead of current branch
+
+--showbranch::
+    Display the branch name with the patch
+
+StGit
+-----
+Part of the StGit suite - see linkman:stg[1]
