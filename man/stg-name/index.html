@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
     <title>
-         stg-reset(1) &ndash;  Stacked Git
+         stg-name(1) &ndash;  Stacked Git
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -96,8 +96,8 @@
 <div>
 <main>
   <h2>
-    <a href="/man/stg-reset/">
-      stg-reset(1)
+    <a href="/man/stg-name/">
+      stg-name(1)
     </a>
   </h2>
 
@@ -110,7 +110,7 @@
 <h2 id="_name">NAME</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>stg-reset - Reset the patch stack to an earlier state</p>
+<p>stg-name - Print patch name of a StGit revision</p>
 </div>
 </div>
 </div>
@@ -118,8 +118,7 @@
 <h2 id="_synopsis">SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="verseblock">
-<pre class="content"><em>stg reset</em> [--hard] [&lt;committish&gt; [&lt;patchname&gt;…​]]
-<em>stg reset</em> --hard</pre>
+<pre class="content"><em>stg name</em> [OPTIONS] [revision]</pre>
 </div>
 </div>
 </div>
@@ -127,13 +126,11 @@
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Reset the patch stack to an earlier state. If no state is specified, reset only
-the changes in the worktree.</p>
+<p>Print the patch name of a StGit revision.</p>
 </div>
 <div class="paragraph">
-<p>The state is specified with a commit id from the stack log, which may be viewed
-with <a href="/man/stg-log">stg log</a>. Patch name arguments may optionally be provided to limit
-which patches are reset.</p>
+<p>Try to get the name of the patch in the current branch as specified by a StGit
+revision. Revisions can be specified in the all the forms accepted by &#34;stg id&#34; command.</p>
 </div>
 </div>
 </div>
@@ -142,9 +139,14 @@ which patches are reset.</p>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">--hard</dt>
+<dt class="hdlist1">-b &lt;branch&gt;</dt>
+<dt class="hdlist1">--branch=&lt;branch&gt;</dt>
 <dd>
-<p>Discard changes in the index and worktree</p>
+<p>Use &lt;branch&gt; instead of current branch</p>
+</dd>
+<dt class="hdlist1">--showbranch</dt>
+<dd>
+<p>Display the branch name with the patch</p>
 </dd>
 </dl>
 </div>

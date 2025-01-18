@@ -399,6 +399,10 @@ type of object they create or change.</p>
 <dd>
 <p>Display or optionally clear the stack changelog</p>
 </dd>
+<dt class="hdlist1"><a href="/man/stg-name">stg name</a></dt>
+<dd>
+<p>Print patch name of a StGit revision</p>
+</dd>
 <dt class="hdlist1"><a href="/man/stg-show">stg show</a></dt>
 <dd>
 <p>Show patch commits</p>
@@ -645,8 +649,10 @@ is automatically run to attempt to resolve the conflicts.</p>
 </dd>
 <dt class="hdlist1">stgit.autosign</dt>
 <dd>
-<p>Automatically add &#34;Signed-off-by:&#34; trailer to commit messages for new patches created
-with <a href="/man/stg-new">stg new</a> or lingstg:import[].</p>
+<p>Automatically add signoff trailer to commit messages for new patches created
+with <a href="/man/stg-new">stg new</a> or lingstg:import[]. The value of this configuration
+variable will be used as the key of the trailer and therefore should be set
+to something like <em>Signed-off-by</em>.</p>
 </dd>
 <dt class="hdlist1">stgit.autostash</dt>
 <dd>
@@ -813,7 +819,7 @@ template files are searched in the following directories:</p>
 
 </main>
 <footer>
-  <small>&copy; 2024 Stacked Git Authors</small>
+  <small>&copy; 2025 Stacked Git Authors</small>
 </footer>
 </div>
         </div>

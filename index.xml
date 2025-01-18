@@ -178,7 +178,7 @@ OPTIONS -k --keep Keep the local changes
       
       <guid>http://stacked-git.github.io/man/stg-help/</guid>
       <description>NAME stg-help - Print this message or the help of the given subcommand(s)
-SYNOPSIS stg help branch --list stg help branch --create stg help branch --clone stg help branch --rename stg help branch --protect stg help branch --unprotect stg help branch --delete stg help branch --cleanup stg help branch --describe stg help clean stg help commit stg help completion bash stg help completion fish stg help completion zsh stg help completion list aliases stg help completion list commands stg help completion list commands-and-aliases stg help completion man stg help delete stg help diff stg help edit stg help email format stg help email send stg help export stg help files stg help float stg help fold stg help goto stg help hide stg help id stg help import stg help init stg help log stg help new stg help next stg help patches stg help pick stg help pop stg help prev stg help pull stg help push stg help rebase stg help redo stg help refresh stg help rename stg help repair stg help reset stg help series stg help show stg help sink stg help spill stg help squash stg help sync stg help top stg help uncommit stg help undo stg help unhide stg help version stg help help DESCRIPTION Print this message or the help of the given subcommand(s)</description>
+SYNOPSIS stg help branch --list stg help branch --create stg help branch --clone stg help branch --rename stg help branch --protect stg help branch --unprotect stg help branch --delete stg help branch --cleanup stg help branch --describe stg help clean stg help commit stg help completion bash stg help completion fish stg help completion zsh stg help completion list aliases stg help completion list commands stg help completion list commands-and-aliases stg help completion man stg help delete stg help diff stg help edit stg help email format stg help email send stg help export stg help files stg help float stg help fold stg help goto stg help hide stg help id stg help import stg help init stg help log stg help name stg help new stg help next stg help patches stg help pick stg help pop stg help prev stg help pull stg help push stg help rebase stg help redo stg help refresh stg help rename stg help repair stg help reset stg help series stg help show stg help sink stg help spill stg help squash stg help sync stg help top stg help uncommit stg help undo stg help unhide stg help version stg help help DESCRIPTION Print this message or the help of the given subcommand(s)</description>
     </item>
     
     <item>
@@ -236,6 +236,19 @@ Initializing a branch with a StGit stack commits initial, empty stack state for 
       <description>NAME stg-log - Display or optionally clear the stack changelog
 SYNOPSIS stg log [OPTIONS] [--] [patch]…​ stg log --clear DESCRIPTION Show the history of changes to the stack. If one or more patch names are given, only the changes affecting those patches are shown.
 The linkstg:undo[] and linkstg:redo[] commands may be used to step back and forth through historical stack states. The linkstg:reset[] command may be used to reset the stack directly to a historic state.</description>
+    </item>
+    
+    <item>
+      <title>stg-name(1)</title>
+      <link>http://stacked-git.github.io/man/stg-name/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://stacked-git.github.io/man/stg-name/</guid>
+      <description>NAME stg-name - Print patch name of a StGit revision
+SYNOPSIS stg name [OPTIONS] [revision] DESCRIPTION Print the patch name of a StGit revision.
+Try to get the name of the patch in the current branch as specified by a StGit revision. Revisions can be specified in the all the forms accepted by &amp;#34;stg id&amp;#34; command.
+OPTIONS -b &amp;lt;branch&amp;gt; --branch=&amp;lt;branch&amp;gt; Use &amp;lt;branch&amp;gt; instead of current branch
+--showbranch Display the branch name with the patch</description>
     </item>
     
     <item>
