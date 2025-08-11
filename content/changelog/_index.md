@@ -4,6 +4,71 @@ title = 'StGit Changelog'
 
 # Changelog
 
+## 2.5.4 2025-08-10
+
+### Fixed
+
+- stgit.el: Use `with-eval-after-load` instead of a homemade version
+- stgit.el: Use `advice-add` instead of `defadvice`
+- stgit.el: Fix various checkdoc warnings
+- stgit.el: Support Emacs versions < 31
+- stgit.el: Move 'stgit-patch-status-face-alist' before first use
+- stgit.el: Silence warnings of missing vc variables
+- stgit.el: Replace ad-hoc `make-local-variable` with `defvar-local`
+- stgit.el: Use defvar-local instead of make-local-variable
+- stgit.el: Enable lexical-binding
+- stgit.el: Allow empty descriptions
+- stgit.el: Add "--no-color" flag to 'git log' and 'git show'
+- stgit.el: Pass patch into `stgit-process-files`
+
+### Changed
+
+- chore: update gix to 0.73
+- docs: Update copyright year
+- feat(bash): complete patches from chosen branch
+
+
+## 2.5.3 2025-02-22
+
+### Added
+
+- build: statically linked packages for riscv64
+
+### Changed
+
+- chore: update dependencies
+- refactor(stgit.el): use space-based indentation consistently
+
+
+## 2.5.2 2025-02-16
+
+### Fixed
+
+- fix(stgit.el): various compile warnings
+- fix(stgit.el): Replace depercated cl function calls with new style
+- fix(stgit.el): checkdoc warnings
+- fix(stgit.el): emacs pre-pending "Summary: " to log-edit buffers
+
+### Changed
+
+- chore: update jiff to 0.2.0
+- chore: update winnow to 0.7.2
+- chore: resolve winnow deprecations
+- chore: update dependencies
+
+
+## 2.5.1 2025-01-18
+
+### Fixed
+
+- fix: assure branch creation respects fetch-specs of remotes (#522)
+
+### Changed
+
+- ci: ubuntu-24.04 is now used to build release binaries
+- chore: gix is updated to 0.70
+
+
 ## 2.5.0 2025-01-01
 
 ### Added
