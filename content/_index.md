@@ -35,6 +35,16 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2026-05-18: [StGit v2.6.0][v2.6.0] has been released.
+
+This release adds a `--exec` option for `stg rebase` (similar to
+`git rebase --exec`) and respects `core.commentChar` when producing
+commit message templates, allowing markdown-friendly comment characters.
+A pair of bug fixes are included: `stg refresh` no longer panics when
+encountering files with "copied" status, and `stg import --name` now
+honors user-supplied patch names verbatim instead of truncating them to
+`stgit.namelength`. The minimum supported Rust version is now 1.85.
+
 ### 2025-01-01: [StGit v2.5.0][v2.5.0] has been released.
 
 This includes the new `stg name` command as well as the ability for `stg
@@ -93,6 +103,7 @@ bzip2-rs crate which allows for static linking when not using the
 
 This release also contains a few more bugfixes to `stg import`.
 
+[v2.6.0]: https://github.com/stacked-git/stgit/releases/tag/v2.6.0
 [v2.5.0]: https://github.com/stacked-git/stgit/releases/tag/v2.5.0
 [v2.4.10]: https://github.com/stacked-git/stgit/releases/tag/v2.4.10
 [v2.4.9]: https://github.com/stacked-git/stgit/releases/tag/v2.4.9
