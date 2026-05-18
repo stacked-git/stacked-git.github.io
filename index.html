@@ -129,6 +129,14 @@ the StGit patches into other repositories using standard Git
 functionality.</p>
 <p>StGit is licensed under the GNU General Public License, version 2.</p>
 <h2 id="news">News</h2>
+<h3 id="2026-05-18-stgit-v260v260-has-been-released">2026-05-18: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.6.0">StGit v2.6.0</a> has been released.</h3>
+<p>This release adds a <code>--exec</code> option for <code>stg rebase</code> (similar to
+<code>git rebase --exec</code>) and respects <code>core.commentChar</code> when producing
+commit message templates, allowing markdown-friendly comment characters.
+A pair of bug fixes are included: <code>stg refresh</code> no longer panics when
+encountering files with &ldquo;copied&rdquo; status, and <code>stg import --name</code> now
+honors user-supplied patch names verbatim instead of truncating them to
+<code>stgit.namelength</code>. The minimum supported Rust version is now 1.85.</p>
 <h3 id="2025-01-01-stgit-v250v250-has-been-released">2025-01-01: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.5.0">StGit v2.5.0</a> has been released.</h3>
 <p>This includes the new <code>stg name</code> command as well as the ability for <code>stg rebase</code> to be run without arguments.</p>
 <h3 id="2024-08-17-stgit-v2410v2410-has-been-released">2024-08-17: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.4.10">StGit v2.4.10</a> has been released.</h3>
@@ -389,7 +397,7 @@ patches</a>, ideas or reported bugs.</p>
 
 </main>
 <footer>
-  <small>&copy; 2025 Stacked Git Authors</small>
+  <small>&copy; 2026 Stacked Git Authors</small>
 </footer>
 </div>
         </div>
