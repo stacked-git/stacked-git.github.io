@@ -129,6 +129,14 @@ the StGit patches into other repositories using standard Git
 functionality.</p>
 <p>StGit is licensed under the GNU General Public License, version 2.</p>
 <h2 id="news">News</h2>
+<h3 id="2026-10-11-stgit-v270v270-has-been-released">2026-10-11: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.7.0">StGit v2.7.0</a> has been released.</h3>
+<p>This release adds opt-in command shorthands: with <code>stgit.infer-commands</code>
+set to <code>true</code>, any unambiguous prefix of a command or alias name may be
+used, e.g. <code>stg ser</code> for <code>stg series</code>. Dates given to StGit now accept
+the same relaxed spellings as Git, such as &ldquo;2 days 3 hours ago&rdquo; or &ldquo;last
+week&rdquo;, and relative dates are based on the local time zone. The
+<code>stgit.autoimerge</code> option, which runs <code>git mergetool</code> when a push
+conflicts, works again. The minimum supported Rust version is now 1.88.</p>
 <h3 id="2026-05-18-stgit-v260v260-has-been-released">2026-05-18: <a href="https://github.com/stacked-git/stgit/releases/tag/v2.6.0">StGit v2.6.0</a> has been released.</h3>
 <p>This release adds a <code>--exec</code> option for <code>stg rebase</code> (similar to
 <code>git rebase --exec</code>) and respects <code>core.commentChar</code> when producing

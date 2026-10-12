@@ -699,6 +699,20 @@ See <a href="https://git-scm.com/docs/git-config">git-config(1)</a> for more inf
 <p>When set to <em>true</em>, create <em>Message-ID:</em> trailer in the patch description of patches
 imported from email using <a href="/man/stg-import">stg import</a>.</p>
 </dd>
+<dt class="hdlist1">stgit.infer-commands</dt>
+<dd>
+<p>When set to <em>true</em>, StGit commands and aliases may be invoked using any unambiguous
+prefix of their names. For example, <code>stg ser</code> runs <code>stg series</code>. Exact command and
+alias names always take precedence over prefixes. Prefixes are not accepted in alias
+definitions; aliases must name their StGit command exactly. Defaults to <em>false</em>.</p>
+<div class="paragraph">
+<p>N.B. whether a prefix is unambiguous depends on the set of defined aliases as well as
+the set of StGit commands. Defining a new alias, or upgrading to a version of StGit with
+new commands, may cause a previously unambiguous prefix to become ambiguous. Explicit
+aliases (see <em>stgit.alias.*</em>) are a more stable alternative for abbreviating commonly
+used commands.</p>
+</div>
+</dd>
 <dt class="hdlist1">stgit.keepoptimized</dt>
 <dd>
 <p>When set to <em>true</em>, after pulling changes with <a href="/man/stg-pull">stg pull</a>, the repository’s object

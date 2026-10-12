@@ -207,6 +207,21 @@ without conflicts. This behavior can be configured by setting
 &#34;stgit.push.allow-conflicts&#34; to &#34;false&#34;.</p>
 </div>
 </dd>
+<dt class="hdlist1">-x &lt;cmd&gt;</dt>
+<dt class="hdlist1">--exec=&lt;cmd&gt;</dt>
+<dd>
+<p>Execute the given shell command after each patch is successfully applied
+during the rebase operation. If the command fails (exits with non-zero
+status), the entire transaction is rolled back and no patches remain applied.</p>
+<div class="paragraph">
+<p>This option may be specified multiple times to run multiple commands in
+sequence after each patch.</p>
+</div>
+<div class="paragraph">
+<p>This is similar to <code>git rebase --exec</code>, but note that stgit rolls back the
+entire operation on failure rather than leaving you at the failing point.</p>
+</div>
+</dd>
 </dl>
 </div>
 </div>
