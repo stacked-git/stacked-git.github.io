@@ -77,6 +77,18 @@ merge conflicts. The operation will stop on the last patch that can be pushed
 without conflicts. This behavior can be configured by setting
 "stgit.push.allow-conflicts" to "false".
 
+-x <cmd>::
+--exec=<cmd>::
+    Execute the given shell command after each patch is successfully applied
+    during the rebase operation. If the command fails (exits with non-zero
+    status), the entire transaction is rolled back and no patches remain applied.
++
+This option may be specified multiple times to run multiple commands in
+sequence after each patch.
++
+This is similar to `git rebase --exec`, but note that stgit rolls back the
+entire operation on failure rather than leaving you at the failing point.
+
 StGit
 -----
 Part of the StGit suite - see linkman:stg[1]

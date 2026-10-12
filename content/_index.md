@@ -35,6 +35,16 @@ StGit is licensed under the GNU General Public License, version 2.
 
 ## News
 
+### 2026-10-11: [StGit v2.7.0][v2.7.0] has been released.
+
+This release adds opt-in command shorthands: with `stgit.infer-commands`
+set to `true`, any unambiguous prefix of a command or alias name may be
+used, e.g. `stg ser` for `stg series`. Dates given to StGit now accept
+the same relaxed spellings as Git, such as "2 days 3 hours ago" or "last
+week", and relative dates are based on the local time zone. The
+`stgit.autoimerge` option, which runs `git mergetool` when a push
+conflicts, works again. The minimum supported Rust version is now 1.88.
+
 ### 2026-05-18: [StGit v2.6.0][v2.6.0] has been released.
 
 This release adds a `--exec` option for `stg rebase` (similar to
@@ -103,6 +113,7 @@ bzip2-rs crate which allows for static linking when not using the
 
 This release also contains a few more bugfixes to `stg import`.
 
+[v2.7.0]: https://github.com/stacked-git/stgit/releases/tag/v2.7.0
 [v2.6.0]: https://github.com/stacked-git/stgit/releases/tag/v2.6.0
 [v2.5.0]: https://github.com/stacked-git/stgit/releases/tag/v2.5.0
 [v2.4.10]: https://github.com/stacked-git/stgit/releases/tag/v2.4.10

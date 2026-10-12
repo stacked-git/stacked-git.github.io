@@ -4,6 +4,75 @@ title = 'StGit Changelog'
 
 # Changelog
 
+## 2.7.0 2026-10-11
+
+### Added
+
+- feat: allow unambiguous command shorthands, opt-in with `stgit.infer-commands` (#649)
+- feat: accept git approxidate spellings for dates, e.g. "2 days 3 hours ago",
+  "last week", "3.days.ago", and "@<epoch>"
+
+### Fixed
+
+- fix(push): run `git mergetool` for `stgit.autoimerge`
+- fix: anchor relative dates in the local time zone rather than UTC
+
+### Changed
+
+- fix: reject "@" as a branch name for `stg branch --create`; it names the top patch
+- perf: avoid spawning `git notes copy` when there is no note to copy
+- chore: bump MSRV to 1.88
+- chore: update gix to 0.89
+- chore: update clap to 4.6.7
+- chore: update dependencies
+
+
+## 2.6.1 2026-06-22
+
+### Fixed
+
+- fix(rebase): run --exec commands even when the stack base is unchanged (#638)
+- stgit.el: Fix Index/Work Tree incremental refresh (#633)
+
+### Changed
+
+- chore: update gix to 0.84
+- chore: update dependencies
+
+
+## 2.6.0 2026-05-18
+
+### Added
+
+- feat(rebase): add --exec option to run commands after each patch
+- feat: respect core.commentChar setting for escaping comment characters in commit messages
+
+### Fixed
+
+- fix(refresh): handle "copied" status (#615)
+- fix(import): respect --name verbatim, ignoring stgit.namelength (#623)
+
+### Changed
+
+- chore: bump MSRV to 1.85
+- chore: update clap to 4.6
+- chore: update gix to 0.83
+- chore: update winnow to 1.0
+- chore: update dependencies
+- docs: Update copyright year
+
+
+## 2.5.5 2025-11-10
+
+### Fixed
+
+- fix(squash): keep author when squashed commits have same author
+
+### Changed
+
+- chore: update gix to 0.74
+
+
 ## 2.5.4 2025-08-10
 
 ### Fixed
